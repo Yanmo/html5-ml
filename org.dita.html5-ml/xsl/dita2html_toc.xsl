@@ -9,17 +9,15 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
- xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  xmlns:psmi="http://www.CraneSoftwrights.com/resources/psmi"
  exclude-result-prefixes="xs ahf"
 >
 
-    <!-- 
+    <!--
      function:    Generate TOC template
      param:        none
      return:    fo:page-sequence
@@ -30,7 +28,7 @@ E-mail : info@antennahouse.com
             <xsl:choose>
                 <xsl:when test="ancestor::*[contains(@class,' bookmap/frontmatter ')]">
                     <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqFrontmatter')"/>
-                    <xsl:if test="not(preceding-sibling::*) and 
+                    <xsl:if test="not(preceding-sibling::*) and
                                   not(parent::*/preceding-sibling::*[contains(@class,' map/topicref ')])">
                         <xsl:attribute name="initial-page-number" select="'1'"/>
                     </xsl:if>
@@ -84,17 +82,17 @@ E-mail : info@antennahouse.com
             </xsl:choose>
         </psmi:page-sequence>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    Generate TOC template for map
      param:        none
      return:    fo:page-sequence
-     note:        
+     note:
      -->
     <xsl:template name="genMapToc" >
         <fo:page-sequence>
             <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqFrontmatter')"/>
-            <xsl:if test="not(preceding-sibling::*) and 
+            <xsl:if test="not(preceding-sibling::*) and
                 not(parent::*/preceding-sibling::*[contains(@class,' map/topicref ')])">
                 <xsl:attribute name="initial-page-number" select="'1'"/>
             </xsl:if>
@@ -119,7 +117,7 @@ E-mail : info@antennahouse.com
         </fo:page-sequence>
     </xsl:template>
 
-    <!-- 
+    <!--
      function:    TOC's main template
      param:        none
      return:    none
@@ -161,7 +159,7 @@ E-mail : info@antennahouse.com
         </fo:block>
     </xsl:template>
 
-    <!-- 
+    <!--
      function:    TOC's main template for simple map
      param:        none
      return:    none
@@ -184,20 +182,20 @@ E-mail : info@antennahouse.com
         </fo:block>
     </xsl:template>
 
-    <!-- 
+    <!--
      function:    General templates for TOC
      param:        none
-     return:    
+     return:
      note:        none
      -->
     <xsl:template match="*" mode="MAKE_TOC">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <xsl:template match="text()" mode="MAKE_TOC"/>
     <xsl:template match="*[contains(@class, ' bookmap/bookmeta ')]" mode="MAKE_TOC"/>
-    
-    
+
+
     <!-- Frontmatter -->
     <xsl:template match="*[contains(@class,' bookmap/frontmatter ')][ahf:isToc(.)]" mode="MAKE_TOC" priority="2">
         <!--xsl:message>[Frontmatter] $pIncludeFrontmatterToToc=<xsl:value-of select="$pIncludeFrontmatterToToc"/></xsl:message-->
@@ -205,26 +203,26 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates mode="#current"/>
         </xsl:if>
     </xsl:template>
-    
+
     <!-- Backmatter -->
     <xsl:template match="*[contains(@class,' bookmap/backmatter ')][ahf:isToc(.)]" mode="MAKE_TOC" priority="2">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <!-- Frontmatter/backmatter contents -->
-    
+
     <!-- Bookabstract -->
     <xsl:template match="*[contains(@class,' bookmap/bookabstract ')][exists(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match/>
     </xsl:template>
     <xsl:template match="*[contains(@class,' bookmap/bookabstract ')][empty(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
     </xsl:template>
-        
+
     <!-- Booklists -->
     <xsl:template match="*[contains(@class,' bookmap/booklists ')][ahf:isToc(.)]" mode="MAKE_TOC" priority="2">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <!-- Abbrevlist -->
     <xsl:template match="*[contains(@class,' bookmap/abbrevlist ')][exists(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match>
@@ -233,7 +231,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
     <xsl:template match="*[contains(@class,' bookmap/abbrevlist ')][empty(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
     </xsl:template>
-        
+
     <!-- Bibliolist -->
     <xsl:template match="*[contains(@class,' bookmap/bibliolist ')][exists(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match>
@@ -242,7 +240,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
     <xsl:template match="*[contains(@class,' bookmap/bibliolist ')][empty(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
     </xsl:template>
-        
+
     <!-- Booklist -->
     <xsl:template match="*[contains(@class,' bookmap/booklist ')][exists(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match>
@@ -251,7 +249,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
     <xsl:template match="*[contains(@class,' bookmap/booklist ')][empty(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
     </xsl:template>
-        
+
     <!-- Figurelist -->
     <xsl:template match="*[contains(@class,' bookmap/figurelist ')][exists(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match>
@@ -266,7 +264,7 @@ E-mail : info@antennahouse.com
             </xsl:next-match>
         </xsl:if>
     </xsl:template>
-        
+
     <!-- Glossarylist -->
     <xsl:template match="*[contains(@class,' bookmap/glossarylist ')][exists(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match>
@@ -281,7 +279,7 @@ E-mail : info@antennahouse.com
             </xsl:next-match>
         </xsl:if>
     </xsl:template>
-        
+
     <!-- Indexlist -->
     <xsl:template match="*[contains(@class,' bookmap/indexlist ')][exists(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match>
@@ -297,7 +295,7 @@ E-mail : info@antennahouse.com
             </xsl:next-match>
         </xsl:if>
     </xsl:template>
-    
+
     <!-- Tablelist -->
     <xsl:template match="*[contains(@class,' bookmap/tablelist ')][exists(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match>
@@ -313,7 +311,7 @@ E-mail : info@antennahouse.com
             </xsl:next-match>
         </xsl:if>
     </xsl:template>
-        
+
     <!-- Trademarklist -->
     <xsl:template match="*[contains(@class,' bookmap/trademarklist ')][exists(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match>
@@ -322,7 +320,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
     <xsl:template match="*[contains(@class,' bookmap/trademarklist ')][empty(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
     </xsl:template>
-        
+
     <!-- Toc -->
     <xsl:template match="*[contains(@class,' bookmap/toc ')][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match>
@@ -330,49 +328,49 @@ E-mail : info@antennahouse.com
             <xsl:with-param name="prmProcessChild" select="false()"/>
         </xsl:next-match>
     </xsl:template>
-        
+
     <!-- Colophon -->
     <xsl:template match="*[contains(@class,' bookmap/colophon ')][exists(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match/>
     </xsl:template>
     <xsl:template match="*[contains(@class,' bookmap/colophon ')][empty(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
     </xsl:template>
-        
+
     <!-- Dedication -->
     <xsl:template match="*[contains(@class,' bookmap/dedication ')][exists(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match/>
     </xsl:template>
     <xsl:template match="*[contains(@class,' bookmap/dedication ')][empty(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
     </xsl:template>
-        
+
     <!-- Draftintro -->
     <xsl:template match="*[contains(@class,' bookmap/draftintro ')][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-        
+
     <!-- Notices -->
     <xsl:template match="*[contains(@class,' bookmap/notices ')][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match>
             <xsl:with-param name="prmDefaultTitle" select="$cNoticeTitle"/>
         </xsl:next-match>
     </xsl:template>
-        
+
     <!-- Preface -->
     <xsl:template match="*[contains(@class,' bookmap/preface ')][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match>
             <xsl:with-param name="prmDefaultTitle" select="$cPrefaceTitle"/>
         </xsl:next-match>
     </xsl:template>
-        
+
     <!-- Backmatter contents -->
-    
+
     <!-- Amendments -->
     <xsl:template match="*[contains(@class,' bookmap/amendments ')][empty(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
     </xsl:template>
     <xsl:template match="*[contains(@class,' bookmap/amendments ')][exists(@href)][ahf:isToc(.)]" mode="MAKE_TOC" priority="2" >
         <xsl:next-match/>
     </xsl:template>
-    
+
     <!-- Appendice
          Changed not to generate toc title because appendice is only a wrapper of appendix in bookmap.
          2014-09-15 t.makita
@@ -383,11 +381,11 @@ E-mail : info@antennahouse.com
         </xsl:next-match-->
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <!-- Ignore reltable contents -->
     <xsl:template match="*[contains(@class,' map/reltable ')]" mode="MAKE_TOC" />
-    
-    <!-- 
+
+    <!--
      function:    templates for topicref
      param:        none
      return:    TOC line
@@ -396,11 +394,11 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class,' map/topicref ')][ahf:isCoverTopicRef(.)]" mode="MAKE_TOC" priority="2"/>
     <xsl:template match="*[contains(@class,' map/topicref ')][not(ahf:isToc(.))]" mode="MAKE_TOC"/>
-            
+
     <xsl:template match="*[contains(@class,' map/topicref ')][ahf:isToc(.)]" mode="MAKE_TOC">
         <xsl:param name="prmDefaultTitle" as="xs:string" required="no" select="''"/>
         <xsl:param name="prmProcessChild" as="xs:boolean" required="no" select="true()"/>
-        
+
         <xsl:variable name="topicRef" select="."/>
         <xsl:variable name="linkContent"  as="element()?" select="ahf:getTopicFromTopicRef($topicRef)"/>
         <xsl:variable name="contentId" select="if (empty($linkContent)) then () else ahf:getIdAtts($linkContent,$topicRef,true())" as="attribute()*"/>
@@ -414,14 +412,14 @@ E-mail : info@antennahouse.com
                                                            [not(contains(@class, ' bookmap/appendices '))]
                                                            )"/>
         </xsl:variable>
-    
+
         <xsl:variable name="addToc" as="xs:boolean">
             <xsl:choose>
                 <xsl:when test="$nestedTopicCount gt $cTocNestMax">
                     <xsl:sequence select="false()"/>
                 </xsl:when>
                 <xsl:when test="ancestor-or-self::*[contains(@class, ' map/topicref ')][@toc='no']">
-                    <!-- Descendant of toc="no" topicref --> 
+                    <!-- Descendant of toc="no" topicref -->
                     <xsl:sequence select="false()"/>
                 </xsl:when>
                 <xsl:otherwise>
@@ -429,7 +427,7 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-    
+
         <xsl:choose>
             <xsl:when test="not($addToc)">
                 <!-- Ignore this element and descendant. -->
@@ -461,24 +459,24 @@ E-mail : info@antennahouse.com
                 </xsl:if>
                 <!-- Navigate to lower level -->
                 <xsl:if test="$prmProcessChild">
-                    <xsl:apply-templates mode="#current"/>    
+                    <xsl:apply-templates mode="#current"/>
                 </xsl:if>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    Get title contents
      param:        prmTopicRef, prmLinkContent
      return:    title inline
-     note:        
+     note:
      -->
     <xsl:template name="ahf:getTitleContent" as="node()*">
         <xsl:param name="prmTopicRef" as="element()"/>
         <xsl:param name="prmLinkContent" as="element()?"/>
         <xsl:param name="prmDefaultTitle" as="xs:string"/>
-    
+
         <xsl:variable name="titlePrefix" as="node()*">
             <xsl:if test="$pAddNumberingTitlePrefix">
                 <xsl:variable name="titlePrefix" as="xs:string">
@@ -523,18 +521,18 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    Make TOC line
      param:        prmId, prmLevel, prmTitle
      return:    TOC line
-     note:        
+     note:
      -->
     <xsl:template name="makeTocLine">
         <xsl:param name="prmId"    required="yes" as="xs:string"/>
         <xsl:param name="prmLevel" required="yes" as="xs:integer"/>
         <xsl:param name="prmTitle" required="yes" as="node()*"/>
-    
+
         <xsl:choose>
             <xsl:when test="$prmLevel eq 1">
                 <fo:block>

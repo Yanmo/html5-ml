@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="UTF-8" ?>
 <!--
 ****************************************************************
-DITA to XSL-FO Stylesheet 
+DITA to XSL-FO Stylesheet
 Module: Task elements stylesheet
 Copyright © 2009-2009 Antenna House, Inc. All rights reserved.
 Antenna House is a trademark of Antenna House, Inc.
@@ -9,8 +9,7 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
@@ -32,21 +31,21 @@ E-mail : info@antennahouse.com
     <!-- NOTE: task/substep is implemented in dita2fo_bodyelemets.xsl as topic/li -->
     <!-- NOTE: task/choices is implemented in dita2fo_bodyelemets.xsl as topic/ul -->
     <!-- NOTE: task/choice is implemented in dita2fo_bodyelemets.xsl as topic/li -->
-    
-    <!-- 
+
+    <!--
      function:    steps template
-     param:        
+     param:
      return:    fo:list-block
-     note:      No fn elements supposed in the steps        
+     note:      No fn elements supposed in the steps
      -->
     <xsl:template match="*[contains(@class, ' task/steps ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsSteps'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' task/steps ')]" priority="2">
         <xsl:call-template name="processSteps"/>
     </xsl:template>
-    
+
     <xsl:template name="processSteps">
         <!-- Prefix of step -->
         <xsl:variable name="stepNumberFormat" as="xs:string+">
@@ -69,34 +68,34 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if-->
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    steps/step template
-     param:        
+     param:
      return:    fo:list-item
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' task/steps ')]/*[contains(@class,' task/step ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsStepItem'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' task/steps ')]/*[contains(@class,' task/step ')]" priority="2">
         <xsl:param name="prmNumberFormat" required="yes" as="xs:string"/>
-        
+
         <xsl:call-template name="processStep">
             <xsl:with-param name="prmNumberFormat" select="$prmNumberFormat"/>
         </xsl:call-template>
     </xsl:template>
-    
+
     <xsl:template name="processStep">
         <xsl:param name="prmNumberFormat" required="yes" as="xs:string"/>
-        
+
         <fo:list-item>
             <!-- Set list-item attribute. -->
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:list-item-label end-indent="label-end()"> 
+            <fo:list-item-label end-indent="label-end()">
                 <fo:block>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsStepLabel'"/>
@@ -128,22 +127,22 @@ E-mail : info@antennahouse.com
             </fo:list-item-body>
         </fo:list-item>
     </xsl:template>
-    
+
     <!-- Ignore floatfig in info -->
     <xsl:template match="*[contains(@class,' task/info ')]//*[contains(@class,' floatfig-d/floatfig ')]" priority="4"/>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    stepsection template
-     param:        
+     param:
      return:    fo:list-item
-     note:        Stepsection appears in the steps/step-unordered. 
+     note:        Stepsection appears in the steps/step-unordered.
                 However it must be formatted like section. No list number
                 or bullet are needed. (2011-10-24 t.makita)
      -->
     <xsl:template match="*[contains(@class, ' task/stepsection ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsStepSection'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/stepsection ')]" priority="2">
         <fo:list-item>
@@ -151,7 +150,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:list-item-label> 
+            <fo:list-item-label>
                 <fo:block/>
             </fo:list-item-label>
             <fo:list-item-body start-indent="inherited-property-value(start-indent)">
@@ -162,16 +161,16 @@ E-mail : info@antennahouse.com
             </fo:list-item-body>
         </fo:list-item>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    cmd template
-     param:        
+     param:
      return:    fo:inline
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/cmd ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsCmd'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/cmd ')]" priority="2">
         <fo:inline>
@@ -181,17 +180,17 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    info template
-     param:        
+     param:
      return:    fo:block
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/info ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsInfo'"/>
-    </xsl:template>    
-    
+    </xsl:template>
+
     <xsl:template match="*[contains(@class, ' task/info ')]" priority="2">
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -200,17 +199,17 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    stepxmp template
-     param:        
+     param:
      return:    fo:block
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/stepxmp ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsStepxmp'"/>
-    </xsl:template>    
-    
+    </xsl:template>
+
     <xsl:template match="*[contains(@class, ' task/stepxmp ')]" priority="2">
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -219,17 +218,17 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    choicetable template
-     param:        
+     param:
      return:    fo:table
      note:        @keycol default value is defined 1 in DTD.
                 MODE_GET_STYLE is defined only for choicetable in this version.
      -->
     <xsl:template match="*[contains(@class, ' task/choicetable ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsChoiceTable'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/choicetable ')]" priority="2">
         <xsl:variable name="choiceTable" select="."/>
@@ -298,21 +297,21 @@ E-mail : info@antennahouse.com
                         </fo:table-header>
                     </xsl:otherwise>
                 </xsl:choose>
-                
+
                 <fo:table-body>
                     <xsl:copy-of select="ahf:getAttributeSet('atsChbody')"/>
                     <xsl:apply-templates select="*[contains(@class, ' task/chrow ')]">
                         <xsl:with-param name="prmKeyCol"   select="$keyCol"/>
                     </xsl:apply-templates>
                 </fo:table-body>
-                
+
             </fo:table>
         </fo:table-and-caption>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' task/chhead ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
-    
+
         <fo:table-header>
             <xsl:copy-of select="ahf:getAttributeSet('atsChhead')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -325,10 +324,10 @@ E-mail : info@antennahouse.com
             </fo:table-row>
         </fo:table-header>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' task/chhead ')]/*[contains(@class, ' task/choptionhd ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
-    
+
         <fo:table-cell>
             <xsl:copy-of select="ahf:getAttributeSet('atsChoptionhd')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -346,10 +345,10 @@ E-mail : info@antennahouse.com
             </fo:block>
         </fo:table-cell>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' task/chhead ')]/*[contains(@class, ' task/chdeschd ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
-    
+
         <fo:table-cell>
             <xsl:copy-of select="ahf:getAttributeSet('atsChdeschd')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -367,10 +366,10 @@ E-mail : info@antennahouse.com
             </fo:block>
         </fo:table-cell>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' task/chrow ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
-    
+
         <fo:table-row>
             <xsl:copy-of select="ahf:getAttributeSet('atsChrow')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -380,10 +379,10 @@ E-mail : info@antennahouse.com
             </xsl:apply-templates>
         </fo:table-row>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' task/chrow ')]/*[contains(@class, ' task/choption ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
-    
+
         <fo:table-cell>
             <xsl:copy-of select="ahf:getAttributeSet('atsChoption')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -401,10 +400,10 @@ E-mail : info@antennahouse.com
             </fo:block>
         </fo:table-cell>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' task/chrow ')]/*[contains(@class, ' task/chdesc ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
-    
+
         <fo:table-cell>
             <xsl:copy-of select="ahf:getAttributeSet('atsChdesc')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -422,17 +421,17 @@ E-mail : info@antennahouse.com
             </fo:block>
         </fo:table-cell>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    stepresult template
-     param:        
+     param:
      return:    fo:block
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/stepresult ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsStepresult'"/>
-    </xsl:template>    
-    
+    </xsl:template>
+
     <xsl:template match="*[contains(@class, ' task/stepresult ')]" priority="2">
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -441,17 +440,17 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    tutorialinfo template
-     param:        
+     param:
      return:    fo:block
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/tutorialinfo ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsTutorialinfo'"/>
-    </xsl:template>    
-    
+    </xsl:template>
+
     <xsl:template match="*[contains(@class, ' task/tutorialinfo ')]" priority="2">
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -460,17 +459,17 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    result template
-     param:        
+     param:
      return:    fo:block
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/result ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsResult'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/result ')]" priority="2">
         <fo:block>
@@ -480,16 +479,16 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    postreq template
-     param:        
+     param:
      return:    fo:block
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/postreq ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsPostreq'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/postreq ')]" priority="2">
         <fo:block>

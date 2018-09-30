@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="UTF-8" ?>
 <!--
 ****************************************************************
-DITA to XSL-FO Stylesheet 
+DITA to XSL-FO Stylesheet
 Module: Glossary related elements stylesheet
 Copyright © 2009-2010 Antenna House, Inc. All rights reserved.
 Antenna House is a trademark of Antenna House, Inc.
@@ -9,24 +9,23 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  exclude-result-prefixes="xs ahf"
 >
 
-    <!-- 
+    <!--
      function:    abbreviated-form template
      param:        prmTopicRef
      return:    fo:basic-link
      note:        none
      -->
-    
+
     <xsl:template match="*[contains(@class,' abbrev-d/abbreviated-form ')]" priority="2">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes"  as="element()?"/>
-    
+
         <xsl:variable name="abbreviatedForm" as="element()" select="."/>
         <xsl:variable name="href" as="xs:string" select="string(@href)"/>
         <xsl:variable name="destAttr" as="attribute()*">
@@ -34,7 +33,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmHref" select="$href"/>
                 <xsl:with-param name="prmElem" select="$abbreviatedForm"/>
                 <xsl:with-param name="prmTopicRef" select="$prmTopicRef"/>
-            </xsl:call-template>    
+            </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="abbreviatedFormCount" as="xs:integer">
             <xsl:number select="."
@@ -141,7 +140,7 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:function name="ahf:checkGlossStatus" as="xs:boolean">
         <xsl:param name="prmGlossAlt" as="element()"/>
         <xsl:choose>

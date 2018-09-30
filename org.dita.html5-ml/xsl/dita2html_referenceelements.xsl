@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="UTF-8" ?>
 <!--
 ****************************************************************
-DITA to XSL-FO Stylesheet 
+DITA to XSL-FO Stylesheet
 Module: Reference elements stylesheet
 Copyright © 2009-2009 Antenna House, Inc. All rights reserved.
 Antenna House is a trademark of Antenna House, Inc.
@@ -9,8 +9,7 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
@@ -18,18 +17,18 @@ E-mail : info@antennahouse.com
 >
     <!-- NOTE: reference/reference is implemented in dita2fo_topicelements.xsl as topic/title.
                reference/refbody is implemented in dita2fo_topicelements.xsl as topic/body.
-               reference/refsyn is implemented in dita2fo_topicelements.xsl as topic/section. 
+               reference/refsyn is implemented in dita2fo_topicelements.xsl as topic/section.
      -->
-    
-    <!-- 
+
+    <!--
      function:    properties template
-     param:        
+     param:
      return:    fo:table
      note:        MODE_GET_STYLE is defined only for properties in this version.
      -->
     <xsl:template match="*[contains(@class, ' reference/properties ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsPropertyTable'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' reference/properties ')]" priority="2">
         <xsl:variable name="keyCol" select="ahf:getKeyCol(.)" as="xs:integer"/>
@@ -59,8 +58,8 @@ E-mail : info@antennahouse.com
             </fo:table-body>
         </fo:table>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    prophead template
      param:        prmKeyCol
      return:    fo:table-header
@@ -70,7 +69,7 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class, ' reference/prophead ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
-        
+
         <fo:table-header>
             <xsl:copy-of select="ahf:getAttributeSet('atsPropertyTableHeader')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -125,10 +124,10 @@ E-mail : info@antennahouse.com
             </fo:table-row>
         </fo:table-header>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    proptypehd template
-     param:        
+     param:
      return:    proptypehd contents (fo:block)
      note:        none
      -->
@@ -139,10 +138,10 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    propvaluehd template
-     param:        
+     param:
      return:    propvaluehd contents (fo:block)
      note:        none
      -->
@@ -153,10 +152,10 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    propdeschd template
-     param:        
+     param:
      return:    propdeschd contents (fo:block)
      note:        none
      -->
@@ -167,8 +166,8 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    property template
      param:        prmKeyCol
      return:    fo:table-row
@@ -176,7 +175,7 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class, ' reference/property ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
-        
+
         <fo:table-row>
             <xsl:copy-of select="ahf:getAttributeSet('atsPropertyTableRow')"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -227,10 +226,10 @@ E-mail : info@antennahouse.com
             </xsl:if>
         </fo:table-row>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    proptype template
-     param:        
+     param:
      return:    proptype contents (fo:block)
      note:        none
      -->
@@ -241,10 +240,10 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    propvalue template
-     param:        
+     param:
      return:    propvalue contents (fo:block)
      note:        none
      -->
@@ -255,10 +254,10 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    propdesc template
-     param:        
+     param:
      return:    propdesc contents (fo:block)
      note:        none
      -->

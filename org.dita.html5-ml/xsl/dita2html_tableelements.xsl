@@ -9,20 +9,19 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  xmlns:ahs="http://www.antennahouse.com/names/XSLT/Document/Layout"
  exclude-result-prefixes="xs ahf ahs"
 >
-    <!-- **************************** 
+    <!-- ****************************
             Table Templates
          ****************************-->
-    <!-- 
+    <!--
      function:    table[@orient="land"] template
-     param:        
+     param:
      return:    fo:bloc-container
      note:        Table will be located by 90 degrees counterclockwise from the text flow.
      -->
@@ -35,9 +34,9 @@ E-mail : info@antennahouse.com
         </fo:block-container>
     </xsl:template>
 
-    <!-- 
+    <!--
      function:    table[@pgwide="1"] template
-     param:        
+     param:
      return:    fo:bloc-container
      note:        Table will be positioned from left page margin to right page margin.
                 Change implementation method to force table width to full.
@@ -52,11 +51,11 @@ E-mail : info@antennahouse.com
         </fo:block-container>
     </xsl:template>
 
-    <!-- 
+    <!--
      function:    table template
-     param:        
+     param:
      return:    fo:wrapper
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' topic/table ')]">
         <xsl:variable name="tableAttr" select="ahf:getTableAttr(.)" as="element()"/>
@@ -82,12 +81,12 @@ E-mail : info@antennahouse.com
             </xsl:if>
         </fo:wrapper>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    build table attributes
      param:        prmTable
      return:    element()
-     note:        
+     note:
      -->
     <xsl:function name="ahf:getTableAttr" as="element()">
         <xsl:param name="prmTable" as="element()"/>
@@ -102,16 +101,16 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="$prmTable/@fo:prop"/>
         </dummy>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    table/desc template
-     param:        
+     param:
      return:    fo:block
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' topic/table ')]/*[contains(@class, ' topic/desc ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsTableDesc'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/table ')]/*[contains(@class, ' topic/desc ')]">
         <fo:block>
@@ -121,16 +120,16 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    table/title template
-     param:        
+     param:
      return:    fo:block
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' topic/table ')]/*[contains(@class, ' topic/title ')][$pOutputTableTitleAfter]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsTableTitleAfter'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/table ')]/*[contains(@class, ' topic/title ')][not($pOutputTableTitleAfter)]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsTableTitleBefore'"/>
@@ -151,8 +150,8 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    tgroup template
      param:        prmTableAttr
      return:    fo:table
@@ -161,18 +160,18 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class, ' topic/tgroup ')][$pOutputTableTitleAfter]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsTableWithTitleAfter'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/tgroup ')][not($pOutputTableTitleAfter)]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsTableWithTitleBefore'"/>
         <xsl:if test="parent::*[empty(child::*[contains(@class,' topic/title ')])][empty(child::*[contains(@class,' topic/desc ')])]">
             <xsl:sequence select="'atsTableWithTitleBeforeWoTitleAndDesc'"/>
         </xsl:if>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/tgroup ')]">
         <xsl:param name="prmTableAttr" required="yes" as="element()"/>
-    
+
         <xsl:variable name="tgroupAttr" select="ahf:addTgroupAttr(.,$prmTableAttr)" as="element()"/>
         <xsl:variable name="colSpec" as="element()*">
             <xsl:apply-templates select="child::*[contains(@class, ' topic/colspec ')]">
@@ -206,8 +205,8 @@ E-mail : info@antennahouse.com
             </fo:table>
         </fo:table-and-caption>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    build tgroup attributes
      param:        prmTgroup, prmTableAttr
      return:    element()
@@ -227,11 +226,11 @@ E-mail : info@antennahouse.com
         </dummy>
     </xsl:function>
 
-    <!-- 
+    <!--
      function:    Get pgwide attributes
      param:        prmTgroupAttr
      return:    attribute()
-     note:        
+     note:
      -->
     <xsl:template name="ahf:getTablePgwideAttr" as="attribute()*">
         <xsl:param name="prmTgroupAttr"    as="element()"/>
@@ -242,19 +241,19 @@ E-mail : info@antennahouse.com
         </xsl:if>
     </xsl:template>
 
-    <!-- 
+    <!--
      function:    fo:table-column copy template
      param:        none
      return:    fo:table-column
-     note:        
+     note:
      -->
     <xsl:template match="fo:table-column" mode="COPY_COLSPEC">
         <xsl:copy>
             <xsl:copy-of select="@*[name() ne 'ahf:column-name']"/>
         </xsl:copy>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    colspec template
      param:        prmTgroupAttr
      return:    fo:table-column
@@ -262,7 +261,7 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class, ' topic/colspec ')]">
         <xsl:param name="prmTgroupAttr" required="yes" as="element()"/>
-    
+
         <fo:table-column>
             <xsl:copy-of select="ahf:getAttributeSet('atsTableColumn')"/>
             <xsl:copy-of select="ahf:getColSpecAttr(.)"/>
@@ -271,8 +270,8 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
         </fo:table-column>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    build colspec attributes
      param:        prmColSpec
      return:    attribute()*
@@ -280,12 +279,12 @@ E-mail : info@antennahouse.com
      -->
     <xsl:function name="ahf:getColSpecAttr" as="attribute()*">
         <xsl:param name="prmColSpec"    as="element()"/>
-    
+
         <!-- colname (Not defined in XSL-FO)-->
         <xsl:if test="exists($prmColSpec/@colname)">
             <xsl:attribute name="ahf:column-name" select="string($prmColSpec/@colname)"/>
         </xsl:if>
-    
+
         <!-- colnum -->
         <xsl:choose>
             <xsl:when test="exists($prmColSpec/@colnum)">
@@ -295,7 +294,7 @@ E-mail : info@antennahouse.com
                 <xsl:attribute name="column-number" select="string(count($prmColSpec/preceding-sibling::*[contains(@class,' topic/colspec ')])+1)"/>
             </xsl:otherwise>
         </xsl:choose>
-    
+
         <!-- colwidth -->
         <xsl:if test="exists($prmColSpec/@colwidth)">
             <xsl:variable name="colWidth">
@@ -305,7 +304,7 @@ E-mail : info@antennahouse.com
             </xsl:variable>
             <xsl:attribute name="column-width" select="string($colWidth)"/>
         </xsl:if>
-        
+
         <!-- colsep -->
         <xsl:if test="exists($prmColSpec/@colsep)">
             <xsl:variable name="colsep" as="xs:string" select="string($prmColSpec/@colsep)"/>
@@ -318,7 +317,7 @@ E-mail : info@antennahouse.com
                 </xsl:when>
             </xsl:choose>
         </xsl:if>
-    
+
         <!-- rowsep -->
         <xsl:if test="exists($prmColSpec/@rowsep)">
             <xsl:variable name="rowsep" as="xs:string" select="string($prmColSpec/@rowsep)"/>
@@ -331,7 +330,7 @@ E-mail : info@antennahouse.com
                 </xsl:when>
             </xsl:choose>
         </xsl:if>
-        
+
         <!-- align -->
         <xsl:if test="exists($prmColSpec/@align)">
             <xsl:variable name="align" as="xs:string" select="string($prmColSpec/@align)"/>
@@ -354,19 +353,19 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:if>
-        
+
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    thead template
      param:        prmTgroupAttr, prmColSpec
      return:    fo:table-header
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' topic/thead ')]">
         <xsl:param name="prmTgroupAttr" required="yes"  as="element()"/>
         <xsl:param name="prmColSpec" required="yes" as="element()*"/>
-    
+
         <xsl:variable name="theadAttr" select="ahf:addTheadAttr(.,$prmTgroupAttr)" as="element()"/>
         <fo:table-header>
             <xsl:call-template name="getAttributeSetWithLang">
@@ -380,12 +379,12 @@ E-mail : info@antennahouse.com
             </xsl:apply-templates>
         </fo:table-header>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    build thead attributes
      param:        prmThead, prmTgroupAttr
      return:    element()
-     note:        
+     note:
      -->
     <xsl:function name="ahf:addTheadAttr" as="element()">
         <xsl:param name="prmThead"    as="element()"/>
@@ -396,18 +395,18 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getStylesheetProperty($prmThead)"/>"
         </dummy>
     </xsl:function>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    tbody template
      param:        prmTgroupAttr, prmColSpec
      return:    fo:table-body
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' topic/tbody ')]">
         <xsl:param name="prmTgroupAttr" required="yes" as="element()"/>
         <xsl:param name="prmColSpec" required="yes" as="element()*"/>
-    
+
         <xsl:variable name="tbodyAttr" select="ahf:addTbodyAttr(.,$prmTgroupAttr)" as="element()"/>
         <fo:table-body>
             <xsl:call-template name="getAttributeSetWithLang">
@@ -423,11 +422,11 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
 
-    <!-- 
+    <!--
      function:    build tbody attributes
      param:        prmTbody, prmTgroupAttr
      return:    element()
-     note:        
+     note:
      -->
     <xsl:function name="ahf:addTbodyAttr" as="element()">
         <xsl:param name="prmTbody"    as="element()"/>
@@ -438,17 +437,17 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getStylesheetProperty($prmTbody)"/>"
         </dummy>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    row template
      param:        prmRowUpperAttr, prmColSpec
      return:    fo:table-row
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' topic/row ')]">
         <xsl:param name="prmRowUpperAttr" required="yes" as="element()"/>
         <xsl:param name="prmColSpec" required="yes" as="element()*"/>
-    
+
         <xsl:variable name="rowAttr" select="ahf:addRowAttr(.,$prmRowUpperAttr)" as="element()"/>
         <xsl:variable name="rowHeight" as="xs:double">
             <xsl:call-template name="getRowHeight">
@@ -472,12 +471,12 @@ E-mail : info@antennahouse.com
             </xsl:apply-templates>
         </fo:table-row>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    build row attributes
      param:        prmRow, prmRowUpperAttr
      return:    element()
-     note:        
+     note:
      -->
     <xsl:function name="ahf:addRowAttr" as="element()">
         <xsl:param name="prmRow"    as="element()"/>
@@ -489,12 +488,12 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getStylesheetProperty($prmRow)"/>
         </dummy>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    get row height considering entry/@rotate="1"
      param:        prmRow, prmRowAttr
      return:    xs:double (Row height as em unit. 0.0 means no needs to set row height)
-     note:        
+     note:
      -->
     <xsl:template name="getRowHeight" as="xs:double">
         <xsl:param name="prmRow" as="element()" required="yes"/>
@@ -515,7 +514,7 @@ E-mail : info@antennahouse.com
                                 <xsl:with-param name="prmVarName" select="'Avg_Char_Width_In_Table_Entry'"/>
                             </xsl:call-template>
                         </xsl:otherwise>
-                    </xsl:choose>    
+                    </xsl:choose>
                 </xsl:variable>
                 <!-- Max character count in rotated entry -->
                 <xsl:variable name="maxCharCountInRotatedTableEntry" as="xs:double">
@@ -561,9 +560,9 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    entry template
      param:        prmRowAttr, prmColSpec,prmRowHeight
      return:    fo:table-cell
@@ -574,7 +573,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmRowAttr" required="yes" as="element()"/>
         <xsl:param name="prmColSpec" required="yes" as="element()*"/>
         <xsl:param name="prmRowHeight" required="yes" as="xs:double"/>
-    
+
         <xsl:variable name="entryAttr" select="ahf:addEntryAttr(.,$prmRowAttr)" as="element()"/>
         <xsl:variable name="colname" select="string($entryAttr/@colname)"/>
         <xsl:variable name="atsName" select="if (ancestor::*[contains(@class,' topic/thead ')]) then 'atsTableHeaderCell' else 'atsTableBodyCell'"/>
@@ -606,12 +605,12 @@ E-mail : info@antennahouse.com
             </xsl:choose>
         </fo:table-cell>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    build entry attributes
      param:        prmEntry, prmRowAttr
      return:    element()
-     note:        
+     note:
      -->
     <xsl:function name="ahf:addEntryAttr" as="element()">
         <xsl:param name="prmEntry"    as="element()"/>
@@ -629,8 +628,8 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="$prmEntry/@valign"/>
         </dummy>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    get XSL-FO property from CALS table entry attributes
      param:        prmEntry, prmEntryAttr, prmColSpec
      return:    attribute()*
@@ -641,9 +640,9 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmEntry"        as="element()"/>
         <xsl:param name="prmEntryAttr"    as="element()"/>
         <xsl:param name="prmColSpec"      as="element()*"/>
-        
+
         <xsl:variable name="colname" select="string($prmEntryAttr/@colname)"/>
-        
+
         <!-- colsep -->
         <xsl:choose>
             <xsl:when test="string($prmEntryAttr/@colsep) eq '0'">
@@ -653,7 +652,7 @@ E-mail : info@antennahouse.com
                 <xsl:attribute name="border-end-style" select="'solid'"/>
             </xsl:when>
         </xsl:choose>
-        
+
         <!-- rowsep -->
         <xsl:choose>
             <xsl:when test="string($prmEntryAttr/@rowsep) eq '0'">
@@ -663,12 +662,12 @@ E-mail : info@antennahouse.com
                 <xsl:attribute name="border-after-style" select="'solid'"/>
             </xsl:when>
         </xsl:choose>
-        
+
         <!-- rowheader -->
         <xsl:if test="(string($prmEntryAttr/@rowheader) eq 'firstcol') and ($colname='col1')">
             <xsl:sequence select="ahf:getAttributeSet('atsHeaderRow')"/>
         </xsl:if>
-        
+
         <!-- align -->
         <xsl:if test="exists($prmEntryAttr/@align)">
             <xsl:variable name="align" as="xs:string" select="string($prmEntryAttr/@align)"/>
@@ -692,7 +691,7 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:if>
-        
+
         <!-- valign -->
         <xsl:if test="exists($prmEntryAttr/@valign)">
             <xsl:variable name="valign" as="xs:string" select="string($prmEntryAttr/@valign)"/>
@@ -708,7 +707,7 @@ E-mail : info@antennahouse.com
                 </xsl:when>
             </xsl:choose>
         </xsl:if>
-        
+
         <!-- namest,nameend -->
         <xsl:if test="exists($prmEntryAttr/@namest) and exists($prmEntryAttr/@nameend)">
             <xsl:variable name="startpos" as="xs:integer" select="xs:integer(string($prmColSpec[string(@ahf:column-name) eq string($prmEntryAttr/@namest)]/@column-number))"/>
@@ -716,15 +715,15 @@ E-mail : info@antennahouse.com
             <xsl:variable name="spancolumns" as="xs:integer" select="$endpos - $startpos + 1"/>
             <xsl:attribute name="number-columns-spanned" select="string($spancolumns)"/>
         </xsl:if>
-    
+
         <!-- morerows -->
         <xsl:if test="exists($prmEntryAttr/@morerows)">
             <xsl:attribute name="number-rows-spanned" select="string(xs:integer($prmEntryAttr/@morerows) + 1)"/>
         </xsl:if>
-        
+
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    inherit colspec property to table entry
      param:        prmColName, prmColSpec
      return:    attribute()*
@@ -734,42 +733,42 @@ E-mail : info@antennahouse.com
     <xsl:function name="ahf:getColSpecAttr" as="attribute()*">
         <xsl:param name="prmColName"  as="xs:string"/>
         <xsl:param name="prmColSpec"  as="element()*"/>
-    
+
         <xsl:variable name="colSpec" select="$prmColSpec[@ahf:column-name=$prmColName][1]"/>
-        
+
         <xsl:if test="exists($colSpec)">
             <xsl:if test="exists($colSpec/@border-end-style)">
                 <xsl:attribute name="border-end-style" select="'from-table-column()'"/>
             </xsl:if>
-        
+
             <xsl:if test="exists($colSpec/@border-after-style)">
                 <xsl:attribute name="border-after-style" select="'from-table-column()'"/>
             </xsl:if>
-        
+
             <xsl:if test="exists($colSpec/@text-align)">
                 <xsl:attribute name="text-align" select="'from-table-column()'"/>
             </xsl:if>
-    
+
             <!-- Does not support charoff -->
             <!--xsl:if test="exists($colSpec/@start-indent)">
                 <xsl:attribute name="start-indent" select="'from-table-column()'"/>
             </xsl:if-->
         </xsl:if>
     </xsl:function>
-    
-    
-    <!-- **************************** 
+
+
+    <!-- ****************************
             Simple Table Templates
          ****************************-->
-    <!-- 
+    <!--
      function:    simpletable template
-     param:        
+     param:
      return:    fo:table
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' topic/simpletable ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsSimpleTable'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/simpletable ')]">
         <xsl:variable name="keyCol" select="ahf:getKeyCol(.)" as="xs:integer"/>
@@ -809,8 +808,8 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    sthead template
      param:        prmKeyCol
      return:    fo:table-header
@@ -819,11 +818,11 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class, ' topic/sthead ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsSimpleTableHeader'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/sthead ')]">
         <xsl:param name="prmKeyCol"  required="yes" as="xs:integer"/>
-        
+
         <fo:table-header>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -838,8 +837,8 @@ E-mail : info@antennahouse.com
             </fo:table-row>
         </fo:table-header>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    stentry template
      param:        prmKeyCol
      return:    stentry contents (fo:table-cell)
@@ -847,7 +846,7 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class, ' topic/sthead ')]/*[contains(@class, ' topic/stentry ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsSimpleTableHeaderCell'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/sthead ')]/*[contains(@class, ' topic/stentry ')]">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
@@ -872,10 +871,10 @@ E-mail : info@antennahouse.com
             </fo:block>
         </fo:table-cell>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/strow ')]/*[contains(@class, ' topic/stentry ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsSimpleTableBodyCell'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/strow ')]/*[contains(@class, ' topic/stentry ')]">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
@@ -900,9 +899,9 @@ E-mail : info@antennahouse.com
             </fo:block>
         </fo:table-cell>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    strow template
      param:        prmKeyCol
      return:    fo:table-row
@@ -910,7 +909,7 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class, ' topic/strow ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsSimpleTableRow'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/strow ')]">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
@@ -923,20 +922,20 @@ E-mail : info@antennahouse.com
             </xsl:apply-templates>
         </fo:table-row>
     </xsl:template>
-    
-    
-    <!-- *************************************** 
+
+
+    <!-- ***************************************
             Table related common templates
          ***************************************-->
-    <!-- 
+    <!--
      function:    get @keycol value and return it.
      param:        prmTable
      return:    integer
-     note:        
+     note:
      -->
     <xsl:function name="ahf:getKeyCol" as="xs:integer">
         <xsl:param name="prmTable" as="element()"/>
-        
+
         <xsl:variable name="keyCol" select="if ($prmTable/@keycol) then string($prmTable/@keycol) else '0'" as="xs:string"/>
         <xsl:choose>
             <xsl:when test="$keyCol castable as xs:integer">
@@ -946,7 +945,7 @@ E-mail : info@antennahouse.com
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:call-template name="warningContinue">
-                            <xsl:with-param name="prmMes" 
+                            <xsl:with-param name="prmMes"
                             select="ahf:replace($stMes050,('%file','%elem','%keycol'),(string($prmTable/@xtrf),name($prmTable),string($prmTable/@keycol)))"/>
                         </xsl:call-template>
                         <xsl:sequence select="0"/>
@@ -955,24 +954,24 @@ E-mail : info@antennahouse.com
             </xsl:when>
             <xsl:otherwise>
                 <xsl:call-template name="warningContinue">
-                    <xsl:with-param name="prmMes" 
+                    <xsl:with-param name="prmMes"
                     select="ahf:replace($stMes050,('%file','%elem','%keycol'),(string($prmTable/@xtrf),name($prmTable),string($prmTable/@keycol)))"/>
                 </xsl:call-template>
                 <xsl:sequence select="0"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    @relcolwidth processing
      param:        prmRelColWidth, prmTable
      return:    fo:table-column
-     note:        
+     note:
      -->
     <xsl:template name="processRelColWidth">
         <xsl:param name="prmRelColWidth" required="yes" as="xs:string"/>
         <xsl:param name="prmTable"  required="yes" as="element()"/>
-        
+
         <xsl:for-each select="tokenize(string($prmRelColWidth), '[\s]+')">
             <xsl:variable name="relColWidth"  select="string(.)"/>
             <xsl:variable name="relColNumber" select="position()"/>
@@ -989,9 +988,9 @@ E-mail : info@antennahouse.com
             </fo:table-column>
         </xsl:for-each>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    Calculate column width template
      param:        colwidth
      return:    column width attribute value
@@ -1053,17 +1052,17 @@ E-mail : info@antennahouse.com
           </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    Generate table title prefix
      param:        prmTopicRef, prmTable
      return:    Table title prefix
-     note:        
+     note:
      -->
     <xsl:template name="ahf:getTableTitlePrefix" as="xs:string">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()"/>
         <xsl:param name="prmTable" required="no" as="element()" select="."/>
-        
+
         <xsl:variable name="titlePrefix" as="xs:string">
             <xsl:choose>
                 <xsl:when test="$pAddNumberingTitlePrefix">
@@ -1082,28 +1081,28 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        
+
         <xsl:variable name="topicNode" select="$prmTable/ancestor::*[contains(@class, ' topic/topic ')][position()=last()]"/>
-        
+
         <xsl:variable name="tablePreviousAmount" as="xs:integer">
             <xsl:variable name="topicNodeId" select="ahf:generateId($topicNode,$prmTopicRef)"/>
             <xsl:sequence select="$tableNumberingMap/*[string(@id) eq $topicNodeId]/@count"/>
         </xsl:variable>
-        
+
         <xsl:variable name="tableCurrentAmount"  as="xs:integer">
             <xsl:variable name="topic" as="element()" select="$prmTable/ancestor::*[contains(@class,' topic/topic ')][last()]"/>
             <xsl:sequence select="count($topic//*[contains(@class,' topic/table ')][child::*[contains(@class, ' topic/title ')]][. &lt;&lt; $prmTable]|$prmTable)"/>
         </xsl:variable>
-        
+
         <xsl:variable name="tableNumber" select="$tablePreviousAmount + $tableCurrentAmount" as="xs:integer"/>
-        
+
         <xsl:sequence select="concat($cTableTitle,$titlePrefix,string($tableNumber))"/>
     </xsl:template>
 
     <xsl:function name="ahf:getTableTitlePrefix" as="xs:string">
         <xsl:param name="prmTopicRef" as="element()"/>
         <xsl:param name="prmTable" as="element()"/>
-        
+
         <xsl:call-template name="ahf:getTableTitlePrefix">
             <xsl:with-param name="prmTopicRef" tunnel="yes" select="$prmTopicRef"/>
             <xsl:with-param name="prmTable" select="$prmTable"/>

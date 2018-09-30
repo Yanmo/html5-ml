@@ -9,22 +9,20 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
- xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  xmlns:ahd="http://www.antennahouse.com/names/XSLT/Debugging"
- exclude-result-prefixes="ahf" 
+ exclude-result-prefixes="ahf"
 >
-    
+
     <!-- Plug-in name and version -->
     <xsl:variable name="pluginAuthor" as="xs:string" select="'Antenna House'"/>
     <xsl:variable name="pluginName" as="xs:string" select="'PDF5-ML'"/>
     <xsl:variable name="pluginVersion" as="xs:string" select="'1.0.2'"/>
-    
-    <!-- 
+
+    <!--
      function:    root matching template
      param:        none
      return:    fo:root
@@ -50,26 +48,26 @@ E-mail : info@antennahouse.com
         <xsl:call-template name="documentCheck"/>
         <fo:root>
             <xsl:copy-of select="ahf:getAttributeSet('atsRoot')"/>
-            
+
             <!-- Complement xml:lang -->
             <xsl:attribute name="xml:lang" select="$documentLang"/>
-            
+
             <!-- Generate XSL-FO layoutmaster set -->
             <xsl:call-template name="genLayoutMasterSet"/>
-            
+
             <!-- Bookmark tree -->
                <xsl:call-template name="genBookmarkTree"/>
-            
+
             <!-- Make cover -->
             <xsl:if test="not($hasCover)">
                 <xsl:call-template name="genCover"/>
             </xsl:if>
-            
+
             <!-- Make toc for map -->
             <xsl:if test="$isMap and $pMakeTocForMap">
                 <xsl:call-template name="genMapToc"/>
             </xsl:if>
-            
+
             <!-- Process main contents -->
             <xsl:choose>
                 <xsl:when test="$isBookMap">
@@ -83,19 +81,19 @@ E-mail : info@antennahouse.com
                     <xsl:apply-templates select="$map/*[contains(@class, ' map/topicref ')]"/>
                 </xsl:otherwise>
             </xsl:choose>
-            
+
             <!-- Make index for map -->
             <xsl:if test="$isMap and $pMakeIndexForMap and $pOutputIndex">
                 <xsl:call-template name="genMapIndex"/>
             </xsl:if>
-    
+
             <!--xsl:call-template name="makeDummyContents"/-->
-            
+
         </fo:root>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    Test for dummy output
      param:        none
      return:    fo:page-sequence

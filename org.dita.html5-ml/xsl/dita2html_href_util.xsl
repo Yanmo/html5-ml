@@ -12,32 +12,30 @@ URL : http://www.antennahouse.co.jp/
 **************************************************************
 -->
 
-<xsl:stylesheet version="2.0" 
-    xmlns:fo="http://www.w3.org/1999/XSL/Format" 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+<xsl:stylesheet version="2.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
     xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
     exclude-result-prefixes="xs ahf" >
 
-    <!-- 
+    <!--
      function:    Return that given href is local or not.
      param:        prmHref: @href
      return:    xs:boolean
-     note:        
+     note:
     -->
     <xsl:function name="ahf:isLocalHref" as="xs:boolean">
         <xsl:param name="prmHref" as="xs:string"/>
         <xsl:sequence select="starts-with($prmHref,'#')"/>
     </xsl:function>
 
-    <!-- 
+    <!--
      function:    Get fo:basick-link/@internal-destination, external-destination attribute
                 from @href attribute
      param:        prmHref: @href
-                prmElem: Relevant element 
+                prmElem: Relevant element
      return:    attribute()*
-     note:        
+     note:
     -->
     <xsl:template name="getDestinationAttr" as="attribute()*">
         <xsl:param name="prmHref" as="xs:string" required="yes"/>
@@ -63,12 +61,12 @@ URL : http://www.antennahouse.co.jp/
         </xsl:choose>
     </xsl:template>
 
-    <!-- 
+    <!--
      function:    Get fo:basick-link/internal-destination attribute
      param:        prmHref: @href
-                prmElem: Relevant element 
+                prmElem: Relevant element
      return:    attribute()*
-     note:        
+     note:
     -->
     <xsl:template name="getInternalDestinationAttr" as="attribute()*">
         <xsl:param name="prmHref" as="xs:string" required="yes"/>
@@ -83,7 +81,7 @@ URL : http://www.antennahouse.co.jp/
         <xsl:choose>
             <xsl:when test="empty($topicRef)">
                 <xsl:call-template name="warningContinue">
-                    <xsl:with-param name="prmMes" 
+                    <xsl:with-param name="prmMes"
                         select="ahf:replace($stMes072,('%href','%file'),(string($prmElem/@ohref),string($prmElem/@xtrf)))"/>
                 </xsl:call-template>
                 <xsl:sequence select="()"/>
@@ -108,12 +106,12 @@ URL : http://www.antennahouse.co.jp/
         </xsl:choose>
     </xsl:template>
 
-    <!-- 
+    <!--
      function:    Get fo:basick-link/external-destination attribute
      param:        prmHref: @href
-                prmElem: Relevant element 
+                prmElem: Relevant element
      return:    attribute()?
-     note:        
+     note:
     -->
     <xsl:template name="getExternalDestinationAttr" as="attribute()*">
         <xsl:param name="prmHref" as="xs:string" required="yes"/>
@@ -127,12 +125,12 @@ URL : http://www.antennahouse.co.jp/
         </xsl:if>
     </xsl:template>
 
-    <!-- 
+    <!--
      function:    Get destination element from @href
      param:        prmHref: @href
-                prmElem: Relevant element 
+                prmElem: Relevant element
      return:    element()*
-     note:        
+     note:
     -->
     <xsl:template name="getInternalDestinationElemInf" as="element()*">
         <xsl:param name="prmHref" as="xs:string" required="yes"/>
@@ -150,7 +148,7 @@ URL : http://www.antennahouse.co.jp/
             </xsl:when>
             <xsl:when test="empty($topicRef)">
                 <xsl:call-template name="warningContinue">
-                    <xsl:with-param name="prmMes" 
+                    <xsl:with-param name="prmMes"
                         select="ahf:replace($stMes072,('%href','%file'),(string($prmElem/@ohref),string($prmElem/@xtrf)))"/>
                 </xsl:call-template>
                 <xsl:sequence select="()"/>

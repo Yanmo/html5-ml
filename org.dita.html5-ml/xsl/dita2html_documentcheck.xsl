@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="UTF-8" ?>
 <!--
 ****************************************************************
-DITA to XSL-FO Stylesheet 
+DITA to XSL-FO Stylesheet
 Module: Document check stylesheet
 Copyright © 2009-2009 Antenna House, Inc. All rights reserved.
 Antenna House is a trademark of Antenna House, Inc.
@@ -9,20 +9,18 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
- xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  exclude-result-prefixes="xs ahf"
 >
 
-    <!-- 
+    <!--
      function:    Document check template
      param:        none
      return:    none
-     note:        
+     note:
      -->
     <xsl:template name="documentCheck">
         <!-- Document structure check -->
@@ -56,12 +54,12 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="checkId"/>
         </xsl:if>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    bookmap structure check (1)
-     param:        
+     param:
      return:    xs:boolean
-     note:        
+     note:
      -->
     <xsl:function name="ahf:checkBookmap1" as="xs:boolean">
         <xsl:choose>
@@ -77,10 +75,10 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    bookmap structure check (2)
-     param:        
+     param:
      return:    xs:boolean
      note:        Removed toc="no" restriction for part and chapter.
                 2014-06-21 t.makita
@@ -128,12 +126,12 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    bookmap structure check (2)
-     param:        
+     param:
      return:    xs:boolean
-     note:        
+     note:
      -->
     <xsl:function name="ahf:checkBookmap3" as="xs:boolean">
         <xsl:choose>
@@ -186,11 +184,11 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    topic/@id check template
-     param:        
+     param:
      return:    none
      note:        topic/@oid must be unique according to the DITA specification.
      -->
@@ -200,11 +198,11 @@ E-mail : info@antennahouse.com
             </xsl:apply-templates>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' map/topicref ')]" mode="CHECK_ID">
         <xsl:variable name="topic" select="ahf:getTopicFromTopicRef(.)" as="element()?"/>
         <xsl:variable name="oid" select="$topic/@oid" as="xs:string?"/>
-        
+
         <xsl:choose>
             <xsl:when test="empty($topic)">
                 <xsl:call-template name="errorExit">

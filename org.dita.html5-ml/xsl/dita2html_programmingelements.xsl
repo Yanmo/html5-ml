@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="UTF-8" ?>
 <!--
 ****************************************************************
-DITA to XSL-FO Stylesheet 
+DITA to XSL-FO Stylesheet
 Module: Programming elements stylesheet
 Copyright © 2009-2009 Antenna House, Inc. All rights reserved.
 Antenna House is a trademark of Antenna House, Inc.
@@ -9,23 +9,22 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  exclude-result-prefixes="xs ahf"
 >
 
-    <!-- 
+    <!--
      function:    apiname template
-     param:        
+     param:
      return:    fo:inline
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' pr-d/apiname ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsApiName'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class,' pr-d/apiname ')]" priority="2">
         <fo:inline>
@@ -35,16 +34,16 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    codeblock template
-     param:        
+     param:
      return:    fo:block
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' pr-d/codeblock ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsCodeBlock'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' pr-d/codeblock ')]" priority="2">
         <xsl:variable name="codeBlockAttr" as="attribute()*">
@@ -58,17 +57,17 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    codeph template
-     param:        
+     param:
      return:    fo:inline
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' pr-d/codeph ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsCodePh'"/>
-    </xsl:template>    
-    
+    </xsl:template>
+
     <xsl:template match="*[contains(@class,' pr-d/codeph ')]" priority="2">
         <fo:inline>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -77,16 +76,16 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    option template
-     param:        
+     param:
      return:    fo:inline
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' pr-d/option ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsOption'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class,' pr-d/option ')]" priority="2">
         <fo:inline>
@@ -96,17 +95,17 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    paramname template
-     param:        
+     param:
      return:    fo:inline
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' pr-d/parmname ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsParamName'"/>
-    </xsl:template>    
-    
+    </xsl:template>
+
     <xsl:template match="*[contains(@class,' pr-d/parmname ')]" priority="2">
         <fo:inline>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -115,16 +114,16 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    parml template
-     param:        
+     param:
      return:    fo:wrapper
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' pr-d/parml ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsParml'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class,' pr-d/parml ')]" priority="2">
         <xsl:variable name="doCompact" select="string(@compact) eq 'yes'" as="xs:boolean"/>
@@ -137,8 +136,8 @@ E-mail : info@antennahouse.com
             </xsl:apply-templates>
         </fo:wrapper>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    plentry template
      param:        prmDoCompact
      return:    fo:block
@@ -150,7 +149,7 @@ E-mail : info@antennahouse.com
 
     <xsl:template match="*[contains(@class,' pr-d/plentry ')]" priority="2">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
-        
+
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -174,24 +173,24 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmAttrName" select="$plCompactAttrName"/>
                     </xsl:call-template>
                 </xsl:variable>
-                <xsl:attribute name="{$plCompactAttrName}" 
+                <xsl:attribute name="{$plCompactAttrName}"
                     select="ahf:getPropertyRatio($plCompactAttrVal,$plCompactRatio)"/>
             </xsl:if>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    pt template
-     param:        
+     param:
      return:    fo:block
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' pr-d/pt ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsPt'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' pr-d/pt ')]" priority="2">
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -200,17 +199,17 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    pd template
-     param:        
+     param:
      return:    fo:block
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' pr-d/pd ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsPd'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' pr-d/pd ')]" priority="2">
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -219,10 +218,10 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    synph template
-     param:        
+     param:
      return:    fo:inline
      note:        none
      -->
@@ -233,10 +232,10 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    syntaxdiagram template
-     param:        
+     param:
      return:    fo:block
      note:        Syntaxdiagram belongs figure.
      -->
@@ -267,8 +266,8 @@ E-mail : info@antennahouse.com
         <!-- process title last -->
         <xsl:apply-templates select="*[contains(@class,' topic/title ')]"/>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    Output synnote
      param:        prmTopicRef, prmNeedId
      return:    fo:list-block
@@ -290,7 +289,7 @@ E-mail : info@antennahouse.com
                     <xsl:if test="position() eq 1">
                         <xsl:attribute name="space-before" select="'0mm'"/>
                     </xsl:if>
-                    <fo:list-item-label end-indent="label-end()"> 
+                    <fo:list-item-label end-indent="label-end()">
                         <fo:block>
                             <xsl:call-template name="getAttributeSetWithLang">
                                 <xsl:with-param name="prmAttrSetName" select="'atsSynNoteLabel'"/>
@@ -304,7 +303,7 @@ E-mail : info@antennahouse.com
                                         <xsl:with-param name="prmVarName" select="'Sd_Note_Prefix'"/>
                                     </xsl:call-template>
                                     <xsl:number select="."
-                                                level="any" 
+                                                level="any"
                                                 count="*[contains(@class, ' pr-d/synnote ')][not(@callout)]"
                                                 from="*[contains(@class,' pr-d/syntaxdiagram')]"/>
                                 </xsl:otherwise>
@@ -328,12 +327,12 @@ E-mail : info@antennahouse.com
             </xsl:for-each>
         </fo:list-block>
     </xsl:template>
-    
+
     <!-- syntaxdiagram/title is implementaed as fig/title in dita2fo_bodyelements.xsl -->
-    
-    <!-- 
+
+    <!--
      function:    groupseq/groupcomp/groupchoice template
-     param:        
+     param:
      return:    fo:block
      note:        none
      -->
@@ -375,18 +374,18 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <!-- current context is groupseq, groupcomp or groupchoice -->
     <xsl:template name="processGroup">
         <xsl:variable name="isGroupChoice" as="xs:boolean" select="contains(@class,' pr-d/groupchoice ')"/>
         <xsl:variable name="isOptional"    as="xs:boolean" select="string(@importance) eq 'optional'"/>
         <xsl:variable name="hasRepSep"     as="xs:boolean" select="exists(child::*[contains(@class,' pr-d/repsep ')])"/>
-        <xsl:variable name="isRequiredRepsep" 
+        <xsl:variable name="isRequiredRepsep"
                       select="if ($hasRepSep) then string(child::*[contains(@class,' pr-d/repsep ')]/@importance) eq 'required' else false()"/>
         <xsl:variable name="needOr"        select="ahf:sdNeedOr(.)"/>
-        
+
         <xsl:apply-templates select="*[contains(@class,' topic/title ')]"/>
-        
+
         <xsl:if test="$needOr">
             <!-- | -->
             <xsl:call-template name="getVarValueWithLangAsText">
@@ -460,18 +459,18 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:function name="ahf:sdNeedOr" as="xs:boolean">
         <xsl:param name="prmElement" as="element()"/>
-        <xsl:sequence select="$prmElement/parent::*[contains(@class,' pr-d/groupchoice ')] 
+        <xsl:sequence select="$prmElement/parent::*[contains(@class,' pr-d/groupchoice ')]
                   and  (count($prmElement/preceding-sibling::*[not(contains(@class, ' pr-d/repsep '))]
                                                                 [not(contains(@class, ' topic/title '))]) gt 0)"/>
     </xsl:function>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    fragment template
-     param:        
+     param:
      return:    fo:wrapper
      note:        none
      -->
@@ -482,13 +481,13 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:wrapper>
     </xsl:template>
-    
-    
+
+
     <!-- fragment/title is implemented as figgroup/title in dita2fo_bodyelements.xsl -->
-    
-    <!-- 
+
+    <!--
      function:    fragref template
-     param:        
+     param:
      return:    fo:inline
      note:        none
      -->
@@ -514,7 +513,7 @@ E-mail : info@antennahouse.com
             </xsl:choose>
         </xsl:variable>
         <xsl:variable name="needOr" select="ahf:sdNeedOr(.)"/>
-        
+
         <xsl:if test="$needOr">
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'Sd_Or'"/>
@@ -543,10 +542,10 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    synblk template
-     param:        
+     param:
      return:    fo:wrapper
      note:        none
      -->
@@ -557,8 +556,8 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:wrapper>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    synnote template
      param:        prmTopicRef
      return:    fo:basic-link
@@ -566,7 +565,7 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class,' pr-d/synnote ')]" priority="2">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes"  as="element()?"/>
-    
+
         <xsl:variable name="syntaxDiagramElement" select="ancestor::*[contains(@class,' pr-d/syntaxdiagram ')][1]"/>
         <xsl:choose>
             <xsl:when test="@id">
@@ -589,7 +588,7 @@ E-mail : info@antennahouse.com
                                 <xsl:with-param name="prmVarName" select="'Sd_Note_Prefix'"/>
                             </xsl:call-template>
                             <xsl:number select="."
-                                        level="any" 
+                                        level="any"
                                         count="*[contains(@class, ' pr-d/synnote ')][not(@callout)]"
                                         from="*[contains(@class,' pr-d/syntaxdiagram')]"/>
                         </xsl:otherwise>
@@ -598,8 +597,8 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    synnoteref template
      param:        prmTopicRef
      return:    fo:basic-link
@@ -607,13 +606,13 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class,' pr-d/synnoteref ')]" priority="2">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes"  as="element()?"/>
-        
+
         <xsl:variable name="href" as="xs:string" select="@href"/>
         <xsl:variable name="synNoteId" as="xs:string" select="substring-after($href,'/')"/>
-        
+
         <xsl:variable name="syntaxDiagramElement" as="element()" select="ancestor::*[contains(@class, ' pr-d/syntaxdiagram ')][1]"/>
         <xsl:variable name="synNoteElement" as="element()?" select="if (string($synNoteId)) then key('elementById',$synNoteId,$syntaxDiagramElement)[1] else ()"/>
-        
+
         <xsl:choose>
             <xsl:when test="empty($synNoteElement)">
                 <!-- DITA-OT already outputs DOTX032E error in topicpull -->
@@ -643,7 +642,7 @@ E-mail : info@antennahouse.com
                                 <xsl:with-param name="prmVarName" select="'Sd_Note_Prefix'"/>
                             </xsl:call-template>
                             <xsl:number select="$synNoteElement"
-                                        level="any" 
+                                        level="any"
                                         count="*[contains(@class, ' pr-d/synnote ')][not(@callout)]"
                                         from="*[contains(@class,' pr-d/syntaxdiagram')]"/>
                         </xsl:otherwise>
@@ -652,10 +651,10 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    kwd template
-     param:        
+     param:
      return:    fo:inline
      note:        none
      -->
@@ -666,7 +665,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' pr-d/kwd ')]" priority="2">
         <xsl:variable name="isOptional"  as="xs:boolean" select="string(@importance) eq 'optional'"/>
         <xsl:variable name="needOr"      as="xs:boolean" select="ahf:sdNeedOr(.)"/>
-    
+
         <xsl:if test="$needOr">
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'Sd_Or'"/>
@@ -690,10 +689,10 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    var template
-     param:        
+     param:
      return:    fo:inline
      note:        none
      -->
@@ -704,7 +703,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' pr-d/var ')]" priority="2">
         <xsl:variable name="isOptional"  as="xs:boolean" select="string(@importance) eq 'optional'"/>
         <xsl:variable name="needOr"      as="xs:boolean" select="ahf:sdNeedOr(.)"/>
-    
+
         <xsl:if test="$needOr">
             <!-- | -->
             <xsl:call-template name="getVarValueWithLangAsText">
@@ -729,21 +728,21 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    oper template
-     param:        
+     param:
      return:    fo:inline
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' pr-d/oper ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="if (string(@importance) eq 'default') then 'atsOperDefault' else 'atsOper'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' pr-d/oper ')]" priority="2">
         <xsl:variable name="isOptional"  as="xs:boolean" select="string(@importance) eq 'optional'"/>
         <xsl:variable name="needOr"      as="xs:boolean" select="ahf:sdNeedOr(.)"/>
-    
+
         <xsl:if test="$needOr">
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'Sd_Or'"/>
@@ -767,10 +766,10 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    delim template
-     param:        
+     param:
      return:    fo:inline
      note:        none
      -->
@@ -781,7 +780,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' pr-d/delim ')]" priority="2">
         <xsl:variable name="isOptional"  as="xs:boolean" select="string(@importance) eq 'optional'"/>
         <xsl:variable name="needOr"      as="xs:boolean" select="ahf:sdNeedOr(.)"/>
-    
+
         <xsl:if test="$needOr">
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'Sd_Or'"/>
@@ -805,10 +804,10 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    sep template
-     param:        
+     param:
      return:    fo:inline
      note:        none
      -->
@@ -819,7 +818,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' pr-d/sep ')]" priority="2">
         <xsl:variable name="isOptional"  as="xs:boolean" select="string(@importance) eq 'optional'"/>
         <xsl:variable name="needOr"      as="xs:boolean" select="ahf:sdNeedOr(.)"/>
-        
+
         <xsl:if test="$needOr">
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'Sd_Or'"/>
@@ -843,10 +842,10 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    repsep template
-     param:        
+     param:
      return:    fo:inline
      note:        @importance is processed in processGroup template.
      -->

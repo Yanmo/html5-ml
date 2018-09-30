@@ -9,8 +9,7 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
@@ -28,7 +27,7 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
      </xsl:variable>
-    
+
     <xsl:variable name="cFigureGroupingLevelMax" as="xs:integer">
         <xsl:choose>
             <xsl:when test="$pAddNumberingTitlePrefix">
@@ -40,47 +39,47 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
      </xsl:variable>
-    
+
     <xsl:variable name="cFootnoteGroupingLevelMax" as="xs:integer">
         <xsl:sequence select="xs:integer(ahf:getVarValue('Footnote_Grouping_Level_Max'))"/>
     </xsl:variable>
-    
-    
+
+
     <!-- Table Numbering Map -->
     <xsl:variable name="tableCountMap">
         <xsl:call-template name="makeTableCount"/>
     </xsl:variable>
-    
+
     <xsl:variable name="tableNumberingMap">
         <xsl:call-template name="makeTableStartCount"/>
     </xsl:variable>
-    
+
     <xsl:variable name="tableExists" as="xs:boolean" select="exists($tableCountMap/tablecount[xs:integer(@count) gt 0])"/>
-        
-    
+
+
     <!-- Figure Numbering Map -->
     <xsl:variable name="figureCountMap">
         <xsl:call-template name="makeFigureCount"/>
     </xsl:variable>
-    
+
     <xsl:variable name="figureNumberingMap">
         <xsl:call-template name="makeFigureStartCount"/>
     </xsl:variable>
-    
+
     <xsl:variable name="figureExists" as="xs:boolean" select="exists($figureCountMap/figurecount[xs:integer(@count) gt 0])"/>
-    
+
     <!-- Footnote Numbering Map -->
     <xsl:variable name="footnoteCountMap">
         <xsl:call-template name="makeFootnoteCount"/>
     </xsl:variable>
-    
+
     <xsl:variable name="footnoteNumberingMap">
         <xsl:call-template name="makeFootnoteStartCount"/>
     </xsl:variable>
-    
-    
-    
-    <!-- 
+
+
+
+    <!--
      function:    make table count map template
      param:        none
      return:    table cout node
@@ -90,7 +89,7 @@ E-mail : info@antennahouse.com
         <xsl:apply-templates select="$map//*[contains(@class, ' map/topicref ')][starts-with(@href,'#')][not(ancestor::*[contains(@class,' map/reltable ')])]" mode="TABLE_COUNT">
         </xsl:apply-templates>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' map/topicref ')]" mode="TABLE_COUNT">
         <xsl:variable name="level" select="count(ancestor-or-self::*[contains(@class, ' map/topicref ')][(starts-with(@href,'#')) or (contains(@class, ' mapgroup-d/topichead '))])"/>
         <xsl:variable name="targetId" select="substring-after(@href, '#')"/>
@@ -110,8 +109,8 @@ E-mail : info@antennahouse.com
             <xsl:attribute name="istoc"         select="$isToc"/>
         </xsl:element>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    make table numbering map template
      param:        none
      return:    table start count node
@@ -122,23 +121,23 @@ E-mail : info@antennahouse.com
             <xsl:with-param name="prmPreviousAmount" select="0"/>
         </xsl:apply-templates>
     </xsl:template>
-    
+
     <xsl:template match="tablecount" mode="TABLE_START_COUNT">
         <xsl:param name="prmPreviousAmount" select="0"/>
-    
+
         <xsl:variable name="previousLevel" select="preceding-sibling::*[1]/@level"/>
         <!--xsl:variable name="previousId" select="preceeding-sibiling::*[1]/@id"/-->
         <xsl:variable name="previousCount" select="preceding-sibling::*[1]/@count"/>
         <xsl:variable name="previousIsFrontmatter" select="preceding-sibling::*[1]/@isfrontmatter"/>
         <xsl:variable name="previousIsBackmatter" select="preceding-sibling::*[1]/@isbackmatter"/>
-    
+
         <xsl:variable name="currentLevel" select="@level"/>
         <xsl:variable name="currentId" select="@id"/>
         <xsl:variable name="currentCount" select="@count"/>
         <xsl:variable name="currentIsFrontmatter" select="@isfrontmatter"/>
         <xsl:variable name="currentIsBackmatter" select="@isbackmatter"/>
         <xsl:variable name="currentIsToc" select="@istoc"/>
-    
+
         <xsl:choose>
             <xsl:when test="not(preceding-sibling::*)">
                 <!-- First element -->
@@ -247,11 +246,11 @@ E-mail : info@antennahouse.com
                 </xsl:choose>
             </xsl:otherwise>
         </xsl:choose>
-    
+
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    make figure count map template
      param:        none
      return:    figure cout node
@@ -261,7 +260,7 @@ E-mail : info@antennahouse.com
         <xsl:apply-templates select="$map//*[contains(@class, ' map/topicref ')][starts-with(@href,'#')][not(ancestor::*[contains(@class,' map/reltable ')])]" mode="FIGURE_COUNT">
         </xsl:apply-templates>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' map/topicref ')]" mode="FIGURE_COUNT">
         <xsl:variable name="level" select="count(ancestor-or-self::*[contains(@class, ' map/topicref ')][(starts-with(@href,'#')) or (contains(@class, ' mapgroup-d/topichead '))])"/>
         <xsl:variable name="targetId" select="substring-after(@href, '#')"/>
@@ -281,8 +280,8 @@ E-mail : info@antennahouse.com
             <xsl:attribute name="istoc"            select="$isToc"/>
         </xsl:element>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    make figure numbering map template
      param:        none
      return:    figure start count node
@@ -293,23 +292,23 @@ E-mail : info@antennahouse.com
             <xsl:with-param name="prmPreviousAmount" select="0"/>
         </xsl:apply-templates>
     </xsl:template>
-    
+
     <xsl:template match="figurecount" mode="FIGURE_START_COUNT">
         <xsl:param name="prmPreviousAmount" select="0"/>
-    
+
         <xsl:variable name="previousLevel" select="preceding-sibling::*[1]/@level"/>
         <!--xsl:variable name="previousId" select="preceeding-sibiling::*[1]/@id"/-->
         <xsl:variable name="previousCount" select="preceding-sibling::*[1]/@count"/>
         <xsl:variable name="previousIsFrontmatter" select="preceding-sibling::*[1]/@isfrontmatter"/>
         <xsl:variable name="previousIsBackmatter" select="preceding-sibling::*[1]/@isbackmatter"/>
-    
+
         <xsl:variable name="currentLevel" select="@level"/>
         <xsl:variable name="currentId" select="@id"/>
         <xsl:variable name="currentCount" select="@count"/>
         <xsl:variable name="currentIsFrontmatter" select="@isfrontmatter"/>
         <xsl:variable name="currentIsBackmatter" select="@isbackmatter"/>
         <xsl:variable name="currentIsToc" select="@istoc"/>
-    
+
         <xsl:choose>
             <xsl:when test="not(preceding-sibling::*)">
                 <!-- First element -->
@@ -418,20 +417,20 @@ E-mail : info@antennahouse.com
                 </xsl:choose>
             </xsl:otherwise>
         </xsl:choose>
-    
+
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    make footnote count map template
      param:        none
      return:    footnote count node
-     note:        
+     note:
      -->
     <xsl:template name="makeFootnoteCount">
         <xsl:apply-templates select="$map//*[contains(@class, ' map/topicref ')][starts-with(@href,'#')][not(ancestor::*[contains(@class,' map/reltable ')])]" mode="FOOTNOTE_COUNT">
         </xsl:apply-templates>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' map/topicref ')]" mode="FOOTNOTE_COUNT">
         <xsl:variable name="level" select="count(ancestor-or-self::*[contains(@class, ' map/topicref ')][(starts-with(@href,'#')) or (contains(@class, ' mapgroup-d/topichead '))])"/>
         <xsl:variable name="targetId" select="substring-after(@href, '#')"/>
@@ -451,8 +450,8 @@ E-mail : info@antennahouse.com
             <xsl:attribute name="istoc"            select="$isToc"/>
         </xsl:element>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    make footnote numbering map template
      param:        none
      return:    footnote start count nodes
@@ -463,23 +462,23 @@ E-mail : info@antennahouse.com
             <xsl:with-param name="prmPreviousAmount" select="0"/>
         </xsl:apply-templates>
     </xsl:template>
-    
+
     <xsl:template match="footnotecount" mode="FOOTNOTE_START_COUNT">
         <xsl:param name="prmPreviousAmount" select="0"/>
-    
+
         <xsl:variable name="previousLevel" select="preceding-sibling::*[1]/@level"/>
         <!--xsl:variable name="previousId" select="preceeding-sibiling::*[1]/@id"/-->
         <xsl:variable name="previousCount" select="preceding-sibling::*[1]/@count"/>
         <xsl:variable name="previousIsFrontmatter" select="preceding-sibling::*[1]/@isfrontmatter"/>
         <xsl:variable name="previousIsBackmatter" select="preceding-sibling::*[1]/@isbackmatter"/>
-    
+
         <xsl:variable name="currentLevel" select="@level"/>
         <xsl:variable name="currentId" select="@id"/>
         <xsl:variable name="currentCount" select="@count"/>
         <xsl:variable name="currentIsFrontmatter" select="@isfrontmatter"/>
         <xsl:variable name="currentIsBackmatter" select="@isbackmatter"/>
         <xsl:variable name="currentIsToc" select="@istoc"/>
-    
+
         <xsl:choose>
             <xsl:when test="not(preceding-sibling::*)">
                 <!-- First element -->
@@ -588,13 +587,13 @@ E-mail : info@antennahouse.com
                 </xsl:choose>
             </xsl:otherwise>
         </xsl:choose>
-    
+
     </xsl:template>
-    
-    
-    
-    
-    <!-- 
+
+
+
+
+    <!--
      function:    dump tableCountMap, tableNumberingMap template
      param:        none
      return:    dump result
@@ -609,8 +608,8 @@ E-mail : info@antennahouse.com
             <xsl:message>[dumpTableMap] no=<xsl:value-of select="position()"/> level=<xsl:value-of select="@level"/> id=<xsl:value-of select="@id"/> count=<xsl:value-of select="@count"/></xsl:message>
         </xsl:for-each>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    dump figureCountMap, figureNumberingMap template
      param:        none
      return:    dump result
@@ -625,8 +624,8 @@ E-mail : info@antennahouse.com
             <xsl:message>[dumpFigureMap] no=<xsl:value-of select="position()"/> level=<xsl:value-of select="@level"/> id=<xsl:value-of select="@id"/> count=<xsl:value-of select="@count"/></xsl:message>
         </xsl:for-each>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    dump footnoteCountMap, footnoteNumberingMap template
      param:        none
      return:    dump result
@@ -641,5 +640,5 @@ E-mail : info@antennahouse.com
             <xsl:message>[dumpFootnoteMap] no=<xsl:value-of select="position()"/> level=<xsl:value-of select="@level"/> id=<xsl:value-of select="@id"/> count=<xsl:value-of select="@count"/></xsl:message>
         </xsl:for-each>
     </xsl:template>
-    
+
 </xsl:stylesheet>

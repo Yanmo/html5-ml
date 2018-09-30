@@ -9,11 +9,9 @@
     E-mail : info@antennahouse.com
     ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+<xsl:stylesheet version="2.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:fo="http://www.w3.org/1999/XSL/Format" 
-    xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
     xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
     xmlns:ahp="http://www.antennahouse.com/names/XSLT/Document/PageControl"
     xmlns:svg="http://www.w3.org/2000/svg"
@@ -28,7 +26,7 @@
          $pPaperSize (dita2fo_param.xsl)
          $pOutputType (dita2fo_param.xsl)
         ============================================-->
-    
+
     <!-- Default parameter
          This value should be specified according to the user customization.
          $defaultDocType: any document type string such as "UM" (User's manual), "IM" (Installation manual)
@@ -39,13 +37,13 @@
     <xsl:variable name="defaultDocType" as="xs:string?" select="()"/>
     <xsl:variable name="defaultPaperSize" as="xs:string?" select="$pPaperSize"/>
     <xsl:variable name="defaultOutputType" as="xs:string?" select="$pOutputType"/>
-    
+
     <!-- root variables -->
     <xsl:variable name="rootXmlLang" as="xs:string" select="$defaultXmlLang"/>
     <xsl:variable name="rootStyle" as="xs:string" select="'atsRoot'"/>
-    
+
     <!-- inline XSL-FO properties -->
-    <xsl:variable name="inlineXslFoPorpperties" as="xs:string+" 
+    <xsl:variable name="inlineXslFoPorpperties" as="xs:string+"
                   select="('font-family',
                            'font-size',
                            'font-stretch',
@@ -68,7 +66,7 @@
                            'hyphenation-push-character-count',
                            'hyphenation-remain-character-count'
                             )"/>
-    <!--xsl:variable name="inlineXslFoPorpperties" as="xs:string+" 
+    <!--xsl:variable name="inlineXslFoPorpperties" as="xs:string+"
                   select="('font-family',
                            'font-selection-strategy',
                            'font-size',
@@ -105,7 +103,7 @@
                            'width',
                            'wrap-option'
                             )"/-->
-    
+
     <!-- default template for getting style -->
     <xsl:template match="*" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="()"/>
@@ -114,7 +112,7 @@
     <xsl:template match="dita-merge" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="$rootStyle"/>
     </xsl:template>
-    
+
     <!-- For temporary tree -->
     <xsl:template match="document-node()" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:choose>
@@ -138,7 +136,7 @@
         <xsl:sequence select="$prmNavTitleStyle"/>
     </xsl:template>
 
-    <!-- 
+    <!--
          getAttributeSetWithLang template
          function: Get attribute-set associated with $prmElem.
          parameter: prmAttrSetName: Attributeset name
@@ -149,16 +147,16 @@
                     prmDoInherit: Inherit style even when $prmAttrSetName is specified
                     prmRequiredProperty: Required property from caller side
          notes: This template will be called in the following manner:
-         
+
                  <xsl:template match="p">
                      <fo:block>
                        <xsl:call-template name="getAttributeSetWithElem"/>
                      </fo:block>
                  </xsl:template>
-                 
-                Also the corresponding "p" element must implememt following 
+
+                Also the corresponding "p" element must implememt following
                 template that returns style names (attribute-set name).
-                
+
                 <xsl:template match="p" mode="MODE_GET_STYLE" as="xs:string+">
                   <xsl:sequence select="'atsP'"/>
                 </xsl:template>
@@ -171,9 +169,9 @@
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
         <xsl:param name="prmDoInherit" as="xs:boolean" required="no" select="false()"/>
         <xsl:param name="prmRequiredProperty" tunnel="yes" as="xs:string*" required="no" select="()"/>
-        
+
         <xsl:variable name="curXmlLang" as="xs:string" select="ahf:getCurrentXmlLang($prmElem)"/>
-        
+
         <!-- Style names that correspond to $prmElem or $prmAttrSetName itself -->
         <xsl:variable name="styles" as="xs:string*">
             <xsl:choose>
@@ -185,7 +183,7 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        
+
         <!-- Inherited style sequence -->
         <xsl:variable name="inheritedStyles" as="xs:string*">
             <xsl:choose>
@@ -199,7 +197,7 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        
+
         <!-- attributes for $prmElem -->
         <xsl:variable name="attsForElem" as="attribute()*">
             <xsl:call-template name="getAttributeSet">
@@ -242,7 +240,7 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        
+
         <!--xsl:sequence select="$resultAtts"/-->
         <xsl:for-each select="$resultAtts">
             <xsl:attribute name="{name()}" select="string(.)"/>
@@ -254,7 +252,7 @@
         <xsl:message select="'$attsInherited=',$attsInherited"/-->
     </xsl:template>
 
-    <!-- 
+    <!--
         ahf:getCurrentXmlLang function
         function: Get current xml:lang as string
         parameter: prmElem
@@ -274,13 +272,13 @@
                 </xsl:when>
             </xsl:choose>
             <xsl:for-each select="$prmElem/ancestor-or-self::*/@xml:lang">
-                <xsl:sequence select="ahf:nomalizeXmlLang(string(.))"/>    
+                <xsl:sequence select="ahf:nomalizeXmlLang(string(.))"/>
             </xsl:for-each>
         </xsl:variable>
         <xsl:sequence select="$tempXmlLangSeq[last()]"/>
     </xsl:function>
 
-    <!-- 
+    <!--
          ahf:isXmlLangChanged function
          function: Return true() is xml:lang has been changed from the nearest ancestor xml:lang.
          parameter: prmElem: Current document element.
@@ -318,7 +316,7 @@
         <xsl:sequence select="$result"/>
     </xsl:function>
 
-    <!-- 
+    <!--
          ahf:getAncestStyleNames template
          function:  Return ancestor style names from $prmElem.
          parameter: prmElem: Current document elemenmt.
@@ -337,12 +335,12 @@
         </xsl:if>
     </xsl:template>
 
-    <!-- 
+    <!--
          ahf:filterAttrs function
          function: Return attribute filtered by $prmFilter.
          parameter: prmAtts: attribute()*
                     prmFilter: xs:string+ filter attribute name
-         notes: 
+         notes:
       -->
     <xsl:function name="ahf:filterAttrs" as="attribute()*">
         <xsl:param name="prmAttrs" as="attribute()*"/>
@@ -355,7 +353,7 @@
         </xsl:for-each>
     </xsl:function>
 
-    <!-- 
+    <!--
          getAttributeSet template
          function: Get attribute-set specified by $prmAttrSetName.
          parameter: prmAttrSetName: Attributeset name (Can be specified multiple names by delimiting using white-space.
@@ -372,14 +370,14 @@
             <xsl:with-param name="prmAttrSetName" select="$prmAttrSetname"/>
         </xsl:call-template>
     </xsl:function>
-        
+
     <xsl:template name="getAttributeSet" as="attribute()*">
         <xsl:param name="prmAttrSetName" as="xs:string" required="yes"/>
         <xsl:param name="prmXmlLang" as="xs:string?" required="no" select="$defaultXmlLang"/>
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="normalizedAtrSetName" select="normalize-space($prmAttrSetName)"/>
         <xsl:for-each select="tokenize($normalizedAtrSetName, '[\s]+')">
             <xsl:variable name="attrSetName" select="string(.)"/>
@@ -391,13 +389,13 @@
                     </xsl:with-param>
                 </xsl:call-template>
             </xsl:if>
-            <!-- Get attribute from looser condition. 
+            <!-- Get attribute from looser condition.
                  Attributes are returned from first to last.
                  If there is N'th conditions, there are 2**N th patterns are needed.
              -->
             <!-- Matches only xml:lang -->
             <xsl:call-template name="getAttributeInner">
-                <xsl:with-param name="prmAttrSetElement" 
+                <xsl:with-param name="prmAttrSetElement"
                                 select="$attrSetElements[empty(@doc-type)]
                                                            [empty(@paper-size)]
                                                            [empty(@output-type)]
@@ -405,7 +403,7 @@
             </xsl:call-template>
             <!-- Matches only doc-type -->
             <xsl:call-template name="getAttributeInner">
-                <xsl:with-param name="prmAttrSetElement" 
+                <xsl:with-param name="prmAttrSetElement"
                                 select="$attrSetElements[ahf:strEqualAsSeq(string(@doc-type),string($prmDocType))]
                                                            [exists(@doc-type)]
                                                            [empty(@paper-size)]
@@ -414,7 +412,7 @@
             </xsl:call-template>
             <!-- Matches only paper-size -->
             <xsl:call-template name="getAttributeInner">
-                <xsl:with-param name="prmAttrSetElement" 
+                <xsl:with-param name="prmAttrSetElement"
                                 select="$attrSetElements[empty(@doc-type)]
                                                            [ahf:strEqualAsSeq(string(@paper-size),string($prmPaperSize))]
                                                            [exists(@paper-size)]
@@ -423,7 +421,7 @@
             </xsl:call-template>
             <!-- Matches only output-type -->
             <xsl:call-template name="getAttributeInner">
-                <xsl:with-param name="prmAttrSetElement" 
+                <xsl:with-param name="prmAttrSetElement"
                                 select="$attrSetElements[empty(@doc-type)]
                                                            [empty(@paper-size)]
                                                            [ahf:strEqualAsSeq(string(@output-type),string($prmOutputType))]
@@ -432,7 +430,7 @@
             </xsl:call-template>
             <!-- Matches doc-type and paper-size -->
             <xsl:call-template name="getAttributeInner">
-                <xsl:with-param name="prmAttrSetElement" 
+                <xsl:with-param name="prmAttrSetElement"
                                 select="$attrSetElements[ahf:strEqualAsSeq(string(@doc-type),string($prmDocType))]
                                                            [exists(@doc-type)]
                                                            [ahf:strEqualAsSeq(string(@paper-size),string($prmPaperSize))]
@@ -442,7 +440,7 @@
             </xsl:call-template>
             <!-- Matches doc-type and output-type -->
             <xsl:call-template name="getAttributeInner">
-                <xsl:with-param name="prmAttrSetElement" 
+                <xsl:with-param name="prmAttrSetElement"
                                 select="$attrSetElements[ahf:strEqualAsSeq(string(@doc-type),string($prmDocType))]
                                                            [exists(@doc-type)]
                                                            [empty(@paper-size)]
@@ -452,7 +450,7 @@
             </xsl:call-template>
             <!-- Matches paper-size and output-type -->
             <xsl:call-template name="getAttributeInner">
-                <xsl:with-param name="prmAttrSetElement" 
+                <xsl:with-param name="prmAttrSetElement"
                                 select="$attrSetElements[empty(@doc-type)]
                                                            [ahf:strEqualAsSeq(string(@paper-size),string($prmPaperSize))]
                                                            [exists(@paper-size)]
@@ -462,7 +460,7 @@
             </xsl:call-template>
             <!-- Matches doc-type, paper-size and output-type -->
             <xsl:call-template name="getAttributeInner">
-                <xsl:with-param name="prmAttrSetElement" 
+                <xsl:with-param name="prmAttrSetElement"
                                 select="$attrSetElements[ahf:strEqualAsSeq(string(@doc-type),string($prmDocType))]
                                                            [exists(@doc-type)]
                                                            [ahf:strEqualAsSeq(string(@paper-size),string($prmPaperSize))]
@@ -474,11 +472,11 @@
         </xsl:for-each>
     </xsl:template>
 
-    <!-- 
+    <!--
          getAttributeInner template
          function: return attribute()* from $prmAttrSetElem
          parameter: prmAttrSetElem: Childlen of $glStyleDefs
-         notes: 
+         notes:
       -->
     <xsl:template name="getAttributeInner" as="attribute()*">
         <xsl:param name="prmAttrSetElement" as="element()*"/>
@@ -489,7 +487,7 @@
         </xsl:for-each>
     </xsl:template>
 
-    <!-- 
+    <!--
          getAttributeSetAsCssWithLang template
          function: Get attributes specified by $prmAttrSetName as CSS notation
          parameter: prmAttrSetName: attribute-set name
@@ -504,7 +502,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="attrs" as="attribute()*">
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="$prmAttrSetName"/>
@@ -520,8 +518,8 @@
         </xsl:variable>
         <xsl:sequence select="ahf:attributeToCss($attrsResult/*[1]/@*)"/>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
          attributeSetToCss function
          function: Convert attributes to CSS notation
          parameter: prmAttributes: attribute()*
@@ -530,10 +528,10 @@
     -->
     <xsl:function name="ahf:attributeToCss" as="xs:string">
         <xsl:param name="prmAttributes" as="attribute()*"/>
-        
+
         <xsl:variable name="first" select="subsequence($prmAttributes,1,1)" as="attribute()*"/>
         <xsl:variable name="restString" select="if (empty(subsequence($prmAttributes,2))) then '' else  (ahf:attributeToCss(subsequence($prmAttributes,2)))" as="xs:string"/>
-        
+
         <xsl:variable name="firstString">
             <xsl:choose>
                 <xsl:when test="empty($first)">
@@ -552,7 +550,7 @@
         <xsl:sequence select="concat($firstString, $restString)"/>
     </xsl:function>
 
-    <!-- 
+    <!--
      function:    getAttibuteSetWithPageVariables
      param:        prmAttrSetName
      return:    attribute()*
@@ -565,7 +563,7 @@
         <xsl:variable name="attrs" as="attribute()*" select="ahf:getAttributeSetReplacing($prmAttrSetName,$src,$dst)"/>
         <xsl:sequence select="$attrs"/>
     </xsl:function>
-    
+
     <xsl:function name="ahf:getAttributeWithPageVariables" as="attribute()*">
         <xsl:param name="prmAttrSetName" as="xs:string"/>
         <xsl:param name="prmAttributeName" as="xs:string"/>
@@ -574,16 +572,16 @@
         <xsl:variable name="attrs" as="attribute()*" select="ahf:getAttributeSetReplacing($prmAttrSetName,$src,$dst)"/>
         <xsl:sequence select="$attrs[name() eq $prmAttributeName]"/>
     </xsl:function>
-    
 
-    <!-- 
+
+    <!--
          getAttributeSetReplacing template
          function: Get attributes specified by $prmAttrSetName replacing $prmSrc by $prmDst.
          parameter: prmAttrSetName: attribute-set name (space delimitored)
                     prmXml:lang: xml:lang
                     prmDocType: document-type
                     prmPaperSize: paper-size
-                    prmSrc: source string 
+                    prmSrc: source string
                     prmDst: destination string
          note: The count of $prmSrc and $prmDst must be the same.
                Example:
@@ -609,7 +607,7 @@
             <xsl:with-param name="prmDst" select="$prmDst"/>
         </xsl:call-template>
     </xsl:function>
-    
+
     <xsl:template name="getAttributeSetReplacing" as="attribute()*">
         <xsl:param name="prmAttrSetName" as="xs:string" required="yes"/>
         <xsl:param name="prmXmlLang" as="xs:string?" required="no" select="$defaultXmlLang"/>
@@ -618,7 +616,7 @@
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
         <xsl:param name="prmSrc" as="xs:string+" required="yes"/>
         <xsl:param name="prmDst" as="xs:string+" required="yes"/>
-        
+
         <xsl:variable name="attrs" as="attribute()*">
             <xsl:call-template name="getAttributeSet">
                 <xsl:with-param name="prmAttrSetName" select="$prmAttrSetName"/>
@@ -628,17 +626,17 @@
                 <xsl:with-param name="prmOutputType" select="$prmOutputType"/>
             </xsl:call-template>
         </xsl:variable>
-        
+
         <xsl:for-each select="$attrs">
             <xsl:variable name="att" as="attribute()" select="."/>
             <xsl:attribute name="{name($att)}">
                 <xsl:value-of select="ahf:replace(string($att),$prmSrc,$prmDst)"/>
             </xsl:attribute>
         </xsl:for-each>
-        
+
     </xsl:template>
 
-    <!-- 
+    <!--
          getAttribute template
          function: Get attribute specified by $prmAttrName from attribute-set specified by $prmAttrSetName.
          parameter：prmAttrSetName：An attribute name
@@ -652,7 +650,7 @@
             <xsl:with-param name="prmAttrSetName" select="$prmAttrSetName"/>
             <xsl:with-param name="prmAttrName" select="$prmAttrName"/>
         </xsl:call-template>
-        
+
     </xsl:function>
 
     <xsl:template name="getAttribute" as="attribute()*">
@@ -662,7 +660,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="attrs" as="attribute()*">
             <xsl:call-template name="getAttributeSet">
                 <xsl:with-param name="prmAttrSetName" select="$prmAttrSetName"/>
@@ -692,13 +690,13 @@
 
     </xsl:template>
 
-    <!-- 
+    <!--
          getAttributeAs template
          function: Get attribute specified by $prmAttrName in attribute-set $prmAttrSetName as attribute name $prmAltAttrName.
          parameter：prmAttrSetName: An attribute-set name
                     prmAttrName: An attribute name
                     prmAltAttrName: The alternate attribute name
-         note: 
+         note:
       -->
     <xsl:template name="getAttributeAs" as="attribute()?">
         <xsl:param name="prmAttrSetName" as="xs:string" required="yes"/>
@@ -708,7 +706,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="attrs" as="attribute()*">
             <xsl:call-template name="getAttributeSet">
                 <xsl:with-param name="prmAttrSetName" select="$prmAttrSetName"/>
@@ -732,7 +730,7 @@
         </xsl:if>
     </xsl:template>
 
-    <!-- 
+    <!--
          getAttributeValue template
          function: Get attribute value from attribute-set specified by $prmAttrSetName and attribute name specified by $prmAttrName as xs:string．
          parameter: prmAttrSetName: attribute-set name
@@ -741,7 +739,7 @@
                     prmDocType: Document type
                     prmPaperSize: Paper size
                     prmOutputType: Output type.
-         notes: 
+         notes:
       -->
     <xsl:function name="ahf:getAttributeValue" as="xs:string">
         <xsl:param name="prmAttrSetName" as="xs:string"/>
@@ -759,7 +757,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="attrs" as="attribute()*">
             <xsl:call-template name="getAttributeSet">
                 <xsl:with-param name="prmAttrSetName" select="$prmAttrSetName"/>
@@ -782,7 +780,7 @@
             <xsl:message select="concat('[getAttributeValue]   attribute-name=',name($attr),' value=',string($attr))"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:template name="getAttributeValueWithLang" as="xs:string">
         <xsl:param name="prmAttrSetName" as="xs:string?" required="no" select="()"/>
         <xsl:param name="prmAttrName" as="xs:string" required="yes"/>
@@ -790,7 +788,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="attrs" as="attribute()*">
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="$prmAttrSetName"/>
@@ -800,7 +798,7 @@
                 <xsl:with-param name="prmOutputType" select="$prmOutputType"/>
             </xsl:call-template>
         </xsl:variable>
-        
+
         <xsl:if test="empty($attrs[name() eq $prmAttrName])">
             <xsl:call-template name="errorExit">
                 <xsl:with-param name="prmMes">
@@ -815,14 +813,14 @@
         </xsl:if>
     </xsl:template>
 
-    <!-- 
+    <!--
          getVarValueWithLang template
          function: Get variable specified by $prmVarName considering $prmElem/@xml:lang as key.
          parameter: prmVarName: An variable name
                     prmElem: The relevant element
                     prmDocType: Document type
                     prmPaperSize: Paper size
-         note: This template get @xml:lang from $prmElem/ancestor-or-self::* and 
+         note: This template get @xml:lang from $prmElem/ancestor-or-self::* and
                return the specific variable value associated with @xml:lang.
       -->
     <xsl:template name="getVarValueWithLang" as="xs:string">
@@ -831,7 +829,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="curXmlLang" as="xs:string" select="ahf:getCurrentXmlLang($prmElem)"/>
         <xsl:call-template name="getVarValue">
             <xsl:with-param name="prmVarName" select="$prmVarName"/>
@@ -840,16 +838,16 @@
             <xsl:with-param name="prmPaperSize" select="$prmPaperSize"/>
             <xsl:with-param name="prmOutputType" select="$prmOutputType"/>
         </xsl:call-template>
-    </xsl:template>    
+    </xsl:template>
 
-    <!-- 
+    <!--
          getVarValue template
          function: Get variable value specified by $prmVarName, $prmXmlLang, $prmDocType, $prmPaperSize.
          parameter: prmVarName：Variable name
                     prmXmlLang: Target xml:lang
                     prmDocType: Document type
                     prmPaperSize: Paper size
-         note: 
+         note:
       -->
     <xsl:function name="ahf:getVarValue" as="xs:string">
         <xsl:param name="prmVarName" as="xs:string"/>
@@ -868,7 +866,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <!--xsl:message select="'[getVarValue] $prmVarName=',$prmVarName"/>
         <xsl:message select="'[getVarValue] $prmXmlLang=',$prmXmlLang"/-->
         <xsl:variable name="vars" as="element()*" select="$glVarDefs/*[string(@name) eq $prmVarName]"/>
@@ -894,14 +892,14 @@
         </xsl:if>
     </xsl:template>
 
-    <!-- 
+    <!--
          getVarValueAsText template
          function: Get variable value specified by $prmVarName, $prmXmlLang, $prmDocType, $prmPaperSize as text()
          parameter: prmVarName：Variable name
                     prmXmlLang: Target xml:lang
                     prmDocType: Document type
                     prmPaperSize: Paper size
-         note: 
+         note:
       -->
     <xsl:template name="getVarValueAsText" as="text()">
         <xsl:param name="prmVarName" as="xs:string" required="yes"/>
@@ -909,7 +907,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="varValue" as="xs:string">
             <xsl:call-template name="getVarValue">
                 <xsl:with-param name="prmVarName" select="$prmVarName"/>
@@ -919,18 +917,18 @@
                 <xsl:with-param name="prmOutputType" select="$prmOutputType"/>
             </xsl:call-template>
         </xsl:variable>
-        
+
         <xsl:value-of select="$varValue"/>
     </xsl:template>
 
-    <!-- 
+    <!--
          getVarValueWithLangAsText template
          function: Get variable as text() specified by $prmVarName considering $prmElem/@xml:lang as key.
          parameter: prmVarName: An variable name
                     prmElem: The relevant element
                     prmDocType: Document type
                     prmPaperSize: Paper size
-         note: 
+         note:
       -->
     <xsl:template name="getVarValueWithLangAsText" as="text()">
         <xsl:param name="prmVarName" as="xs:string" required="yes"/>
@@ -938,7 +936,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="curXmlLang" as="xs:string" select="ahf:getCurrentXmlLang($prmElem)"/>
         <xsl:variable name="varValue" as="xs:string">
             <xsl:call-template name="getVarValue">
@@ -952,14 +950,14 @@
         <xsl:value-of select="$varValue"/>
     </xsl:template>
 
-    <!-- 
+    <!--
          getVarValueAsDouble template
          function: Get variable value specified by $prmVarName, $prmXmlLang, $prmDocType, $prmPaperSize as xs:double
          parameter: prmVarName：Variable name
                     prmXmlLang: Target xml:lang
                     prmDocType: Document type
                     prmPaperSize: Paper size
-         note: 
+         note:
       -->
     <xsl:template name="getVarValueAsDouble" as="xs:double">
         <xsl:param name="prmVarName" as="xs:string"/>
@@ -967,7 +965,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="varValue" as="xs:string">
             <xsl:call-template name="getVarValue">
                 <xsl:with-param name="prmVarName" select="$prmVarName"/>
@@ -977,7 +975,7 @@
                 <xsl:with-param name="prmOutputType" select="$prmOutputType"/>
             </xsl:call-template>
         </xsl:variable>
-        
+
         <xsl:choose>
             <xsl:when test="$varValue castable as xs:double">
                 <xsl:sequence select="xs:double($varValue)"/>
@@ -997,7 +995,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="curXmlLang" as="xs:string" select="ahf:getCurrentXmlLang($prmElem)"/>
         <xsl:variable name="varValueAsDouble" as="xs:double">
             <xsl:call-template name="getVarValueAsDouble">
@@ -1010,16 +1008,16 @@
         </xsl:variable>
         <xsl:sequence select="$varValueAsDouble"/>
     </xsl:template>
-    
 
-    <!-- 
+
+    <!--
          getVarValueAsInteger template
          function: Get variable value specified by $prmVarName, $prmXmlLang, $prmDocType, $prmPaperSize as xs:integer
          parameter: prmVarName：Variable name
                     prmXmlLang: Target xml:lang
                     prmDocType: Document type
                     prmPaperSize: Paper size
-         note: 
+         note:
       -->
     <xsl:function name="ahf:getVarValueAsInteger" as="xs:integer">
         <xsl:param name="prmVarName" as="xs:string"/>
@@ -1038,7 +1036,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="varValue" as="xs:string">
             <xsl:call-template name="getVarValue">
                 <xsl:with-param name="prmVarName" select="$prmVarName"/>
@@ -1048,7 +1046,7 @@
                 <xsl:with-param name="prmOutputType" select="$prmOutputType"/>
             </xsl:call-template>
         </xsl:variable>
-        
+
         <xsl:choose>
             <xsl:when test="$varValue castable as xs:integer">
                 <xsl:sequence select="xs:integer($varValue)"/>
@@ -1062,7 +1060,7 @@
         </xsl:choose>
     </xsl:template>
 
-    <!-- 
+    <!--
          getVarValueAsStringSequence template
          function: Get variable value specified by $prmVarName, $prmXmlLang, $prmDocType, $prmPaperSize as xs:string*
          parameter: prmVarName：Variable name
@@ -1070,23 +1068,23 @@
                     prmDocType: Document type
                     prmPaperSize: Paper size
                     prmDelim: Delimiter character
-         note: 
+         note:
     -->
     <xsl:function name="ahf:getVarValueAsStringSequence" as="xs:string*">
         <xsl:param name="prmVarName" as="xs:string"/>
-        
+
         <xsl:call-template name="getVarValueAsStringSequence">
             <xsl:with-param name="prmVarName" select="$prmVarName"/>
         </xsl:call-template>
     </xsl:function>
-    
+
     <xsl:template name="getVarValueWithLangAsStringSequence" as="xs:string*">
         <xsl:param name="prmVarName" as="xs:string" required="yes"/>
         <xsl:param name="prmElem" as="element()" required="no" select="."/>
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="curXmlLang" as="xs:string" select="ahf:getCurrentXmlLang($prmElem)"/>
         <xsl:call-template name="getVarValueAsStringSequence">
             <xsl:with-param name="prmVarName" select="$prmVarName"/>
@@ -1126,7 +1124,7 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:for-each>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template name="getVarValueWithDelim" as="xs:string+">
         <xsl:param name="prmVarName" as="xs:string" required="yes"/>
@@ -1134,7 +1132,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="vars" as="element()*" select="$glVarDefs/*[string(@name) eq $prmVarName]"/>
         <xsl:if test="empty($vars)">
             <xsl:call-template name="errorExit">
@@ -1156,14 +1154,14 @@
         <xsl:sequence select="string($filteredVars[last()]/@delim)"/>
     </xsl:template>
 
-    <!-- 
+    <!--
          getInstreamObject tempalte
          function: Get instream object specified by $prmObjName as node()*.
          parameter: prmObjName: Object name
                     prmXmlLang: Target xml:lang
                     prmDocType: Document type
                     prmPaperSize: Paper size
-         note: 
+         note:
       -->
     <xsl:function name="ahf:getInstreamObject" as="node()*">
         <xsl:param name="prmObjName" as="xs:string"/>
@@ -1173,7 +1171,7 @@
             <xsl:with-param name="prmDocType"  select="$defaultDocType"/>
             <xsl:with-param name="prmPaperSize"  select="$defaultPaperSize"/>
             <xsl:with-param name="prmOutputType" select="$defaultOutputType"/>
-        </xsl:call-template>        
+        </xsl:call-template>
     </xsl:function>
 
     <xsl:template name="getInstreamObject" as="node()*">
@@ -1182,7 +1180,7 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="objects" as="element()*" select="$glInstreamObjects/*[string(@name) eq $prmObjName]"/>
         <xsl:if test="empty($objects)">
             <xsl:call-template name="errorExit">
@@ -1203,9 +1201,9 @@
         <xsl:sequence select="$filteredObjects[last()]/*[1]"/>
     </xsl:template>
 
-    <!-- 
+    <!--
          getInstreamObjectReplacing template
-         function: Get instream object specified by $prmObjName as node()* 
+         function: Get instream object specified by $prmObjName as node()*
                    replacing text node from $prmSrcString by $prmDstString.
          parameter: prmObjName: Object name
                     prmXmlLang: Target xml:lang
@@ -1213,13 +1211,13 @@
                     prmPaperSize: Paper size
                     prmSrcStr: Source string
                     prmDstStr: Destination string
-         note: 
+         note:
       -->
     <xsl:function name="ahf:getInstreamObjectReplacing" as="node()*">
         <xsl:param name="prmObjName" as="xs:string"/>
         <xsl:param name="prmSrcStr" as="xs:string+"/>
         <xsl:param name="prmDstStr" as="xs:string+"/>
-        
+
         <xsl:call-template name="getInstreamObjectReplacing">
             <xsl:with-param name="prmObjName" as="xs:string" select="$prmObjName"/>
             <xsl:with-param name="prmXmlLang" as="xs:string?" select="$defaultXmlLang"/>
@@ -1227,7 +1225,7 @@
             <xsl:with-param name="prmPaperSize" as="xs:string?" select="$defaultPaperSize"/>
             <xsl:with-param name="prmSrcStr" select="$prmSrcStr"/>
             <xsl:with-param name="prmDstStr" select="$prmDstStr"/>
-        </xsl:call-template> 
+        </xsl:call-template>
     </xsl:function>
 
     <xsl:template name="getInstreamObjectReplacing" as="node()*">
@@ -1256,7 +1254,7 @@
         </xsl:variable>
         <xsl:sequence select="$replacedInstreamObject"/>
     </xsl:template>
-    
+
     <xsl:template match="svg:*|mml:*" mode="GET_INSTREAM_OBJECTS_REPLACING">
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstStr" as="xs:string+" required="yes"/>
@@ -1271,7 +1269,7 @@
             </xsl:apply-templates>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="*" mode="GET_INSTREAM_OBJECTS_REPLACING">
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstStr" as="xs:string+" required="yes"/>
@@ -1286,7 +1284,7 @@
             </xsl:apply-templates>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="text()" mode="GET_INSTREAM_OBJECTS_REPLACING">
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstStr" as="xs:string+" required="yes"/>
@@ -1304,7 +1302,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="@*" mode="GET_INSTREAM_OBJECTS_REPLACING">
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstStr" as="xs:string+" required="yes"/>
@@ -1319,14 +1317,14 @@
         </xsl:choose>
     </xsl:template>
 
-    <!-- 
+    <!--
          getFormattingObject tempalte
          function: Get XSL-FO object specified by $prmObjName as node()*.
          parameter: prmObjName: Object name
                     prmXmlLang: Target xml:lang
                     prmDocType: Document type
                     prmPaperSize: Paper size
-         note: 
+         note:
       -->
     <xsl:function name="ahf:getFormattingObject" as="node()*">
         <xsl:param name="prmObjName" as="xs:string"/>
@@ -1336,16 +1334,16 @@
             <xsl:with-param name="prmDocType"  select="$defaultDocType"/>
             <xsl:with-param name="prmPaperSize"  select="$defaultPaperSize"/>
             <xsl:with-param name="prmOutputType" select="$defaultOutputType"/>
-        </xsl:call-template>        
+        </xsl:call-template>
     </xsl:function>
-    
+
     <xsl:template name="getFormattingObject" as="node()*">
         <xsl:param name="prmObjName" as="xs:string" required="yes"/>
         <xsl:param name="prmXmlLang" as="xs:string?" required="no" select="$defaultXmlLang"/>
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
+
         <xsl:variable name="objects" as="element()*" select="$glFormattingObjects/*[string(@name) eq $prmObjName]"/>
         <xsl:if test="empty($objects)">
             <xsl:call-template name="errorExit">
@@ -1366,9 +1364,9 @@
         <xsl:sequence select="$filteredObjects[last()]/node()"/>
     </xsl:template>
 
-    <!-- 
+    <!--
          getFormattingObjectReplacing template
-         function: Get formatting object specified by $prmObjName as node()* 
+         function: Get formatting object specified by $prmObjName as node()*
                    replacing text node from $prmSrcString by $prmDstString.
          parameter: prmObjName: Object name
                     prmXmlLang: Target xml:lang
@@ -1376,13 +1374,13 @@
                     prmPaperSize: Paper size
                     prmSrcStr: Source string
                     prmDstStr: Destination string
-         note: 
+         note:
       -->
     <xsl:function name="ahf:getFormattingObjectReplacing" as="node()*">
         <xsl:param name="prmObjName" as="xs:string"/>
         <xsl:param name="prmSrcStr" as="xs:string+"/>
         <xsl:param name="prmDstStr" as="xs:string+"/>
-        
+
         <xsl:call-template name="getFormattingObjectReplacing">
             <xsl:with-param name="prmObjName" as="xs:string" select="$prmObjName"/>
             <xsl:with-param name="prmXmlLang" as="xs:string?" select="$defaultXmlLang"/>
@@ -1390,9 +1388,9 @@
             <xsl:with-param name="prmPaperSize" as="xs:string?" select="$defaultPaperSize"/>
             <xsl:with-param name="prmSrcStr" select="$prmSrcStr"/>
             <xsl:with-param name="prmDstStr" select="$prmDstStr"/>
-        </xsl:call-template> 
+        </xsl:call-template>
     </xsl:function>
-    
+
     <xsl:template name="getFormattingObjectReplacing" as="node()*">
         <xsl:param name="prmObjName" as="xs:string" required="yes"/>
         <xsl:param name="prmXmlLang" as="xs:string?" required="no" select="$defaultXmlLang"/>
@@ -1401,7 +1399,7 @@
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstStr" as="xs:string+" required="yes"/>
-        
+
         <xsl:variable name="formattingObject" as="node()*">
             <xsl:call-template name="getFormattingObject">
                 <xsl:with-param name="prmObjName" select="$prmObjName"/>
@@ -1419,7 +1417,7 @@
         </xsl:variable>
         <xsl:sequence select="$replacedFormattingObject"/>
     </xsl:template>
-    
+
     <xsl:template match="fo:*" mode="GET_FORMATTING_OBJECTS_REPLACING">
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstStr" as="xs:string+" required="yes"/>
@@ -1434,7 +1432,7 @@
             </xsl:apply-templates>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="*" mode="GET_FORMATTING_OBJECTS_REPLACING">
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstStr" as="xs:string+" required="yes"/>
@@ -1449,7 +1447,7 @@
             </xsl:apply-templates>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="text()" mode="GET_FORMATTING_OBJECTS_REPLACING">
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstStr" as="xs:string+" required="yes"/>
@@ -1463,7 +1461,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="@*" mode="GET_FORMATTING_OBJECTS_REPLACING">
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstStr" as="xs:string+" required="yes"/>
@@ -1478,9 +1476,9 @@
         </xsl:choose>
     </xsl:template>
 
-    <!-- 
+    <!--
          getFormattingObjectReplacingNode template
-         function: Get formatting object specified by $prmObjName as node()* 
+         function: Get formatting object specified by $prmObjName as node()*
                    replacing text node from $prmSrcString by $prmDstNode.
          parameter: prmObjName: Object name
                     prmXmlLang: Target xml:lang
@@ -1488,13 +1486,13 @@
                     prmPaperSize: Paper size
                     prmSrcStr: Source string
                     prmDstNode: Destination node stored under the each element
-         note: 
+         note:
       -->
     <xsl:function name="ahf:getFormattingObjectReplacingNode" as="node()*">
         <xsl:param name="prmObjName" as="xs:string"/>
         <xsl:param name="prmSrcStr" as="xs:string+"/>
         <xsl:param name="prmDstNode" as="element()+"/>
-        
+
         <xsl:call-template name="getFormattingObjectReplacingNode">
             <xsl:with-param name="prmObjName" as="xs:string" select="$prmObjName"/>
             <xsl:with-param name="prmXmlLang" as="xs:string?" select="$defaultXmlLang"/>
@@ -1502,9 +1500,9 @@
             <xsl:with-param name="prmPaperSize" as="xs:string?" select="$defaultPaperSize"/>
             <xsl:with-param name="prmSrcStr" select="$prmSrcStr"/>
             <xsl:with-param name="prmDstNode" select="$prmDstNode"/>
-        </xsl:call-template> 
+        </xsl:call-template>
     </xsl:function>
-    
+
     <xsl:template name="getFormattingObjectReplacingNode" as="node()*">
         <xsl:param name="prmObjName" as="xs:string" required="yes"/>
         <xsl:param name="prmXmlLang" as="xs:string?" required="no" select="$defaultXmlLang"/>
@@ -1513,7 +1511,7 @@
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstNode" as="element()+" required="yes"/>
-        
+
         <xsl:variable name="formattingObject" as="node()*">
             <xsl:call-template name="getFormattingObject">
                 <xsl:with-param name="prmObjName" select="$prmObjName"/>
@@ -1531,7 +1529,7 @@
         </xsl:variable>
         <xsl:sequence select="$replacedFormattingObject"/>
     </xsl:template>
-    
+
     <xsl:template match="fo:*" mode="GET_FORMATTING_OBJECTS_REPLACING_NODE">
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstNode" as="element()+" required="yes"/>
@@ -1546,7 +1544,7 @@
             </xsl:apply-templates>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="*" mode="GET_FORMATTING_OBJECTS_REPLACING_NODE">
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstNode" as="element()+" required="yes"/>
@@ -1561,7 +1559,7 @@
             </xsl:apply-templates>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="text()" mode="GET_FORMATTING_OBJECTS_REPLACING_NODE">
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstNode" as="element()+" required="yes"/>
@@ -1591,16 +1589,16 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
 
-    <!-- 
+
+    <!--
          filterElements template
          function： Apply filtering to the element specified by $prmTargetElem using parameter $prmXmlLang,$prmDocType,$prmPaperSize.
          parameter: prmTargetElems：Target element（attribute-set,variable,etc)
                     prmXmlLang: Target xml:lang
                     prmDocType: Document type
                     prmPaperSize: Paper size
-         note: 
+         note:
       -->
     <xsl:template name="filterElements" as="element()*">
         <xsl:param name="prmTargetElem" as="element()*" required="yes"/>
@@ -1608,8 +1606,8 @@
         <xsl:param name="prmDocType" as="xs:string?" required="no" select="$defaultDocType"/>
         <xsl:param name="prmPaperSize" as="xs:string?" required="no" select="$defaultPaperSize"/>
         <xsl:param name="prmOutputType" as="xs:string?" required="no" select="$defaultOutputType"/>
-        
-        <!-- Get variable value from tight condition. 
+
+        <!-- Get variable value from tight condition.
              If there is N'th conditions, there are 2**N th patterns are needed.
          -->
         <xsl:choose>

@@ -9,8 +9,9 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" xmlns:fo="http://www.w3.org/1999/XSL/Format"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet version="2.0"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
     exclude-result-prefixes="xs ahf">
 
@@ -19,14 +20,14 @@ E-mail : info@antennahouse.com
      -->
     <xsl:param name="PRM_PAPER_SIZE" required="no" as="xs:string" select="'Letter'"/>
     <xsl:variable name="pPaperSize" as="xs:string" select="$PRM_PAPER_SIZE"/>
-    
+
     <xsl:param name="cPaperInfo" as="xs:string+">
         <xsl:call-template name="getVarValueAsStringSequence">
             <xsl:with-param name="prmVarName" select="'Paper_Info'"/>
             <xsl:with-param name="prmPaperSize" select="()"/>
         </xsl:call-template>
     </xsl:param>
-    
+
     <xsl:variable name="paperIndex" as="xs:integer" >
         <xsl:variable name="tempPaperIndex" as="xs:integer?" select="index-of($cPaperInfo,$pPaperSize)[1]"/>
         <xsl:choose>
@@ -41,7 +42,7 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
-    
+
     <!-- paper related variables used here -->
     <xsl:variable name="pPaperWidth" as="xs:string" select="$cPaperInfo[$paperIndex + 1]"/>
     <xsl:variable name="pPaperHeight" as="xs:string" select="$cPaperInfo[$paperIndex + 2]"/>

@@ -9,11 +9,9 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 *******************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
- xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  xmlns:psmi="http://www.CraneSoftwrights.com/resources/psmi"
  exclude-result-prefixes="xs ahf"
@@ -41,7 +39,7 @@ E-mail : info@antennahouse.com
                              mode="MAKE_INDEX_ORIGIN">
         </xsl:apply-templates>
     </xsl:variable>
-    
+
     <!-- Indexterm nodeset sorted result -->
     <xsl:variable name="indextermSorted">
         <xsl:choose>
@@ -66,21 +64,21 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
-    
+
     <!-- counts -->
     <xsl:variable name="indextermOriginCount" select="count($indextermOrigin/index-data)" as="xs:integer"/>
     <xsl:variable name="indextermSortedCount" select="count($indextermSorted/index-data)" as="xs:integer"/>
-    
+
     <!--
         ======================================================
         Templates for making original indexterm nodeset
         ======================================================
       -->
-    
+
     <!-- map/topicref -->
     <xsl:template match="*[contains(@class, ' map/topicref ')]" mode="MAKE_INDEX_ORIGIN">
         <xsl:variable name="topicRef" select="."/>
-    
+
         <!-- topicref/topicmeta -->
         <xsl:apply-templates select="$topicRef/*[contains(@class,$CLASS_TOPICMETA)]
                                               /*[contains(@class,$CLASS_KEYWORDS)]
@@ -93,9 +91,9 @@ E-mail : info@antennahouse.com
             <xsl:with-param name="prmIndexLabel"    select="''"/>
             <xsl:with-param name="prmIndextermElem" select="()"/>
         </xsl:apply-templates>
-    
+
         <xsl:variable name="linkTopic" select="ahf:getTopicFromTopicRef($topicRef)" as="element()?"/>
-        
+
         <!-- process topic -->
         <xsl:if test="exists($linkTopic)">
             <xsl:apply-templates select="$linkTopic" mode="MAKE_INDEX_ORIGIN">
@@ -103,10 +101,10 @@ E-mail : info@antennahouse.com
             </xsl:apply-templates>
         </xsl:if>
     </xsl:template>
-    
+
     <!-- Linked topic/topic -->
     <xsl:template match="*[contains(@class, ' topic/topic ')]" mode="MAKE_INDEX_ORIGIN">
-        
+
         <xsl:apply-templates select="descendant::*[contains(@class,$CLASS_INDEXTERM)]
                                                   [not(ancestor::*[contains(@class,$CLASS_INDEXTERM)])]"
                              mode="MAKE_INDEX_ORIGIN">
@@ -117,8 +115,8 @@ E-mail : info@antennahouse.com
             <xsl:with-param name="prmIndextermElem" select="()"/>
         </xsl:apply-templates>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function: indexterm template
      param:    See below
      return:   index-data nodeset
@@ -130,10 +128,10 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmLevel"         required="yes" as="xs:integer"/>
         <xsl:param name="prmIndexLabel"    required="yes" as="xs:string"/>
         <xsl:param name="prmIndextermElem" required="yes" as="element()*"/>
-    
+
         <!-- Level of this indexterm -->
         <xsl:variable name="currentLevel" select="$prmLevel+1" as="xs:integer"/>
-    
+
         <!-- Text of this indexterm -->
         <xsl:variable name="indextermText" as="xs:string">
             <xsl:variable name="tempIndextermText" as="xs:string*">
@@ -143,7 +141,7 @@ E-mail : info@antennahouse.com
             </xsl:variable>
             <xsl:value-of select="normalize-space(string-join($tempIndextermText,''))"/>
         </xsl:variable>
-    
+
         <!-- Key of this indexterm
              Add the following case:
              <indexterm>data<index-sort-as>data</index-sort-as></indexterm>
@@ -154,7 +152,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmIndexterm" select="."/>
             </xsl:call-template>
         </xsl:variable>
-    
+
         <!-- FO of this indexterm -->
         <xsl:variable name="indextermFO" as="node()*">
             <fo:inline>
@@ -166,18 +164,18 @@ E-mail : info@antennahouse.com
                 </xsl:apply-templates>
             </fo:inline>
         </xsl:variable>
-    
+
         <!-- Current sortas text -->
         <xsl:variable name="indexSortasText" as="xs:string">
             <xsl:variable name="tempIndexSortasText" as="xs:string*">
-                <xsl:apply-templates mode="TEXT_ONLY" 
+                <xsl:apply-templates mode="TEXT_ONLY"
                                      select="child::*[contains(@class,$CLASS_INDEX_SORTAS)]">
                     <xsl:with-param name="prmGetSortAsText"    tunnel="yes" select="true()"/>
                 </xsl:apply-templates>
             </xsl:variable>
             <xsl:value-of select="normalize-space(string-join($tempIndexSortasText,''))"/>
         </xsl:variable>
-    
+
         <!-- Index label -->
         <xsl:variable name="currentIndexLabel" as="xs:string">
             <xsl:choose>
@@ -200,7 +198,7 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-    
+
         <!-- Current FO index key -->
         <xsl:variable name="currentFoIndexKey" as="xs:string">
             <xsl:choose>
@@ -212,7 +210,7 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        
+
         <!-- Current sortkey -->
         <xsl:variable name="currentIndexSortKey" as="xs:string*">
             <xsl:variable name="tempSortKey" as="xs:string">
@@ -234,8 +232,8 @@ E-mail : info@antennahouse.com
             <xsl:value-of select="concat($prmIndexSortKey,$currentSortKeyFixLen1,$currentSortKeyFixLen2)"/-->
             <xsl:sequence select="($prmIndexSortKey,$tempSortKey)"/>
         </xsl:variable>
-        
-        <!-- Current indexterm element 
+
+        <!-- Current indexterm element
              Added this level @indexkey. (2011-10-04 t.makita)
          -->
         <xsl:variable name="currentIndextermElement" as="element()*">
@@ -253,7 +251,7 @@ E-mail : info@antennahouse.com
                 <xsl:value-of select="$indextermText"/>
             </xsl:element>
         </xsl:variable>
-        
+
         <xsl:choose>
             <xsl:when test="@end">
                 <!-- Ignore indexterm that has @end attribute -->
@@ -261,7 +259,7 @@ E-mail : info@antennahouse.com
                 <xsl:when test="not(string($indextermText))">
                     <!-- Ignore indexterm that has no text -->
                 </xsl:when>
-            <xsl:when test="(child::*[contains(@class, $CLASS_INDEX_SEE)]) 
+            <xsl:when test="(child::*[contains(@class, $CLASS_INDEX_SEE)])
                         and (child::*[contains(@class, $CLASS_INDEX_SEEALSO)])
                         and not(child::*[contains(@class, $CLASS_INDEXTERM)])">
                 <!-- Ignore index-see. Adopt index-see-also only. -->
@@ -429,8 +427,8 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function: index-see text template
      param:    See below
      return:   index-data nodeset
@@ -442,7 +440,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmLevel"         required="yes" as="xs:integer"/>
         <xsl:param name="prmIndexLabel"    required="yes" as="xs:string"/>
         <xsl:param name="prmIndextermElem" required="yes" as="element()*"/>
-        
+
         <!-- index-see text -->
         <xsl:variable name="indexSeeText" as="xs:string">
             <xsl:variable name="tempIndexSeeText" as="xs:string*">
@@ -452,7 +450,7 @@ E-mail : info@antennahouse.com
             </xsl:variable>
             <xsl:value-of select="normalize-space(string-join($tempIndexSeeText,''))"/>
         </xsl:variable>
-        
+
         <!-- index-see FO -->
         <xsl:variable name="indexSeeFO" as="node()*">
             <fo:inline>
@@ -464,7 +462,7 @@ E-mail : info@antennahouse.com
                 </xsl:apply-templates>
             </fo:inline>
         </xsl:variable>
-        
+
         <!-- index-see reference key -->
         <xsl:variable name="indexSeeKey" as="xs:string">
             <xsl:variable name="tempIndexSeeKey" as="xs:string*">
@@ -474,18 +472,18 @@ E-mail : info@antennahouse.com
             </xsl:variable>
             <xsl:value-of select="normalize-space(string-join($tempIndexSeeKey,''))"/>
         </xsl:variable>
-        
+
         <!-- Nested indexterm count -->
         <xsl:variable name="nestedIndexterm" select="count(descendant::*[contains(@class,$CLASS_INDEXTERM)])" as="xs:integer"/>
-        
+
         <!-- generate element for sorting -->
         <xsl:variable name="seq" as="xs:string">
             <xsl:call-template name="genIndexSeq">
                 <xsl:with-param name="prmIndexterm" select="parent::*"/>
             </xsl:call-template>
         </xsl:variable>
-        
-        
+
+
         <xsl:choose>
             <xsl:when test="not(parent::*/child::*[contains(@class, $CLASS_INDEXTERM)])">
                 <xsl:element name="{$cIndexElementName}">
@@ -542,8 +540,8 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function: index-see-also text template
      param:    See below
      return:   index-data nodeset
@@ -555,7 +553,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmLevel"         required="yes" as="xs:integer"/>
         <xsl:param name="prmIndexLabel"    required="yes" as="xs:string"/>
         <xsl:param name="prmIndextermElem" required="yes" as="element()*"/>
-        
+
         <!-- index-see text -->
         <xsl:variable name="indexSeeAlsoText" as="xs:string">
             <xsl:variable name="tempIndexSeeAlsoText" as="xs:string*">
@@ -565,7 +563,7 @@ E-mail : info@antennahouse.com
             </xsl:variable>
             <xsl:value-of select="normalize-space(string-join($tempIndexSeeAlsoText,''))"/>
         </xsl:variable>
-        
+
         <!-- index-see-also FO -->
         <xsl:variable name="indexSeeAlsoFO" as="node()*">
             <fo:inline>
@@ -577,7 +575,7 @@ E-mail : info@antennahouse.com
                 </xsl:apply-templates>
             </fo:inline>
         </xsl:variable>
-        
+
         <!-- index-see-also reference key -->
         <xsl:variable name="indexSeeAlsoKey" as="xs:string">
             <xsl:variable name="tempIndexSeeAlsoKey" as="xs:string*">
@@ -587,17 +585,17 @@ E-mail : info@antennahouse.com
             </xsl:variable>
             <xsl:value-of select="normalize-space(string-join($tempIndexSeeAlsoKey,''))"/>
         </xsl:variable>
-        
+
         <!-- Nested indexterm count -->
         <xsl:variable name="nestedIndexterm" select="count(descendant::*[contains(@class,$CLASS_INDEXTERM)])" as="xs:integer"/>
-        
+
         <!-- generate element for sorting -->
         <xsl:variable name="seq" as="xs:string">
             <xsl:call-template name="genIndexSeq">
                 <xsl:with-param name="prmIndexterm" select="parent::*"/>
             </xsl:call-template>
         </xsl:variable>
-        
+
         <xsl:choose>
             <xsl:when test="not(parent::*/child::*[contains(@class, $CLASS_INDEXTERM)])">
                 <xsl:element name="{$cIndexElementName}">
@@ -654,9 +652,9 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function: Generate indexterm sequence number (Document order)
      param:    prmTopicRef, prmIndexterm
      return:   Sequence string
@@ -665,26 +663,26 @@ E-mail : info@antennahouse.com
     <xsl:template name="genIndexSeq">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()"/>
         <xsl:param name="prmIndexterm" required="yes" as="element()"/>
-        
+
         <xsl:variable name="isTopicRefIndexterm" select="boolean($prmIndexterm/ancestor::*[contains(@class,$CLASS_TOPICMETA)])" as="xs:boolean"/>
         <xsl:variable name="topicRefSeq">
-            <xsl:number level="any" 
-                        select="$prmIndexterm" 
-                        from="*[contains(@class, ' map/map ')]" 
+            <xsl:number level="any"
+                        select="$prmIndexterm"
+                        from="*[contains(@class, ' map/map ')]"
                         format="0000"/>
         </xsl:variable>
         <xsl:variable name="topicSeq">
             <xsl:choose>
                 <xsl:when test="$isTopicRefIndexterm">
-                    <xsl:number level="any" 
-                                select="$prmIndexterm" 
-                                from="*[contains(@class, $CLASS_TOPICMETA)]" 
+                    <xsl:number level="any"
+                                select="$prmIndexterm"
+                                from="*[contains(@class, $CLASS_TOPICMETA)]"
                                 format="0000"/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:number level="any" 
-                                select="$prmIndexterm" 
-                                from="*[contains(@class, ' topic/topic ')][parent::*[contains(@class,' map/map ')]]" 
+                    <xsl:number level="any"
+                                select="$prmIndexterm"
+                                from="*[contains(@class, ' topic/topic ')][parent::*[contains(@class,' map/map ')]]"
                                 format="0000"/>
                 </xsl:otherwise>
             </xsl:choose>
@@ -698,9 +696,9 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function: Dump indexterm sorted data
      param:    none
      return:   none
@@ -727,8 +725,8 @@ E-mail : info@antennahouse.com
             </xsl:for-each>
         </xsl:for-each>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function: Generate a indexterm label
      param:    prmIndexContent: Indexterm text itself.
      return:   Indexterm label
@@ -746,10 +744,10 @@ E-mail : info@antennahouse.com
     <xsl:variable name="raKana" select="'らりるれろ'" as="xs:string"/>
     <xsl:variable name="waKana" select="'わゐゑをゎ'" as="xs:string"/>
     <xsl:variable name="nKana"  select="'ん'" as="xs:string"/>
-    
+
     <xsl:template name="getIndexLabel">
         <xsl:param name="prmIndexContent" required="yes" as="xs:string"/>
-    
+
         <xsl:variable name="firstChar" select="substring($prmIndexContent,1,1)" as="xs:string"/>
         <xsl:choose>
             <xsl:when test="starts-with($documentLang,'en-') or $documentLang='en'">
@@ -814,4 +812,3 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
 </xsl:stylesheet>
-

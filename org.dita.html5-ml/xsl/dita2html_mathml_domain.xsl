@@ -9,17 +9,15 @@
     E-mail : info@antennahouse.com
     ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
-    xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
     xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
     xmlns:m="http://www.w3.org/1998/Math/MathML"
     exclude-result-prefixes="xs ahf"
 >
 
-    <!-- 
+    <!--
         function:    mathml template
         param:        none
         return:        fo:warapper
@@ -32,7 +30,7 @@
         </fo:wrapper>
     </xsl:template>
 
-    <!-- 
+    <!--
         function:    m:math
         param:        none
         return:        fo:instream-foreign-object
@@ -47,8 +45,8 @@
         </fo:instream-foreign-object>
     </xsl:template>
 
-    <!-- 
-        function:    mathml-d/mathmlref 
+    <!--
+        function:    mathml-d/mathmlref
         param:        none
         return:        fo:external-graphic
         note:        none

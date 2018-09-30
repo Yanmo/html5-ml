@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="UTF-8" ?>
 <!--
 ****************************************************************
-DITA to XSL-FO Stylesheet 
+DITA to XSL-FO Stylesheet
 Module: Body elements stylesheet
 Copyright © 2009-2009 Antenna House, Inc. All rights reserved.
 Antenna House is a trademark of Antenna House, Inc.
@@ -9,21 +9,19 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
- xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  exclude-result-prefixes="xs ahf"
 >
 
     <!-- text is implemented in dita2fo_specializationelements.xsl -->
     <!-- note is implemented in dita2fo_note.xsl -->
-    
-    <!-- 
+
+    <!--
      function:    div template
-     param:        
+     param:
      return:    fo:wrapper with its contents
      note:        div is used for only grouping the contents
                 It has no intended style
@@ -31,7 +29,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' topic/div ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsDiv'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/div ')]">
         <fo:wrapper>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -41,9 +39,9 @@ E-mail : info@antennahouse.com
         </fo:wrapper>
     </xsl:template>
 
-    <!-- 
+    <!--
      function:    p template
-     param:        
+     param:
      return:    fo:block with p's contents
      note:        none
      -->
@@ -59,10 +57,10 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    ph template
-     param:        
+     param:
      return:    fo:inline
      note:        no special formatting
                 Call "processPh" for overriding from other plug-ins.
@@ -75,7 +73,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' topic/ph ')]">
         <xsl:call-template name="processPh"/>
     </xsl:template>
-    
+
     <xsl:template name="processPh">
         <fo:inline>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -84,10 +82,10 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    keyword template
-     param:        
+     param:
      return:    fo:inline
      note:        no special formatting
                 Call "processKeyword" for easy override from other plug-ins.
@@ -100,7 +98,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' topic/keyword ')]">
         <xsl:call-template name="processKeyword"/>
     </xsl:template>
-    
+
     <xsl:template name="processKeyword">
         <fo:inline>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -109,14 +107,14 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
          xref template is coded in dita2fo_xref.xsl
      -->
-    
-    <!-- 
+
+    <!--
      function:    ol template
-     param:        
+     param:
      return:    Numbered list (fo:list-block)
      note:        Call "processOl" for overriding from other plug-ins.
                 2015-08-25 t.makita
@@ -128,7 +126,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' topic/ol ')]">
         <xsl:call-template name="processOl"/>
     </xsl:template>
-    
+
     <xsl:template name="processOl">
         <!-- Prefix of ol -->
         <xsl:variable name="olNumberFormat" as="xs:string+">
@@ -151,10 +149,10 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    ol/li template
-     param:        
+     param:
      return:    Numbered list (fo:list-item)
      note:        Add consideration for stepsection.
                 (2011-10-24 t.makita)
@@ -164,7 +162,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' topic/ol ')]/*[contains(@class,' topic/li ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsOlItem'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' topic/ol ')]/*[contains(@class,' topic/li ')]">
         <xsl:param name="prmNumberFormat" required="yes" as="xs:string"/>
 
@@ -172,7 +170,7 @@ E-mail : info@antennahouse.com
             <xsl:with-param name="prmNumberFormat" select="$prmNumberFormat"/>
         </xsl:call-template>
     </xsl:template>
-    
+
     <xsl:template name="processOlLi">
         <xsl:param name="prmNumberFormat" required="yes" as="xs:string"/>
 
@@ -181,7 +179,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:list-item-label end-indent="label-end()"> 
+            <fo:list-item-label end-indent="label-end()">
                 <fo:block>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsOlLabel'"/>
@@ -199,8 +197,8 @@ E-mail : info@antennahouse.com
             </fo:list-item-body>
         </fo:list-item>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    Get ol number format
      param:        prmOl, prmOlNumberFormat
      return:    Number format string
@@ -210,7 +208,7 @@ E-mail : info@antennahouse.com
     <xsl:function name="ahf:getOlNumberFormat" as="xs:string">
         <xsl:param name="prmOl" as="element()"/>
         <xsl:param name="prmOlNumberFormat" as="xs:string+"/>
-        
+
         <xsl:variable name="olNumberFormatCount" as="xs:integer" select="count($prmOlNumberFormat)"/>
         <xsl:variable name="olNestLevel" select="ahf:countOl($prmOl,0)" as="xs:integer"/>
         <xsl:variable name="formatOrder" as="xs:integer">
@@ -219,11 +217,11 @@ E-mail : info@antennahouse.com
         </xsl:variable>
         <xsl:sequence select="$prmOlNumberFormat[$formatOrder]"/>
     </xsl:function>
-    
+
     <xsl:function name="ahf:countOl" as="xs:integer">
         <xsl:param name="prmElement" as="element()"/>
         <xsl:param name="prmCount" as="xs:integer"/>
-    
+
         <xsl:variable name="count" select="if ($prmElement[contains(@class, ' topic/ol ')]) then ($prmCount+1) else $prmCount"/>
         <xsl:choose>
             <xsl:when test="$prmElement[contains(@class, ' topic/entry ')]">
@@ -240,10 +238,10 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    ul template
-     param:        
+     param:
      return:    Unordered list (fo:list-block)
      note:        Call "processUl" for overriding from other plug-ins.
                 2015-08-25 t.makita
@@ -255,7 +253,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' topic/ul ')]">
         <xsl:call-template name="processUl"/>
     </xsl:template>
-    
+
     <xsl:template name="processUl">
         <fo:list-block>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -269,10 +267,10 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    ul/li template
-     param:        
+     param:
      return:    Unordered list (fo:list-item)
      note:        Call "processUlLi" for overriding from other plug-ins.
                 2015-08-25 t.makita
@@ -284,7 +282,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' topic/ul ')]/*[contains(@class,' topic/li ')]">
         <xsl:call-template name="processUlLi"/>
     </xsl:template>
-    
+
     <xsl:template name="processUlLi">
         <xsl:variable name="ulLabelChar" as="xs:string">
             <xsl:call-template name="getVarValueWithLang">
@@ -295,7 +293,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:list-item-label end-indent="label-end()"> 
+            <fo:list-item-label end-indent="label-end()">
                 <fo:block>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsUlLabel'"/>
@@ -313,10 +311,10 @@ E-mail : info@antennahouse.com
             </fo:list-item-body>
         </fo:list-item>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    sl template
-     param:        
+     param:
      return:    fo:list-block
      note:        none
      -->
@@ -335,15 +333,15 @@ E-mail : info@antennahouse.com
             </xsl:apply-templates>
         </fo:list-block>
     </xsl:template>
-    
-    
+
+
     <xsl:template match="*[contains(@class, ' topic/sl ')]/*[contains(@class,' topic/sli ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsSlItem'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' topic/sl ')]/*[contains(@class,' topic/sli ')]">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
-        
+
         <fo:list-item>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -370,37 +368,37 @@ E-mail : info@antennahouse.com
                             <xsl:with-param name="prmAttrName" select="$slCompactAttrName"/>
                         </xsl:call-template>
                     </xsl:variable>
-                    <xsl:attribute name="{$slCompactAttrName}" 
+                    <xsl:attribute name="{$slCompactAttrName}"
                                    select="ahf:getPropertyRatio($compactAttrVal,$slCompactRatio)"/>
                 </xsl:when>
             </xsl:choose>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:list-item-label end-indent="label-end()"> 
+            <fo:list-item-label end-indent="label-end()">
                 <fo:block>
                     <fo:inline/>
                 </fo:block>
             </fo:list-item-label>
             <fo:list-item-body start-indent="body-start()">
                 <fo:block>
-                    <xsl:apply-templates/>                    
+                    <xsl:apply-templates/>
                 </fo:block>
             </fo:list-item-body>
         </fo:list-item>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    dl template
-     param:        
+     param:
      return:    fo:block or fo:table
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' topic/dl ')][$pFormatDlAsBlock]" mode="MODE_GET_STYLE" as="xs:string*">
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/dl ')][not($pFormatDlAsBlock)]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsDl'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/dl ')][$pFormatDlAsBlock]">
         <xsl:variable name="doCompact" select="string(@compact) eq 'yes'" as="xs:boolean"/>
         <fo:block>
@@ -442,25 +440,25 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/ddhd ')][$pFormatDlAsBlock]" mode="MODE_GET_STYLE" as="xs:string*">
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/ddhd ')][not($pFormatDlAsBlock)]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsDlhead'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/dlhead ')][$pFormatDlAsBlock]">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
         <xsl:call-template name="warningContinue">
-            <xsl:with-param name="prmMes" 
+            <xsl:with-param name="prmMes"
                 select="ahf:replace($stMes055,('%file'),(string(@xtrf)))"/>
         </xsl:call-template>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/dlhead ')][not($pFormatDlAsBlock)]">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
-    
+
         <fo:table-header>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -476,10 +474,10 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' topic/dthd ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsDthd'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/dthd ')]">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
-        
+
         <fo:table-cell>
             <fo:block>
                 <xsl:call-template name="getAttributeSetWithLang"/>
@@ -503,7 +501,7 @@ E-mail : info@antennahouse.com
                             <xsl:with-param name="prmAttrName" select="$dlCompactAttrName"/>
                         </xsl:call-template>
                     </xsl:variable>
-                    <xsl:attribute name="{$dlCompactAttrName}" 
+                    <xsl:attribute name="{$dlCompactAttrName}"
                                    select="ahf:getPropertyRatio($dlCompactAttrVal,$dlCompactRatio)"/>
                 </xsl:if>
                 <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -511,14 +509,14 @@ E-mail : info@antennahouse.com
             </fo:block>
         </fo:table-cell>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/ddhd ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsDdhd'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/ddhd ')]">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
-        
+
         <fo:table-cell>
             <fo:block>
                 <xsl:call-template name="getAttributeSetWithLang"/>
@@ -542,7 +540,7 @@ E-mail : info@antennahouse.com
                             <xsl:with-param name="prmAttrName" select="$dlCompactAttrName"/>
                         </xsl:call-template>
                     </xsl:variable>
-                    <xsl:attribute name="{$dlCompactAttrName}" 
+                    <xsl:attribute name="{$dlCompactAttrName}"
                                    select="ahf:getPropertyRatio($dlCompactAttrVal,$dlCompactRatio)"/>
                 </xsl:if>
                 <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -554,14 +552,14 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' topic/dlentry ')][$pFormatDlAsBlock]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsDlentryBlock'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/dlentry ')][not($pFormatDlAsBlock)]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsDlentry'"/>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/dlentry ')][$pFormatDlAsBlock]">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
-        
+
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -574,7 +572,7 @@ E-mail : info@antennahouse.com
 
     <xsl:template match="*[contains(@class, ' topic/dlentry ')][not($pFormatDlAsBlock)]">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
-        
+
         <fo:table-row>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -584,18 +582,18 @@ E-mail : info@antennahouse.com
             </xsl:apply-templates>
         </fo:table-row>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/dt ')][$pFormatDlAsBlock]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsDtBlock'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/dt ')][not($pFormatDlAsBlock)]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsDt'"/>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/dt ')][$pFormatDlAsBlock]">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
-        
+
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -619,7 +617,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmAttrName" select="$dlCompactAttrNameBlock"/>
                     </xsl:call-template>
                 </xsl:variable>
-                <xsl:attribute name="{$dlCompactAttrNameBlock}" 
+                <xsl:attribute name="{$dlCompactAttrNameBlock}"
                     select="ahf:getPropertyRatio($dlCompactAttrValBlock,$dlCompactRatioBlockDt)"/>
             </xsl:if>
             <xsl:apply-templates/>
@@ -628,7 +626,7 @@ E-mail : info@antennahouse.com
 
     <xsl:template match="*[contains(@class, ' topic/dt ')][not($pFormatDlAsBlock)]">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
-        
+
         <xsl:variable name="hasDlhead" as="xs:boolean" select="exists(ancestor::*[contains(@class,' topic/dl ')]/child::*[contains(@class,' topic/dlhead ')])"/>
         <fo:table-cell>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -654,7 +652,7 @@ E-mail : info@antennahouse.com
                             <xsl:with-param name="prmAttrName" select="$dlCompactAttrName"/>
                         </xsl:call-template>
                     </xsl:variable>
-                    <xsl:attribute name="{$dlCompactAttrName}" 
+                    <xsl:attribute name="{$dlCompactAttrName}"
                         select="ahf:getPropertyRatio($dlCompactAttrVal,$dlCompactRatio)"/>
                 </xsl:if>
                 <xsl:if test="$hasDlhead">
@@ -666,18 +664,18 @@ E-mail : info@antennahouse.com
             </fo:block>
         </fo:table-cell>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/dd ')][$pFormatDlAsBlock]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsDdBlock'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/dd ')][not($pFormatDlAsBlock)]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsDd'"/>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/dd ')][$pFormatDlAsBlock]">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
-        
+
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -700,7 +698,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmAttrName" select="$dlCompactAttrNameBlock"/>
                     </xsl:call-template>
                 </xsl:variable>
-                <xsl:attribute name="{$dlCompactAttrNameBlock}" 
+                <xsl:attribute name="{$dlCompactAttrNameBlock}"
                                select="ahf:getPropertyRatio($dlCompactAttrValBlock,$dlCompactRatioBlockDd)"/>
             </xsl:if>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -710,7 +708,7 @@ E-mail : info@antennahouse.com
 
     <xsl:template match="*[contains(@class, ' topic/dd ')][not($pFormatDlAsBlock)]">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
-        
+
         <fo:table-cell>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <fo:block>
@@ -735,18 +733,18 @@ E-mail : info@antennahouse.com
                             <xsl:with-param name="prmAttrName" select="$dlCompactAttrName"/>
                         </xsl:call-template>
                     </xsl:variable>
-                    <xsl:attribute name="{$dlCompactAttrName}" 
+                    <xsl:attribute name="{$dlCompactAttrName}"
                         select="ahf:getPropertyRatio($dlCompactAttrVal,$dlCompactRatio)"/>
                 </xsl:if>
                 <xsl:apply-templates/>
             </fo:block>
         </fo:table-cell>
     </xsl:template>
-    
 
-    <!-- 
+
+    <!--
         function:    Section template
-        param:        
+        param:
         return:        Section contents
         note:        Call "processSection" for overriding from other plug-ins.
                     2015-08-25 t.makita
@@ -758,7 +756,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' topic/section ')]">
         <xsl:call-template name="processSection"/>
     </xsl:template>
-    
+
     <xsl:template name="processSection">
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -767,19 +765,19 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
         function:    Section title template
-        param:        
+        param:
         return:        Section title list
-        note:        
+        note:
     -->
     <xsl:template match="*[contains(@class, ' topic/section ')]/*[contains(@class, ' topic/title ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsHeader5Body'"/>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/section ')]/*[contains(@class, ' topic/title ')]" priority="2">
-        
+
         <fo:list-block>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsHeader5List'"/>
@@ -807,10 +805,10 @@ E-mail : info@antennahouse.com
             </fo:list-item>
         </fo:list-block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
         function:    Sectiondiv template
-        param:        
+        param:
         return:        fo:wrapper
         note:        2011-10-27 t.makita
     -->
@@ -818,7 +816,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/sectiondiv ')]">
-        
+
         <fo:wrapper>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -826,17 +824,17 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:wrapper>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
         function:    Example template
-        param:        
+        param:
         return:        Example contents
-        note:        
+        note:
     -->
     <xsl:template match="*[contains(@class, ' topic/example ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsExample'"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/example ')]">
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -845,20 +843,20 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
         function:    Example title template
-        param:        
+        param:
         return:        Example title list
-        note:        
+        note:
     -->
     <xsl:template match="*[contains(@class, ' topic/example ')]/*[contains(@class, ' topic/title ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsHeader5List'"/>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/example ')]/*[contains(@class, ' topic/title ')]" priority="2">
-        
+
         <fo:list-block>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getIdAtts"/>
@@ -886,11 +884,11 @@ E-mail : info@antennahouse.com
             </fo:list-item>
         </fo:list-block>
     </xsl:template>
-        
-    
-    <!-- 
+
+
+    <!--
      function:    fig template
-     param:        
+     param:
      return:    fo:block
      note:        Generate id attribute for figure list.
      -->
@@ -916,7 +914,7 @@ E-mail : info@antennahouse.com
         <!-- process title last -->
         <xsl:apply-templates select="*[contains(@class,' topic/title ')]"/>
     </xsl:template>
-    
+
     <!-- fig/desc -->
     <xsl:template match="*[contains(@class, ' topic/fig ')]/*[contains(@class, ' topic/desc ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsFigDesc'"/>
@@ -930,7 +928,7 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
+
     <!-- fig/title -->
     <xsl:template match="*[contains(@class, ' topic/fig ')]/*[contains(@class, ' topic/title ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsFigTitle'"/>
@@ -942,7 +940,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmFig" select="parent::*[1]"/>
             </xsl:call-template>
         </xsl:variable>
-        
+
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -952,12 +950,12 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    figgroup template
-     param:        
+     param:
      return:    fo:block
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' topic/figgroup ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:variable name="isFiggroupInTable" as="xs:boolean" select="exists(ancestor::*[contains(@class,' topic/entry ')])"/>
@@ -982,7 +980,7 @@ E-mail : info@antennahouse.com
         <!-- process title last -->
         <xsl:apply-templates select="*[contains(@class,' topic/title ')]"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/figgroup ')]/*[contains(@class, ' topic/title ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:variable name="isFiggroupInTable" as="xs:boolean" select="exists(ancestor::*[contains(@class,' topic/entry ')])"/>
         <xsl:sequence select="if ($isFiggroupInTable) then 'atsFiggroupTitleInTable' else 'atsFiggroupTitle'"/>
@@ -1002,10 +1000,10 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    image template
-     param:        
+     param:
      return:    fo:external-graphic (fo:block)
      note:        Add block/inline specific attribute-set.
                 2015-06-04 t.makita
@@ -1023,7 +1021,7 @@ E-mail : info@antennahouse.com
                                 <xsl:call-template name="ahf:processImage"/>
                                 <xsl:apply-templates/>
                             </fo:block>
-                        </fo:block-container>                    
+                        </fo:block-container>
                     </xsl:when>
                     <xsl:otherwise>
                         <fo:block>
@@ -1041,7 +1039,7 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template name="ahf:processImage" as="element()*">
         <xsl:param name="prmImage"    required="no" as="element()" select="."/>
         <xsl:choose>
@@ -1064,7 +1062,7 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:function name="ahf:getImageUrl" as="xs:string">
         <xsl:param name="prmImage" as="element()"/>
         <xsl:choose>
@@ -1079,10 +1077,10 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
+
     <xsl:function name="ahf:getImageCommonAttr" as="attribute()*">
         <xsl:param name="prmImage" as="element()"/>
-    
+
         <xsl:if test="$prmImage/@href">
             <!--xsl:message select="'$prmImage/@href=',string($prmImage/@href)"/>
             <xsl:message select="'$pMapDirUrl=',$pMapDirUrl"/-->
@@ -1090,12 +1088,12 @@ E-mail : info@antennahouse.com
             <!--xsl:message select="'$url=',$url"/-->
             <xsl:attribute name="src" select="$url"/>
         </xsl:if>
-    
+
         <xsl:variable name="height" select="ahf:getLength(string($prmImage/@height))"/>
         <xsl:variable name="width"  select="ahf:getLength(string($prmImage/@width))"/>
         <xsl:variable name="scale"  select="normalize-space($prmImage/@scale)"/>
         <xsl:variable name="placement" select="string($prmImage/@placement)"/>
-        
+
         <xsl:choose>
             <xsl:when test="string($width) or string($height)">
                 <xsl:if test="string($width)">
@@ -1124,7 +1122,7 @@ E-mail : info@antennahouse.com
                 <xsl:attribute name="content-width" select="concat(normalize-space($scale),'%')"/>
             </xsl:when>
         </xsl:choose>
-        
+
         <!-- alt -->
         <xsl:if test="$prmImage/*[contains(@class, ' topic/alt ')] and $pMakeAltText">
             <xsl:variable name="altText" as="xs:string">
@@ -1135,7 +1133,7 @@ E-mail : info@antennahouse.com
             </xsl:variable>
             <xsl:attribute name="axf:alttext" select="$altText"/>
         </xsl:if>
-        
+
         <!--inline/block specific attributes -->
         <xsl:call-template name="getAttributeSetWithLang">
             <xsl:with-param name="prmAttrSetName" select="if ($placement eq 'break') then 'atsImageBreak' else 'atsImageInline'"/>
@@ -1143,10 +1141,10 @@ E-mail : info@antennahouse.com
         </xsl:call-template>
 
     </xsl:function>
-    
+
     <xsl:function name="ahf:getLength" as="xs:string">
         <xsl:param name="prmLen" as="xs:string"/>
-        
+
         <xsl:variable name="lengthStr" select="normalize-space($prmLen)"/>
         <xsl:variable name="unit" select="ahf:getPropertyUnit($lengthStr)"/>
         <xsl:choose>
@@ -1162,7 +1160,7 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
+
     <xsl:function name="ahf:getImageBlockAttr" as="attribute()*">
         <xsl:param name="prmImage" as="element()"/>
         <xsl:if test="exists($prmImage/@align)">
@@ -1184,19 +1182,19 @@ E-mail : info@antennahouse.com
             </xsl:choose>
         </xsl:if>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    alt template
-     param:        
+     param:
      return:    none
      note:        alt is handled in ahf:getImageCommonAttr
      -->
     <xsl:template match="*[contains(@class, ' topic/alt ')]">
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    object template
-     param:        
+     param:
      return:    none
      note:        Element object is not supported because:
                 1. Object without foreign/unknown is for HTML output.
@@ -1211,9 +1209,9 @@ E-mail : info@antennahouse.com
             </xsl:with-param>
         </xsl:call-template>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    param template
      param:        none
      return:    none
@@ -1221,8 +1219,8 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class, ' topic/param ')]">
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    pre template
      param:        none
      return:    fo:block
@@ -1231,12 +1229,12 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class, ' topic/pre ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsPre'"/>
-    </xsl:template>    
-    
+    </xsl:template>
+
     <xsl:template match="*[contains(@class, ' topic/pre ')]">
         <xsl:call-template name="processPre"/>
     </xsl:template>
-    
+
     <xsl:template name="processPre">
         <xsl:variable name="preAttr" as="attribute()*">
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -1249,16 +1247,16 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    lines template
-     param:        
+     param:
      return:    fo:block
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' topic/lines ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsLines'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/lines ')]">
         <xsl:variable name="linesAttr" as="attribute()*">
@@ -1272,16 +1270,16 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    cite template
-     param:        
+     param:
      return:    fo:inline
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' topic/cite ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsCite'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/cite ')]">
         <xsl:variable name="citePrefix" as="xs:string">
@@ -1303,16 +1301,16 @@ E-mail : info@antennahouse.com
             <xsl:value-of select="$citeSuffix"/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    lq template
-     param:        
+     param:
      return:    fo:block
      note:        Different from xref/@href, DITA-OT doesn't do special processing for lq/@href.
                 Treate @scope="peer" as external considering DITA-OT standard processing.
                 If <longdescref> exists, its attributes precede the attributes of <lq>.
                 (2011-10-27 t.makita)
-                Change lq/@href processing. Remove fo:basic-link generation temporary. 
+                Change lq/@href processing. Remove fo:basic-link generation temporary.
                 - If it is started by "#", it is a usual id. (DITA-OT 1.8.5 or later)
                 - Otherwise it is a raw href. (Until DITA-OT 1.8.4)
                 2014-10-29 t.makita
@@ -1322,17 +1320,17 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class, ' topic/lq ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsLq'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/lq ')]">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes"  as="element()?"/>
         <xsl:variable name="longQuoteRef" select="child::*[contains(@class,' topic/longquoteref ')]" as="element()?"/>
-        
+
         <xsl:variable name="type"   select="if (exists($longQuoteRef)) then string($longQuoteRef/@type) else string(@type)" as="xs:string"/>
         <xsl:variable name="scope"  select="if (exists($longQuoteRef)) then string($longQuoteRef/@scope) else string(@scope)" as="xs:string"/>
         <xsl:variable name="format" select="if (exists($longQuoteRef)) then string($longQuoteRef/@format) else string(@format)" as="xs:string"/>
         <xsl:variable name="href" select="if (exists($longQuoteRef)) then string($longQuoteRef/@href) else string(@href)" as="xs:string"/>
-        
+
         <xsl:variable name="prmScope" as="xs:string">
             <xsl:choose>
                 <xsl:when test="($format eq 'dita') or ($scope eq 'local')">
@@ -1352,7 +1350,7 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        
+
         <xsl:variable name="isOt185OrLater" as="xs:boolean">
             <xsl:variable name="compResult" as="xs:integer?" select="ahf:compareOtVersion($pOtVersion,'1.8.5')"/>
             <xsl:choose>
@@ -1364,7 +1362,7 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        
+
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -1414,8 +1412,8 @@ E-mail : info@antennahouse.com
             </xsl:if>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
         function:    longquoteref template
         param:        none
         return:        none
@@ -1423,17 +1421,17 @@ E-mail : info@antennahouse.com
     -->
     <xsl:template match="*[contains(@class, ' topic/longquoteref ')]">
     </xsl:template>
-        
-    
-    <!-- 
+
+
+    <!--
      function:    q template
      param:        none
      return:    fo:inline
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' topic/q ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsQ'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/q ')]">
         <xsl:variable name="qPrefix" as="xs:string">
@@ -1455,8 +1453,8 @@ E-mail : info@antennahouse.com
             <xsl:value-of select="$qSuffix"/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
         function:    longdescref template
         param:        none
         return:        Nothing
@@ -1464,8 +1462,8 @@ E-mail : info@antennahouse.com
     -->
     <xsl:template match="*[contains(@class, ' topic/longdescref ')]">
     </xsl:template>
-        
-    <!-- 
+
+    <!--
         function:    draft-comment template
         param:      none
         return:        fo:block
@@ -1473,8 +1471,8 @@ E-mail : info@antennahouse.com
     -->
     <xsl:template match="*[contains(@class, ' topic/draft-comment ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsDraftComment'"/>
-    </xsl:template>    
-    
+    </xsl:template>
+
     <xsl:template match="*[contains(@class,' topic/draft-comment ')]">
         <xsl:variable name="draftCommentTitlePrefix" as="xs:string">
             <xsl:call-template name="getVarValueWithLang">
@@ -1526,10 +1524,10 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:block>
     </xsl:template>
-        
-    <!-- 
+
+    <!--
         function:    fn template
-        param:      
+        param:
         return:        fo:basic-link(fo:footnote)
         note:        BUG-FIX: Don't generate any element if @id exists.
                     2015-05-26 t.makita
@@ -1537,9 +1535,9 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' topic/fn ')]">
         <xsl:param name="prmMakeCover" required="no" as="xs:boolean" select="false()"/>
         <xsl:param name="prmGetContent" required="no" tunnel="yes" as="xs:boolean" select="false()"/>
-        
+
         <xsl:variable name="fn" select="."/>
-        
+
         <!-- This stylesheet outputs footnote as postnote -->
         <xsl:choose>
             <xsl:when test="$prmMakeCover"/>
@@ -1567,8 +1565,8 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
         function:    Generate footnote prefix
         param:        prmFn
         return:        Footnote title prefix
@@ -1580,7 +1578,7 @@ E-mail : info@antennahouse.com
     <xsl:template name="ahf:getFootnotePrefix" as="xs:string">
         <xsl:param name="prmFn" required="no" as="element()" select="."/>
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
-        
+
         <xsl:variable name="isGlossEntry" as="xs:boolean" select="exists($prmFn/ancestor::*[contains(@class,' glossentry/glossentry ')])"/>
         <xsl:variable name="footnoteTagPrefix" as="xs:string">
             <xsl:call-template name="getVarValueWithLang">
@@ -1607,7 +1605,7 @@ E-mail : info@antennahouse.com
                             <xsl:sequence select="xs:integer(0)"/>
                         </xsl:when>
                         <xsl:when test="exists($footnoteNumberingMap/*[string(@id) eq $topicId]/@count)">
-                            <xsl:sequence select="xs:integer($footnoteNumberingMap/*[string(@id) eq $topicId]/@count)"/>        
+                            <xsl:sequence select="xs:integer($footnoteNumberingMap/*[string(@id) eq $topicId]/@count)"/>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:sequence select="xs:integer(0)"/>
@@ -1630,9 +1628,9 @@ E-mail : info@antennahouse.com
             </xsl:when>
             <xsl:otherwise><!-- New implementation 2012-04-04 t.makita -->
                 <xsl:variable name="ancestorTopic"  select="$prmFn/ancestor::*[contains(@class, ' topic/topic ')][1]" as="element()"/>
-                <xsl:variable name="parentElements" select="$prmFn/ancestor::*[contains(@class, ' topic/table ')][. &gt;&gt; $ancestorTopic][position()=last()] | 
-                    $prmFn/ancestor::*[contains(@class, ' topic/simpletable ')][. &gt;&gt; $ancestorTopic][position()=last()] | 
-                    $prmFn/ancestor::*[contains(@class, ' topic/ul ')][. &gt;&gt; $ancestorTopic][position()=last()] | 
+                <xsl:variable name="parentElements" select="$prmFn/ancestor::*[contains(@class, ' topic/table ')][. &gt;&gt; $ancestorTopic][position()=last()] |
+                    $prmFn/ancestor::*[contains(@class, ' topic/simpletable ')][. &gt;&gt; $ancestorTopic][position()=last()] |
+                    $prmFn/ancestor::*[contains(@class, ' topic/ul ')][. &gt;&gt; $ancestorTopic][position()=last()] |
                     $prmFn/ancestor::*[contains(@class, ' topic/ol ')][. &gt;&gt; $ancestorTopic][position()=last()] |
                     $prmFn/ancestor::*[contains(@class, ' topic/dl ')][. &gt;&gt; $ancestorTopic][position()=last()] |
                     $prmFn/ancestor::*[contains(@class, ' glossentry/glossdef ')]"
@@ -1664,17 +1662,17 @@ E-mail : info@antennahouse.com
     <xsl:function name="ahf:getFootnotePrefix" as="xs:string">
         <xsl:param name="prmFn" as="element()"/>
         <xsl:param name="prmTopicRef" as="element()"/>
-        
+
         <xsl:call-template name="ahf:getFootnotePrefix">
             <xsl:with-param name="prmFn" select="$prmFn"/>
             <xsl:with-param name="prmTopicRef" tunnel="yes" select="$prmTopicRef"/>
         </xsl:call-template>
     </xsl:function>
-    
+
     <xsl:function name="ahf:getFootnotePrefix2" as="xs:string">
         <xsl:param name="prmFn" as="element()"/>
         <xsl:param name="prmParentElem" as="element()"/>
-    
+
         <xsl:choose>
             <xsl:when test="$prmFn/@callout">
                 <xsl:sequence select="string($prmFn/@callout)"/>
@@ -1702,23 +1700,23 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-        
-    
-    <!-- 
+
+
+    <!--
         function:    term template
-        param:        
+        param:
         return:    fo:inline
         note:   Call "processTerm" for overriding from other plug-ins.
                 2015-08-25 t.makita
     -->
     <xsl:template match="*[contains(@class, ' topic/term ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsTerm'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class,' topic/term ')]">
         <xsl:call-template name="processTerm"/>
     </xsl:template>
-    
+
     <xsl:template name="processTerm">
         <fo:inline>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -1727,10 +1725,10 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
         function:    text template
-        param:        
+        param:
         return:        fo:wrapper
         note:        Text is only a container for text.
         Generate a fo:wrapper. (2011-10-27 t.makita)
@@ -1742,25 +1740,25 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:wrapper>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
         function:    tm
-        param:      
+        param:
         return:        fo:inline
         note:        none
     -->
     <xsl:template match="*[contains(@class, ' topic/tm ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsTm'"/>
-    </xsl:template>    
-    
+    </xsl:template>
+
     <xsl:template match="*[contains(@class,' topic/tm ')]">
         <fo:inline>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            
+
             <xsl:apply-templates/>
-            
+
             <fo:inline>
                 <xsl:call-template name="getAttributeSetWithLang">
                     <xsl:with-param name="prmAttrSetName" select="'atsTmSymbol'"/>
@@ -1796,24 +1794,24 @@ E-mail : info@antennahouse.com
                 </xsl:choose>
             </fo:inline>
         </fo:inline>
-        
+
     </xsl:template>
-        
-    
+
+
     <!-- ========================
           Common templates
          ======================== -->
-    <!-- 
+    <!--
      function:    Make fo:basic-link attribute external-destination/internal-destination
      param:        prmHref, prmScope
      return:    attribute()*
-     note:        
+     note:
      -->
     <xsl:function name="ahf:makeBasicLinkDestination" as="attribute()*">
         <xsl:param name="prmHref" as="xs:string"/>
         <xsl:param name="prmScope" as="xs:string"/>
         <xsl:param name="prmElement" as="element()"/>
-        
+
         <xsl:choose>
             <xsl:when test="($prmScope='external')
                          or (contains($prmHref,'://'))
@@ -1838,17 +1836,17 @@ E-mail : info@antennahouse.com
                      Following code is a temporary solution, (Use 'topicByOid')
                      2010/12/16 t.makita
                  -->
-                <xsl:variable name="destElementId" 
-                              select="substring-after(substring-after($prmHref,'#'),'/')" 
+                <xsl:variable name="destElementId"
+                              select="substring-after(substring-after($prmHref,'#'),'/')"
                               as="xs:string"/>
-                <xsl:variable name="topicId" 
-                              select="if (string($destElementId)) then substring-before(substring-after($prmHref,'#'), '/') else (substring-after($prmHref,'#'))" 
+                <xsl:variable name="topicId"
+                              select="if (string($destElementId)) then substring-before(substring-after($prmHref,'#'), '/') else (substring-after($prmHref,'#'))"
                               as="xs:string"/>
-                <xsl:variable name="topicElement" 
-                              select="key('topicByOid', $topicId, $root)[1]" 
+                <xsl:variable name="topicElement"
+                              select="key('topicByOid', $topicId, $root)[1]"
                               as="element()?"/>
-                <xsl:variable name="destElement" 
-                              select="if (exists($topicElement)) then key('elementById',$destElementId,$topicElement)[1] else ()" 
+                <xsl:variable name="destElement"
+                              select="if (exists($topicElement)) then key('elementById',$destElementId,$topicElement)[1] else ()"
                               as="element()?"/>
                 <xsl:choose>
                     <!-- link to local element in the topic -->
@@ -1872,24 +1870,24 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    Generate fig title prefix
      param:        prmTopicRef, prmFig
      return:    Table title prefix string
-     note:        
+     note:
      -->
     <xsl:template name="ahf:getFigTitlePrefix" as="xs:string">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
         <xsl:param name="prmFig" required="no" as="element()" select="."/>
-        
+
         <xsl:variable name="titlePrefix" as="xs:string">
             <xsl:choose>
                 <xsl:when test="$pAddNumberingTitlePrefix">
                     <xsl:variable name="titlePrefixPart" select="ahf:genLevelTitlePrefixByCount($prmTopicRef,$cFigureGroupingLevelMax)"/>
                     <xsl:choose>
                         <xsl:when test="string($titlePrefixPart)">
-                            <xsl:sequence select="concat($titlePrefixPart,$cTitleSeparator)"/>        
+                            <xsl:sequence select="concat($titlePrefixPart,$cTitleSeparator)"/>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:sequence select="$titlePrefixPart"/>
@@ -1901,26 +1899,26 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        
+
         <xsl:variable name="topic" as="element()" select="$prmFig/ancestor::*[contains(@class, ' topic/topic ')][position()=last()]"/>
-        
+
         <xsl:variable name="figPreviousAmount" as="xs:integer">
             <xsl:variable name="topicId" as="xs:string" select="ahf:generateId($topic,$prmTopicRef)"/>
             <xsl:sequence select="$figureNumberingMap/*[string(@id) eq $topicId]/@count"/>
         </xsl:variable>
-        
+
         <xsl:variable name="figCurrentAmount" as="xs:integer">
             <xsl:sequence select="count($topic//*[contains(@class,' topic/fig ')][. &lt;&lt; $prmFig]|$prmFig)"/>
         </xsl:variable>
         <xsl:variable name="figNumber" select="$figPreviousAmount + $figCurrentAmount" as="xs:integer"/>
-        
+
         <xsl:sequence select="concat($cFigureTitle,$titlePrefix,string($figNumber))"/>
     </xsl:template>
 
     <xsl:function name="ahf:getFigTitlePrefix" as="xs:string">
         <xsl:param name="prmTopicRef" as="element()"/>
         <xsl:param name="prmFig" as="element()"/>
-    
+
         <xsl:call-template name="ahf:getFigTitlePrefix">
             <xsl:with-param name="prmTopicRef" tunnel="yes" select="$prmTopicRef"/>
             <xsl:with-param name="prmFig" select="$prmFig"/>

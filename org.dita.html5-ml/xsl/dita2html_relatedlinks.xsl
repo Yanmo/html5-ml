@@ -9,16 +9,14 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
- xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  exclude-result-prefixes="xs ahf"
 >
 
-    <!-- 
+    <!--
      function:    related-links control
      param:        none
      return:    related-links fo objects
@@ -32,21 +30,21 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:function name="ahf:isTargetLink" as="xs:boolean">
         <xsl:param name="prmLink" as="element()"/>
         <xsl:sequence select="(string($prmLink/@role) = ('friend','other')) or empty($prmLink/@role)"/>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    Make related-links block
      param:        prmRelatedLinks
      return:    related-links fo objects
-     note:        
+     note:
      -->
     <xsl:template name="makeRelatedLink">
         <xsl:param name="prmRelatedLinks" required="yes" as="element()"/>
-        
+
         <!-- Make related-link title block -->
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang">
@@ -76,12 +74,12 @@ E-mail : info@antennahouse.com
                 </xsl:call-template>
             </fo:leader>
         </fo:block>
-        
+
         <!-- process link -->
         <xsl:call-template name="processLink">
                 <xsl:with-param name="prmRelatedLinks" select="$prmRelatedLinks"/>
         </xsl:call-template>
-        
+
         <!-- Make related-link end block -->
         <fo:block>
             <xsl:call-template name="getAttributeSetWithLang">
@@ -96,9 +94,9 @@ E-mail : info@antennahouse.com
             </fo:leader>
         </fo:block>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    Process link
      param:        prmRelatedLinks
      return:    reference line contentes
@@ -106,7 +104,7 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template name="processLink">
         <xsl:param name="prmRelatedLinks" required="yes" as="element()"/>
-        
+
         <xsl:for-each select="$prmRelatedLinks/descendant::*[contains(@class,' topic/link ')]
                                                                [ahf:isTargetLink(.)]">
             <xsl:variable name="link" select="." as="element()"/>
@@ -161,17 +159,17 @@ E-mail : info@antennahouse.com
             </fo:block>
         </xsl:for-each>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    Linktext template
-     param:        
+     param:
      return:    linktext contents
      note:        This template will be never called!
      -->
     <!--xsl:template match="*[contains(@class, ' map/linktext ')] | *[contains(@class, ' topic/linktext ')]">
         <xsl:param name="prmTopicRef" required="yes"  as="element()?"/>
         <xsl:param name="prmNeedId"   required="yes"  as="xs:boolean"/>
-        
+
         <fo:inline>
             <xsl:copy-of select="ahf:getAttributeSet('atsLinkText')"/>
             <xsl:copy-of select="ahf:getUnivAtts(.,$prmTopicRef,$prmNeedId)"/>
@@ -181,7 +179,7 @@ E-mail : info@antennahouse.com
             </xsl:apply-templates>
         </fo:inline>
     </xsl:template-->
-    
+
     <xsl:template match="*[contains(@class, ' map/linktext ')] | *[contains(@class, ' topic/linktext ')]">
         <fo:inline>
             <xsl:call-template name="getAttributeSetWithLang">
@@ -192,32 +190,32 @@ E-mail : info@antennahouse.com
             </xsl:apply-templates>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    Edit reference line for inside link
      param:        prmTopicRef, prmTopicContent
      return:    reference line contentes
-     note:        
+     note:
      -->
     <xsl:template name="editLinkInside">
         <xsl:param name="prmTopicRef" required="yes" as="element()"/>
         <xsl:param name="prmTopicContent" required="yes" as="element()"/>
         <xsl:param name="prmRelatedLinks" required="yes" as="element()"/>
-        
+
         <!--xsl:variable name="id" select="substring-after($prmTopicRef/@href, '#')" as="xs:string"/>
         <xsl:variable name="topicContents" select="key('topicById', $id, $root)[1]" as="element()"/-->
         <xsl:variable name="topicIdAtr" select="ahf:getIdAtts($prmTopicContent,$prmTopicRef,true())" as="attribute()*"/>
         <xsl:variable name="topicId" select="string($topicIdAtr[1])" as="xs:string"/>
         <xsl:variable name="titleMode" select="ahf:getTitleMode($prmTopicRef,$prmTopicContent)" as="xs:integer"/>
-        
+
         <xsl:variable name="title" as="element()">
             <xsl:sequence select="$prmTopicContent/child::*[contains(@class, ' topic/title ')][1]"/>
         </xsl:variable>
-        
+
         <xsl:variable name="titleContent" as="node()*">
             <xsl:apply-templates select="$title" mode="GET_CONTENTS"/>
         </xsl:variable>
-        
+
         <xsl:variable name="titlePrefix" as="xs:string">
             <xsl:choose>
                 <xsl:when test="$titleMode eq $cSquareBulletTitleMode">
@@ -290,9 +288,9 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    Edit link line for outside link
      param:        prmHref, prmLinktext
      return:    reference line contentes
@@ -302,7 +300,7 @@ E-mail : info@antennahouse.com
     <xsl:template name="editLinkOutside">
         <xsl:param name="prmHref"     required="yes" as="xs:string"/>
         <xsl:param name="prmLinktext" required="yes" as="node()*"/>
-        
+
         <xsl:variable name="href" select="lower-case(normalize-space($prmHref))" as="xs:string"/>
         <xsl:choose>
             <xsl:when test="$href=$cDeadLinkPDF">

@@ -13,10 +13,9 @@
     $glStyleDefs: Attribute set
     ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+<xsl:stylesheet version="2.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
     xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
     xmlns:ahp="http://www.antennahouse.com/names/XSLT/Document/PageControl"
     xmlns:svg="http://www.w3.org/2000/svg"
@@ -46,18 +45,18 @@
     <xsl:variable name="expandedAttrs" as="xs:string+" select="('name','xml:lang','doc-type','paper-size','output-type','delim')"/>
     <!-- Child element after expanding style -->
     <xsl:variable name="expandedAttrsName" as="xs:string" select="'attribute'"/>
-    
+
     <!-- Plug-in URI: upper hierarchy of this stylesheet. -->
     <xsl:variable name="basePluginUri" as="xs:string" select="string(resolve-uri('../', static-base-uri()))"/>
-    
+
     <!-- Plug-in path description in the attribute. -->
     <xsl:variable name="basePluginPathSymbol" as="xs:string" select="'%plug-in-path%'"/>
-    
+
     <!-- Default style definition file.
          Path is relative from $basePluginPath
       -->
     <xsl:variable name="styleDefFile" as="xs:string" select="ahf:bsToSlash($PRM_STYLE_DEF_FILE)"/>
-    
+
     <xsl:variable name="styleDefFileUri" as="xs:string">
         <xsl:variable name="tempStyleDefFileUri" select="concat($basePluginUri,$styleDefFile)" as="xs:string"/>
         <xsl:if test="$pDebug">
@@ -71,7 +70,7 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:call-template name="errorExit">
-                    <xsl:with-param name="prmMes" 
+                    <xsl:with-param name="prmMes"
                         select="ahf:replace($stMes104,('%file'),($tempStyleDefFileUri))"/>
                 </xsl:call-template>
                 <xsl:sequence select="''"/>
@@ -93,7 +92,7 @@
             <xsl:sequence select="string(.)"/>
         </xsl:for-each>
     </xsl:variable>
-    
+
     <!-- Language specific style definition file:
          This value is obtained from map/@xml:lang, topic/@xml:lang.
          This parameter has been changed from xsl:param to xsl:variable
@@ -106,7 +105,7 @@
             <xsl:sequence select="concat('config/',$xmlLang,'_style.xml')"/>
         </xsl:for-each>
     </xsl:variable>
-    
+
     <xsl:variable name="altStyleDefFileUri" as="xs:string*">
         <xsl:variable name="tempAltStyleDefFileUri" as="xs:string*">
             <xsl:for-each select="$altStyleDefFile">
@@ -121,7 +120,7 @@
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:call-template name="warningContinue">
-                        <xsl:with-param name="prmMes" 
+                        <xsl:with-param name="prmMes"
                             select="ahf:replace($stMes105,('%file'),(string(.)))"/>
                     </xsl:call-template>
                     <xsl:sequence select="''"/>
@@ -129,7 +128,7 @@
             </xsl:choose>
         </xsl:for-each>
     </xsl:variable>
-    
+
     <!-- Effective xml:lang that has corresponding style definition file.
       -->
     <xsl:variable name="altXmlLang" as="xs:string*">
@@ -143,7 +142,7 @@
             </xsl:choose>
         </xsl:for-each>
     </xsl:variable>
-    
+
     <!-- For message output -->
     <xsl:variable name="allStyleDefFile" as="xs:string">
         <xsl:choose>
@@ -162,9 +161,9 @@
         </xsl:choose>
     </xsl:variable>
 
-    <!-- 
+    <!--
         =======================================================
-         Temporary tree for style & variable definition 
+         Temporary tree for style & variable definition
         =======================================================
     -->
     <!-- Original variable definition. -->
@@ -183,13 +182,13 @@
             </xsl:for-each>
         </xsl:document>
     </xsl:variable>
-    
+
     <xsl:template match="style:*" mode="GET_VARIABLE">
         <xsl:apply-templates mode="#current"/>
-    </xsl:template> 
+    </xsl:template>
 
     <xsl:template match="text()" mode="GET_VARIABLE">
-    </xsl:template> 
+    </xsl:template>
 
     <xsl:template match="style:variable" mode="GET_VARIABLE">
         <xsl:param name="prmXmlLang" tunnel="yes" required="yes" as="xs:string?"/>
@@ -200,12 +199,12 @@
             </xsl:if>
             <xsl:copy-of select="child::node()"/>
         </xsl:copy>
-    </xsl:template> 
-    
+    </xsl:template>
+
     <xsl:template match="style:include[string(@href)]" mode="GET_VARIABLE">
         <xsl:apply-templates select="document(string(@href),.)" mode="#current"/>
     </xsl:template>
-        
+
     <!-- Original style definition
          Style is expanded over the languages used in the map.
          They are all correspond to specific language.
@@ -228,14 +227,14 @@
             </xsl:for-each>
         </xsl:document>
     </xsl:variable>
-    
+
     <xsl:template match="style:*" mode="GET_ATTRIBUTE">
         <xsl:apply-templates mode="#current"/>
-    </xsl:template> 
+    </xsl:template>
 
     <xsl:template match="text()" mode="GET_ATTRIBUTE">
-    </xsl:template> 
-    
+    </xsl:template>
+
     <xsl:template match="style:attribute-set" mode="GET_ATTRIBUTE">
         <xsl:param name="prmXmlLang" tunnel="yes" required="yes" as="xs:string?"/>
         <xsl:copy>
@@ -245,8 +244,8 @@
             </xsl:if>
             <xsl:copy-of select="child::node()"/>
         </xsl:copy>
-    </xsl:template> 
-    
+    </xsl:template>
+
     <xsl:template match="style:include[string(@href)]" mode="GET_ATTRIBUTE">
         <xsl:apply-templates select="document(concat($fileUrlPrefix,string(@href)),.)" mode="#current"/>
     </xsl:template>
@@ -267,14 +266,14 @@
             </xsl:for-each>
         </xsl:document>
     </xsl:variable>
-    
+
     <xsl:template match="style:*" mode="GET_INSTREAM_OBJECTS">
         <xsl:apply-templates mode="#current"/>
-    </xsl:template> 
+    </xsl:template>
 
     <xsl:template match="text()" mode="GET_INSTREAM_OBJECTS">
-    </xsl:template> 
-    
+    </xsl:template>
+
     <xsl:template match="style:instream-object" mode="GET_INSTREAM_OBJECTS">
         <xsl:param name="prmXmlLang" tunnel="yes" required="yes" as="xs:string?"/>
         <xsl:copy>
@@ -284,8 +283,8 @@
             </xsl:if>
             <xsl:copy-of select="child::node()"/>
         </xsl:copy>
-    </xsl:template> 
-    
+    </xsl:template>
+
     <xsl:template match="style:include[string(@href)]" mode="GET_INSTREAM_OBJECTS">
         <xsl:apply-templates select="document(string(@href),.)" mode="#current"/>
     </xsl:template>
@@ -306,14 +305,14 @@
             </xsl:for-each>
         </xsl:document>
     </xsl:variable>
-    
+
     <xsl:template match="style:*" mode="GET_FORMATTING_OBJECTS">
         <xsl:apply-templates mode="#current"/>
-    </xsl:template> 
+    </xsl:template>
 
     <xsl:template match="text()" mode="GET_FORMATTING_OBJECTS">
-    </xsl:template> 
-    
+    </xsl:template>
+
     <xsl:template match="style:formatting-object" mode="GET_FORMATTING_OBJECTS">
         <xsl:param name="prmXmlLang" tunnel="yes" required="yes" as="xs:string?"/>
         <xsl:copy>
@@ -323,8 +322,8 @@
             </xsl:if>
             <xsl:copy-of select="child::node()"/>
         </xsl:copy>
-    </xsl:template> 
-    
+    </xsl:template>
+
     <xsl:template match="style:include[string(@href)]" mode="GET_FORMATTING_OBJECTS">
         <xsl:apply-templates select="document(string(@href),.)" mode="#current"/>
     </xsl:template>
@@ -345,14 +344,14 @@
             </xsl:for-each>
         </xsl:document>
     </xsl:variable>
-    
+
     <xsl:template match="style:*" mode="GET_XML_OBJECTS">
         <xsl:apply-templates mode="#current"/>
-    </xsl:template> 
+    </xsl:template>
 
     <xsl:template match="text()" mode="GET_XML_OBJECTS">
-    </xsl:template> 
-    
+    </xsl:template>
+
     <xsl:template match="style:xml-object" mode="GET_XML_OBJECTS">
         <xsl:param name="prmXmlLang" tunnel="yes" required="yes" as="xs:string?"/>
         <xsl:copy>
@@ -362,16 +361,16 @@
             </xsl:if>
             <xsl:copy-of select="child::node()"/>
         </xsl:copy>
-    </xsl:template> 
-    
+    </xsl:template>
+
     <xsl:template match="style:include[string(@href)]" mode="GET_XML_OBJECTS">
         <xsl:apply-templates select="document(string(@href),.)" mode="#current"/>
     </xsl:template>
 
-    <!-- 
+    <!--
         =======================================================
-         Temporary tree of variable & style that references 
-         are resolved. 
+         Temporary tree of variable & style that references
+         are resolved.
         =======================================================
     -->
     <xsl:variable name="glVarDefs" as="document-node()">
@@ -380,36 +379,36 @@
             </xsl:apply-templates>
         </xsl:document>
     </xsl:variable>
-    
+
     <xsl:variable name="glStyleDefs" as="document-node()">
         <xsl:document>
             <xsl:apply-templates select="$glOrgStyleDefs/style:attribute-set" mode="MAKE_DEFINITION">
-            </xsl:apply-templates>    
+            </xsl:apply-templates>
         </xsl:document>
     </xsl:variable>
 
     <xsl:variable name="glInstreamObjects" as="document-node()">
         <xsl:document>
             <xsl:apply-templates select="$glOrgInstreamObjects/style:instream-object" mode="MAKE_DEFINITION">
-            </xsl:apply-templates>    
+            </xsl:apply-templates>
         </xsl:document>
     </xsl:variable>
 
     <xsl:variable name="glFormattingObjects" as="document-node()">
         <xsl:document>
             <xsl:apply-templates select="$glOrgFormattingObjects/style:formatting-object" mode="MAKE_DEFINITION">
-            </xsl:apply-templates>    
+            </xsl:apply-templates>
         </xsl:document>
     </xsl:variable>
 
     <xsl:variable name="glXmlObjects" as="document-node()">
         <xsl:document>
             <xsl:apply-templates select="$glOrgXmlObjects/style:xml-object" mode="MAKE_DEFINITION">
-            </xsl:apply-templates>    
+            </xsl:apply-templates>
         </xsl:document>
     </xsl:variable>
 
-    <!-- 
+    <!--
          style:instream-object,style:formatting-object,style:xml-object template
          Generate element name: instream-object,formatting-object,xml-object
          Notes: Only copy the contents.
@@ -420,8 +419,8 @@
             <xsl:copy-of select="child::node()"/>
         </xsl:element>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
          style:variable template
          Generate element name: variable
          Generate attribute: style:variable/@*
@@ -451,7 +450,7 @@
                         <xsl:with-param name="prmOutputType" select="if (exists($varElem/@output-type)) then string($varElem/@output-type) else $defaultOutputType"/>
                     </xsl:call-template>
                 </xsl:when>
- 
+
                 <!-- '%plug-in-path%' expresses plug-in path. Assume attribute value as path description and expand it into absolute path.
                      Attribute value can have 'url(%plug-in-path%～)' format.
                      This cannnot be processed recursively. '%plug-in-path%' must be written only once.
@@ -470,12 +469,12 @@
             </xsl:choose>
         </xsl:element>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
          expandExp template
          Function： Expand expression that includes variable reference.
                     Variable can be obtained from variable temporary tree ($glOrgVarDefs).
-         Parameter: prmXmlLang: xml:lang 
+         Parameter: prmXmlLang: xml:lang
                     prmDocType: Document type
                     prmPaperSize: Paper size
          Note:  Variable temporary tree is stored in $glOrgVarDefs.
@@ -491,14 +490,14 @@
                 <variable name="index_H_top">( $index_K_top + $index_K_height ) + 0.7mm</variable>
       -->
     <xsl:variable name="expandExpRegX" as="xs:string" select="'[\s\(\),\*\+]+?'"/>
-    
+
     <xsl:template name="expandExp" as="xs:string">
         <xsl:param name="prmExp" required="yes" as="xs:string"/>
         <xsl:param name="prmXmlLang" required="yes" as="xs:string?"/>
         <xsl:param name="prmDocType" required="yes" as="xs:string?"/>
         <xsl:param name="prmPaperSize" required="yes" as="xs:string?"/>
         <xsl:param name="prmOutputType" required="yes" as="xs:string?"/>
-        
+
         <!--xsl:message select="'[expandExp] $prmExp=''',$prmExp,''''"/-->
         <xsl:variable name="tempExpandedExp" as="xs:string*">
             <!-- Tokenize using regular expression -->
@@ -661,7 +660,7 @@
         <xsl:sequence select="string-join($tempExpandedExp,'')"/>
     </xsl:template>
 
-    <!-- 
+    <!--
          style:attribute-set template
          Generate element: attribute-set
          Generate attributes:  style:attribute-set/@*
@@ -679,7 +678,7 @@
         <!-- Logical check -->
         <xsl:if test="@*[not(name() = $styleAttrs)]">
             <xsl:call-template name="errorExit">
-                <xsl:with-param name="prmMes" 
+                <xsl:with-param name="prmMes"
                     select="ahf:replace($stMes900,('%attribute-set-name','%attribute'),(string(@name),string(name(@*[not(name() = $styleAttrs)][1]))))"/>
             </xsl:call-template>
         </xsl:if>
@@ -692,7 +691,7 @@
                         <!-- Circular reference check -->
                         <xsl:if test="$name eq $useAttrSetName">
                             <xsl:call-template name="errorExit">
-                                <xsl:with-param name="prmMes" 
+                                <xsl:with-param name="prmMes"
                                  select="ahf:replace($stMes902,('%attribute-set-name'),($name))"/>
                             </xsl:call-template>
                         </xsl:if>
@@ -716,7 +715,7 @@
         </xsl:element>
     </xsl:template>
 
-    <!-- 
+    <!--
          processUseAttributeSet template
          function: Process attribute-set element recursively and returns attribute()*.
          param: prmAttributeSet：Name of attribute-set
@@ -730,7 +729,7 @@
         <xsl:param name="prmDocType" required="yes" as="xs:string?"/>
         <xsl:param name="prmPaperSize" required="yes" as="xs:string?"/>
         <xsl:param name="prmOutputType" required="yes" as="xs:string?"/>
-        
+
         <!--xsl:message select="'[processUseAttributeSet] $prmAttributeSet=',$prmAttributeSet,' $prmXmlLang=',$prmXmlLang,' $prmDocType=',$prmDocType,' $prmPaperSize=',$prmPaperSize"/-->
         <xsl:variable name="attrSetElements" as="element()*" select="root($prmCurrentElement)/style:attribute-set[string(@name) eq $prmAttributeSet][string(@xml:lang) eq string($prmXmlLang)]"/>
         <xsl:variable name="orderedAttrSetElements" as="element()*">
@@ -782,19 +781,19 @@
             <xsl:with-param name="prmOutputType" select="$prmOutputType"/>
         </xsl:apply-templates>
     </xsl:template>
-    
+
     <xsl:template match="style:attribute-set" mode="USE-ATTRIBUTE-SETS" as="attribute()*">
         <xsl:param name="prmXmlLang" required="yes" as="xs:string"/>
         <xsl:param name="prmDocType" required="yes" as="xs:string?"/>
         <xsl:param name="prmPaperSize" required="yes" as="xs:string?"/>
         <xsl:param name="prmOutputType" required="yes" as="xs:string?"/>
-        
+
         <xsl:variable name="currentElement" select="."/>
         <xsl:variable name="name" select="string(@name)" as="xs:string"/>
         <!-- Attribute logical check -->
         <xsl:if test="@*[not(name() = $styleAttrs)]">
             <xsl:call-template name="errorExit">
-                <xsl:with-param name="prmMes" 
+                <xsl:with-param name="prmMes"
                  select="ahf:replace($stMes900,('%attribute-set-name','%attribute'),(string(@name),string(name(@*[not(name() = $styleAttrs)][1]))))"/>
             </xsl:call-template>
         </xsl:if>
@@ -803,7 +802,7 @@
                 <!-- Check if one reference oneself. -->
                 <xsl:if test="$name eq string(.)">
                     <xsl:call-template name="errorExit">
-                        <xsl:with-param name="prmMes" 
+                        <xsl:with-param name="prmMes"
                          select="ahf:replace($stMes902,('%attribute-set-name'),($name))"/>
                     </xsl:call-template>
                 </xsl:if>
@@ -824,8 +823,8 @@
             <xsl:with-param name="prmOutputType" select="$prmOutputType"/>
         </xsl:apply-templates>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
          style:attribute template
          Generate element name: style:attribute/@name
          Text: style:attribute/text()
@@ -842,16 +841,16 @@
         <xsl:param name="prmDocType" required="yes" as="xs:string?"/>
         <xsl:param name="prmPaperSize" required="yes" as="xs:string?"/>
         <xsl:param name="prmOutputType" required="yes" as="xs:string?"/>
-        
+
         <xsl:variable name="attName" as="xs:string" select="string(@name)"/>
         <xsl:variable name="attValue" as="xs:string" select="if (@select) then string(@select) else string(.)"/>
-        
+
         <!--
         <xsl:message>[style:attribute] $attName="<xsl:value-of select="$attName"/>" $attValue="<xsl:value-of select="$attValue"/>"</xsl:message>
         -->
-        
+
         <!-- Saxon HE does not support checking xs:NMTOKEN
-             The PE version will be needed. If invelid attribute name is specified, this stylesheet will cause error 
+             The PE version will be needed. If invelid attribute name is specified, this stylesheet will cause error
              in the next xsl:attribute statement.
         -->
         <!--
@@ -861,7 +860,7 @@
             </xsl:call-template>
         </xsl:if>
         -->
-        
+
         <xsl:attribute name="{$attName}">
             <xsl:choose>
                 <!-- '$' is a variable reference. Get the actual variable value.-->
@@ -894,8 +893,8 @@
             </xsl:choose>
         </xsl:attribute>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
          expandVarRef template
          Function: Recursively process the varible reference and return the result text.
          Parameter: prmSrcString：String that contains variable reference.
@@ -908,7 +907,7 @@
         <xsl:param name="prmDocType" required="yes" as="xs:string?"/>
         <xsl:param name="prmPaperSize" required="yes" as="xs:string?"/>
         <xsl:param name="prmOutputType" required="yes" as="xs:string?"/>
-        
+
         <xsl:variable name="tempExpandedExp" as="xs:string*">
             <!-- Tokenize using regular expression -->
             <xsl:analyze-string select="$prmSrcString" regex="{$expandExpRegX}">
@@ -944,8 +943,8 @@
         </xsl:variable>
         <xsl:sequence select="string-join($tempExpandedExp,'')"/>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
          styleDump template
          function: Save $glVarDefs, $glStyleDefs, $glInstreamObjects, glFormattingObjects, glXmlObjects to file for debugging.
          param: none
@@ -955,9 +954,9 @@
         <xsl:message>[styleDump] Saving $glVarDefs, $glStyleDefs, $glInstreamObjects, glFormattingObjects, glXmlObjects to file.</xsl:message>
 
         <!-- varibale -->
-        <xsl:result-document 
-            method="xml" 
-            encoding="UTF-8" 
+        <xsl:result-document
+            method="xml"
+            encoding="UTF-8"
             byte-order-mark="no"
             indent="yes"
             href="OrgVarDefs.xml">
@@ -965,9 +964,9 @@
                 <xsl:copy-of select="$glOrgVarDefs"/>
             </root>
         </xsl:result-document>
-        <xsl:result-document 
-            method="xml" 
-            encoding="UTF-8" 
+        <xsl:result-document
+            method="xml"
+            encoding="UTF-8"
             byte-order-mark="no"
             indent="yes"
             href="VarDefs.xml">
@@ -975,88 +974,88 @@
                 <xsl:copy-of select="$glVarDefs"/>
             </root>
         </xsl:result-document>
-        
+
         <!-- style -->
-        <xsl:result-document 
-            method="xml" 
-            encoding="UTF-8" 
-            byte-order-mark="no" 
+        <xsl:result-document
+            method="xml"
+            encoding="UTF-8"
+            byte-order-mark="no"
             indent="yes"
             href="OrgStyleDefs.xml">
             <root>
                 <xsl:copy-of select="$glOrgStyleDefs"/>
             </root>
         </xsl:result-document>
-        <xsl:result-document 
-            method="xml" 
-            encoding="UTF-8" 
-            byte-order-mark="no" 
+        <xsl:result-document
+            method="xml"
+            encoding="UTF-8"
+            byte-order-mark="no"
             indent="yes"
             href="StyleDefs.xml">
             <root>
                 <xsl:copy-of select="$glStyleDefs"/>
             </root>
         </xsl:result-document>
-        
+
         <!-- instream object -->
-        <xsl:result-document 
-            method="xml" 
-            encoding="UTF-8" 
-            byte-order-mark="no" 
+        <xsl:result-document
+            method="xml"
+            encoding="UTF-8"
+            byte-order-mark="no"
             indent="yes"
             href="OrgInstreamObjects.xml">
             <root>
                 <xsl:copy-of select="$glOrgInstreamObjects"/>
             </root>
         </xsl:result-document>
-        <xsl:result-document 
-            method="xml" 
-            encoding="UTF-8" 
-            byte-order-mark="no" 
+        <xsl:result-document
+            method="xml"
+            encoding="UTF-8"
+            byte-order-mark="no"
             indent="yes"
             href="InstreamObjects.xml">
             <root>
                 <xsl:copy-of select="$glInstreamObjects"/>
             </root>
         </xsl:result-document>
-        
+
         <!-- formatting object -->
-        <xsl:result-document 
-            method="xml" 
-            encoding="UTF-8" 
-            byte-order-mark="no" 
+        <xsl:result-document
+            method="xml"
+            encoding="UTF-8"
+            byte-order-mark="no"
             indent="yes"
             href="OrgFormattingObjects.xml">
             <root>
                 <xsl:copy-of select="$glOrgFormattingObjects"/>
             </root>
         </xsl:result-document>
-        <xsl:result-document 
-            method="xml" 
-            encoding="UTF-8" 
-            byte-order-mark="no" 
+        <xsl:result-document
+            method="xml"
+            encoding="UTF-8"
+            byte-order-mark="no"
             indent="yes"
             href="FormattingObjects.xml">
             <root>
                 <xsl:copy-of select="$glFormattingObjects"/>
             </root>
         </xsl:result-document>
-        
+
         <!-- XML object -->
-        <xsl:result-document 
-            method="xml" 
-            encoding="UTF-8" 
-            byte-order-mark="no" 
+        <xsl:result-document
+            method="xml"
+            encoding="UTF-8"
+            byte-order-mark="no"
             indent="yes"
             href="OrgXmlObjects.xml">
             <root>
                 <xsl:copy-of select="$glOrgXmlObjects"/>
             </root>
         </xsl:result-document>
-        <xsl:result-document 
-            method="xml" 
-            encoding="UTF-8" 
-            byte-order-mark="no" 
+        <xsl:result-document
+            method="xml"
+            encoding="UTF-8"
+            byte-order-mark="no"
             indent="yes"
             href="XmlObjects.xml">
             <root>
@@ -1064,12 +1063,12 @@
             </root>
         </xsl:result-document>
     </xsl:template>
-    
+
     <!--
-     function:    Get nomalized xml:lang 
+     function:    Get nomalized xml:lang
      param:        prmXmlLang
      return:    Normalized xml:lang value
-     note:        
+     note:
      -->
     <xsl:function name="ahf:nomalizeXmlLang" as="xs:string">
         <xsl:param name="prmXmlLang" as="xs:string"/>
@@ -1082,9 +1081,9 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
+
     <!--
-     function:    Compare two strings as sequence of strings 
+     function:    Compare two strings as sequence of strings
      param:        prmSrc, prmDst
      return:    xs:boolean
      note:        If $prmSrc exists in $prmDst, returns true().
@@ -1095,8 +1094,8 @@
                 $prmSrc="XYZ"
                 $prmDst="ABC DEF GHI"
                 Result: false()
-                
-                ahf:strNotEqualAsSeq returns true when there is no same members 
+
+                ahf:strNotEqualAsSeq returns true when there is no same members
                 between two sequence generatetd from $prmSrc and $prmDst.
      -->
     <xsl:function name="ahf:strEqualAsSeq" as="xs:boolean">
@@ -1105,12 +1104,12 @@
         <xsl:variable name="srcExpanded" as="xs:string*">
             <xsl:for-each select="tokenize($prmSrc, '[\s]+')">
                 <xsl:sequence select="."/>
-            </xsl:for-each>    
+            </xsl:for-each>
         </xsl:variable>
         <xsl:variable name="dstExpanded" as="xs:string*">
             <xsl:for-each select="tokenize($prmDst, '[\s]+')">
                 <xsl:sequence select="."/>
-            </xsl:for-each>    
+            </xsl:for-each>
         </xsl:variable>
         <xsl:sequence select="$srcExpanded = $dstExpanded"/>
     </xsl:function>
@@ -1121,15 +1120,15 @@
         <xsl:variable name="srcExpanded" as="xs:string*">
             <xsl:for-each select="tokenize($prmSrc, '[\s]+')">
                 <xsl:sequence select="."/>
-            </xsl:for-each>    
+            </xsl:for-each>
         </xsl:variable>
         <xsl:variable name="dstExpanded" as="xs:string*">
             <xsl:for-each select="tokenize($prmDst, '[\s]+')">
                 <xsl:sequence select="."/>
-            </xsl:for-each>    
+            </xsl:for-each>
         </xsl:variable>
         <xsl:sequence select="not($srcExpanded = $dstExpanded)"/>
     </xsl:function>
-    
+
 
 </xsl:stylesheet>

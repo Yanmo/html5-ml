@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0" 
-    xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
     xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
     xmlns:ahs="http://www.antennahouse.com/names/XSLT/Document/Layout"
     exclude-result-prefixes="xs ahf"
     >
 
-    <!-- 
+    <!--
          function:    Expand FO style & property into attribute()*
          param:        prmElem
          return:    Attribute node
@@ -25,14 +23,14 @@
         <xsl:param name="prmElem" required="no" as="element()" select="."/>
         <xsl:sequence select="ahf:getFoStyleAndProperty($prmElem)"/>
     </xsl:template>
-    
+
     <xsl:function name="ahf:getFoStyleAndProperty" as="attribute()*">
         <xsl:param name="prmElem" as="element()"/>
         <xsl:sequence select="ahf:getFoStyle($prmElem)"/>
         <xsl:sequence select="ahf:getFoProperty($prmElem)"/>
     </xsl:function>
 
-    <!-- 
+    <!--
          function:    Expand FO style into attribute()*
          param:        prmElem
          return:    Attribute node
@@ -51,7 +49,7 @@
         </xsl:choose>
     </xsl:function>
 
-    <!-- 
+    <!--
          function:    Expand FO property into attribute()*
          param:        prmElem
          return:    Attribute node
@@ -62,7 +60,7 @@
     -->
     <xsl:function name="ahf:getFoProperty" as="attribute()*">
         <xsl:param name="prmElem" as="element()"/>
-        
+
         <xsl:choose>
             <xsl:when test="exists($prmElem/@fo:prop)">
                 <xsl:variable name="foAttr" as="xs:string" select="normalize-space(string($prmElem/@fo:prop))"/>
@@ -86,7 +84,7 @@
                                         <xsl:sequence select="$tempPropName"/>
                                     </xsl:otherwise>
                                 </xsl:choose>
-                            </xsl:variable>                            
+                            </xsl:variable>
                             <xsl:variable name="propValue" as="xs:string" select="normalize-space(substring-after($propDesc,':'))"/>
                             <xsl:choose>
                                 <xsl:when test="not(string($propName))"/>
@@ -103,7 +101,7 @@
                                         <xsl:with-param name="prmMes" select="ahf:replace($stMes802,('%propName','%xtrc','%xtrf'),($propName,string($prmElem/@xtrc),string($prmElem/@xtrf)))"/>
                                     </xsl:call-template>
                                 </xsl:otherwise>
-                            </xsl:choose>                            
+                            </xsl:choose>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:call-template name="warningContinue">
@@ -119,7 +117,7 @@
         </xsl:choose>
     </xsl:function>
 
-    <!-- 
+    <!--
          function:    Expand FO property into attribute()*
                     Replacing text() with given parameters ($prmSrc, $prmDst).
          param:        prmElem,$prmSrc,$prmDst
@@ -131,7 +129,7 @@
         <xsl:param name="prmElem" as="element()"/>
         <xsl:param name="prmSrc" as="xs:string+"/>
         <xsl:param name="prmDst" as="xs:string+"/>
-        
+
         <xsl:choose>
             <xsl:when test="exists($prmElem/@fo:prop)">
                 <xsl:variable name="foAttr" as="xs:string" select="normalize-space(string($prmElem/@fo:prop))"/>
@@ -151,7 +149,7 @@
                                         <xsl:sequence select="$tempPropName"/>
                                     </xsl:otherwise>
                                 </xsl:choose>
-                            </xsl:variable>                            
+                            </xsl:variable>
                             <xsl:variable name="propValue" as="xs:string" select="normalize-space(substring-after($propDesc,':'))"/>
                             <xsl:choose>
                                 <!--"castable as xs:NAME" can be used only in Saxon PE or EE.
@@ -168,7 +166,7 @@
                                         <xsl:with-param name="prmMes" select="ahf:replace($stMes806,('%propName','%xtrc','%xtrf'),($propName,string($prmElem/@xtrc),string($prmElem/@xtrf)))"/>
                                     </xsl:call-template>
                                 </xsl:otherwise>
-                            </xsl:choose>                            
+                            </xsl:choose>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:call-template name="warningContinue">
@@ -183,8 +181,8 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
          function:    Expand FO property into attribute()*
                     Replacing text() with given page related parameters.
                     %paper-width is replaced with $pPaperWidth
@@ -205,20 +203,20 @@
             ('%paper-width','%paper-height','%crop-size-h','%crop-size-v','%bleed-size'),
             ($pPaperWidth,$pPaperHeight,$pCropSizeH,$pCropSizeV,$pBleedSize))"/>
     </xsl:function>
-    
 
-    <!-- 
+
+    <!--
          function:    Expand stylesheet specific property into attribute()*
                     Stylesheet oriented property has prefix "ahs-" as its signature and written in fo:prop attribute for convenience.
          param:        prmElem
          return:    Attribute node ("http://www.antennahouse.com/names/XSLT/Document/Layout" namespace)
          note:        Stylesheet specific property is not XSL-FO property.
-                    It is used to override the style defined default_style.xml or others. 
+                    It is used to override the style defined default_style.xml or others.
                     2016-02-20 t,makita
     -->
     <xsl:function name="ahf:getStylesheetProperty" as="attribute()*">
         <xsl:param name="prmElem" as="element()"/>
-        
+
         <xsl:choose>
             <xsl:when test="exists($prmElem/@fo:prop)">
                 <xsl:variable name="foAttr" as="xs:string" select="normalize-space(string($prmElem/@fo:prop))"/>
@@ -239,14 +237,14 @@
                                         <xsl:sequence select="''"/>
                                     </xsl:otherwise>
                                 </xsl:choose>
-                            </xsl:variable>                            
+                            </xsl:variable>
                             <xsl:variable name="propValue" as="xs:string" select="normalize-space(substring-after($propDesc,':'))"/>
                             <xsl:choose>
                                 <xsl:when test="not(string($propName))"/>
                                 <xsl:when test="true()">
                                     <xsl:attribute name="{$propName}" select="$propValue"/>
                                 </xsl:when>
-                            </xsl:choose>                            
+                            </xsl:choose>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:call-template name="warningContinue">

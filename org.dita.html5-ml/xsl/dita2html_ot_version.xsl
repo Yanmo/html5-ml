@@ -12,24 +12,22 @@ URL : http://www.antennahouse.co.jp/
 **************************************************************
 -->
 
-<xsl:stylesheet version="2.0" 
-    xmlns:fo="http://www.w3.org/1999/XSL/Format" 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+<xsl:stylesheet version="2.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
     xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
     exclude-result-prefixes="xs ahf" >
-    
-    <!-- 
+
+    <!--
      function:    Compare DITA-OT version.
      param:        prmVersion1: Version 1
-                prmVersion2: Version 2 
+                prmVersion2: Version 2
      return:    xs:integer?
                 -1: Version 1 < Version 2
                  0: Version 1 = Version 2
                  1: Version 1 > Version 2
                  (): Error
-     note:      
+     note:
     -->
     <xsl:function name="ahf:compareOtVersion" as="xs:integer?">
         <xsl:param name="prmVer1" as="xs:string"/>
@@ -52,22 +50,22 @@ URL : http://www.antennahouse.co.jp/
         </xsl:variable>
         <xsl:sequence select="ahf:compareOtVersionNo($ver1Seq,$ver2Seq)"/>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    Compare DITA-OT version No.
      param:        prmVersion1: Version 1
-                prmVersion2: Version 2 
+                prmVersion2: Version 2
      return:    xs:integer?
                 -1: Version 1 < Version 2
                  0: Version 1 = Version 2
                  1: Version 1 > Version 2
                  (): Error
-     note:      
+     note:
     -->
     <xsl:function name="ahf:compareOtVersionNo" as="xs:integer?">
         <xsl:param name="prmVer1" as="xs:string*"/>
         <xsl:param name="prmVer2" as="xs:string*"/>
-        
+
         <xsl:choose>
             <xsl:when test="exists($prmVer1[1]) and exists($prmVer2[1])">
                 <xsl:variable name="verNo1" as="xs:integer?" select="ahf:getOtVersionNo($prmVer1[1])"/>
@@ -109,12 +107,12 @@ URL : http://www.antennahouse.co.jp/
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    Get OT version number.
      param:        prmVersionNo
      return:    xs:integer?
-     note:      
+     note:
     -->
     <xsl:function name="ahf:getOtVersionNo" as="xs:integer?">
         <xsl:param name="prmVerNo" as="xs:string"/>
@@ -128,5 +126,5 @@ URL : http://www.antennahouse.co.jp/
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
+
 </xsl:stylesheet>

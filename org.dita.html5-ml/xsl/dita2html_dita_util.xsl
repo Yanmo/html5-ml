@@ -12,24 +12,22 @@ URL : http://www.antennahouse.co.jp/
 **************************************************************
 -->
 
-<xsl:stylesheet version="2.0" 
-    xmlns:fo="http://www.w3.org/1999/XSL/Format" 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+<xsl:stylesheet version="2.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:svg="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-     xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
-     xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
-     xmlns:ahd="http://www.antennahouse.com/names/XSLT/Debugging"
-     exclude-result-prefixes="xs ahf" >
+    xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
+    xmlns:ahd="http://www.antennahouse.com/names/XSLT/Debugging"
+    exclude-result-prefixes="xs ahf" >
 
     <!--
     ===============================================
      DITA Utility Templates
     ===============================================
     -->
-    
-    <!-- 
+
+    <!--
       ============================================
          toc utility
       ============================================
@@ -41,15 +39,15 @@ URL : http://www.antennahouse.co.jp/
     -->
     <xsl:function name="ahf:isToc" as="xs:boolean">
         <xsl:param name="prmValue" as ="element()"/>
-        
+
         <xsl:sequence select="not(ahf:isTocNo($prmValue))"/>
     </xsl:function>
-    
-    <!-- 
-     function:    Check @toc="no" 
+
+    <!--
+     function:    Check @toc="no"
      param:        prmTopicRef
      return:    xs:boolean
-     note:        
+     note:
      -->
     <xsl:function name="ahf:isTocNo" as="xs:boolean">
         <xsl:param name="prmTopicRef" as="element()"/>
@@ -63,11 +61,11 @@ URL : http://www.antennahouse.co.jp/
         </xsl:choose>
     </xsl:function>
 
-    <!-- 
-     function:    Get topic from topicref 
+    <!--
+     function:    Get topic from topicref
      param:        prmTopicRef
      return:    xs:element?
-     note:        
+     note:
      -->
     <xsl:function name="ahf:getTopicFromTopicRef" as="element()?">
         <xsl:param name="prmTopicRef" as="element()"/>
@@ -75,17 +73,17 @@ URL : http://www.antennahouse.co.jp/
         <xsl:variable name="topicContent" select="if (string($id)) then key('topicById', $id, $root)[1] else ()" as="element()?"/>
         <xsl:sequence select="$topicContent"/>
     </xsl:function>
-    
+
     <xsl:function name="ahf:getTopicFromLink" as="element()?">
         <xsl:param name="prmLink" as="element()"/>
         <xsl:sequence select="ahf:getTopicFromTopicRef($prmLink)"/>
     </xsl:function>
 
-    <!-- 
-     function:    Get topic from href 
+    <!--
+     function:    Get topic from href
      param:        prmHref
      return:    xs:element?
-     note:        
+     note:
      -->
     <xsl:function name="ahf:getTopicFromHref" as="element()?">
         <xsl:param name="prmHref" as="xs:string"/>
@@ -93,15 +91,15 @@ URL : http://www.antennahouse.co.jp/
         <xsl:sequence select="$topicContent"/>
     </xsl:function>
 
-    <!-- 
+    <!--
      function:    Get topicref from topic
      param:        prmTopicContent
      return:    topicref
-     note:        
+     note:
      -->
     <xsl:function name="ahf:getTopicRef" as="element()?">
         <xsl:param name="prmTopic" as="element()?"/>
-        
+
         <xsl:choose>
             <xsl:when test="empty($prmTopic)">
                 <!-- invalid parameter -->
@@ -130,17 +128,17 @@ URL : http://www.antennahouse.co.jp/
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    Generate topic file name as @ahd:topic attribute for debugging
      param:        prmTopic
      return:    attribute()
-     note:        
+     note:
      -->
     <xsl:template name="ahf:getTopicFileNameAsAttr" as="attribute()">
         <xsl:sequence select="ahf:getTopicFileNameAsAttr(.)"/>
     </xsl:template>
-    
+
     <xsl:function name="ahf:getTopicFileNameAsAttr" as="attribute()">
         <xsl:param name="prmTopic" as="element()"/>
         <xsl:variable name="topicFileName" as="xs:string" select="ahf:substringAfterLast(ahf:bsToSlash(string($prmTopic/@xtrf)),'/')"/>

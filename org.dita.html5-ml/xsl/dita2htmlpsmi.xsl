@@ -10,19 +10,18 @@
 
 This semantic, its stylesheet file, and the information contained herein is
 provided on an "AS IS" basis and CRANE SOFTWRIGHTS LTD. DISCLAIMS
-ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO 
+ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
 ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE
-ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS 
+ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS
 FOR A PARTICULAR PURPOSE.
 
- 2009/07/15 Modified by t.makita Antenna House, Inc. 
+ 2009/07/15 Modified by t.makita Antenna House, Inc.
  - Change encoding to UTF-8.
  - Change XSLT version from 1.0 to 2.0.
  - Remove some restrictions.
 
 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:fo="http://www.w3.org/1999/XSL/Format"
                 xmlns:psmi="http://www.CraneSoftwrights.com/resources/psmi"
                 xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
                 xmlns:ahp="http://www.antennahouse.com/names/XSLT/Document/PageControl"
@@ -30,8 +29,8 @@ FOR A PARTICULAR PURPOSE.
                 version="2.0">
 
 
-  <!-- 
-     function:  Return psmi:page-sequence is for cover 
+  <!--
+     function:  Return psmi:page-sequence is for cover
      param:          prmPsmiPageSeq
      return:      xs:boolean
      note:          Added 2015-08-26 t.makita
@@ -45,9 +44,9 @@ FOR A PARTICULAR PURPOSE.
     <xsl:param name="prmPsmiPageSeq" as="element(psmi:page-sequence)"/>
     <xsl:sequence select="not(ahf:isCover($prmPsmiPageSeq))"/>
   </xsl:function>
-  
-  <!-- 
-     function:  Return that the element is first effective occurence in fo:page-sequence 
+
+  <!--
+     function:  Return that the element is first effective occurence in fo:page-sequence
      param:          prmElem
      return:      xs:boolean
      note:          Added 2015-08-26 t.makita
@@ -69,7 +68,7 @@ FOR A PARTICULAR PURPOSE.
       </xsl:otherwise>
     </xsl:choose>
   </xsl:function>
-  
+
     <!--==========================================================================
       Handle a sequence of pages, only if it has the expected psmi:page-sequence
       children in the flow.
@@ -99,11 +98,11 @@ FOR A PARTICULAR PURPOSE.
         </xsl:otherwise>
       </xsl:choose>
     </xsl:template>
-    
+
     <!--==========================================================================
       Create a page sequence from the flow.
     -->
-    
+
     <xsl:template match="*" mode="psmi:do-flow-children">
       <fo:page-sequence>
                                                     <!--page-sequence attributes-->
@@ -127,7 +126,7 @@ FOR A PARTICULAR PURPOSE.
             2015-08-26 t.makita
          -->
         <!--xsl:if test="not(preceding-sibling::*)">
-          <xsl:copy-of select="../../@initial-page-number"/>      
+          <xsl:copy-of select="../../@initial-page-number"/>
         </xsl:if-->
         <xsl:choose>
           <xsl:when test="ahf:isFirstNonPsmiPageSeqOrPsmiPageSeqWoCover(.)">
@@ -137,7 +136,7 @@ FOR A PARTICULAR PURPOSE.
             <xsl:copy-of select="@initial-page-number[string(.) = ('auto','auto-odd','auto-even','inherit')]"/>
           </xsl:when>
         </xsl:choose>
-        
+
         <!--only preserve specified force-page-count= on last page sequence
             FIX: Remove setting attribute force-page-count="no-force"
                  because there is need to set this attribute for other value.
@@ -147,7 +146,7 @@ FOR A PARTICULAR PURPOSE.
                      self::psmi:page-sequence/following-sibling::*"><!--not last-->
           <!--xsl:attribute name="force-page-count">no-force</xsl:attribute-->
         </xsl:if>
-    
+
         <xsl:choose>
           <xsl:when test="self::psmi:page-sequence">
                                      <!--psmi:page-sequence title has precedence-->
@@ -214,20 +213,20 @@ FOR A PARTICULAR PURPOSE.
         </xsl:otherwise>
       </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template name="copy-until-psmi" mode="copy-until-psmi" match="*">
       <xsl:if test="not(self::psmi:page-sequence)">
         <xsl:call-template name="psmi:preserve"/><!--copy this element-->
-        <xsl:apply-templates select="following-sibling::*[1]" 
+        <xsl:apply-templates select="following-sibling::*[1]"
                              mode="copy-until-psmi"/>
       </xsl:if>
     </xsl:template>
-    
-    
+
+
     <!--==========================================================================
       Handle the new semantic when found in the wrong context by reporting error.
     -->
-    
+
     <xsl:template match="psmi:page-sequence" name="unexpected-psmi">
       <xsl:message terminate="yes">
         <xsl:text>Unexpected parent </xsl:text>
@@ -239,25 +238,25 @@ FOR A PARTICULAR PURPOSE.
       </xsl:message>
       <xsl:apply-templates select="*"/>
     </xsl:template>
-    
+
     <!--==========================================================================
       Default handlers for other constructs.
     -->
-    
+
     <xsl:template match="psmi:*"><!--no other PSMI construct is defined-->
       <xsl:message>
         <xsl:text>Unrecognized construct ignored: </xsl:text>
         <xsl:call-template name="psmi:name-this"/>
       </xsl:message>
     </xsl:template>
-    
+
     <xsl:template match="*" name="psmi:preserve"><!--other constructs preserved-->
       <xsl:copy>
         <xsl:copy-of select="@*"/>
         <xsl:apply-templates/>
       </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template name="psmi:name-this">
       <xsl:value-of disable-output-escaping="yes"
                  select="concat('&lt;{',namespace-uri(),'}',local-name(),'&gt;')"/>

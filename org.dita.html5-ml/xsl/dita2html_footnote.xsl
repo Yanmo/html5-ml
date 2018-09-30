@@ -9,15 +9,14 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  exclude-result-prefixes="xs ahf"
 >
     <!--  makePostNote, makePostNoteSub, processPostnote are used when $PRM_DIPLAY_FN_AT_END_OF_TOPIC="yes"-->
-    <!-- 
+    <!--
      function:  postnote control
      param:     prmTopicRef, prmTopicContent
      return:    footnote lists
@@ -35,8 +34,8 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:  Make postnote sub
      param:     prmTopicRef, prmTopicContent
      return:    fo:block (postnote fo objects)
@@ -46,7 +45,7 @@ E-mail : info@antennahouse.com
     <xsl:template name="makePostNoteSub">
         <xsl:param name="prmTopicRef" required="yes" as="element()"/>
         <xsl:param name="prmTopicContent" required="yes" as="element()"/>
-        
+
         <!-- Make related-link title block -->
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteTitleBeforeBlock')"/>
@@ -64,13 +63,13 @@ E-mail : info@antennahouse.com
                 <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteLeader2')"/>
             </fo:leader>
         </fo:block>
-        
+
         <!-- process postnote -->
         <xsl:call-template name="processPostnote">
             <xsl:with-param name="prmTopicRef" select="$prmTopicRef"/>
             <xsl:with-param name="prmTopicContent" select="$prmTopicContent"/>
         </xsl:call-template>
-        
+
         <!-- Make postnote end block -->
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteTitleAfterBlock')"/>
@@ -79,8 +78,8 @@ E-mail : info@antennahouse.com
             </fo:leader>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:  Process postnote
      param:     prmTopicRef, prmTopicContent
      return:    postnote list blocks
@@ -89,12 +88,12 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template match="*[contains(@class, ' topic/fn ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsPostnoteLi'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template name="processPostnote">
         <xsl:param name="prmTopicRef" required="yes" as="element()"/>
         <xsl:param name="prmTopicContent" required="yes" as="element()"/>
-        
+
         <fo:list-block>
             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteListBlock')"/>
             <xsl:for-each select="$prmTopicContent/descendant::*[contains(@class,' topic/fn ')]">
@@ -106,7 +105,7 @@ E-mail : info@antennahouse.com
                     <xsl:if test="position() eq 1">
                         <xsl:attribute name="space-before" select="'0mm'"/>
                     </xsl:if>
-                    <fo:list-item-label end-indent="label-end()"> 
+                    <fo:list-item-label end-indent="label-end()">
                         <fo:block>
                             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteLabel')"/>
                             <xsl:value-of select="ahf:getFootnotePrefix($fn,$prmTopicRef)"/>
@@ -130,9 +129,9 @@ E-mail : info@antennahouse.com
             </xsl:for-each>
         </fo:list-block>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:  Footnote control
      param:     prmElement
      return:    footnote list
@@ -141,10 +140,10 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template name="makeFootNote">
         <xsl:param name="prmElement"  required="yes" as="element()"/>
-        
-        <xsl:variable name="upperElements"  select="$prmElement/ancestor::*[contains(@class, ' topic/table ')] | 
-                                                    $prmElement/ancestor::*[contains(@class, ' topic/simpletable ')] | 
-                                                    $prmElement/ancestor::*[contains(@class, ' topic/ul ')] | 
+
+        <xsl:variable name="upperElements"  select="$prmElement/ancestor::*[contains(@class, ' topic/table ')] |
+                                                    $prmElement/ancestor::*[contains(@class, ' topic/simpletable ')] |
+                                                    $prmElement/ancestor::*[contains(@class, ' topic/ul ')] |
                                                     $prmElement/ancestor::*[contains(@class, ' topic/ol ')] |
                                                     $prmElement/ancestor::*[contains(@class, ' topic/dl ')] |
                                                     $prmElement/ancestor::*[contains(@class, ' glossentry/glossdef ')]"
@@ -156,35 +155,35 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-        
-    <!-- 
+
+    <!--
      function:  Make footnote sub
      param:     prmTopicRef, prmElement
      return:    fo:block (footnote fo objects)
-     note:        
+     note:
      -->
     <xsl:template name="makeFootNoteSub">
         <xsl:param name="prmElement"  required="yes" as="element()"/>
-        
+
         <!-- Make related-link title block -->
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsFootNoteBeforeBlock')"/>
             <fo:inline>&#xA0;</fo:inline>
         </fo:block>
-        
+
         <!-- process postnote -->
         <xsl:call-template name="processFootNote">
             <xsl:with-param name="prmElement"  select="$prmElement"/>
         </xsl:call-template>
-        
+
         <!-- Make postnote end block -->
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsFootNoteAfterBlock')"/>
             <fo:inline>&#xA0;</fo:inline>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:  Process footnote
      param:     prmTopicRef, prmTopicContent
      return:    footnote list blocks
@@ -193,7 +192,7 @@ E-mail : info@antennahouse.com
      -->
     <xsl:template name="processFootNote">
         <xsl:param name="prmElement" required="yes" as="element()"/>
-        
+
         <fo:list-block>
             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteListBlock')"/>
             <xsl:for-each select="$prmElement/descendant::*[contains(@class,' topic/fn ')]">
@@ -205,7 +204,7 @@ E-mail : info@antennahouse.com
                     <xsl:if test="position() eq 1">
                         <xsl:attribute name="space-before" select="'0mm'"/>
                     </xsl:if>
-                    <fo:list-item-label end-indent="label-end()"> 
+                    <fo:list-item-label end-indent="label-end()">
                         <fo:block>
                             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteLabel')"/>
                             <xsl:value-of select="ahf:getFootnotePrefix2($fn,$prmElement)"/>
@@ -232,5 +231,5 @@ E-mail : info@antennahouse.com
             </xsl:for-each>
         </fo:list-block>
     </xsl:template>
-    
+
 </xsl:stylesheet>

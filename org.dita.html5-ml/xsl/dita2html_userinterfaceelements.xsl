@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="UTF-8" ?>
 <!--
 ****************************************************************
-DITA to XSL-FO Stylesheet 
+DITA to XSL-FO Stylesheet
 Module: User interface elements stylesheet
 Copyright © 2009-2009 Antenna House, Inc. All rights reserved.
 Antenna House is a trademark of Antenna House, Inc.
@@ -9,23 +9,22 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  exclude-result-prefixes="xs ahf"
 >
 
-    <!-- 
+    <!--
      function:    uicontrol template
-     param:        
+     param:
      return:    fo:inline
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class,' ui-d/uicontrol ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsUiControl'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class,' ui-d/uicontrol ')]" priority="2">
         <xsl:if test="parent::*[contains(@class, ' ui-d/menucascade ')]">
@@ -56,17 +55,17 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    wintitle template
-     param:        
+     param:
      return:    fo:inline
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' ui-d/wintitle ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsWinTitle'"/>
-    </xsl:template>    
-    
+    </xsl:template>
+
     <xsl:template match="*[contains(@class,' ui-d/wintitle ')]" priority="2">
         <fo:inline>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -75,17 +74,17 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:inline>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    menucascade template
-     param:        
+     param:
      return:    fo:inline
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' ui-d/menucascade ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsMenuCascade'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class,' ui-d/menucascade ')]" priority="2">
         <fo:inline>
@@ -95,17 +94,17 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    shortcut template
-     param:        
+     param:
      return:    fo:inline
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' ui-d/shortcut ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsShortcut'"/>
-    </xsl:template>    
-    
+    </xsl:template>
+
     <xsl:template match="*[contains(@class,' ui-d/shortcut ')]" priority="2">
         <fo:inline>
             <xsl:call-template name="getAttributeSetWithLang"/>
@@ -114,16 +113,16 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    screen template
-     param:        
+     param:
      return:    fo:block
-     note:        
+     note:
      -->
     <xsl:template match="*[contains(@class, ' ui-d/screen ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsScreen'"/>
-    </xsl:template>    
+    </xsl:template>
 
     <xsl:template match="*[contains(@class,' ui-d/screen ')]" priority="2">
         <xsl:variable name="screenAttr" as="attribute()*">

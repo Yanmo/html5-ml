@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="UTF-8" ?>
 <!--
 ****************************************************************
-DITA to XSL-FO Stylesheet 
+DITA to XSL-FO Stylesheet
 Module: Static content stylesheet
 Copyright © 2009-2009 Antenna House, Inc. All rights reserved.
 Antenna House is a trademark of Antenna House, Inc.
@@ -9,20 +9,18 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
- xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  exclude-result-prefixes="xs ahf"
 >
 
-    <!-- 
+    <!--
      function:    frontmatter static content template
      param:        none
      return:    fo:block
-     note:        current is topicref 
+     note:        current is topicref
      -->
     <xsl:template name="frontmatterBeforeLeft">
         <!-- No contents, border only -->
@@ -30,14 +28,14 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionBeforeLeftBlock')"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template name="frontmatterBeforeRight">
         <!-- No contents, border only -->
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionBeforeRightBlock')"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template name="frontmatterAfterLeft">
         <!--fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionAfterLeftBlock')"/>
@@ -63,7 +61,7 @@ E-mail : info@antennahouse.com
             <fo:retrieve-marker retrieve-class-name="{$cTitleBody}"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template name="frontmatterAfterRight">
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionAfterRightBlock')"/>
@@ -77,12 +75,12 @@ E-mail : info@antennahouse.com
             </fo:inline>
         </fo:block>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    part/chapter static content template
      param:        none
      return:    fo:block
-     note:        current is topicref 
+     note:        current is topicref
      -->
     <xsl:template name="chapterBeforeLeft">
         <!-- No contents, border only -->
@@ -90,14 +88,14 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionBeforeLeftBlock')"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template name="chapterBeforeRight">
         <!-- No contents, border only -->
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionBeforeRightBlock')"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template name="chapterAfterLeft">
         <!--fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionAfterLeftBlock')"/>
@@ -127,7 +125,7 @@ E-mail : info@antennahouse.com
             <fo:retrieve-marker retrieve-class-name="{$cTitleBody}"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template name="chapterAfterRight">
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionAfterRightBlock')"/>
@@ -146,7 +144,7 @@ E-mail : info@antennahouse.com
             </fo:inline>
         </fo:block>
     </xsl:template>
-    
+
     <!-- Current context is topicref
          2014-09-14 t.makita
      -->
@@ -170,7 +168,7 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
+
     <!-- Genrate thumbnail if this is online PDF.
          2014-09-14 t.makita
      -->
@@ -179,8 +177,8 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="chapterEndRight"/>
         </xsl:if>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    index static content template
      param:        none
      return:    fo:block
@@ -192,14 +190,14 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionBeforeLeftBlock')"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template name="indexBeforeRight">
         <!-- No contents, border only -->
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionBeforeRightBlock')"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template name="indexAfterLeft">
         <!--fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionAfterLeftBlock')"/>
@@ -225,7 +223,7 @@ E-mail : info@antennahouse.com
             <fo:retrieve-marker retrieve-class-name="{$cTitleBody}"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template name="indexAfterRight">
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionAfterRightBlock')"/>
@@ -239,7 +237,7 @@ E-mail : info@antennahouse.com
             </fo:inline>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template name="indexEndRight">
         <xsl:if test="$pAddThumbnailIndex">
             <xsl:call-template name="genThumbIndex">
@@ -254,12 +252,12 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="indexEndRight"/>
         </xsl:if>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    backmatter static content template
      param:        none
      return:    fo:block
-     note:        current is topicref 
+     note:        current is topicref
      -->
     <xsl:template name="backmatterBeforeLeft">
         <!-- No contents, border only -->
@@ -267,14 +265,14 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionBeforeLeftBlock')"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template name="backmatterBeforeRight">
         <!-- No contents, border only -->
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionBeforeRightBlock')"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template name="backmatterAfterLeft">
         <!--fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionAfterLeftBlock')"/>
@@ -300,7 +298,7 @@ E-mail : info@antennahouse.com
             <fo:retrieve-marker retrieve-class-name="{$cTitleBody}"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template name="backmatterAfterRight">
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionAfterRightBlock')"/>

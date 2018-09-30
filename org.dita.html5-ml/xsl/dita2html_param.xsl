@@ -9,8 +9,9 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" xmlns:fo="http://www.w3.org/1999/XSL/Format"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet version="2.0"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
     exclude-result-prefixes="xs ahf">
 
@@ -22,9 +23,9 @@ E-mail : info@antennahouse.com
       -->
     <!--xsl:param name="PRM_ALT_STYLE_DEF_FILE" required="no" as="xs:string" select="$doubleApos"/-->
 
-    <!-- 
-        Assume indexterm/primary/@sortas, secondary/@sortas as pinyin 
-        when language is zh-CN. 
+    <!--
+        Assume indexterm/primary/@sortas, secondary/@sortas as pinyin
+        when language is zh-CN.
       -->
     <xsl:param name="PRM_ASSUME_SORTAS_PINYIN" required="no" as="xs:string" select="$cNo"/>
     <xsl:variable name="pAssumeSortasPinyin" select="boolean($PRM_ASSUME_SORTAS_PINYIN eq $cYes)"
@@ -77,7 +78,7 @@ E-mail : info@antennahouse.com
     <!--xsl:param name="PRM_GEN_UNIQUE_ID" select="$cYes"/>
     <xsl:variable name="pGenUniqueId" select="boolean($PRM_GEN_UNIQUE_ID eq $cYes)" as="xs:boolean"/-->
 
-    <!-- Use @oid in XSL-FO 
+    <!-- Use @oid in XSL-FO
          ADDED: 2010/12/16 t.makita
     -->
     <xsl:param name="PRM_USE_OID" required="no" as="xs:string" select="$cNo"/>
@@ -102,7 +103,7 @@ E-mail : info@antennahouse.com
     <!--xsl:param name="PRM_ONLINE_PDF" required="no" as="xs:string" select="$cYes"/>
     <xsl:variable name="pOnlinePdf" select="boolean($PRM_ONLINE_PDF eq $cYes)" as="xs:boolean"/-->
 
-    <!-- Adopt topicref/@navtitle for topicref/[not(@href)] 
+    <!-- Adopt topicref/@navtitle for topicref/[not(@href)]
          Not released in build.xml.
          2011-07-26 t.makita
          Deprecated.
@@ -111,7 +112,7 @@ E-mail : info@antennahouse.com
     <!--xsl:param name="PRM_ADOPT_NAVTITLE" required="no" as="xs:string" select="$cYes"/>
     <xsl:variable name="pAdoptNavtitle" select="boolean($PRM_ADOPT_NAVTITLE eq $cYes)" as="xs:boolean"/-->
 
-    <!-- Use outputclass="deprecated" 
+    <!-- Use outputclass="deprecated"
          2011-09-05 t.makita
          Deprecated! Use fo:prop instead.
          2015-05-07 t.makita
@@ -120,7 +121,7 @@ E-mail : info@antennahouse.com
     <xsl:variable name="pUseOutputClassDeprecated"
         select="boolean($PRM_USE_OUTPUT_CLASS_DEPRECATED eq $cYes)" as="xs:boolean"/-->
 
-    <!-- Use outputclass="nohyphenation" 
+    <!-- Use outputclass="nohyphenation"
          2011-09-05 t.makita
          Deprecated! Use fo:prop instead.
          2015-05-07 t.makita
@@ -227,13 +228,13 @@ E-mail : info@antennahouse.com
     <xsl:param name="PRM_MAKE_ALT_TEXT" required="no" as="xs:string" select="$cNo"/>
     <xsl:variable name="pMakeAltText" select="boolean($PRM_MAKE_ALT_TEXT eq $cYes)"
         as="xs:boolean"/>
-    
+
     <!-- Copy image to output folder
          2015-05-05 t.makita
      -->
     <xsl:param name="PRM_IMAGE_IN_OUTPUT_FOLDER" required="no" as="xs:string" select="$cNo"/>
     <xsl:variable name="pImageInOutputFolder" select="boolean($PRM_IMAGE_IN_OUTPUT_FOLDER eq $cYes)" as="xs:boolean"/>
-    
+
     <!-- Output crop region
          2015-05-06 t.makita
      -->
@@ -247,7 +248,7 @@ E-mail : info@antennahouse.com
     <xsl:variable name="pOutputType" as="xs:string" select="$PRM_OUTPUT_TYPE"/>
     <xsl:variable name="pIsWebOutput" as="xs:boolean" select="$pOutputType eq 'web'"/>
     <xsl:variable name="pIsPrintOutput" as="xs:boolean" select="not($pIsWebOutput)"/>
-    
+
     <!-- Support floating fig
          This function is experimental
      -->
@@ -259,13 +260,13 @@ E-mail : info@antennahouse.com
     <xsl:param name="PRM_EXCLUDE_COVER_FROM_COUNTING_PAGE" as="xs:string" required="no" select="$cYes"/>
     <xsl:variable name="pExcludeCoverFromCountingPage" as="xs:boolean" select="$PRM_EXCLUDE_COVER_FROM_COUNTING_PAGE eq $cYes"/>
     <xsl:variable name="pIncludeCoverIntoPageCounting" as="xs:boolean" select="not($pExcludeCoverFromCountingPage)"/>
-    
+
     <!-- Number <equation-block> unconditionally
          <equation-number> with effective number will be honored
      -->
     <xsl:param name="PRM_NUMBER_EQUATION_BLOCK_UNCONDITIONALLY" as="xs:string" required="no" select="$cNo"/>
     <xsl:variable name="pNumberEquationBlockUnconditionally" as="xs:boolean" select="$PRM_NUMBER_EQUATION_BLOCK_UNCONDITIONALLY eq $cYes"/>
-    
+
     <!-- Exclude <equation-block> in <equation-figure> in unconditionally numbering mode
      -->
     <xsl:param name="PRM_EXCLUDE_AUTO_NUMBERING_FROM_EQUATION_FIGURE" as="xs:string" required="no" select="$cYes"/>
@@ -273,11 +274,11 @@ E-mail : info@antennahouse.com
 
     <!-- Assume all <equation-number> as auto
          This parameter ignores manual numbering of <equation-number>
-         This function is not in OASIS standard. But useful for making books. 
+         This function is not in OASIS standard. But useful for making books.
      -->
     <xsl:param name="PRM_ASSUME_EQUATION_NUMBER_AS_AUTO" as="xs:string" required="no" select="$cNo"/>
     <xsl:variable name="pAssumeEquationNumberAsAuto" as="xs:boolean" select="$PRM_ASSUME_EQUATION_NUMBER_AS_AUTO eq $cYes"/>
-    
+
     <!-- Output directory URL
          2016-01-11 t.makita
      -->
@@ -289,11 +290,11 @@ E-mail : info@antennahouse.com
      -->
     <xsl:param name="PRM_INPUT_MAP_NAME" required="yes" as="xs:string"/>
     <xsl:variable name="pInputMapName" as="xs:string" select="$PRM_INPUT_MAP_NAME"/>
-    
+
     <!-- Output index
          2016-03-26 t.makita
      -->
     <xsl:param name="PRM_OUTPUT_INDEX" required="no" as="xs:string" select="$cYes"/>
     <xsl:variable name="pOutputIndex" as="xs:boolean" select="$PRM_OUTPUT_INDEX eq $cYes"/>
-    
+
 </xsl:stylesheet>

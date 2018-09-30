@@ -9,15 +9,13 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
- xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  exclude-result-prefixes="xs ahf"
 >
-    <!-- 
+    <!--
      function:    @dir attribute processing
      param:        prmTopicRef, prmNeedId
      return:    fo:bidi-override
@@ -62,8 +60,8 @@ E-mail : info@antennahouse.com
             <xsl:next-match/>
         </fo:bidi-override>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    Return that generating fo:bidi-override is valid or not.
      param:        prmElem
      return:    xs:boolaen
@@ -112,5 +110,5 @@ E-mail : info@antennahouse.com
         </xsl:if>
         <xsl:sequence select="$result"/>
     </xsl:function>
-    
+
 </xsl:stylesheet>

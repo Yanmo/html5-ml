@@ -12,13 +12,11 @@ URL : http://www.antennahouse.co.jp/
 **************************************************************
 -->
 
-<xsl:stylesheet version="2.0" 
-    xmlns:fo="http://www.w3.org/1999/XSL/Format" 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+<xsl:stylesheet version="2.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:svg="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-     xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
     xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
     exclude-result-prefixes="xs ahf" >
 
@@ -27,13 +25,13 @@ URL : http://www.antennahouse.co.jp/
      Utility Templates
     ===============================================
     -->
-    
+
     <!--
     ===============================================
      Error processing
     ===============================================
     -->
-    <!-- 
+    <!--
      function:    Error Exit routine
      param:        prmMes: message body
      return:    none
@@ -43,9 +41,9 @@ URL : http://www.antennahouse.co.jp/
         <xsl:param name="prmMes" required="yes" as="xs:string"/>
         <xsl:message terminate="yes"><xsl:value-of select="$prmMes"/></xsl:message>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    Warning display routine
      param:        prmMes: message body
      return:    none
@@ -55,9 +53,9 @@ URL : http://www.antennahouse.co.jp/
         <xsl:param name="prmMes" required="yes" as="xs:string"/>
         <xsl:message terminate="no"><xsl:value-of select="$prmMes"/></xsl:message>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    topicref count template
      param:        prmTopicRef
      return:    topicref count that have same @href
@@ -65,7 +63,7 @@ URL : http://www.antennahouse.co.jp/
     -->
     <xsl:function name="ahf:countTopicRef" as="xs:integer">
         <xsl:param name="prmTopicRef" as="element()"/>
-        
+
         <xsl:variable name="href" select="string($prmTopicRef/@href)" as="xs:string"/>
         <xsl:variable name="topicRefCount" as="xs:integer">
             <xsl:number select="$prmTopicRef"
@@ -76,8 +74,8 @@ URL : http://www.antennahouse.co.jp/
         </xsl:variable>
         <xsl:sequence select="$topicRefCount"/>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
       ============================================
          String utility
       ============================================
@@ -99,7 +97,7 @@ URL : http://www.antennahouse.co.jp/
     <xsl:template name="substringBeforeLast">
         <xsl:param name="prmSrcString" required="yes" as="xs:string"/>
         <xsl:param name="prmDlmString" required="yes" as="xs:string"/>
-        
+
         <xsl:variable name="substringBefore" select="substring-before($prmSrcString, $prmDlmString)"/>
         <xsl:variable name="substringAfter" select="substring-after($prmSrcString, $prmDlmString)"/>
         <xsl:choose>
@@ -117,11 +115,11 @@ URL : http://www.antennahouse.co.jp/
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:function name="ahf:substringAfterLast" as="xs:string">
         <xsl:param name="prmSrcString" as="xs:string"/>
         <xsl:param name="prmDlmString" as="xs:string"/>
-        
+
         <xsl:variable name="substringBefore" select="substring-before($prmSrcString, $prmDlmString)"/>
         <xsl:variable name="substringAfter" select="substring-after($prmSrcString, $prmDlmString)"/>
         <xsl:choose>
@@ -136,7 +134,7 @@ URL : http://www.antennahouse.co.jp/
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
+
     <!--
         function: Convert back-slash to slash
         param: prmString
@@ -158,7 +156,7 @@ URL : http://www.antennahouse.co.jp/
         <xsl:param name="prmSrcString" as="xs:string"/>
         <xsl:sequence select="replace($prmSrcString,'(\\|\$)','\\$1')"/>
     </xsl:function>
-    
+
     <xsl:function name="ahf:escapeForRegxSrc" as="xs:string">
         <xsl:param name="prmSrcString" as="xs:string"/>
         <xsl:sequence select="replace($prmSrcString,'(\.|\[|\]|\\|\||\-|\^|\$|\?|\*|\+|\{|\}|\(|\))','\\$1')"/>
@@ -175,7 +173,7 @@ URL : http://www.antennahouse.co.jp/
         <xsl:param name="prmDst" as="xs:string"/>
         <xsl:sequence select="replace($prmStr,ahf:escapeForRegxSrc($prmSrc),ahf:escapeForRegxDst($prmDst))"/>
     </xsl:function>
-    
+
     <!--
         function: Multiple replace function
         param: prmStr,prmSrc,prmDst
@@ -185,7 +183,7 @@ URL : http://www.antennahouse.co.jp/
         <xsl:param name="prmStr" as="xs:string"/>
         <xsl:param name="prmSrc" as="xs:string+"/>
         <xsl:param name="prmDst" as="xs:string+"/>
-    
+
         <xsl:variable name="firstResult" select="ahf:safeReplace($prmStr,$prmSrc[1],$prmDst[1])" as="xs:string"/>
         <xsl:choose>
             <xsl:when test="exists($prmSrc[2]) and exists($prmDst[2])">
@@ -196,23 +194,23 @@ URL : http://www.antennahouse.co.jp/
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
       ============================================
          Node functions
       ============================================
     -->
-    <!-- 
+    <!--
      function:    Get leading white-space only text node of the given node()*
      param:        prmNode
      return:    leading white-space nodes
-     note:        
+     note:
      -->
     <xsl:function name="ahf:getLeadingUnusedNodes" as="node()*">
         <xsl:param name="prmNode" as="node()*"/>
-        
+
         <xsl:variable name="firstNode" as="node()?" select="$prmNode[1]"/>
-        <xsl:variable name="isLeadingUnusedNode" as="xs:boolean" select="exists($firstNode[self::text()][not(string(normalize-space(string(.))))]) or 
+        <xsl:variable name="isLeadingUnusedNode" as="xs:boolean" select="exists($firstNode[self::text()][not(string(normalize-space(string(.))))]) or
                                                                          exists($firstNode[self::processing-instruction()]) or
                                                                          exists($firstNode[self::comment()])"/>
         <xsl:choose>
@@ -225,17 +223,17 @@ URL : http://www.antennahouse.co.jp/
         </xsl:choose>
     </xsl:function>
 
-    <!-- 
+    <!--
      function:    Get trailing white-space only text node or processing instruction or comment of the given node()*
      param:        prmNode
      return:    trailing white-space nodes
-     note:        
+     note:
      -->
     <xsl:function name="ahf:getTrailingUnusedNodes" as="node()*">
         <xsl:param name="prmNode" as="node()*"/>
-        
+
         <xsl:variable name="lastNode" as="node()?" select="$prmNode[position() eq last()]"/>
-        <xsl:variable name="isTrailingUnusedNode" as="xs:boolean" select="exists($lastNode[self::text()][not(string(normalize-space(string(.))))]) or 
+        <xsl:variable name="isTrailingUnusedNode" as="xs:boolean" select="exists($lastNode[self::text()][not(string(normalize-space(string(.))))]) or
                                                                           exists($lastNode[self::processing-instruction()]) or
                                                                           exists($lastNode[self::comment()])"/>
         <xsl:choose>
@@ -248,62 +246,62 @@ URL : http://www.antennahouse.co.jp/
         </xsl:choose>
     </xsl:function>
 
-    <!-- 
+    <!--
      function:    Remove leading white-space only text node or processing-instruction or comment of the given node()*
      param:        prmNode
      return:    result nodes
-     note:        
+     note:
      -->
     <xsl:function name="ahf:removeLeadingUnusedNodes" as="node()*">
         <xsl:param name="prmNode" as="node()*"/>
-        
+
         <xsl:variable name="leadingUnusedNodes" as="node()*" select="ahf:getLeadingUnusedNodes($prmNode)"/>
         <xsl:sequence select="$prmNode except $leadingUnusedNodes"/>
     </xsl:function>
 
-    <!-- 
+    <!--
      function:    Remove trailing white-space only text node or processing-instruction or comment of the given node()*
      param:        prmNode
      return:    result nodes
-     note:        
+     note:
      -->
     <xsl:function name="ahf:removeTrailingUnusedNodes" as="node()*">
         <xsl:param name="prmNode" as="node()*"/>
-        
+
         <xsl:variable name="trailingUnusedNodes" as="node()*" select="ahf:getTrailingUnusedNodes($prmNode)"/>
         <xsl:sequence select="$prmNode except $trailingUnusedNodes"/>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    Remove leading & trailing white-space only text node or processing-instruction or comment of the given node()*
      param:        prmNode
      return:    result nodes
-     note:        
+     note:
      -->
     <xsl:function name="ahf:removeLtUnusedNodes" as="node()*">
         <xsl:param name="prmNode" as="node()*"/>
-        
+
         <xsl:variable name="unusedNodes" as="node()*" select="ahf:getLeadingUnusedNodes($prmNode) | ahf:getTrailingUnusedNodes($prmNode)"/>
         <xsl:sequence select="$prmNode except $unusedNodes"/>
     </xsl:function>
 
-    <!-- 
+    <!--
       ============================================
          Other functions
       ============================================
     -->
-    <!-- 
+    <!--
      function:    Make hexadecimal string from positive integer
      param:        prmNumber
      return:    Hexadecimal string
-     note:        
+     note:
      -->
     <xsl:function name="ahf:intToHexString" as="xs:string">
         <xsl:param name="prmValue" as="xs:integer"/>
-    
+
         <xsl:variable name="quotient"  select="$prmValue idiv 16" as="xs:integer"/>
         <xsl:variable name="remainder" select="$prmValue mod 16"  as="xs:integer"/>
-        
+
         <xsl:variable name="quotientString" select="if ($quotient &gt; 0) then (ahf:intToHexString($quotient)) else ''" as="xs:string"/>
         <xsl:variable name="remainderString" as="xs:string">
             <xsl:choose>
@@ -335,16 +333,16 @@ URL : http://www.antennahouse.co.jp/
         </xsl:variable>
         <xsl:sequence select="concat($quotientString, $remainderString)"/>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    Make hexadecimal string from codepoint sequence
      param:        prmCodePoint
      return:    Hexadecimal string
-     note:        
+     note:
      -->
     <xsl:function name="ahf:codepointToHexString" as="xs:string">
         <xsl:param name="prmCodePoint" as="xs:integer*"/>
-    
+
         <xsl:choose>
             <xsl:when test="empty($prmCodePoint)">
                 <xsl:sequence select="''"/>
@@ -358,35 +356,35 @@ URL : http://www.antennahouse.co.jp/
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    Make hexadecimal string from string
      param:        prmString
      return:    Hexadecimal string
-     note:        
+     note:
      -->
     <xsl:function name="ahf:stringToHexString" as="xs:string">
         <xsl:param name="prmString" as="xs:string"/>
-    
+
         <xsl:variable name="codePoints" select="string-to-codepoints($prmString)" as="xs:integer*"/>
         <xsl:sequence select="ahf:codepointToHexString($codePoints)"/>
     </xsl:function>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    Get numeric part of numeric property
      param:        prmProperty
      return:    number
-     note:        
+     note:
      -->
     <xsl:function name="ahf:getPropertyNu" as="xs:double">
         <xsl:param name="prmProperty" as="xs:string"/>
-        
+
         <xsl:variable name="propertyNu" select="replace($prmProperty,'[\p{L}]','')"/>
         <xsl:choose>
             <xsl:when test="string(number($propertyNu))=$NaN">
                 <xsl:call-template name="warningContinue">
-                    <xsl:with-param name="prmMes" 
+                    <xsl:with-param name="prmMes"
                      select="ahf:replace($stMes400,('%val'),($prmProperty))"/>
                 </xsl:call-template>
                 <xsl:sequence select="number(1.0)"/>
@@ -396,42 +394,42 @@ URL : http://www.antennahouse.co.jp/
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    Get unit part of numeric property
      param:        prmProperty
      return:    unit string
-     note:        
+     note:
      -->
     <xsl:function name="ahf:getPropertyUnit" as="xs:string">
         <xsl:param name="prmProperty" as="xs:string"/>
         <xsl:sequence select="replace($prmProperty,'[\.\p{Nd}]','')"/>
     </xsl:function>
-    
+
     <!--
      function:    Get calculated the property value with specified ratio
      param:        prmProperty, prmRatio
      return:    calculated property string
-     note:        
+     note:
      -->
     <xsl:function name="ahf:getPropertyRatio" as="xs:string">
         <xsl:param name="prmProperty" as="xs:string"/>
         <xsl:param name="prmRatio"    as="xs:double"/>
-    
+
         <!--xsl:variable name="propertyValue" select="ahf:getPropertyNu($prmProperty)" as="xs:double"/>
         <xsl:variable name="propertyUnit"  select="ahf:getPropertyUnit($prmProperty)" as="xs:string"/>
         <xsl:variable name="calculatedValue" select="$propertyValue * $prmRatio" as="xs:double"/>
         <xsl:sequence select="concat(string($calculatedValue), $propertyUnit)"/-->
-        
+
         <xsl:sequence select="concat('(',$prmProperty, ') * ',string($prmRatio))"/>
-        
+
     </xsl:function>
-    
-    <!-- 
+
+    <!--
         function:    Return true() if $prmStr contains one of the given $prmDstStrSeq[N].
         param:        prmStr, prmDstStrSeq
         return:        xs:boolean
-        note:        
+        note:
     -->
     <xsl:function name="ahf:seqContains" as="xs:boolean">
         <xsl:param name="prmStr" as="xs:string"/>
@@ -453,7 +451,7 @@ URL : http://www.antennahouse.co.jp/
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
+
     <!--
      function: containsAnyOf
      param:    prmSrcString,prmSearchString

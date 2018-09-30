@@ -9,25 +9,24 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
 >
-    <!-- *************************************** 
+    <!-- ***************************************
             Constants
          ***************************************-->
-    
+
     <xsl:variable name="idSeparator" select="'_'" as="xs:string"/>
-    
+
     <!-- Title generation mode
      -->
     <xsl:variable name="cRoundBulletTitleMode"   select="1" as="xs:integer"/>
     <xsl:variable name="cSquareBulletTitleMode"  select="2" as="xs:integer"/>
     <xsl:variable name="cNoRestrictionTitleMode" select="3" as="xs:integer"/>
-    
-    <!-- *************************************** 
+
+    <!-- ***************************************
             IDs
          ***************************************-->
     <xsl:variable name="cTocId"          select="'__TOC'"           as="xs:string"/>
@@ -35,14 +34,14 @@ E-mail : info@antennahouse.com
     <xsl:variable name="cTableListId"    select="'__TABLE_LIST'"    as="xs:string"/>
     <!--xsl:variable name="cGlossaryListId" select="'__GLOSSARY_LIST'" as="xs:string"/-->
     <xsl:variable name="cIndexId"        select="'__INDEX'"         as="xs:string"/>
-    
-    <!-- *************************************** 
+
+    <!-- ***************************************
             Marker class name
          ***************************************-->
     <xsl:variable name="cTitlePrefix" select="'TITLE_PREFIX'" as="xs:string"/>
     <xsl:variable name="cTitleBody"   select="'TITLE_BODY'" as="xs:string"/>
-    
-    <!-- *************************************** 
+
+    <!-- ***************************************
             Bookmark related
          ***************************************-->
     <!-- common bookmark starting state -->
@@ -51,27 +50,27 @@ E-mail : info@antennahouse.com
     <xsl:variable name="cBookmarkNestMax" select="ahf:getVarValueAsInteger('Bookmark_Nest_Max')" as="xs:integer"/>
     <!-- bookmark title separater -->
     <xsl:variable name="cTitlePrefixSeparator" select="ahf:getVarValue('Title_Prefix_Separator')" as="xs:string"/>
-    
-    <!-- *************************************** 
+
+    <!-- ***************************************
             TOC related
          ***************************************-->
     <!-- TOC nesting level -->
     <xsl:variable name="cTocNestMax" select="ahf:getVarValueAsInteger('Toc_Nest_Max')" as="xs:integer"/>
-    
-    <!-- *************************************** 
+
+    <!-- ***************************************
          Words which doe not depend on language
          ***************************************-->
     <!-- Table caption separater -->
     <xsl:variable name="cTitleSeparator" select="ahf:getVarValue('Title_Separator')" as="xs:string"/>
-    
-    <!-- ************************************************ 
+
+    <!-- ************************************************
             Words depending on language ($map/@xml:lang)
          ************************************************-->
     <xsl:variable name="cPartTitlePrefix"  select="ahf:getVarValue('Part_Title_Prefix')" as="xs:string"/>
     <xsl:variable name="cPartTitleSuffix"  select="ahf:getVarValue('Part_Title_Suffix')" as="xs:string"/>
     <xsl:variable name="cChapterTitlePrefix"  select="ahf:getVarValue('Chapter_Title_Prefix')" as="xs:string"/>
     <xsl:variable name="cChapterTitleSuffix"  select="ahf:getVarValue('Chapter_Title_Suffix')" as="xs:string"/>
-    
+
     <xsl:variable name="cTocTitle"         select="ahf:getVarValue('Toc_Title')" as="xs:string"/>
     <xsl:variable name="cFigureListTitle"  select="ahf:getVarValue('Figure_List_Title')" as="xs:string"/>
     <xsl:variable name="cTableListTitle"   select="ahf:getVarValue('Table_List_Title')" as="xs:string"/>
@@ -81,35 +80,35 @@ E-mail : info@antennahouse.com
     <xsl:variable name="cIndexTitle"       select="ahf:getVarValue('Index_Title')" as="xs:string"/>
     <xsl:variable name="cNoticeTitle"      select="ahf:getVarValue('Notice_Title')" as="xs:string"/>
     <xsl:variable name="cPrefaceTitle"     select="ahf:getVarValue('Preface_Title')" as="xs:string"/>
-    
+
     <xsl:variable name="cBlankPageTitle"   select="ahf:getVarValue('Blank_Page_Title')" as="xs:string"/>
-    
+
     <xsl:variable name="cTableTitle"       select="ahf:getVarValue('Table_Title')" as="xs:string"/>
     <xsl:variable name="cFigureTitle"      select="ahf:getVarValue('Figure_Title')" as="xs:string"/>
-    
-    
-    <!-- ************************************************ 
+
+
+    <!-- ************************************************
             Thumbnail label & title
          ************************************************-->
     <xsl:variable name="cTocThumbnailLabel"   select="ahf:getVarValue('Toc_Thumbnail_Label')" as="xs:string"/>
     <xsl:variable name="cAppendixThumbnailLabel" select="ahf:getVarValue('Appendix_Thumbnail_Label')" as="xs:string"/>
     <xsl:variable name="cIndexThumbnailLabel" select="ahf:getVarValue('Index_Thumbnail_Label')" as="xs:string"/>
-    
+
     <xsl:variable name="cTocThumbnailTitle"   select="ahf:getVarValue('Toc_Thumbnail_Title')" as="xs:string"/>
     <xsl:variable name="cAppendixThumbnailTitle" select="ahf:getVarValue('Appendix_Thumbnail_Title')" as="xs:string"/>
     <xsl:variable name="cIndexThumbnailTitle" select="ahf:getVarValue('Index_Thumbnail_Title')" as="xs:string"/>
-    
+
     <xsl:variable name="cThumbIndexMax"       select="ahf:getVarValue('Thumbnail_Index_Max')" as="xs:string"/>
 
 
-    <!-- *************************************** 
+    <!-- ***************************************
             Related-links variable
          ***************************************-->
     <xsl:variable name="cDeadLinkPDF"           select="ahf:getVarValue('Dead_Link_PDF')" as="xs:string"/>
     <xsl:variable name="cDeadLinkColor"         select="ahf:getVarValue('Dead_Link_Color')" as="xs:string"/>
-    
-    
-    <!-- *************************************** 
+
+
+    <!-- ***************************************
             Variables depending on document
          ***************************************-->
     <!-- Top level element -->
@@ -158,7 +157,7 @@ E-mail : info@antennahouse.com
             -->
         </xsl:choose>
     </xsl:variable>
-    
+
     <!-- Map class -->
     <xsl:variable name="classMap" select="'map'" as="xs:string"/>
     <xsl:variable name="classBookMap" select="'bookmap'" as="xs:string"/>
@@ -180,10 +179,10 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
-    
+
     <xsl:variable name="isMap"     select="boolean($ditamapClass eq $classMap)" as="xs:boolean"/>
     <xsl:variable name="isBookMap" select="boolean($ditamapClass eq $classBookMap)" as="xs:boolean"/>
-    
+
     <!-- Document language -->
     <xsl:variable name="documentLang" as="xs:string">
         <xsl:variable name="defaultLang" as="xs:string" select="'en-US'"/>
@@ -204,10 +203,10 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
-    
+
     <!-- Part existence (bookmap only) -->
     <xsl:variable name="isPartExist" as="xs:boolean" select="exists($root/*[1][contains(@class, ' bookmap/bookmap ')]/*[contains(@class, ' bookmap/part ')])"/>
-    
+
     <!-- Chapter existence (bookmap only) -->
     <xsl:variable name="isChapterExist" as="xs:boolean" select="exists($root/*[1][contains(@class, ' bookmap/bookmap ')]/*[contains(@class, ' bookmap/chapter ')])"/>
 
@@ -224,21 +223,21 @@ E-mail : info@antennahouse.com
                                           //*[contains(@class, ' map/topicref ')]
                                              [not(ancestor::*[contains(@class, ' map/reltable ')])]"
                                    use="@href"/>
-    
+
     <!-- Elements by id -->
     <xsl:key name="elementById" match="//*[exists(@id)]" use="@id"/>
-    
+
     <!-- Elements by oid -->
     <xsl:key name="elementByOid" match="//*[exists(@oid)]" use="@oid"/>
-    
-    <!-- topicref by key 
+
+    <!-- topicref by key
          Added 2010/01/05
      -->
     <xsl:key name="topicrefByKey" match="/*/*[contains(@class,' map/map ')]
-                                          //*[contains(@class, ' map/topicref ')]" 
+                                          //*[contains(@class, ' map/topicref ')]"
                                   use="tokenize(@keys, '[\s]+')"/>
-    
-    <!-- *************************************** 
+
+    <!-- ***************************************
             Document variables
          ***************************************-->
     <!-- Book library -->
@@ -259,7 +258,7 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
-    
+
     <!-- Title -->
     <xsl:variable name="bookTitle" as="node()*">
         <xsl:choose>
@@ -307,7 +306,7 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
-    
+
     <!-- Alt Title -->
     <xsl:variable name="bookAltTitle" as="node()*">
         <xsl:choose>
@@ -326,6 +325,6 @@ E-mail : info@antennahouse.com
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
-    
+
 
 </xsl:stylesheet>

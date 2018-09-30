@@ -9,19 +9,17 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
- xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
- exclude-result-prefixes="ahf" 
+ exclude-result-prefixes="ahf"
 >
 
-    <!-- 
+    <!--
      function:    cover generate template
      param:        none
      return:    fo:page-sequence
-     note:        Current context is "/". 
+     note:        Current context is "/".
      -->
     <xsl:template name="genCover">
         <fo:page-sequence master-reference="pmsPageSeqCover">
@@ -56,8 +54,8 @@ E-mail : info@antennahouse.com
             </fo:flow>
         </fo:page-sequence>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    Bookmeta output template
      param:        none
      return:    fo:block
@@ -66,57 +64,57 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' bookmap/bookmeta ')]" mode="cover">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' xnal-d/namedetails ')]" mode="cover">
         <fo:block>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' xnal-d/addressdetails ')]" mode="cover">
         <fo:block>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' xnal-d/contactnumbers ')]" mode="cover">
         <fo:block>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' xnal-d/emailaddresses ')]" mode="cover">
         <fo:block>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' topic/source ')]" mode="cover"/>
-    
+
     <xsl:template match="*[contains(@class, ' bookmap/publisherinformation ')]" mode="cover">
         <fo:block>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' bookmap/bookmeta ')]//*[contains(@class, ' topic/category ')]" mode="cover"/>
-    
+
     <xsl:template match="*[contains(@class, ' bookmap/bookmeta ')]//*[contains(@class, ' topic/keywords ')]" mode="cover"/>
-    
+
     <xsl:template match="*[contains(@class, ' bookmap/bookmeta ')]//*[contains(@class, ' topic/prodinfo ')]" mode="cover"/>
-    
+
     <xsl:template match="*[contains(@class, ' bookmap/bookid ')]" mode="cover">
         <fo:block>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class, ' bookmap/bookrights ')]" mode="cover">
         <fo:block>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>
-    
+
     <xsl:template match="*" mode="cover">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>

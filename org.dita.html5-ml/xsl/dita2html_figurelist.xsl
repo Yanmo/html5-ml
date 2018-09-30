@@ -9,21 +9,19 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" 
- xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<xsl:stylesheet version="2.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
- xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
  xmlns:psmi="http://www.CraneSoftwrights.com/resources/psmi"
  exclude-result-prefixes="xs ahf"
 >
 
-    <!-- 
+    <!--
      function:    Generate figure list template
      param:        none
      return:    (fo:page-sequence)
-     note:      Current is booklists/figurelist        
+     note:      Current is booklists/figurelist
      -->
     <xsl:template name="genFigureList" >
         <xsl:if test="$figureExists">
@@ -31,7 +29,7 @@ E-mail : info@antennahouse.com
                 <xsl:choose>
                     <xsl:when test="ancestor::*[contains(@class,' bookmap/frontmatter ')]">
                         <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqFrontmatter')"/>
-                        <xsl:if test="not(preceding-sibling::*) and 
+                        <xsl:if test="not(preceding-sibling::*) and
                                       not(parent::*/preceding-sibling::*[contains(@class,' map/topicref ')])">
                             <xsl:attribute name="initial-page-number" select="'1'"/>
                         </xsl:if>
@@ -87,19 +85,19 @@ E-mail : info@antennahouse.com
             </psmi:page-sequence>
         </xsl:if>
     </xsl:template>
-    
-    
-    <!-- 
+
+
+    <!--
      function:    Figure list main template
      param:        none
      return:    fo:block
-     note:      Current is booklists/figurelist        
+     note:      Current is booklists/figurelist
      -->
     <xsl:template name="genFigureListMain">
-    
+
         <xsl:variable name="topicRef" as="element()" select="."/>
         <xsl:variable name="id" as="xs:string" select="string(ahf:getIdAtts($topicRef,$topicRef,true())[1])"/>
-        
+
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsBase')"/>
             <!-- Title -->
@@ -115,104 +113,104 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates select="$map" mode="MAKE_FIGURE_LIST"/>
         </fo:block>
     </xsl:template>
-     
-    <!-- 
+
+    <!--
      function:    General templates for figure list
      param:        none
-     return:    
+     return:
      note:        none
      -->
     <xsl:template match="*" mode="MAKE_FIGURE_LIST">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <xsl:template match="text()" mode="MAKE_FIGURE_LIST"/>
     <xsl:template match="*[contains(@class, ' bookmap/bookmeta ')]" mode="MAKE_FIGURE_LIST"/>
-    
+
     <!-- Frontmatter -->
     <xsl:template match="*[contains(@class,' bookmap/frontmatter ')]" mode="MAKE_FIGURE_LIST" priority="2" >
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <!-- Backmatter -->
     <xsl:template match="*[contains(@class,' bookmap/backmatter ')]" mode="MAKE_FIGURE_LIST" priority="2" >
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <!-- frontmatter/backmatter contents -->
-    
+
     <!-- booklist is skipped in dita2fo_convmerged.xsl -->
     <xsl:template match="*[contains(@class,' bookmap/booklists ')]" mode="MAKE_FIGURE_LIST" priority="2" >
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/toc ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
         <!--Ignore TOC -->
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/figurelist ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/tablelist ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/abbrevlist ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
         <!-- Abbrevlist should have a href attribute. -->
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/trademarklist ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
         <!-- Trademarklist should have a href attribute. -->
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/bibliolist ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
         <!-- Bibliolist should have a href attribute. -->
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/glossarylist ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
         <!-- Glossarylist have topicref child element. -->
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/indexlist ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
         <!-- Indexlist -->
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/booklist ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
         <!-- Booklist should have a href attribute. -->
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/notices ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
         <!-- Notices have topicref child element. -->
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/preface ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
         <!-- Preface has topicref child element. -->
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/dedication ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
         <!-- Dedication should have a href attribute. -->
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/colophon ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
         <!-- Colophon should have a href attribute. -->
     </xsl:template>
-    
+
     <xsl:template match="*[contains(@class,' bookmap/amendments ')][not(@href)]" mode="MAKE_FIGURE_LIST" priority="2" >
         <!-- Aamendments should have a href attribute. -->
     </xsl:template>
-    
+
     <!-- topicgroup is skipped in dita2fo_convmerged.xsl -->
     <xsl:template match="*[contains(@class,' mapgroup-d/topicgroup ')]" mode="MAKE_FIGURE_LIST" priority="2" >
         <!-- topicgroup create group without affecting the hierarchy. -->
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <!-- Ignore reltable contents -->
     <xsl:template match="*[contains(@class,' map/reltable ')]" mode="MAKE_FIGURE_LIST" />
-    
-    <!-- 
+
+    <!--
      function:    templates for topicref
      param:        none
      return:    Figure list line
@@ -221,7 +219,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' map/topicref ')][@href]" mode="MAKE_FIGURE_LIST">
         <xsl:variable name="topicRef" select="."/>
         <xsl:variable name="topicContent"  as="element()?" select="ahf:getTopicFromTopicRef($topicRef)"/>
-    
+
         <xsl:for-each select="$topicContent/descendant::*[contains(@class, ' topic/fig ')][child::*[contains(@class, ' topic/title ')]]">
             <xsl:variable name="fig" select="."/>
             <xsl:variable name="figId" select="if (@id) then string(ahf:getIdAtts($fig,$topicRef,true())) else ahf:generateId($fig,$topicRef)" as="xs:string"/>
@@ -230,7 +228,7 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmTopicRef"  tunnel="yes"  select="$topicRef"/>
                     <xsl:with-param name="prmNeedId"    tunnel="yes"  select="false()"/>
                 </xsl:apply-templates>
-            </xsl:variable> 
+            </xsl:variable>
             <xsl:call-template name="makeFigListLine">
                 <xsl:with-param name="prmId"    select="$figId"/>
                 <xsl:with-param name="prmTitle" select="$figTitle"/>
@@ -240,10 +238,10 @@ E-mail : info@antennahouse.com
         <!-- Navigate to lower level -->
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
         function:    Make figure title FO
-        param:        
+        param:
         return:        fo:inline * 2
         note:        This template must return exactly 2 <fo:inline> elements.
     -->
@@ -260,12 +258,12 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates/>
         </fo:inline>
     </xsl:template>
-    
-    <!-- 
+
+    <!--
      function:    Make figure list line
      param:        prmId, prmTitle
      return:    fo:list-block
-     note:        Changed to use fo:list-block. 
+     note:        Changed to use fo:list-block.
                 2011-09-09 t.makita
                 Added $prmTitleElem to apply language specific style for figure title line.
                 It is temporary applied only for the style named 'atsFigListBlock'.
@@ -275,7 +273,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmId"    required="yes" as="xs:string"/>
         <xsl:param name="prmTitle" required="yes" as="node()*"/>
         <xsl:param name="prmTitleElem" required="yes" as="element()"/>
-        
+
         <fo:list-block>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsFigListBlock'"/>

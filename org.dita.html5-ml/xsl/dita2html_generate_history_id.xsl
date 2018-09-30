@@ -9,13 +9,13 @@ URL    : http://www.antennahouse.com/
 E-mail : info@antennahouse.com
 ****************************************************************
 -->
-<xsl:stylesheet version="2.0" xmlns:fo="http://www.w3.org/1999/XSL/Format"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
-    xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
-    exclude-result-prefixes="xs ahf">
-    
-    <!-- 
+<xsl:stylesheet version="2.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
+  exclude-result-prefixes="xs ahf">
+
+    <!--
      function:    Generate id using element history (hierarchy)
      param:        prmElem
      return:    id string
@@ -26,8 +26,8 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmElem" as="element()"/>
         <xsl:sequence select="ahf:getHistoryStr($prmElem)"/>
     </xsl:function>
-    
-    <!-- 
+
+    <!--
      function:    Generate element history (hierarchy) string
      param:       prmElem
      return:      xs:string
