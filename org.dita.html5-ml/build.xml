@@ -11,7 +11,7 @@
       com.antennahouse.i18n.home
       com.antennahouse.i18n_index.plugin.lib
   -->
-<project name="com.antennahouse.pdf5.build"  basedir=".">
+<project name="org.dita.html5.build"  basedir=".">
     <import file="build_transform.xml"/>
     <import file="build_disp_properties.xml"/>
     
@@ -50,7 +50,7 @@
     </condition>
 
     <!-- Logical check -->
-    <fail message="[com.antennahouse.pdf5.ml] I18n Index Library plug-in is needed if use.i18n.index.lib is 'yes'.">
+    <fail message="[org.dita.html5.ml] I18n Index Library plug-in is needed if use.i18n.index.lib is 'yes'.">
         <condition>
             <and>
                 <equals arg1="${use.i18n.index.lib}" arg2="yes"/>
@@ -182,10 +182,10 @@
     
     <!-- Main target -->
     <target name="merged2pdf">
-    	<echo message="dita.temp.dir=${dita.temp.dir} build.temp.dir=${build.temp.dir}"/>
-    	<echo message="dita.dir=${dita.dir}"/>
-    	<echo message="basedir=${basedir}"/>
-    	<echo message="outputFile=${dita.map.output.dir}${file.separator}${output.pdf}"/>
+        <echo message="dita.temp.dir=${dita.temp.dir} build.temp.dir=${build.temp.dir}"/>
+        <echo message="dita.dir=${dita.dir}"/>
+        <echo message="basedir=${basedir}"/>
+        <echo message="outputFile=${dita.map.output.dir}${file.separator}${output.pdf}"/>
         <antcall target="build.disp.property"/>
         <antcall target="transform.merged2pdf.impl">
             <param name="prmInputFile"  value="${build.temp.dir}${file.separator}${merged.file}"/>
