@@ -1,15 +1,15 @@
-# Antenna House PDF5-<i>ML</i> Plugin
-PDF5-ML is the [DITA Open Toolkit] [3] PDF plug-in for actual business usage. It was derived from [PDF5] [7] plugin and radically refined from the beginning.
+# HTML5-<i>ML</i> Plugin
+HTML5-ML is the [DITA Open Toolkit] [3] HTML plug-in for actual business usage. It was derived from [PDF5-ML] [7] plugin and radically refined from the beginning.
 
 ## FEATURES
  - Supports multiple language formatting in one DITA document
  - Realize conditional variable & style definition
- - Enables free format cover pages
- - Free paper size definition & selection
+ - <del>Enables free format cover pages</del>
+ - <del>Free paper size definition & selection</del>
 
 ## Multiple language formatting
 ----------
-PDF5-ML supports xml:lang in any level elements of a topic.
+HTML5-ML supports xml:lang in any level elements of a topic.
 
 ```xml
 <section>
