@@ -17,24 +17,24 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	generate layout master set
-     param:		none
-     return:	fo:layout-master-set
-     note:		none
+     function:    generate layout master set
+     param:        none
+     return:    fo:layout-master-set
+     note:        none
     -->
     
     <xsl:template name="genLayoutMasterSet">
-    	<fo:layout-master-set>
-    		<xsl:call-template name="genSimplePageMaster"/>
-    		<xsl:call-template name="genPageSequenceMaster"/>
-    	</fo:layout-master-set>
+        <fo:layout-master-set>
+            <xsl:call-template name="genSimplePageMaster"/>
+            <xsl:call-template name="genPageSequenceMaster"/>
+        </fo:layout-master-set>
     </xsl:template>
     
     <!-- 
-     function:	generate simple-page master
-     param:		none
-     return:	fo:simple-page-master
-     note:		none
+     function:    generate simple-page master
+     param:        none
+     return:    fo:simple-page-master
+     note:        none
     -->
     <xsl:template name="genSimplePageMaster">
         <xsl:call-template name="genSpmCover"/>
@@ -93,13 +93,13 @@ E-mail : info@antennahouse.com
             <fo:region-body>
                 <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionBodyLeft')"/>
             </fo:region-body>
-        	<fo:region-before region-name="rgnFrontmatterBeforeLeft">
+            <fo:region-before region-name="rgnFrontmatterBeforeLeft">
                 <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionBefore')"/>
             </fo:region-before>
-        	<fo:region-after region-name="rgnFrontmatterAfterLeft">
+            <fo:region-after region-name="rgnFrontmatterAfterLeft">
                  <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionAfter')"/>
             </fo:region-after>
-        	<fo:region-start region-name="rgnFrontmatterStartLeft">
+            <fo:region-start region-name="rgnFrontmatterStartLeft">
                  <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionStartLeft')"/>
             </fo:region-start>
             <fo:region-end>
@@ -115,13 +115,13 @@ E-mail : info@antennahouse.com
             <fo:region-body>
                 <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionBodyRight')"/>
             </fo:region-body>
-        	<fo:region-before region-name="rgnFrontmatterBeforeRight">
+            <fo:region-before region-name="rgnFrontmatterBeforeRight">
                 <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionBefore')"/>
             </fo:region-before>
-        	<fo:region-after region-name="rgnFrontmatterAfterRight">
+            <fo:region-after region-name="rgnFrontmatterAfterRight">
                  <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionAfter')"/>
             </fo:region-after>
-        	<fo:region-start>
+            <fo:region-start>
                  <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionStartRight')"/>
             </fo:region-start>
             <fo:region-end   region-name="rgnFrontmatterEndRight">
@@ -162,13 +162,13 @@ E-mail : info@antennahouse.com
             <fo:region-body>
                 <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionBodyLeft')"/>
             </fo:region-body>
-        	<fo:region-before region-name="rgnChapterBeforeLeft">
+            <fo:region-before region-name="rgnChapterBeforeLeft">
                 <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionBefore')"/>
             </fo:region-before>
-        	<fo:region-after region-name="rgnChapterAfterLeft">
+            <fo:region-after region-name="rgnChapterAfterLeft">
                  <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionAfter')"/>
             </fo:region-after>
-        	<fo:region-start region-name="rgnChapterStartLeft">
+            <fo:region-start region-name="rgnChapterStartLeft">
                  <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionStartLeft')"/>
             </fo:region-start>
             <fo:region-end region-name="rgnChapterEndLeft">
@@ -184,13 +184,13 @@ E-mail : info@antennahouse.com
             <fo:region-body>
                 <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionBodyRight')"/>
             </fo:region-body>
-        	<fo:region-before region-name="rgnChapterBeforeRight">
+            <fo:region-before region-name="rgnChapterBeforeRight">
                 <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionBefore')"/>
             </fo:region-before>
-        	<fo:region-after region-name="rgnChapterAfterRight">
+            <fo:region-after region-name="rgnChapterAfterRight">
                  <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionAfter')"/>
             </fo:region-after>
-        	<fo:region-start>
+            <fo:region-start>
                  <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionStartRight')"/>
             </fo:region-start>
             <fo:region-end region-name="rgnChapterEndRight">
@@ -231,13 +231,13 @@ E-mail : info@antennahouse.com
             <fo:region-body>
                 <xsl:copy-of select="ahf:getAttributeSet('atsGlossaryListRegionBodyLeft')"/>
             </fo:region-body>
-        	<fo:region-before region-name="rgnGlossaryListBeforeLeft">
+            <fo:region-before region-name="rgnGlossaryListBeforeLeft">
                 <xsl:copy-of select="ahf:getAttributeSet('atsGlossaryListRegionBefore')"/>
             </fo:region-before>
-        	<fo:region-after region-name="rgnGlossaryListAfterLeft">
+            <fo:region-after region-name="rgnGlossaryListAfterLeft">
                 <xsl:copy-of select="ahf:getAttributeSet('atsGlossaryListRegionAfter')"/>
             </fo:region-after>
-        	<fo:region-start region-name="rgnGlossaryListLeftStart">
+            <fo:region-start region-name="rgnGlossaryListLeftStart">
                 <xsl:copy-of select="ahf:getAttributeSet('atsGlossaryListRegionStartLeft')"/>
             </fo:region-start>
             <fo:region-end>
@@ -253,13 +253,13 @@ E-mail : info@antennahouse.com
             <fo:region-body>
                 <xsl:copy-of select="ahf:getAttributeSet('atsGlossaryListRegionBodyRight')"/>
             </fo:region-body>
-        	<fo:region-before region-name="rgnGlossaryListBeforeRight">
+            <fo:region-before region-name="rgnGlossaryListBeforeRight">
                 <xsl:copy-of select="ahf:getAttributeSet('atsGlossaryListRegionBefore')"/>
             </fo:region-before>
-        	<fo:region-after region-name="rgnGlossaryListAfterRight">
+            <fo:region-after region-name="rgnGlossaryListAfterRight">
                 <xsl:copy-of select="ahf:getAttributeSet('atsGlossaryListRegionAfter')"/>
             </fo:region-after>
-        	<fo:region-start>
+            <fo:region-start>
                 <xsl:copy-of select="ahf:getAttributeSet('atsGlossaryListRegionStartRight')"/>
             </fo:region-start>
             <fo:region-end region-name="rgnGlossaryListEndRight">
@@ -299,13 +299,13 @@ E-mail : info@antennahouse.com
             <fo:region-body>
                 <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionBodyLeft')"/>
             </fo:region-body>
-        	<fo:region-before region-name="rgnIndexBeforeLeft">
+            <fo:region-before region-name="rgnIndexBeforeLeft">
                 <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionBefore')"/>
             </fo:region-before>
-        	<fo:region-after region-name="rgnIndexAfterLeft">
+            <fo:region-after region-name="rgnIndexAfterLeft">
                 <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionAfter')"/>
             </fo:region-after>
-        	<fo:region-start region-name="rgnIndexLeftStart">
+            <fo:region-start region-name="rgnIndexLeftStart">
                 <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionStartLeft')"/>
             </fo:region-start>
             <fo:region-end region-name="rgnIndexEndLeft">
@@ -321,13 +321,13 @@ E-mail : info@antennahouse.com
             <fo:region-body>
                 <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionBodyRight')"/>
             </fo:region-body>
-        	<fo:region-before region-name="rgnIndexBeforeRight">
+            <fo:region-before region-name="rgnIndexBeforeRight">
                 <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionBefore')"/>
             </fo:region-before>
-        	<fo:region-after region-name="rgnIndexAfterRight">
+            <fo:region-after region-name="rgnIndexAfterRight">
                 <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionAfter')"/>
             </fo:region-after>
-        	<fo:region-start>
+            <fo:region-start>
                 <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionStartRight')"/>
             </fo:region-start>
             <fo:region-end region-name="rgnIndexEndRight">
@@ -367,13 +367,13 @@ E-mail : info@antennahouse.com
             <fo:region-body>
                 <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionBodyLeft')"/>
             </fo:region-body>
-        	<fo:region-before region-name="rgnBackmatterBeforeLeft">
+            <fo:region-before region-name="rgnBackmatterBeforeLeft">
                 <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionBefore')"/>
             </fo:region-before>
-        	<fo:region-after region-name="rgnBackmatterAfterLeft">
+            <fo:region-after region-name="rgnBackmatterAfterLeft">
                 <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionAfter')"/>
             </fo:region-after>
-        	<fo:region-start region-name="rgnBackmatterStartLeft">
+            <fo:region-start region-name="rgnBackmatterStartLeft">
                 <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionStartLeft')"/>
             </fo:region-start>
             <fo:region-end>
@@ -389,13 +389,13 @@ E-mail : info@antennahouse.com
             <fo:region-body>
                 <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionBodyRight')"/>
             </fo:region-body>
-        	<fo:region-before region-name="rgnBackmatterBeforeRight">
+            <fo:region-before region-name="rgnBackmatterBeforeRight">
                 <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionBefore')"/>
             </fo:region-before>
-        	<fo:region-after region-name="rgnBackmatterAfterRight">
+            <fo:region-after region-name="rgnBackmatterAfterRight">
                 <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionAfter')"/>
             </fo:region-after>
-        	<fo:region-start>
+            <fo:region-start>
                 <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionStartRight')"/>
             </fo:region-start>
             <fo:region-end  region-name="rgnBackmatterEndRight">
@@ -426,10 +426,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	generate page-sequence master
-     param:		none
-     return:	fo:page-sequence-master
-     note:		
+     function:    generate page-sequence master
+     param:        none
+     return:    fo:page-sequence-master
+     note:        
     -->
     <xsl:template name="genPageSequenceMaster">
         <xsl:call-template name="genPsmCover"/>
@@ -444,16 +444,16 @@ E-mail : info@antennahouse.com
     <xsl:template name="genPsmCover">
         <!-- Cover -->
         <fo:page-sequence-master master-name="pmsPageSeqCover">
-        	<fo:repeatable-page-master-alternatives>
-        		<fo:conditional-page-master-reference master-reference="pmsCover" 
+            <fo:repeatable-page-master-alternatives>
+                <fo:conditional-page-master-reference master-reference="pmsCover" 
                                                       odd-or-even="any" 
                                                       page-position="any"
                                                       blank-or-not-blank="not-blank"/>
-        		<fo:conditional-page-master-reference master-reference="pmsCoverBlank" 
+                <fo:conditional-page-master-reference master-reference="pmsCoverBlank" 
                                                       odd-or-even="any"  
                                                       page-position="any"
                                                       blank-or-not-blank="blank"/>
-        	</fo:repeatable-page-master-alternatives>
+            </fo:repeatable-page-master-alternatives>
         </fo:page-sequence-master>
     </xsl:template>
 
@@ -467,190 +467,190 @@ E-mail : info@antennahouse.com
     <xsl:template name="genPsmFrontmatter">
         <!-- Front matter -->
         <fo:page-sequence-master master-name="pmsPageSeqFrontmatter">
-        	<fo:repeatable-page-master-alternatives>
-        	    <xsl:choose>
-        	        <xsl:when test="$pIsWebOutput">
-        	            <fo:conditional-page-master-reference master-reference="pmsFrontmatterRight" 
-        	                odd-or-even="any"  
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsFrontmatterBlankRight" 
-        	                odd-or-even="any"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	        </xsl:when>
-        	        <xsl:otherwise>
-        	            <fo:conditional-page-master-reference master-reference="pmsFrontmatterLeft" 
-        	                odd-or-even="even"  
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsFrontmatterRight" 
-        	                odd-or-even="odd"  
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsFrontmatterBlankLeft" 
-        	                odd-or-even="even"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsFrontmatterBlankRight" 
-        	                odd-or-even="odd"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	        </xsl:otherwise>
-        	    </xsl:choose>
-        	</fo:repeatable-page-master-alternatives>
+            <fo:repeatable-page-master-alternatives>
+                <xsl:choose>
+                    <xsl:when test="$pIsWebOutput">
+                        <fo:conditional-page-master-reference master-reference="pmsFrontmatterRight" 
+                            odd-or-even="any"  
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsFrontmatterBlankRight" 
+                            odd-or-even="any"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <fo:conditional-page-master-reference master-reference="pmsFrontmatterLeft" 
+                            odd-or-even="even"  
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsFrontmatterRight" 
+                            odd-or-even="odd"  
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsFrontmatterBlankLeft" 
+                            odd-or-even="even"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsFrontmatterBlankRight" 
+                            odd-or-even="odd"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </fo:repeatable-page-master-alternatives>
         </fo:page-sequence-master>
     </xsl:template>
     
     <xsl:template name="genPsmChapter">
         <!-- Chapter -->
         <fo:page-sequence-master master-name="pmsPageSeqChapter">
-        	<fo:repeatable-page-master-alternatives>
-        	    <xsl:choose>
-        	        <xsl:when test="$pIsWebOutput">
-        	            <fo:conditional-page-master-reference master-reference="pmsChapterRight" 
-        	                odd-or-even="any" 
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsChapterBlankRight" 
-        	                odd-or-even="any"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	        </xsl:when>
-        	        <xsl:otherwise>
-        	            <fo:conditional-page-master-reference master-reference="pmsChapterLeft" 
-        	                odd-or-even="even"  
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsChapterRight" 
-        	                odd-or-even="odd" 
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsChapterBlankLeft" 
-        	                odd-or-even="even"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsChapterBlankRight" 
-        	                odd-or-even="odd"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	        </xsl:otherwise>
-        	    </xsl:choose>
-        	</fo:repeatable-page-master-alternatives>
+            <fo:repeatable-page-master-alternatives>
+                <xsl:choose>
+                    <xsl:when test="$pIsWebOutput">
+                        <fo:conditional-page-master-reference master-reference="pmsChapterRight" 
+                            odd-or-even="any" 
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsChapterBlankRight" 
+                            odd-or-even="any"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <fo:conditional-page-master-reference master-reference="pmsChapterLeft" 
+                            odd-or-even="even"  
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsChapterRight" 
+                            odd-or-even="odd" 
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsChapterBlankLeft" 
+                            odd-or-even="even"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsChapterBlankRight" 
+                            odd-or-even="odd"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </fo:repeatable-page-master-alternatives>
         </fo:page-sequence-master>
     </xsl:template>
     
     <xsl:template name="genPsmGlossaryList">
         <!-- Glossary list -->
         <fo:page-sequence-master master-name="pmsPageSeqGlossaryList">
-        	<fo:repeatable-page-master-alternatives>
-        	    <xsl:choose>
-        	        <xsl:when test="$pIsWebOutput">
-        	            <fo:conditional-page-master-reference master-reference="pmsGlossaryListRight" 
-        	                odd-or-even="any"  
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsGlossaryListBlankRight" 
-        	                odd-or-even="any"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	        </xsl:when>
-        	        <xsl:otherwise>
-        	            <fo:conditional-page-master-reference master-reference="pmsGlossaryListLeft" 
-        	                odd-or-even="even"  
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsGlossaryListRight" 
-        	                odd-or-even="odd"  
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsGlossaryListBlankLeft" 
-        	                odd-or-even="even"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsGlossaryListBlankRight" 
-        	                odd-or-even="odd"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	        </xsl:otherwise>
-        	    </xsl:choose>
-        	</fo:repeatable-page-master-alternatives>
+            <fo:repeatable-page-master-alternatives>
+                <xsl:choose>
+                    <xsl:when test="$pIsWebOutput">
+                        <fo:conditional-page-master-reference master-reference="pmsGlossaryListRight" 
+                            odd-or-even="any"  
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsGlossaryListBlankRight" 
+                            odd-or-even="any"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <fo:conditional-page-master-reference master-reference="pmsGlossaryListLeft" 
+                            odd-or-even="even"  
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsGlossaryListRight" 
+                            odd-or-even="odd"  
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsGlossaryListBlankLeft" 
+                            odd-or-even="even"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsGlossaryListBlankRight" 
+                            odd-or-even="odd"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </fo:repeatable-page-master-alternatives>
         </fo:page-sequence-master>
     </xsl:template>
     
     <xsl:template name="genPsmIndex">
         <!-- Index -->
         <fo:page-sequence-master master-name="pmsPageSeqIndex">
-        	<fo:repeatable-page-master-alternatives>
-        	    <xsl:choose>
-        	        <xsl:when test="$pIsWebOutput">
-        	            <fo:conditional-page-master-reference master-reference="pmsIndexRight" 
-        	                odd-or-even="any"  
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsIndexBlankRight" 
-        	                odd-or-even="any" 
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	        </xsl:when>
-        	        <xsl:otherwise>
-        	            <fo:conditional-page-master-reference master-reference="pmsIndexLeft" 
-        	                odd-or-even="even"  
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsIndexRight" 
-        	                odd-or-even="odd"  
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsIndexBlankLeft" 
-        	                odd-or-even="even"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsIndexBlankRight" 
-        	                odd-or-even="odd"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	        </xsl:otherwise>
-        	    </xsl:choose>
-        	</fo:repeatable-page-master-alternatives>
+            <fo:repeatable-page-master-alternatives>
+                <xsl:choose>
+                    <xsl:when test="$pIsWebOutput">
+                        <fo:conditional-page-master-reference master-reference="pmsIndexRight" 
+                            odd-or-even="any"  
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsIndexBlankRight" 
+                            odd-or-even="any" 
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <fo:conditional-page-master-reference master-reference="pmsIndexLeft" 
+                            odd-or-even="even"  
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsIndexRight" 
+                            odd-or-even="odd"  
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsIndexBlankLeft" 
+                            odd-or-even="even"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsIndexBlankRight" 
+                            odd-or-even="odd"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </fo:repeatable-page-master-alternatives>
         </fo:page-sequence-master>
     </xsl:template>
     
     <xsl:template name="genPsmBackmatter">
         <!-- Backmatter -->
         <fo:page-sequence-master master-name="pmsPageSeqBackmatter">
-        	<fo:repeatable-page-master-alternatives>
-        	    <xsl:choose>
-        	        <xsl:when test="$pIsWebOutput">
-        	            <fo:conditional-page-master-reference master-reference="pmsBackmatterRight" 
-        	                odd-or-even="any"  
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsBackmatterBlankRight" 
-        	                odd-or-even="any"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	        </xsl:when>
-        	        <xsl:otherwise>
-        	            <fo:conditional-page-master-reference master-reference="pmsBackmatterLeft" 
-        	                odd-or-even="even"  
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsBackmatterRight" 
-        	                odd-or-even="odd"  
-        	                page-position="any"
-        	                blank-or-not-blank="not-blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsBackmatterBlankLeft" 
-        	                odd-or-even="even"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	            <fo:conditional-page-master-reference master-reference="pmsBackmatterBlankRight" 
-        	                odd-or-even="odd"  
-        	                page-position="any"
-        	                blank-or-not-blank="blank"/>
-        	        </xsl:otherwise>
-        	    </xsl:choose>
-        	</fo:repeatable-page-master-alternatives>
+            <fo:repeatable-page-master-alternatives>
+                <xsl:choose>
+                    <xsl:when test="$pIsWebOutput">
+                        <fo:conditional-page-master-reference master-reference="pmsBackmatterRight" 
+                            odd-or-even="any"  
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsBackmatterBlankRight" 
+                            odd-or-even="any"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <fo:conditional-page-master-reference master-reference="pmsBackmatterLeft" 
+                            odd-or-even="even"  
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsBackmatterRight" 
+                            odd-or-even="odd"  
+                            page-position="any"
+                            blank-or-not-blank="not-blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsBackmatterBlankLeft" 
+                            odd-or-even="even"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                        <fo:conditional-page-master-reference master-reference="pmsBackmatterBlankRight" 
+                            odd-or-even="odd"  
+                            page-position="any"
+                            blank-or-not-blank="blank"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </fo:repeatable-page-master-alternatives>
         </fo:page-sequence-master>
     </xsl:template>
 

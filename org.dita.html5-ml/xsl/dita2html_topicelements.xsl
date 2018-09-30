@@ -22,47 +22,47 @@ E-mail : info@antennahouse.com
     <!-- relatedlink is implemented in dita2fo_relatedlinks.xsl -->
 
     <!-- 
-     function:	topic template to get style
-     param:	    
-     return:	style name
-     note:		This template is common for topic/task/concept/reference
+     function:    topic template to get style
+     param:        
+     return:    style name
+     note:        This template is common for topic/task/concept/reference
      -->
     <xsl:template match="*[contains(@class, ' topic/topic ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsBase'"/>
     </xsl:template>    
     
     <!-- 
-     function:	titlealts template
-     param:	    
-     return:	none
-     note:		none
+     function:    titlealts template
+     param:        
+     return:    none
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' topic/titlealts ')]">
     </xsl:template>
     <!-- 
-     function:	navtitle template
-     param:	    
-     return:	none
-     note:		none
+     function:    navtitle template
+     param:        
+     return:    none
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' topic/navtitle ')]">
         <xsl:apply-templates/>
     </xsl:template>
     
     <!-- 
-     function:	searchtitle template
-     param:	    
-     return:	none
-     note:		none
+     function:    searchtitle template
+     param:        
+     return:    none
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' topic/searchtitle ')]">
     </xsl:template>
     
     <!-- 
-     function:	abstract template
-     param:	    prmTopicRef, prmNeedId
-     return:	
-     note:		xsl:strip-space is applied for this element.
+     function:    abstract template
+     param:        prmTopicRef, prmNeedId
+     return:    
+     note:        xsl:strip-space is applied for this element.
                 Make fo:block unconditionally. (2011-09-07 t.makita)
                 Call "processAbstarct" for easy override.
                 2015-08-25 t.makita
@@ -85,10 +85,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	shortdesc template
-     param:	    
-     return:	fo:block or descendant generated fo objects
-     note:		Abstract can contain shortdesc as inline or block level objects.
+     function:    shortdesc template
+     param:        
+     return:    fo:block or descendant generated fo objects
+     note:        Abstract can contain shortdesc as inline or block level objects.
      -->
     <xsl:template match="*[contains(@class, ' topic/shortdesc ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:choose>
@@ -124,10 +124,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	body template
-     param:	    prmTopicRef, prmNeedId
-     return:	fo:block
-     note:		Generate fo:block instead of fo:wrapper because it is sometimes needed for debugging generated areas.
+     function:    body template
+     param:        prmTopicRef, prmNeedId
+     return:    fo:block
+     note:        Generate fo:block instead of fo:wrapper because it is sometimes needed for debugging generated areas.
                 2016-09-23 t.makita
      -->
     <xsl:template match="*[contains(@class, ' topic/body ')]" mode="MODE_GET_STYLE" as="xs:string*">
@@ -153,10 +153,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	bodydiv template
-        param:	    prmTopicRef, prmNeedId
-        return:	    fo:wrapper
-        note:       Bodydiv needs no special formattings. (2011-10-25 t.makita)		
+        function:    bodydiv template
+        param:        prmTopicRef, prmNeedId
+        return:        fo:wrapper
+        note:       Bodydiv needs no special formattings. (2011-10-25 t.makita)        
     -->
     <xsl:template match="*[contains(@class, ' topic/bodydiv ')]">
         <fo:block>
@@ -167,10 +167,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	dita template
-        param:	    
-        return:	    
-        note:		"dita" is only a container element.
+        function:    dita template
+        param:        
+        return:        
+        note:        "dita" is only a container element.
                     This element will not appear in the merged middle file.
                     2011-10-25 t.makita
     -->

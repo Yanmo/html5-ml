@@ -22,10 +22,10 @@ E-mail : info@antennahouse.com
     <!-- note is implemented in dita2fo_note.xsl -->
     
     <!-- 
-     function:	div template
-     param:	    
-     return:	fo:wrapper with its contents
-     note:		div is used for only grouping the contents
+     function:    div template
+     param:        
+     return:    fo:wrapper with its contents
+     note:        div is used for only grouping the contents
                 It has no intended style
      -->
     <xsl:template match="*[contains(@class, ' topic/div ')]" mode="MODE_GET_STYLE" as="xs:string*">
@@ -42,10 +42,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!-- 
-     function:	p template
-     param:	    
-     return:	fo:block with p's contents
-     note:		none
+     function:    p template
+     param:        
+     return:    fo:block with p's contents
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' topic/p ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsP'"/>
@@ -61,10 +61,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	ph template
-     param:	    
-     return:	fo:inline
-     note:		no special formatting
+     function:    ph template
+     param:        
+     return:    fo:inline
+     note:        no special formatting
                 Call "processPh" for overriding from other plug-ins.
                 2015-08-25 t.makita
      -->
@@ -86,10 +86,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	keyword template
-     param:	    
-     return:	fo:inline
-     note:		no special formatting
+     function:    keyword template
+     param:        
+     return:    fo:inline
+     note:        no special formatting
                 Call "processKeyword" for easy override from other plug-ins.
                 2015-08-25 t.makita
      -->
@@ -115,10 +115,10 @@ E-mail : info@antennahouse.com
      -->
     
     <!-- 
-     function:	ol template
-     param:	    
-     return:	Numbered list (fo:list-block)
-     note:		Call "processOl" for overriding from other plug-ins.
+     function:    ol template
+     param:        
+     return:    Numbered list (fo:list-block)
+     note:        Call "processOl" for overriding from other plug-ins.
                 2015-08-25 t.makita
      -->
     <xsl:template match="*[contains(@class, ' topic/ol ')]" mode="MODE_GET_STYLE" as="xs:string*">
@@ -153,10 +153,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	ol/li template
-     param:	    
-     return:	Numbered list (fo:list-item)
-     note:		Add consideration for stepsection.
+     function:    ol/li template
+     param:        
+     return:    Numbered list (fo:list-item)
+     note:        Add consideration for stepsection.
                 (2011-10-24 t.makita)
                 Call "processOlLi" for overriding from other plug-ins.
                 2015-08-25 t.makita
@@ -201,10 +201,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Get ol number format
-     param:		prmOl, prmOlNumberFormat
-     return:	Number format string
-     note:		Count ol in entry/note independently.
+     function:    Get ol number format
+     param:        prmOl, prmOlNumberFormat
+     return:    Number format string
+     note:        Count ol in entry/note independently.
                 2015-06-03 t.makita
      -->
     <xsl:function name="ahf:getOlNumberFormat" as="xs:string">
@@ -242,10 +242,10 @@ E-mail : info@antennahouse.com
     </xsl:function>
     
     <!-- 
-     function:	ul template
-     param:	    
-     return:	Unordered list (fo:list-block)
-     note:		Call "processUl" for overriding from other plug-ins.
+     function:    ul template
+     param:        
+     return:    Unordered list (fo:list-block)
+     note:        Call "processUl" for overriding from other plug-ins.
                 2015-08-25 t.makita
      -->
     <xsl:template match="*[contains(@class, ' topic/ul ')]" mode="MODE_GET_STYLE" as="xs:string*">
@@ -271,10 +271,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	ul/li template
-     param:	    
-     return:	Unordered list (fo:list-item)
-     note:		Call "processUlLi" for overriding from other plug-ins.
+     function:    ul/li template
+     param:        
+     return:    Unordered list (fo:list-item)
+     note:        Call "processUlLi" for overriding from other plug-ins.
                 2015-08-25 t.makita
      -->
     <xsl:template match="*[contains(@class, ' topic/ul ')]/*[contains(@class,' topic/li ')]" mode="MODE_GET_STYLE" as="xs:string*">
@@ -315,10 +315,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	sl template
-     param:	    
-     return:	fo:list-block
-     note:		none
+     function:    sl template
+     param:        
+     return:    fo:list-block
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' topic/sl ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsSl'"/>
@@ -389,10 +389,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	dl template
-     param:	    
-     return:	fo:block or fo:table
-     note:		
+     function:    dl template
+     param:        
+     return:    fo:block or fo:table
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' topic/dl ')][$pFormatDlAsBlock]" mode="MODE_GET_STYLE" as="xs:string*">
     </xsl:template>
@@ -745,10 +745,10 @@ E-mail : info@antennahouse.com
     
 
     <!-- 
-        function:	Section template
-        param:	    
-        return:	    Section contents
-        note:		Call "processSection" for overriding from other plug-ins.
+        function:    Section template
+        param:        
+        return:        Section contents
+        note:        Call "processSection" for overriding from other plug-ins.
                     2015-08-25 t.makita
     -->
     <xsl:template match="*[contains(@class, ' topic/section ')]" mode="MODE_GET_STYLE" as="xs:string*">
@@ -769,10 +769,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	Section title template
-        param:	    
-        return:	    Section title list
-        note:		
+        function:    Section title template
+        param:        
+        return:        Section title list
+        note:        
     -->
     <xsl:template match="*[contains(@class, ' topic/section ')]/*[contains(@class, ' topic/title ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsHeader5Body'"/>
@@ -809,10 +809,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	Sectiondiv template
-        param:	    
-        return:	    fo:wrapper
-        note:		2011-10-27 t.makita
+        function:    Sectiondiv template
+        param:        
+        return:        fo:wrapper
+        note:        2011-10-27 t.makita
     -->
     <xsl:template match="*[contains(@class, ' topic/sectiondiv ')]" mode="MODE_GET_STYLE" as="xs:string*">
     </xsl:template>
@@ -828,10 +828,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	Example template
-        param:	    
-        return:	    Example contents
-        note:		
+        function:    Example template
+        param:        
+        return:        Example contents
+        note:        
     -->
     <xsl:template match="*[contains(@class, ' topic/example ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsExample'"/>
@@ -848,10 +848,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-        function:	Example title template
-        param:	    
-        return:	    Example title list
-        note:		
+        function:    Example title template
+        param:        
+        return:        Example title list
+        note:        
     -->
     <xsl:template match="*[contains(@class, ' topic/example ')]/*[contains(@class, ' topic/title ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsHeader5List'"/>
@@ -889,10 +889,10 @@ E-mail : info@antennahouse.com
         
     
     <!-- 
-     function:	fig template
-     param:	    
-     return:	fo:block
-     note:		Generate id attribute for figure list.
+     function:    fig template
+     param:        
+     return:    fo:block
+     note:        Generate id attribute for figure list.
      -->
     <xsl:template match="*[contains(@class, ' topic/fig ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsFig'"/>
@@ -954,10 +954,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	figgroup template
-     param:	    
-     return:	fo:block
-     note:		
+     function:    figgroup template
+     param:        
+     return:    fo:block
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' topic/figgroup ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:variable name="isFiggroupInTable" as="xs:boolean" select="exists(ancestor::*[contains(@class,' topic/entry ')])"/>
@@ -1004,10 +1004,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	image template
-     param:	    
-     return:	fo:external-graphic (fo:block)
-     note:		Add block/inline specific attribute-set.
+     function:    image template
+     param:        
+     return:    fo:external-graphic (fo:block)
+     note:        Add block/inline specific attribute-set.
                 2015-06-04 t.makita
      -->
     <xsl:template match="*[contains(@class, ' topic/image ')]">
@@ -1186,19 +1186,19 @@ E-mail : info@antennahouse.com
     </xsl:function>
     
     <!-- 
-     function:	alt template
-     param:	    
-     return:	none
-     note:		alt is handled in ahf:getImageCommonAttr
+     function:    alt template
+     param:        
+     return:    none
+     note:        alt is handled in ahf:getImageCommonAttr
      -->
     <xsl:template match="*[contains(@class, ' topic/alt ')]">
     </xsl:template>
     
     <!-- 
-     function:	object template
-     param:	    
-     return:	none
-     note:		Element object is not supported because:
+     function:    object template
+     param:        
+     return:    none
+     note:        Element object is not supported because:
                 1. Object without foreign/unknown is for HTML output.
                 2. Object with foreign/unkown causes parser error.
                    Content type of foreign is ANY. However this means
@@ -1214,19 +1214,19 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	param template
-     param:	    none
-     return:	none
-     note:		This template will not be activated.
+     function:    param template
+     param:        none
+     return:    none
+     note:        This template will not be activated.
      -->
     <xsl:template match="*[contains(@class, ' topic/param ')]">
     </xsl:template>
     
     <!-- 
-     function:	pre template
-     param:	    none
-     return:	fo:block
-     note:		Call "processPre" for overriding from other plug-ins.
+     function:    pre template
+     param:        none
+     return:    fo:block
+     note:        Call "processPre" for overriding from other plug-ins.
                 2015-08-25 t.makita
      -->
     <xsl:template match="*[contains(@class, ' topic/pre ')]" mode="MODE_GET_STYLE" as="xs:string*">
@@ -1251,10 +1251,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	lines template
-     param:	    
-     return:	fo:block
-     note:		
+     function:    lines template
+     param:        
+     return:    fo:block
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' topic/lines ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsLines'"/>
@@ -1274,10 +1274,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	cite template
-     param:	    
-     return:	fo:inline
-     note:		
+     function:    cite template
+     param:        
+     return:    fo:inline
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' topic/cite ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsCite'"/>
@@ -1305,10 +1305,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	lq template
-     param:	    
-     return:	fo:block
-     note:		Different from xref/@href, DITA-OT doesn't do special processing for lq/@href.
+     function:    lq template
+     param:        
+     return:    fo:block
+     note:        Different from xref/@href, DITA-OT doesn't do special processing for lq/@href.
                 Treate @scope="peer" as external considering DITA-OT standard processing.
                 If <longdescref> exists, its attributes precede the attributes of <lq>.
                 (2011-10-27 t.makita)
@@ -1416,20 +1416,20 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	longquoteref template
-        param:	    none
-        return:	    none
-        note:		Ignore in normal context.
+        function:    longquoteref template
+        param:        none
+        return:        none
+        note:        Ignore in normal context.
     -->
     <xsl:template match="*[contains(@class, ' topic/longquoteref ')]">
     </xsl:template>
         
     
     <!-- 
-     function:	q template
-     param:	    none
-     return:	fo:inline
-     note:		
+     function:    q template
+     param:        none
+     return:    fo:inline
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' topic/q ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsQ'"/>
@@ -1457,19 +1457,19 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	longdescref template
-        param:	    none
-        return:	    Nothing
-        note:		Longdescref is for HTML output. (2011-10-26 t.makita)
+        function:    longdescref template
+        param:        none
+        return:        Nothing
+        note:        Longdescref is for HTML output. (2011-10-26 t.makita)
     -->
     <xsl:template match="*[contains(@class, ' topic/longdescref ')]">
     </xsl:template>
         
     <!-- 
-        function:	draft-comment template
+        function:    draft-comment template
         param:      none
-        return:	    fo:block
-        note:		none
+        return:        fo:block
+        note:        none
     -->
     <xsl:template match="*[contains(@class, ' topic/draft-comment ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsDraftComment'"/>
@@ -1528,10 +1528,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
         
     <!-- 
-        function:	fn template
+        function:    fn template
         param:      
-        return:	    fo:basic-link(fo:footnote)
-        note:		BUG-FIX: Don't generate any element if @id exists.
+        return:        fo:basic-link(fo:footnote)
+        note:        BUG-FIX: Don't generate any element if @id exists.
                     2015-05-26 t.makita
     -->
     <xsl:template match="*[contains(@class,' topic/fn ')]">
@@ -1569,10 +1569,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	Generate footnote prefix
-        param:		prmFn
-        return:	    Footnote title prefix
-        note:		If <glossentry> elements contain <fn>, this stylesheet sets 0 to $fnPreviousAmount
+        function:    Generate footnote prefix
+        param:        prmFn
+        return:        Footnote title prefix
+        note:        If <glossentry> elements contain <fn>, this stylesheet sets 0 to $fnPreviousAmount
                     and count <fn> from the nearest ancestor <glossentry>.
                     This means that fn must be outputted per <glossentry>.
                     2011-10-12 t.makita
@@ -1705,9 +1705,9 @@ E-mail : info@antennahouse.com
         
     
     <!-- 
-        function:	term template
-        param:	    
-        return:	fo:inline
+        function:    term template
+        param:        
+        return:    fo:inline
         note:   Call "processTerm" for overriding from other plug-ins.
                 2015-08-25 t.makita
     -->
@@ -1729,10 +1729,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	text template
-        param:	    
-        return:	    fo:wrapper
-        note:		Text is only a container for text.
+        function:    text template
+        param:        
+        return:        fo:wrapper
+        note:        Text is only a container for text.
         Generate a fo:wrapper. (2011-10-27 t.makita)
     -->
     <xsl:template match="*[contains(@class,' topic/text ')]">
@@ -1744,10 +1744,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	tm
+        function:    tm
         param:      
-        return:	    fo:inline
-        note:		none
+        return:        fo:inline
+        note:        none
     -->
     <xsl:template match="*[contains(@class, ' topic/tm ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsTm'"/>
@@ -1804,10 +1804,10 @@ E-mail : info@antennahouse.com
           Common templates
          ======================== -->
     <!-- 
-     function:	Make fo:basic-link attribute external-destination/internal-destination
-     param:		prmHref, prmScope
-     return:	attribute()*
-     note:		
+     function:    Make fo:basic-link attribute external-destination/internal-destination
+     param:        prmHref, prmScope
+     return:    attribute()*
+     note:        
      -->
     <xsl:function name="ahf:makeBasicLinkDestination" as="attribute()*">
         <xsl:param name="prmHref" as="xs:string"/>
@@ -1874,10 +1874,10 @@ E-mail : info@antennahouse.com
     </xsl:function>
     
     <!-- 
-     function:	Generate fig title prefix
-     param:		prmTopicRef, prmFig
-     return:	Table title prefix string
-     note:		
+     function:    Generate fig title prefix
+     param:        prmTopicRef, prmFig
+     return:    Table title prefix string
+     note:        
      -->
     <xsl:template name="ahf:getFigTitlePrefix" as="xs:string">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>

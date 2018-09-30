@@ -28,10 +28,10 @@
     <xsl:variable name="cEquationNumberTitle" select="ahf:getVarValue('Equation_Number_Title')" as="xs:string"/>
 
     <!-- 
-        function:	equation-figure implementation
-        param:	    
-        return:	    
-        note:		From the DITA 1.3 spec:
+        function:    equation-figure implementation
+        param:        
+        return:        
+        note:        From the DITA 1.3 spec:
                     "When an <equation-figure> element has multiple direct child <mathml>, <image>, or <pre> elements, each child represents an alternative form of the equation.
                      Processors are free to choose the form or forms that they use in deliverables.When an <equation-figure> element has multiple direct child <mathml>, <image>, 
                      or <pre> elements, each child represents an alternative form of the equation. Processors are free to choose the form or forms that they use in deliverables.
@@ -52,10 +52,10 @@
     </xsl:template>
     
     <!-- 
-        function:	equation-inline implementation
-        param:	    
-        return:	    
-        note:		equation-inline is the specialization of ph element. 
+        function:    equation-inline implementation
+        param:        
+        return:        
+        note:        equation-inline is the specialization of ph element. 
                     The PDF plug-in only calls ph template by xsl:next-match.
     -->
     <xsl:template match="*[contains(@class, ' equation-d/equation-inline ')]" priority="2">
@@ -63,10 +63,10 @@
     </xsl:template>
     
     <!-- 
-        function:	equation-block implementation
-        param:	    
-        return:	    fo:block
-        note:		Generate single fo:block selecting appropriate equation in the child.
+        function:    equation-block implementation
+        param:        
+        return:        fo:block
+        note:        Generate single fo:block selecting appropriate equation in the child.
                     <equation-block> can have multiple equations as the each direct child elements.
                     ahf:getCandidateEquationElement will select most appropriate one from child elements.
                     Also <equation-block> can have multiple <equation-number>. But DITA 1.3 spec says that
@@ -168,10 +168,10 @@
         </xsl:choose>
     </xsl:template>
     <!-- 
-        function:	Select candidate equation element
-        param:	    element()
-        return:	    element()?
-        note:		Select candidate equation node()
+        function:    Select candidate equation element
+        param:        element()
+        return:        element()?
+        note:        Select candidate equation node()
                     1. <mathml> element
                     2. MathML <img>
                     3. SVG container
@@ -198,10 +198,10 @@
     </xsl:function>
     
     <!-- 
-        function:	Select candidate equation candidate elements group
-        param:	    element()
-        return:	    element()*
-        note:		Select candidate equation element
+        function:    Select candidate equation candidate elements group
+        param:        element()
+        return:        element()*
+        note:        Select candidate equation element
                     1. <mathml> element
                     2. MathML <img>
                     3. SVG container
@@ -218,10 +218,10 @@
     </xsl:function>
 
     <!-- 
-        function:	equation-number template
-        param:	    prmEquationBlock
-        return:	    fo:inline
-        note:		empty equation-number will be automatically numbered, otherwise only apply templates to child node
+        function:    equation-number template
+        param:        prmEquationBlock
+        return:        fo:inline
+        note:        empty equation-number will be automatically numbered, otherwise only apply templates to child node
     -->
     <xsl:template match="*[contains(@class, ' equation-d/equation-number ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsEquationNumber'"/>
@@ -252,10 +252,10 @@
     </xsl:template>
 
     <!-- 
-        function:	generate auto equation number for equation-block without equation-number
-        param:	    prmEquationBlock
-        return:	    fo:inline
-        note:		
+        function:    generate auto equation number for equation-block without equation-number
+        param:        prmEquationBlock
+        return:        fo:inline
+        note:        
     -->
     <xsl:template name="generateAutoEquationNumber" as="element()">
         <xsl:param name="prmEquationBlock" tunnel="yes" required="yes" as="element()"/>
@@ -279,10 +279,10 @@
     </xsl:template>
 
     <!-- 
-     function:	Generate equation-number
-     param:		prmTopicRef, prmEquationNumber
-     return:	Equation number string
-     note:		If equation-block has no equation-number, equation-block is passed as $prmEquationNumber. 
+     function:    Generate equation-number
+     param:        prmTopicRef, prmEquationNumber
+     return:    Equation number string
+     note:        If equation-block has no equation-number, equation-block is passed as $prmEquationNumber. 
      -->
     <xsl:template name="ahf:getAutoEquationNumber" as="xs:string">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>

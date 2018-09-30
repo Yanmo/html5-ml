@@ -36,10 +36,10 @@ E-mail : info@antennahouse.com
     </xsl:variable>
     
     <!-- 
-     function:	make book chapter map template
-     param:		none
-     return:	chapter map node
-     note:		Changed to store title from attribute to "title" element to realize multi-language processing.
+     function:    make book chapter map template
+     param:        none
+     return:    chapter map node
+     note:        Changed to store title from attribute to "title" element to realize multi-language processing.
                 2015-08-23 t.makita
      -->
     <xsl:template name="makeChapterMap">
@@ -206,10 +206,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	dump chapter map template
-     param:		none
-     return:	dump result
-     note:		none
+     function:    dump chapter map template
+     param:        none
+     return:    dump result
+     note:        none
      -->
     <xsl:template name="dumpChapterMap">
         <xsl:for-each select="$chapterMap/*">
@@ -218,10 +218,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	make thumb index map template
-     param:		none
-     return:	table start cout node
-     note:		none
+     function:    make thumb index map template
+     param:        none
+     return:    table start cout node
+     note:        none
      -->
     <xsl:template name="makeThumbIndexMap">
         <!--xsl:call-template name="dumpBookChildMap"/-->
@@ -254,10 +254,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	dump thumb index map template
-     param:		none
-     return:	dump result
-     note:		none
+     function:    dump thumb index map template
+     param:        none
+     return:    dump result
+     note:        none
      -->
     <xsl:template name="dumpThumbIndexMap">
         <xsl:for-each select="$thumbIndexMap/*">

@@ -21,20 +21,20 @@ E-mail : info@antennahouse.com
     <!-- required-cleanup is coded in dita2fo_regacyconversionelements.xsl -->
     
     <!-- 
-     function:	data-about template
-     param:	    
-     return:	Only apply-templates for child elements
-     note:		
+     function:    data-about template
+     param:        
+     return:    Only apply-templates for child elements
+     note:        
      -->
     <xsl:template match="*[contains(@class,' topic/data-about ')]">
         <xsl:apply-templates/>
     </xsl:template>
 
     <!-- 
-     function:	data
-     param:	    
-     return:	none
-     note:		ignore descendant-or-self
+     function:    data
+     param:        
+     return:    none
+     note:        ignore descendant-or-self
                 Call "processData" for overriding from other plug-ins.
                 2015-08-25 t.makita
      -->
@@ -46,41 +46,41 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	foreign template
-     param:	    
-     return:	If content is MathML or SVG return fo:wrapper & fo:instream-foreign-object
-     note:		Added 2011-08-22 t.makita
+     function:    foreign template
+     param:        
+     return:    If content is MathML or SVG return fo:wrapper & fo:instream-foreign-object
+     note:        Added 2011-08-22 t.makita
      -->
     <xsl:template match="*[contains(@class, ' topic/foreign ')]">
         <xsl:variable name="childElem" select="child::*[1]" as="element()*"/>
-    	<xsl:if test="exists($childElem)">
-    		<fo:wrapper>
-    	        <xsl:call-template name="ahf:getUnivAtts"/>
-    		    <xsl:choose>
-    			    <xsl:when test="namespace-uri($childElem)='http://www.w3.org/1998/Math/MathML'">
-    			    	<!-- Content is MathML -->
-    			        <fo:instream-foreign-object content-type="content-type:application/mathml+xml">
-    			            <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-    			            <xsl:copy-of select="$childElem"/>
-    			        </fo:instream-foreign-object>
-    			    </xsl:when>
-    			    <xsl:when test="namespace-uri($childElem)='http://www.w3.org/2000/svg'">
-    			    	<!-- Content is SVG -->
-    			        <fo:instream-foreign-object content-type="content-type:image/svg+xml">
-    			            <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-    			            <xsl:copy-of select="$childElem"/>
-    			        </fo:instream-foreign-object>
-    			    </xsl:when>
-    			</xsl:choose>
-    		</fo:wrapper>
-    	</xsl:if>
+        <xsl:if test="exists($childElem)">
+            <fo:wrapper>
+                <xsl:call-template name="ahf:getUnivAtts"/>
+                <xsl:choose>
+                    <xsl:when test="namespace-uri($childElem)='http://www.w3.org/1998/Math/MathML'">
+                        <!-- Content is MathML -->
+                        <fo:instream-foreign-object content-type="content-type:application/mathml+xml">
+                            <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
+                            <xsl:copy-of select="$childElem"/>
+                        </fo:instream-foreign-object>
+                    </xsl:when>
+                    <xsl:when test="namespace-uri($childElem)='http://www.w3.org/2000/svg'">
+                        <!-- Content is SVG -->
+                        <fo:instream-foreign-object content-type="content-type:image/svg+xml">
+                            <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
+                            <xsl:copy-of select="$childElem"/>
+                        </fo:instream-foreign-object>
+                    </xsl:when>
+                </xsl:choose>
+            </fo:wrapper>
+        </xsl:if>
     </xsl:template>
     
     <!-- 
-     function:	itemgroup template
-     param:	    
-     return:	fo:block
-     note:		none
+     function:    itemgroup template
+     param:        
+     return:    fo:block
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' topic/itemgroup ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsItemGroup'"/>
@@ -96,19 +96,19 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	no-topic-nesting template
-     param:	    
-     return:	none
-     note:		none
+     function:    no-topic-nesting template
+     param:        
+     return:    none
+     note:        none
      -->
     <xsl:template match="*[contains(@class,' topic/no-topic-nesting ')]">
     </xsl:template>
     
     <!-- 
-     function:	state template
-     param:	    
-     return:	fo:inline
-     note:		return @name=@value inline.
+     function:    state template
+     param:        
+     return:    fo:inline
+     note:        return @name=@value inline.
      -->
     <xsl:template match="*[contains(@class, ' topic/state ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsState'"/>
@@ -126,10 +126,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	boolean template
-     param:	    
-     return:	fo:inline
-     note:		
+     function:    boolean template
+     param:        
+     return:    fo:inline
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' topic/boolean ')]" mode="MODE_GET_STYLE" as="xs:string*">
         <xsl:sequence select="'atsBoolean'"/>
@@ -145,10 +145,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Unknown template
-     param:	    
-     return:	None
-     note:		
+     function:    Unknown template
+     param:        
+     return:    None
+     note:        
      -->
     <xsl:template match="*[contains(@class,' topic/unknown ')]">
     </xsl:template>

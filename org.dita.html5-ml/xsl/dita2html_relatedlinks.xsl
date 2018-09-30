@@ -19,10 +19,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	related-links control
-     param:		none
-     return:	related-links fo objects
-     note:		As noted in DITA specification, this stylesheet adopts links that have @role='friend'.
+     function:    related-links control
+     param:        none
+     return:    related-links fo objects
+     note:        As noted in DITA specification, this stylesheet adopts links that have @role='friend'.
      -->
     <xsl:template match="*[contains(@class, ' topic/related-links ')]">
         <xsl:variable name="linkCount" select="count(descendant::*[contains(@class,' topic/link ')][ahf:isTargetLink(.)])" as="xs:integer"/>
@@ -39,10 +39,10 @@ E-mail : info@antennahouse.com
     </xsl:function>
     
     <!-- 
-     function:	Make related-links block
-     param:		prmRelatedLinks
-     return:	related-links fo objects
-     note:		
+     function:    Make related-links block
+     param:        prmRelatedLinks
+     return:    related-links fo objects
+     note:        
      -->
     <xsl:template name="makeRelatedLink">
         <xsl:param name="prmRelatedLinks" required="yes" as="element()"/>
@@ -99,10 +99,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	Process link
-     param:		prmRelatedLinks
-     return:	reference line contentes
-     note:		none
+     function:    Process link
+     param:        prmRelatedLinks
+     return:    reference line contentes
+     note:        none
      -->
     <xsl:template name="processLink">
         <xsl:param name="prmRelatedLinks" required="yes" as="element()"/>
@@ -163,10 +163,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Linktext template
-     param:	    
-     return:	linktext contents
-     note:		This template will be never called!
+     function:    Linktext template
+     param:        
+     return:    linktext contents
+     note:        This template will be never called!
      -->
     <!--xsl:template match="*[contains(@class, ' map/linktext ')] | *[contains(@class, ' topic/linktext ')]">
         <xsl:param name="prmTopicRef" required="yes"  as="element()?"/>
@@ -194,10 +194,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Edit reference line for inside link
-     param:		prmTopicRef, prmTopicContent
-     return:	reference line contentes
-     note:		
+     function:    Edit reference line for inside link
+     param:        prmTopicRef, prmTopicContent
+     return:    reference line contentes
+     note:        
      -->
     <xsl:template name="editLinkInside">
         <xsl:param name="prmTopicRef" required="yes" as="element()"/>
@@ -293,10 +293,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	Edit link line for outside link
-     param:		prmHref, prmLinktext
-     return:	reference line contentes
-     note:		ADD: Link to PDF named destination
+     function:    Edit link line for outside link
+     param:        prmHref, prmLinktext
+     return:    reference line contentes
+     note:        ADD: Link to PDF named destination
                 2010/12/15 t.makita
      -->
     <xsl:template name="editLinkOutside">

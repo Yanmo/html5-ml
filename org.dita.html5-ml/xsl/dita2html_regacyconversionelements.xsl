@@ -18,10 +18,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	required-cleanup template
-     param:	    
-     return:	fo:block
-     note:		none
+     function:    required-cleanup template
+     param:        
+     return:    fo:block
+     note:        none
      -->
     <xsl:variable name="requiredCleanupTitlePrefix" select="ahf:getVarValue('Required_Cleanup_Title_Prefix')"/>
     <xsl:variable name="requiredCleanupRemap"       select="ahf:getVarValue('Required_Cleanup_Remap')"/>

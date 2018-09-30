@@ -67,10 +67,10 @@
     </xsl:variable>
     
     <!-- 
-     function:	make equation-block count map template
-     param:		none
-     return:	equation-block count node
-     note:		
+     function:    make equation-block count map template
+     param:        none
+     return:    equation-block count node
+     note:        
      -->
     <xsl:template name="makeEquationBlockCount" as="element()*">
         <xsl:apply-templates select="$map/*[contains(@class, ' map/topicref ')]" mode="MODE_EQUATION_BLCOK_COUNT"/>
@@ -121,10 +121,10 @@
     </xsl:template>
     
     <!-- 
-     function:	Return equation-block that is descendant of given topic.
-     param:		prmTopic
-     return:	equation-block elements
-     note:		Count only automatic equation numbering equation-block.
+     function:    Return equation-block that is descendant of given topic.
+     param:        prmTopic
+     return:    equation-block elements
+     note:        Count only automatic equation numbering equation-block.
                 In the related-links, the referenced topic/shortdesc is inserted automatically.
                 It is not counted even if it contains equation-block.
      -->
@@ -161,10 +161,10 @@
     </xsl:template>
 
     <!-- 
-     function:	make equation numbering map template
-     param:		none
-     return:	equation-number start count node
-     note:		
+     function:    make equation numbering map template
+     param:        none
+     return:    equation-number start count node
+     note:        
      -->
     <xsl:template name="makeEquationBlockStartCount" as="element()*">
         <xsl:apply-templates select="$equationBlockCountMap/*" mode="MODE_EQUATION_NUMBER_START_COUNT"/>
@@ -198,10 +198,10 @@
     </xsl:template>
     
     <!-- 
-     function:	dump equation numbering map template
-     param:		none
-     return:	result-document
-     note:		
+     function:    dump equation numbering map template
+     param:        none
+     return:    result-document
+     note:        
      -->
     <xsl:template name="outputEquationCountMap">
         <xsl:variable name="fileName1" select="'equationBlockCountMap.xml'"/>
@@ -215,10 +215,10 @@
     </xsl:template>
     
     <!-- 
-     function:	get previous equation number amount
-     param:		prmTopic,prmTopicRef
-     return:	xs:integer
-     note:		
+     function:    get previous equation number amount
+     param:        prmTopic,prmTopicRef
+     return:    xs:integer
+     note:        
      -->
     <xsl:template name="ahf:getEquationBlockPrevAmount" as="xs:integer">
         <xsl:param name="prmTopic" as="element()" required="yes"/>

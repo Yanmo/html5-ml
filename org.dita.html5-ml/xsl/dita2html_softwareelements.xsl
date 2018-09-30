@@ -18,10 +18,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	msgph template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    msgph template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' sw-d/msgph ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsMsgPh'"/>
@@ -37,10 +37,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	msgblock template
-     param:	    
-     return:	fo:block
-     note:		none
+     function:    msgblock template
+     param:        
+     return:    fo:block
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' sw-d/msgblock ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsMsgBlock'"/>
@@ -60,10 +60,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	msgnum template
+     function:    msgnum template
      param:
-     return:	fo:inline
-     note:		none
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' sw-d/msgnum ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsMsgNum'"/>
@@ -80,10 +80,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	cmdname template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    cmdname template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' sw-d/cmdname ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsCmdName'"/>
@@ -99,10 +99,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	varname template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    varname template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' sw-d/varname ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsVarName'"/>
@@ -118,10 +118,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	filepath template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    filepath template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' sw-d/filepath ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsFilePath'"/>
@@ -137,10 +137,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	userinput template
-     param:	    prmTopicRef, prmNeedId
-     return:	fo:inline
-     note:		none
+     function:    userinput template
+     param:        prmTopicRef, prmNeedId
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' sw-d/userinput ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsUserInput'"/>
@@ -156,10 +156,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	systemoutput template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    systemoutput template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' sw-d/systemoutput ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsSystemOutput'"/>

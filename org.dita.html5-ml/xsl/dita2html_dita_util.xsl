@@ -13,15 +13,15 @@ URL : http://www.antennahouse.co.jp/
 -->
 
 <xsl:stylesheet version="2.0" 
-	xmlns:fo="http://www.w3.org/1999/XSL/Format" 
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:svg="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
- 	xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
- 	xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
- 	xmlns:ahd="http://www.antennahouse.com/names/XSLT/Debugging"
- 	exclude-result-prefixes="xs ahf" >
+     xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
+     xmlns:ahf="http://www.antennahouse.com/names/XSLT/Functions/Document"
+     xmlns:ahd="http://www.antennahouse.com/names/XSLT/Debugging"
+     exclude-result-prefixes="xs ahf" >
 
     <!--
     ===============================================
@@ -46,10 +46,10 @@ URL : http://www.antennahouse.co.jp/
     </xsl:function>
     
     <!-- 
-     function:	Check @toc="no" 
-     param:		prmTopicRef
-     return:	xs:boolean
-     note:		
+     function:    Check @toc="no" 
+     param:        prmTopicRef
+     return:    xs:boolean
+     note:        
      -->
     <xsl:function name="ahf:isTocNo" as="xs:boolean">
         <xsl:param name="prmTopicRef" as="element()"/>
@@ -64,10 +64,10 @@ URL : http://www.antennahouse.co.jp/
     </xsl:function>
 
     <!-- 
-     function:	Get topic from topicref 
-     param:		prmTopicRef
-     return:	xs:element?
-     note:		
+     function:    Get topic from topicref 
+     param:        prmTopicRef
+     return:    xs:element?
+     note:        
      -->
     <xsl:function name="ahf:getTopicFromTopicRef" as="element()?">
         <xsl:param name="prmTopicRef" as="element()"/>
@@ -82,10 +82,10 @@ URL : http://www.antennahouse.co.jp/
     </xsl:function>
 
     <!-- 
-     function:	Get topic from href 
-     param:		prmHref
-     return:	xs:element?
-     note:		
+     function:    Get topic from href 
+     param:        prmHref
+     return:    xs:element?
+     note:        
      -->
     <xsl:function name="ahf:getTopicFromHref" as="element()?">
         <xsl:param name="prmHref" as="xs:string"/>
@@ -94,10 +94,10 @@ URL : http://www.antennahouse.co.jp/
     </xsl:function>
 
     <!-- 
-     function:	Get topicref from topic
-     param:		prmTopicContent
-     return:	topicref
-     note:		
+     function:    Get topicref from topic
+     param:        prmTopicContent
+     return:    topicref
+     note:        
      -->
     <xsl:function name="ahf:getTopicRef" as="element()?">
         <xsl:param name="prmTopic" as="element()?"/>
@@ -132,10 +132,10 @@ URL : http://www.antennahouse.co.jp/
     </xsl:function>
     
     <!-- 
-     function:	Generate topic file name as @ahd:topic attribute for debugging
-     param:		prmTopic
-     return:	attribute()
-     note:		
+     function:    Generate topic file name as @ahd:topic attribute for debugging
+     param:        prmTopic
+     return:    attribute()
+     note:        
      -->
     <xsl:template name="ahf:getTopicFileNameAsAttr" as="attribute()">
         <xsl:sequence select="ahf:getTopicFileNameAsAttr(.)"/>

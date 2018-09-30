@@ -18,10 +18,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	cover generate template
-     param:		none
-     return:	fo:page-sequence
-     note:		Current context is "/". 
+     function:    cover generate template
+     param:        none
+     return:    fo:page-sequence
+     note:        Current context is "/". 
      -->
     <xsl:template name="genCover">
         <fo:page-sequence master-reference="pmsPageSeqCover">
@@ -58,10 +58,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Bookmeta output template
-     param:		none
-     return:	fo:block
-     note:		none
+     function:    Bookmeta output template
+     param:        none
+     return:    fo:block
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' bookmap/bookmeta ')]" mode="cover">
         <xsl:apply-templates mode="#current"/>

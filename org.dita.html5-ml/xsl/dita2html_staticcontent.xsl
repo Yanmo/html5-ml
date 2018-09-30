@@ -19,10 +19,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	frontmatter static content template
-     param:		none
-     return:	fo:block
-     note:		current is topicref 
+     function:    frontmatter static content template
+     param:        none
+     return:    fo:block
+     note:        current is topicref 
      -->
     <xsl:template name="frontmatterBeforeLeft">
         <!-- No contents, border only -->
@@ -79,10 +79,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	part/chapter static content template
-     param:		none
-     return:	fo:block
-     note:		current is topicref 
+     function:    part/chapter static content template
+     param:        none
+     return:    fo:block
+     note:        current is topicref 
      -->
     <xsl:template name="chapterBeforeLeft">
         <!-- No contents, border only -->
@@ -181,10 +181,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	index static content template
-     param:		none
-     return:	fo:block
-     note:		Current context is booklists/indexlist
+     function:    index static content template
+     param:        none
+     return:    fo:block
+     note:        Current context is booklists/indexlist
      -->
     <xsl:template name="indexBeforeLeft">
         <!-- No contents, border only -->
@@ -256,10 +256,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	backmatter static content template
-     param:		none
-     return:	fo:block
-     note:		current is topicref 
+     function:    backmatter static content template
+     param:        none
+     return:    fo:block
+     note:        current is topicref 
      -->
     <xsl:template name="backmatterBeforeLeft">
         <!-- No contents, border only -->

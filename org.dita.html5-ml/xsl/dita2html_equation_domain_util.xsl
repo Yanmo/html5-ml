@@ -25,10 +25,10 @@
       -->
 
     <!-- 
-        function:	return equation-number has automatic equation numbering
-        param:	    equation-number
-        return:	    xs:boolean
-        note:		Check children is empty or white-space only content
+        function:    return equation-number has automatic equation numbering
+        param:        equation-number
+        return:        xs:boolean
+        note:        Check children is empty or white-space only content
     -->
     <xsl:function name="ahf:isAutoEquationNumber" as="xs:boolean">
         <xsl:param name="prmEquationNumber" as="element()?"/>
@@ -65,10 +65,10 @@
     </xsl:function>
 
     <!-- 
-        function:	return equation-block has automatic equation numbering equation-number
-        param:	    equation-number
-        return:	    xs:boolean
-        note:		Check children is empty or white-space only content
+        function:    return equation-block has automatic equation numbering equation-number
+        param:        equation-number
+        return:        xs:boolean
+        note:        Check children is empty or white-space only content
     -->
     <xsl:function name="ahf:hasAutoEquationNumber" as="xs:boolean">
         <xsl:param name="prmEquationBlock" as="element()?"/>
@@ -83,10 +83,10 @@
     </xsl:function>    
     
     <!-- 
-        function:	return equation-block has equation-number element
-        param:	    equation-block
-        return:	    xs:boolean
-        note:		
+        function:    return equation-block has equation-number element
+        param:        equation-block
+        return:        xs:boolean
+        note:        
     -->
     <xsl:function name="ahf:hasEquationNumber" as="xs:boolean">
         <xsl:param name="prmEquationBlock" as="element()?"/>

@@ -22,10 +22,10 @@ E-mail : info@antennahouse.com
      -->
     
     <!-- 
-     function:	properties template
-     param:	    
-     return:	fo:table
-     note:		MODE_GET_STYLE is defined only for properties in this version.
+     function:    properties template
+     param:        
+     return:    fo:table
+     note:        MODE_GET_STYLE is defined only for properties in this version.
      -->
     <xsl:template match="*[contains(@class, ' reference/properties ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsPropertyTable'"/>
@@ -61,10 +61,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	prophead template
-     param:	    prmKeyCol
-     return:	fo:table-header
-     note:		prophead is optional.
+     function:    prophead template
+     param:        prmKeyCol
+     return:    fo:table-header
+     note:        prophead is optional.
                 proptypehd, propvaluehd, propvaluehd are all optional.
                 This stylesheet apply bold for prophead if properties/@keycol is not defined.
      -->
@@ -127,10 +127,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	proptypehd template
-     param:	    
-     return:	proptypehd contents (fo:block)
-     note:		none
+     function:    proptypehd template
+     param:        
+     return:    proptypehd contents (fo:block)
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/proptypehd ')]" priority="2">
         <fo:block>
@@ -141,10 +141,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	propvaluehd template
-     param:	    
-     return:	propvaluehd contents (fo:block)
-     note:		none
+     function:    propvaluehd template
+     param:        
+     return:    propvaluehd contents (fo:block)
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/propvaluehd ')]" priority="2">
         <fo:block>
@@ -155,10 +155,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	propdeschd template
-     param:	    
-     return:	propdeschd contents (fo:block)
-     note:		none
+     function:    propdeschd template
+     param:        
+     return:    propdeschd contents (fo:block)
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/propdeschd ')]" priority="2">
         <fo:block>
@@ -169,10 +169,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	property template
-     param:	    prmKeyCol
-     return:	fo:table-row
-     note:		none
+     function:    property template
+     param:        prmKeyCol
+     return:    fo:table-row
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/property ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
@@ -229,10 +229,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	proptype template
-     param:	    
-     return:	proptype contents (fo:block)
-     note:		none
+     function:    proptype template
+     param:        
+     return:    proptype contents (fo:block)
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/proptype ')]" priority="2">
         <fo:block>
@@ -243,10 +243,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	propvalue template
-     param:	    
-     return:	propvalue contents (fo:block)
-     note:		none
+     function:    propvalue template
+     param:        
+     return:    propvalue contents (fo:block)
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/propvalue ')]" priority="2">
         <fo:block>
@@ -257,10 +257,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	propdesc template
-     param:	    
-     return:	propdesc contents (fo:block)
-     note:		none
+     function:    propdesc template
+     param:        
+     return:    propdesc contents (fo:block)
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/propdesc ')]" priority="2">
         <fo:block>

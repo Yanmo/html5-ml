@@ -18,10 +18,10 @@ E-mail : info@antennahouse.com
  >
 
     <!-- 
-     function:	Generate main content, part, chapter or appendix
-     param:		none
-     return:	part, chapter contents
-     note:		Called from dita2fo_main.xsl
+     function:    Generate main content, part, chapter or appendix
+     param:        none
+     return:    part, chapter contents
+     note:        Called from dita2fo_main.xsl
      -->
     <xsl:template match="/*/*[contains(@class, ' map/map ')]
                            /*[contains(@class, ' map/topicref ')]
@@ -34,9 +34,9 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Generate content fo:page-sequence from part or chapter
-     param:		none (curent is top-level topicref)
-     return:	fo:page-sequence
+     function:    Generate content fo:page-sequence from part or chapter
+     param:        none (curent is top-level topicref)
+     return:    fo:page-sequence
      note:      FIX: Page number bug. 2011-09-08 t.makita
      -->
     <xsl:template name="processChapterMain">
@@ -65,13 +65,13 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
             <fo:static-content flow-name="rgnChapterBeforeLeft">
-	            <xsl:call-template name="chapterBeforeLeft"/>
+                <xsl:call-template name="chapterBeforeLeft"/>
             </fo:static-content>
             <fo:static-content flow-name="rgnChapterBeforeRight">
                 <xsl:call-template name="chapterBeforeRight"/>
             </fo:static-content>
             <fo:static-content flow-name="rgnChapterAfterLeft">
-	            <xsl:call-template name="chapterAfterLeft"/>
+                <xsl:call-template name="chapterAfterLeft"/>
             </fo:static-content>
             <fo:static-content flow-name="rgnChapterAfterRight">
                 <xsl:call-template name="chapterAfterRight"/>
@@ -93,10 +93,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	Process topicref
-     param:		none
-     return:	fo:block
-     note:		none
+     function:    Process topicref
+     param:        none
+     return:    fo:block
+     note:        none
      -->
     <xsl:template match="*[contains(@class,' map/topicref ')][@href]" mode="PROCESS_TOPICREF">
     
@@ -133,10 +133,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	topichead templates
-     param:		none
-     return:	descendant topic contents
-     note:		Add title when $PRM_ADOPT_NAVTITLE='yes'.
+     function:    topichead templates
+     param:        none
+     return:    descendant topic contents
+     note:        Add title when $PRM_ADOPT_NAVTITLE='yes'.
                 2011-07-26 t.makita
                 Add page-break control.
                 2014-09-13 t.makita
@@ -209,10 +209,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Process topic (part, chapter, appendix and nested topic)
-     param:		prmTitleMode
-     return:	topic contents
-     note:		Changed to output post-note per topic/body. 2011-07-28 t.makita
+     function:    Process topic (part, chapter, appendix and nested topic)
+     param:        prmTitleMode
+     return:    topic contents
+     note:        Changed to output post-note per topic/body. 2011-07-28 t.makita
                 Apply style and fo attribute in $prmTopicRef if topic is top level.
                 2014-09-13 t.makita
                 Move page-break control from topic/title to topic level.
@@ -279,7 +279,7 @@ E-mail : info@antennahouse.com
             
             <!-- body -->
             <xsl:apply-templates select="child::*[contains(@class, ' topic/body ')]"/>
-    		
+            
             <!-- postnote -->
             <xsl:if test="$pDisplayFnAtEndOfTopic">
                 <xsl:call-template name="makePostNote">
@@ -305,10 +305,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!-- 
-     function:	Generate chapter topic break attribute
-     param:		prmTopicRef, prmTopicContent
-     return:	attribute()?
-     note:		Changed to output break attribute from topic/title to topic level.
+     function:    Generate chapter topic break attribute
+     param:        prmTopicRef, prmTopicContent
+     return:    attribute()?
+     note:        Changed to output break attribute from topic/title to topic level.
                 2014-09-13 t.makita
      -->
     <xsl:template name="getChapterTopicBreakAttr" as="attribute()*">

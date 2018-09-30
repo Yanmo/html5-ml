@@ -21,10 +21,10 @@ URL : http://www.antennahouse.co.jp/
     exclude-result-prefixes="xs ahf" >
 
     <!-- 
-     function:	Return that given href is local or not.
-     param:		prmHref: @href
-     return:	xs:boolean
-     note:		
+     function:    Return that given href is local or not.
+     param:        prmHref: @href
+     return:    xs:boolean
+     note:        
     -->
     <xsl:function name="ahf:isLocalHref" as="xs:boolean">
         <xsl:param name="prmHref" as="xs:string"/>
@@ -32,12 +32,12 @@ URL : http://www.antennahouse.co.jp/
     </xsl:function>
 
     <!-- 
-     function:	Get fo:basick-link/@internal-destination, external-destination attribute
+     function:    Get fo:basick-link/@internal-destination, external-destination attribute
                 from @href attribute
-     param:		prmHref: @href
+     param:        prmHref: @href
                 prmElem: Relevant element 
-     return:	attribute()*
-     note:		
+     return:    attribute()*
+     note:        
     -->
     <xsl:template name="getDestinationAttr" as="attribute()*">
         <xsl:param name="prmHref" as="xs:string" required="yes"/>
@@ -64,11 +64,11 @@ URL : http://www.antennahouse.co.jp/
     </xsl:template>
 
     <!-- 
-     function:	Get fo:basick-link/internal-destination attribute
-     param:		prmHref: @href
+     function:    Get fo:basick-link/internal-destination attribute
+     param:        prmHref: @href
                 prmElem: Relevant element 
-     return:	attribute()*
-     note:		
+     return:    attribute()*
+     note:        
     -->
     <xsl:template name="getInternalDestinationAttr" as="attribute()*">
         <xsl:param name="prmHref" as="xs:string" required="yes"/>
@@ -109,11 +109,11 @@ URL : http://www.antennahouse.co.jp/
     </xsl:template>
 
     <!-- 
-     function:	Get fo:basick-link/external-destination attribute
-     param:		prmHref: @href
+     function:    Get fo:basick-link/external-destination attribute
+     param:        prmHref: @href
                 prmElem: Relevant element 
-     return:	attribute()?
-     note:		
+     return:    attribute()?
+     note:        
     -->
     <xsl:template name="getExternalDestinationAttr" as="attribute()*">
         <xsl:param name="prmHref" as="xs:string" required="yes"/>
@@ -128,11 +128,11 @@ URL : http://www.antennahouse.co.jp/
     </xsl:template>
 
     <!-- 
-     function:	Get destination element from @href
-     param:		prmHref: @href
+     function:    Get destination element from @href
+     param:        prmHref: @href
                 prmElem: Relevant element 
-     return:	element()*
-     note:		
+     return:    element()*
+     note:        
     -->
     <xsl:template name="getInternalDestinationElemInf" as="element()*">
         <xsl:param name="prmHref" as="xs:string" required="yes"/>

@@ -20,10 +20,10 @@
 >
 
     <!-- 
-        function:	mathml template
-        param:	    none
-        return:	    fo:warapper
-        note:		Only process child elements.
+        function:    mathml template
+        param:        none
+        return:        fo:warapper
+        note:        Only process child elements.
     -->
     <xsl:template match="*[contains(@class, ' mathml-d/mathml ')]" priority="2">
         <fo:wrapper>
@@ -33,10 +33,10 @@
     </xsl:template>
 
     <!-- 
-        function:	m:math
-        param:	    none
-        return:	    fo:instream-foreign-object
-        note:		none
+        function:    m:math
+        param:        none
+        return:        fo:instream-foreign-object
+        note:        none
     -->
     <xsl:template match="*[contains(@class, ' mathml-d/mathml ')]/m:math">
         <fo:instream-foreign-object>
@@ -48,10 +48,10 @@
     </xsl:template>
 
     <!-- 
-        function:	mathml-d/mathmlref 
-        param:	    none
-        return:	    fo:external-graphic
-        note:		none
+        function:    mathml-d/mathmlref 
+        param:        none
+        return:        fo:external-graphic
+        note:        none
     -->
     <xsl:template match="*[contains(@class, ' mathml-d/mathmlref ')]" priority="2">
         <fo:external-graphic content-type="content-type:application/mathml+xml">

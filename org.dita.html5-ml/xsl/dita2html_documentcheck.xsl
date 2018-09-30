@@ -19,10 +19,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	Document check template
-     param:		none
-     return:	none
-     note:		
+     function:    Document check template
+     param:        none
+     return:    none
+     note:        
      -->
     <xsl:template name="documentCheck">
         <!-- Document structure check -->
@@ -58,10 +58,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	bookmap structure check (1)
-     param:		
-     return:	xs:boolean
-     note:		
+     function:    bookmap structure check (1)
+     param:        
+     return:    xs:boolean
+     note:        
      -->
     <xsl:function name="ahf:checkBookmap1" as="xs:boolean">
         <xsl:choose>
@@ -79,10 +79,10 @@ E-mail : info@antennahouse.com
     </xsl:function>
     
     <!-- 
-     function:	bookmap structure check (2)
-     param:		
-     return:	xs:boolean
-     note:		Removed toc="no" restriction for part and chapter.
+     function:    bookmap structure check (2)
+     param:        
+     return:    xs:boolean
+     note:        Removed toc="no" restriction for part and chapter.
                 2014-06-21 t.makita
      -->
     <xsl:function name="ahf:checkBookmap2" as="xs:boolean">
@@ -130,10 +130,10 @@ E-mail : info@antennahouse.com
     </xsl:function>
     
     <!-- 
-     function:	bookmap structure check (2)
-     param:		
-     return:	xs:boolean
-     note:		
+     function:    bookmap structure check (2)
+     param:        
+     return:    xs:boolean
+     note:        
      -->
     <xsl:function name="ahf:checkBookmap3" as="xs:boolean">
         <xsl:choose>
@@ -189,16 +189,16 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	topic/@id check template
-     param:		
-     return:	none
-     note:		topic/@oid must be unique according to the DITA specification.
+     function:    topic/@id check template
+     param:        
+     return:    none
+     note:        topic/@oid must be unique according to the DITA specification.
      -->
     <xsl:template name="checkId">
-    	<xsl:if test="$pUseOid">
-    	    <xsl:apply-templates select="$map//*[contains(@class, ' map/topicref ')][starts-with(@href,'#')][not(ancestor::*[contains(@class,' map/reltable ')])]" mode="CHECK_ID">
-    	    </xsl:apply-templates>
-    	</xsl:if>
+        <xsl:if test="$pUseOid">
+            <xsl:apply-templates select="$map//*[contains(@class, ' map/topicref ')][starts-with(@href,'#')][not(ancestor::*[contains(@class,' map/reltable ')])]" mode="CHECK_ID">
+            </xsl:apply-templates>
+        </xsl:if>
     </xsl:template>
     
     <xsl:template match="*[contains(@class, ' map/topicref ')]" mode="CHECK_ID">

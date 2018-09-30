@@ -23,11 +23,11 @@
     exclude-result-prefixes="xs style"
     >
     <!--============================================
-	     External dependencies:
-	     $documentLang (dita2fo_global.xsl)
-	     $pPaperSize (dita2fo_param.xsl)
-	     $pOutputType (dita2fo_param.xsl)
-	    ============================================-->
+         External dependencies:
+         $documentLang (dita2fo_global.xsl)
+         $pPaperSize (dita2fo_param.xsl)
+         $pOutputType (dita2fo_param.xsl)
+        ============================================-->
     
     <!-- Default parameter
          This value should be specified according to the user customization.
@@ -415,11 +415,11 @@
             <!-- Matches only paper-size -->
             <xsl:call-template name="getAttributeInner">
                 <xsl:with-param name="prmAttrSetElement" 
-                    			select="$attrSetElements[empty(@doc-type)]
-                    			                           [ahf:strEqualAsSeq(string(@paper-size),string($prmPaperSize))]
-									                       [exists(@paper-size)]
-									                       [empty(@output-type)]
-									                       "/>
+                                select="$attrSetElements[empty(@doc-type)]
+                                                           [ahf:strEqualAsSeq(string(@paper-size),string($prmPaperSize))]
+                                                           [exists(@paper-size)]
+                                                           [empty(@output-type)]
+                                                           "/>
             </xsl:call-template>
             <!-- Matches only output-type -->
             <xsl:call-template name="getAttributeInner">
@@ -553,10 +553,10 @@
     </xsl:function>
 
     <!-- 
-     function:	getAttibuteSetWithPageVariables
-     param:		prmAttrSetName
-     return:	attribute()*
-     note:		Get attribute considering paper width/height, crop size horizontal/vertical, bleed size
+     function:    getAttibuteSetWithPageVariables
+     param:        prmAttrSetName
+     return:    attribute()*
+     note:        Get attribute considering paper width/height, crop size horizontal/vertical, bleed size
     -->
     <xsl:function name="ahf:getAttributeSetWithPageVariables" as="attribute()*">
         <xsl:param name="prmAttrSetName" as="xs:string"/>

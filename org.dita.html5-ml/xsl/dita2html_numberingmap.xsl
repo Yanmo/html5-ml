@@ -81,10 +81,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	make table count map template
-     param:		none
-     return:	table cout node
-     note:		count only titled table
+     function:    make table count map template
+     param:        none
+     return:    table cout node
+     note:        count only titled table
      -->
     <xsl:template name="makeTableCount">
         <xsl:apply-templates select="$map//*[contains(@class, ' map/topicref ')][starts-with(@href,'#')][not(ancestor::*[contains(@class,' map/reltable ')])]" mode="TABLE_COUNT">
@@ -112,10 +112,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	make table numbering map template
-     param:		none
-     return:	table start count node
-     note:		none
+     function:    make table numbering map template
+     param:        none
+     return:    table start count node
+     note:        none
      -->
     <xsl:template name="makeTableStartCount">
         <xsl:apply-templates select="$tableCountMap/*[1]" mode="TABLE_START_COUNT">
@@ -252,10 +252,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	make figure count map template
-     param:		none
-     return:	figure cout node
-     note:		count only titled <fig>
+     function:    make figure count map template
+     param:        none
+     return:    figure cout node
+     note:        count only titled <fig>
      -->
     <xsl:template name="makeFigureCount">
         <xsl:apply-templates select="$map//*[contains(@class, ' map/topicref ')][starts-with(@href,'#')][not(ancestor::*[contains(@class,' map/reltable ')])]" mode="FIGURE_COUNT">
@@ -283,10 +283,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	make figure numbering map template
-     param:		none
-     return:	figure start count node
-     note:		none
+     function:    make figure numbering map template
+     param:        none
+     return:    figure start count node
+     note:        none
      -->
     <xsl:template name="makeFigureStartCount">
         <xsl:apply-templates select="$figureCountMap/*[1]" mode="FIGURE_START_COUNT">
@@ -422,10 +422,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	make footnote count map template
-     param:		none
-     return:	footnote count node
-     note:		
+     function:    make footnote count map template
+     param:        none
+     return:    footnote count node
+     note:        
      -->
     <xsl:template name="makeFootnoteCount">
         <xsl:apply-templates select="$map//*[contains(@class, ' map/topicref ')][starts-with(@href,'#')][not(ancestor::*[contains(@class,' map/reltable ')])]" mode="FOOTNOTE_COUNT">
@@ -453,10 +453,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	make footnote numbering map template
-     param:		none
-     return:	footnote start count nodes
-     note:		none
+     function:    make footnote numbering map template
+     param:        none
+     return:    footnote start count nodes
+     note:        none
      -->
     <xsl:template name="makeFootnoteStartCount">
         <xsl:apply-templates select="$footnoteCountMap/*[1]" mode="FOOTNOTE_START_COUNT">
@@ -595,10 +595,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	dump tableCountMap, tableNumberingMap template
-     param:		none
-     return:	dump result
-     note:		none
+     function:    dump tableCountMap, tableNumberingMap template
+     param:        none
+     return:    dump result
+     note:        none
      -->
     <xsl:template name="dumpTableMap">
         <xsl:for-each select="$tableCountMap/*">
@@ -611,10 +611,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	dump figureCountMap, figureNumberingMap template
-     param:		none
-     return:	dump result
-     note:		none
+     function:    dump figureCountMap, figureNumberingMap template
+     param:        none
+     return:    dump result
+     note:        none
      -->
     <xsl:template name="dumpFigureMap">
         <xsl:for-each select="$figureCountMap/*">
@@ -627,10 +627,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	dump footnoteCountMap, footnoteNumberingMap template
-     param:		none
-     return:	dump result
-     note:		none
+     function:    dump footnoteCountMap, footnoteNumberingMap template
+     param:        none
+     return:    dump result
+     note:        none
      -->
     <xsl:template name="dumpFootnoteMap">
         <xsl:for-each select="$footnoteCountMap/*">

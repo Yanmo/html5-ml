@@ -740,35 +740,35 @@ URL : http://www.antennahouse.com/
 
         </cover-attribute>
 
-	    <cover-print-attribute>
-	        <!-- page sequence -->
-	        <attribute-set name="atsPageSeqCoverForPrint" use-attribute-sets="atsPageSeqBase">
-	            <attribute name="master-reference">pmsPageSeqCoverForPrint</attribute>
-	            <attribute name="initial-page-number">auto</attribute>
-	            <attribute name="force-page-count">1</attribute>
-	            <attribute name="ahp:cover">true</attribute>
-	        </attribute-set>
+        <cover-print-attribute>
+            <!-- page sequence -->
+            <attribute-set name="atsPageSeqCoverForPrint" use-attribute-sets="atsPageSeqBase">
+                <attribute name="master-reference">pmsPageSeqCoverForPrint</attribute>
+                <attribute name="initial-page-number">auto</attribute>
+                <attribute name="force-page-count">1</attribute>
+                <attribute name="ahp:cover">true</attribute>
+            </attribute-set>
 
-	        <!-- Blcok container for page N -->
-	        <attribute-set name="atsCoverBlockContainer">
-	            <attribute name="width">$General_Paper_Width</attribute>
-	            <attribute name="height">$General_Paper_Height</attribute>
-	            <attribute name="position">absolute</attribute>
-	            <attribute name="left">0mm</attribute>
-	            <attribute name="top">0mm</attribute>
-	        </attribute-set>
-	        
-	        <!-- Barcode fo:external-graphic/@src
-	             Add barcode text after this text
-	         -->
-	        <variable name="cBarCodeSrc">data:application/vnd.ah-barcode;type=Code39;scale=1;text=none;qz=0;w=0.25mm;h=9.075mm;r=2.5;cd=none,</variable>
-	        
-	        <!--QR code fo:external-graphic/@src
-	             Add barcode text after this text
-	         -->
-	        <variable name="cQrCodeSrc">data:application/vnd.ah-barcode;type=QR;scale=1,</variable>
-	        
-	    </cover-print-attribute>
+            <!-- Blcok container for page N -->
+            <attribute-set name="atsCoverBlockContainer">
+                <attribute name="width">$General_Paper_Width</attribute>
+                <attribute name="height">$General_Paper_Height</attribute>
+                <attribute name="position">absolute</attribute>
+                <attribute name="left">0mm</attribute>
+                <attribute name="top">0mm</attribute>
+            </attribute-set>
+            
+            <!-- Barcode fo:external-graphic/@src
+                 Add barcode text after this text
+             -->
+            <variable name="cBarCodeSrc">data:application/vnd.ah-barcode;type=Code39;scale=1;text=none;qz=0;w=0.25mm;h=9.075mm;r=2.5;cd=none,</variable>
+            
+            <!--QR code fo:external-graphic/@src
+                 Add barcode text after this text
+             -->
+            <variable name="cQrCodeSrc">data:application/vnd.ah-barcode;type=QR;scale=1,</variable>
+            
+        </cover-print-attribute>
 
         <frontmatter-atribute>
             <!-- page sequence -->
@@ -2025,8 +2025,8 @@ URL : http://www.antennahouse.com/
             </attribute-set>
 
             <!-- Added border-after-width.conditionality="retain"
-		     2011-07-14 t.makita
-    		 -->
+             2011-07-14 t.makita
+             -->
             <attribute-set name="atsTableBodyCell">
                 <attribute name="border">$General_Table_Border_Width none $General_Table_Border_Color</attribute>
                 <attribute name="padding">$General_Table_Cell_Padding</attribute>
@@ -3025,16 +3025,16 @@ URL : http://www.antennahouse.com/
 
         <instream-object name="Other_Icon">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="20" viewBox="0 0 80 20" overflow="visible" enable-background="new 0 0 80 20" preserveAspectRatio="xMidYmid meet" xml:space="preserve">
-    		<g id="layer_1">
+            <g id="layer_1">
                 <text x="24" y="16" enable-background="new    " style="%atsNoteTitleStyle">%Note_Other</text>
-    			<path fill-rule="evenodd" clip-rule="evenodd" fill="#DEDEDE" d="M9.498,0.499c-4.972,0-8.999,4.038-8.999,9.006
-    				c0,4.976,4.027,9.006,8.999,9.006c4.972,0,8.999-4.03,8.999-9.006C18.497,4.537,14.47,0.499,9.498,0.499"/>
-    			<path fill="none" stroke="#000000" stroke-width="0.9982" stroke-linejoin="round" stroke-miterlimit="10" d="M9.498,0.499
-    				c-4.972,0-8.999,4.038-8.999,9.006c0,4.976,4.027,9.006,8.999,9.006c4.972,0,8.999-4.03,8.999-9.006
-    				C18.497,4.537,14.47,0.499,9.498,0.499"/>
-    			<rect x="6.288" y="6.235" fill-rule="evenodd" clip-rule="evenodd" stroke="#000000" width="6.904" height="7.214"/> 
-    		</g>
-    	</svg>
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#DEDEDE" d="M9.498,0.499c-4.972,0-8.999,4.038-8.999,9.006
+                    c0,4.976,4.027,9.006,8.999,9.006c4.972,0,8.999-4.03,8.999-9.006C18.497,4.537,14.47,0.499,9.498,0.499"/>
+                <path fill="none" stroke="#000000" stroke-width="0.9982" stroke-linejoin="round" stroke-miterlimit="10" d="M9.498,0.499
+                    c-4.972,0-8.999,4.038-8.999,9.006c0,4.976,4.027,9.006,8.999,9.006c4.972,0,8.999-4.03,8.999-9.006
+                    C18.497,4.537,14.47,0.499,9.498,0.499"/>
+                <rect x="6.288" y="6.235" fill-rule="evenodd" clip-rule="evenodd" stroke="#000000" width="6.904" height="7.214"/> 
+            </g>
+        </svg>
         </instream-object>
 
     </instream-objects>

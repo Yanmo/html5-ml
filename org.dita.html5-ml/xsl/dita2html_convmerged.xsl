@@ -47,10 +47,10 @@ E-mail : info@antennahouse.com
     </xsl:variable>
     
     <!-- 
-     function:	General template for all element
-     param:		none
-     return:	copied result
-     note:		
+     function:    General template for all element
+     param:        none
+     return:    copied result
+     note:        
      -->
     <xsl:template match="*">
         <xsl:param name="prmDitaValFlagStyle" tunnel="yes" required="no" select="''"/>
@@ -64,10 +64,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	topicgroup
-     param:		none
-     return:	descendant element
-     note:		An topicgroup is redundant for document structure.
+     function:    topicgroup
+     param:        none
+     return:    descendant element
+     note:        An topicgroup is redundant for document structure.
                 It sometimes bothers counting the nesting level of topicref.
      -->
     <xsl:template match="*[contains(@class, ' mapgroup-d/topicgroup ')]" priority="2">
@@ -75,20 +75,20 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!--
-     function:	topicref
-     param:		none
-     return:	self and descendant element or none
-     note:		if @print="no", ignore it.
+     function:    topicref
+     param:        none
+     return:    self and descendant element or none
+     note:        if @print="no", ignore it.
      -->
     <xsl:template match="*[contains(@class,' map/topicref ')]">
-    	<xsl:choose>
-    		<xsl:when test="@print='no'" >
-    		    <xsl:for-each select="descendant-or-self::*[contains(@class,' map/topicref ')]">
-    		        <xsl:if test="exists(@href)">
-    		            <xsl:message select="'[convmerged 1001I] Removing topicref. href=',string(@href),' ohref=',string(@ohref)"/>
-    		        </xsl:if>
-    		    </xsl:for-each>
-    		</xsl:when>
+        <xsl:choose>
+            <xsl:when test="@print='no'" >
+                <xsl:for-each select="descendant-or-self::*[contains(@class,' map/topicref ')]">
+                    <xsl:if test="exists(@href)">
+                        <xsl:message select="'[convmerged 1001I] Removing topicref. href=',string(@href),' ohref=',string(@ohref)"/>
+                    </xsl:if>
+                </xsl:for-each>
+            </xsl:when>
             <xsl:otherwise>
                 <xsl:copy>
                     <xsl:copy-of select="@*"/>
@@ -99,10 +99,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!--
-     function:	topic
-     param:		none
-     return:	self and descendant element or none
-     note:		if @id is pointed from the topicref that has print="no", ignore it.
+     function:    topic
+     param:        none
+     return:    self and descendant element or none
+     note:        if @id is pointed from the topicref that has print="no", ignore it.
      -->
     <xsl:template match="*[contains(@class,' topic/topic ')]">
         <xsl:param name="prmDitaValFlagStyle" tunnel="yes" required="no" select="''"/>
@@ -124,10 +124,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!--
-     function:	link
-     param:		none
-     return:	self and descendant element or none
-     note:		if link@href points to the topicref that has print="no", ignore it.
+     function:    link
+     param:        none
+     return:    self and descendant element or none
+     note:        if link@href points to the topicref that has print="no", ignore it.
      -->
     <xsl:template match="*[contains(@class,' topic/link ')]">
         <xsl:param name="prmDitaValFlagStyle" tunnel="yes" required="no" select="''"/>
@@ -149,10 +149,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!--
-     function:	xref
-     param:		none
-     return:	self and descendant element or none
-     note:		if xref@href points to the topic that has print="no", ignore it.
+     function:    xref
+     param:        none
+     return:    self and descendant element or none
+     note:        if xref@href points to the topic that has print="no", ignore it.
      -->
     <xsl:template match="*[contains(@class,' topic/xref ')][string(@format) eq 'dita']">
         <xsl:param name="prmDitaValFlagStyle" tunnel="yes" required="no" select="''"/>
@@ -172,46 +172,46 @@ E-mail : info@antennahouse.com
     
 
     <!-- 
-     function:	comment template
-     param:		none
-     return:	comment 
-     note:		none
+     function:    comment template
+     param:        none
+     return:    comment 
+     note:        none
      -->
     <xsl:template match="comment()">
         <xsl:copy/>
     </xsl:template>
     
     <!-- 
-     function:	processing-instruction template
-     param:		nome
-     return:	processing-instruction
-     note:		
+     function:    processing-instruction template
+     param:        nome
+     return:    processing-instruction
+     note:        
      -->
     <xsl:template match="processing-instruction()">
         <xsl:copy/>
     </xsl:template>
 
     <!-- 
-     function:	required-cleanup template
-     param:		none
-     return:	none or itself 
-     note:		If not output required-cleanup, remove it at this template.
+     function:    required-cleanup template
+     param:        none
+     return:    none or itself 
+     note:        If not output required-cleanup, remove it at this template.
      -->
     <xsl:template match="*[contains(@class,' topic/required-cleanup ')][not($pOutputRequiredCleanup)]"/>
     
     <!-- 
-     function:	draft-comment template
-     param:		none
-     return:	none or itself 
-     note:		If not output draft-comment, remove it at this template.
+     function:    draft-comment template
+     param:        none
+     return:    none or itself 
+     note:        If not output draft-comment, remove it at this template.
      -->
     <xsl:template match="*[contains(@class,' topic/draft-comment ')][not($pOutputDraftComment)]"/>
 
     <!-- 
-     function:	Check $prmAttr has $prmValue
-     param:		prmAttr, prmValue
-     return:	xs:boolean 
-     note:		Return true() if $prmAttr attribute has $prmValue
+     function:    Check $prmAttr has $prmValue
+     param:        prmAttr, prmValue
+     return:    xs:boolean 
+     note:        Return true() if $prmAttr attribute has $prmValue
      -->
     <xsl:function name="ahf:HasAttr" as="xs:boolean">
         <xsl:param name="prmAttr" as="attribute()?"/>

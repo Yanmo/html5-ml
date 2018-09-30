@@ -25,10 +25,10 @@ E-mail : info@antennahouse.com
     <xsl:variable name="pluginVersion" as="xs:string" select="'1.0.2'"/>
     
     <!-- 
-     function:	root matching template
-     param:		none
-     return:	fo:root
-     note:		Remove processing appendice element beause it is only a wrapper element for appendix in bookmap.
+     function:    root matching template
+     param:        none
+     return:    fo:root
+     note:        Remove processing appendice element beause it is only a wrapper element for appendix in bookmap.
                 If appendice contains topicmeta/keywords/indexterm it results "Unresolved index-key value" error in formatting phase.
                 This is limatation of this stylesheet.
                 2014-09-15 t.makita
@@ -48,7 +48,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="stlyeDump"/>
         </xsl:if>
         <xsl:call-template name="documentCheck"/>
-    	<fo:root>
+        <fo:root>
             <xsl:copy-of select="ahf:getAttributeSet('atsRoot')"/>
             
             <!-- Complement xml:lang -->
@@ -56,19 +56,19 @@ E-mail : info@antennahouse.com
             
             <!-- Generate XSL-FO layoutmaster set -->
             <xsl:call-template name="genLayoutMasterSet"/>
-    		
+            
             <!-- Bookmark tree -->
-       		<xsl:call-template name="genBookmarkTree"/>
+               <xsl:call-template name="genBookmarkTree"/>
             
             <!-- Make cover -->
-    	    <xsl:if test="not($hasCover)">
-    	        <xsl:call-template name="genCover"/>
-    	    </xsl:if>
+            <xsl:if test="not($hasCover)">
+                <xsl:call-template name="genCover"/>
+            </xsl:if>
             
             <!-- Make toc for map -->
-    	    <xsl:if test="$isMap and $pMakeTocForMap">
-    	        <xsl:call-template name="genMapToc"/>
-    	    </xsl:if>
+            <xsl:if test="$isMap and $pMakeTocForMap">
+                <xsl:call-template name="genMapToc"/>
+            </xsl:if>
             
             <!-- Process main contents -->
             <xsl:choose>
@@ -84,22 +84,22 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
             
-    	    <!-- Make index for map -->
-    	    <xsl:if test="$isMap and $pMakeIndexForMap and $pOutputIndex">
-    	        <xsl:call-template name="genMapIndex"/>
-    	    </xsl:if>
+            <!-- Make index for map -->
+            <xsl:if test="$isMap and $pMakeIndexForMap and $pOutputIndex">
+                <xsl:call-template name="genMapIndex"/>
+            </xsl:if>
     
-    		<!--xsl:call-template name="makeDummyContents"/-->
+            <!--xsl:call-template name="makeDummyContents"/-->
             
-    	</fo:root>
+        </fo:root>
     </xsl:template>
     
     
     <!-- 
-     function:	Test for dummy output
-     param:		none
-     return:	fo:page-sequence
-     note:		none
+     function:    Test for dummy output
+     param:        none
+     return:    fo:page-sequence
+     note:        none
      -->
     <xsl:template name="makeDummyContents">
         <fo:page-sequence master-reference="pmsPageSeqChapter">

@@ -10,10 +10,10 @@
     >
 
     <!-- 
-         function:	Expand FO style & property into attribute()*
-         param:		prmElem
-         return:	Attribute node
-         note:		Style is authored in $prmElem/@fo:style
+         function:    Expand FO style & property into attribute()*
+         param:        prmElem
+         return:    Attribute node
+         note:        Style is authored in $prmElem/@fo:style
                     XSL-FO attribute is authored in $prmElem/@fo:prop in CSS notation.
                     2014-09-13 t.makita
                     Changed attributename:
@@ -33,10 +33,10 @@
     </xsl:function>
 
     <!-- 
-         function:	Expand FO style into attribute()*
-         param:		prmElem
-         return:	Attribute node
-         note:		Style is authored in $prmElem/@fo:style
+         function:    Expand FO style into attribute()*
+         param:        prmElem
+         return:    Attribute node
+         note:        Style is authored in $prmElem/@fo:style
                     2014-09-13 t.makita
     -->
     <xsl:function name="ahf:getFoStyle">
@@ -52,10 +52,10 @@
     </xsl:function>
 
     <!-- 
-         function:	Expand FO property into attribute()*
-         param:		prmElem
-         return:	Attribute node
-         note:		XSL-FO attribute is authored in $prmElem/@fo:prop in CSS notation.
+         function:    Expand FO property into attribute()*
+         param:        prmElem
+         return:    Attribute node
+         note:        XSL-FO attribute is authored in $prmElem/@fo:prop in CSS notation.
                     2014-04-22 t.makita
                     Remove stylesheet specific style (starts with "ahs-").
                     2016-02-20 t,makita
@@ -120,11 +120,11 @@
     </xsl:function>
 
     <!-- 
-         function:	Expand FO property into attribute()*
+         function:    Expand FO property into attribute()*
                     Replacing text() with given parameters ($prmSrc, $prmDst).
-         param:		prmElem,$prmSrc,$prmDst
-         return:	Attribute node
-         note:		XSL-FO attribute is authored in $prmElem/@fo:prop in CSS notation.
+         param:        prmElem,$prmSrc,$prmDst
+         return:    Attribute node
+         note:        XSL-FO attribute is authored in $prmElem/@fo:prop in CSS notation.
                     2014-04-22 t.makita
     -->
     <xsl:function name="ahf:getFoPropertyReplacing" as="attribute()*">
@@ -185,16 +185,16 @@
     </xsl:function>
     
     <!-- 
-         function:	Expand FO property into attribute()*
+         function:    Expand FO property into attribute()*
                     Replacing text() with given page related parameters.
                     %paper-width is replaced with $pPaperWidth
                     %paper-height is replaced with $pPaperHeight
                     %crop-size-h is replaced with $pCropSizeH
                     %crop-size-v is replaced with $pCropSizeV
                     %bleed-size is replaced with $pBleedSize
-         param:		prmElem
-         return:	Attribute node
-         note:		Used for making cover page：page size (width,height), cop size (horizontal,vertical), bleed size are replaced by actual value and returned as attribute()*.
+         param:        prmElem
+         return:    Attribute node
+         note:        Used for making cover page：page size (width,height), cop size (horizontal,vertical), bleed size are replaced by actual value and returned as attribute()*.
                     This function refers global variable $pPaperWidth,$pPaperHeight,$pCropSizeH,$pCropSizeV,$pBleedSize.（dita2fo_param.xsl)
                     Authoring "0.5 * %paper-width" will get half width of page size.
     -->
@@ -208,11 +208,11 @@
     
 
     <!-- 
-         function:	Expand stylesheet specific property into attribute()*
+         function:    Expand stylesheet specific property into attribute()*
                     Stylesheet oriented property has prefix "ahs-" as its signature and written in fo:prop attribute for convenience.
-         param:		prmElem
-         return:	Attribute node ("http://www.antennahouse.com/names/XSLT/Document/Layout" namespace)
-         note:		Stylesheet specific property is not XSL-FO property.
+         param:        prmElem
+         return:    Attribute node ("http://www.antennahouse.com/names/XSLT/Document/Layout" namespace)
+         note:        Stylesheet specific property is not XSL-FO property.
                     It is used to override the style defined default_style.xml or others. 
                     2016-02-20 t,makita
     -->

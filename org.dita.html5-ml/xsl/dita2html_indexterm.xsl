@@ -39,9 +39,9 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	Indexterm main template for generating @index-key, 
+     function:    Indexterm main template for generating @index-key, 
                 fo:index-range-begin and fo:index-range-end.
-     param:		- prmIndextermKey
+     param:        - prmIndextermKey
                   Inherited string index key value for making @index-key attribute.
                 - prmIndextermStart
                   Inherited string(indexterm/@start) value.
@@ -63,8 +63,8 @@ E-mail : info@antennahouse.com
                    topic/prolog/metadata/keywords/indexterm
                 - prmRangeElem
                   Tunnel parameter. This paramter specifies tha range to search indexterm[@end].
-     return:	fo:wrapper, fo:index-range-begin, fo:index-range-end
-     note:		Entry point has moved to dita2fo_indexcommon.xsl.
+     return:    fo:wrapper, fo:index-range-begin, fo:index-range-end
+     note:        Entry point has moved to dita2fo_indexcommon.xsl.
                 This template is called from dita2fo_indexcommon.xsl.
      -->
     <xsl:template match="*[contains(@class, ' topic/indexterm ')]" mode="MODE_PROCESS_INDEXTERM_MAIN">
@@ -174,10 +174,10 @@ E-mail : info@antennahouse.com
         </xsl:variable>
         
         <!--xsl:if test="@end">
-        	<xsl:message select="'@end=',string(@end),' $endAttrCheck=', $endAttrCheck"/>
+            <xsl:message select="'@end=',string(@end),' $endAttrCheck=', $endAttrCheck"/>
         </xsl:if-->
         <!--xsl:if test="@start">
-        	<xsl:message select="'$prmMakeComplementEnd=',string($prmMakeComplementEnd),'@start=',string(@start),' $startAttrCheck=', $startAttrCheck"/>
+            <xsl:message select="'$prmMakeComplementEnd=',string($prmMakeComplementEnd),'@start=',string(@start),' $startAttrCheck=', $startAttrCheck"/>
         </xsl:if-->
         
         
@@ -301,10 +301,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Indexterm structure check
-     param:	    $prmCurrentIndexKey
-     return:	$INDEX_CHECK_IGNORE_ELEMENT, $INDEX_CHECK_OK
-     note:		Current is indexterm
+     function:    Indexterm structure check
+     param:        $prmCurrentIndexKey
+     return:    $INDEX_CHECK_IGNORE_ELEMENT, $INDEX_CHECK_OK
+     note:        Current is indexterm
      -->
     <xsl:template name="indextermStructureCheck">
         <xsl:param name="prmCurrentIndexKey" required="yes" as="xs:string"/>
@@ -335,10 +335,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Indexterm/text check
-     param:	    $prmIndextermText, $prmCurrentIndexKey
-     return:	$INDEX_CHECK_IGNORE_ELEMENT, $INDEX_CHECK_OK
-     note:		Current is indexterm
+     function:    Indexterm/text check
+     param:        $prmIndextermText, $prmCurrentIndexKey
+     return:    $INDEX_CHECK_IGNORE_ELEMENT, $INDEX_CHECK_OK
+     note:        Current is indexterm
      -->
     <xsl:template name="indextermTextCheck">
         <xsl:param name="prmIndextermText" required="yes" as="xs:string"/>
@@ -369,10 +369,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Indexterm @start check
-     param:	    $prmIndextermStart, $prmCurrentIndexKey
-     return:	$INDEX_CHECK_IGNORE_ELEMENT, $INDEX_CHECK_OK, $INDEX_CHECK_IGNORE_ATTRIBUTE
-     note:		Current is indexterm
+     function:    Indexterm @start check
+     param:        $prmIndextermStart, $prmCurrentIndexKey
+     return:    $INDEX_CHECK_IGNORE_ELEMENT, $INDEX_CHECK_OK, $INDEX_CHECK_IGNORE_ATTRIBUTE
+     note:        Current is indexterm
      -->
     <xsl:template name="indexStartAttrCheck">
         <xsl:param name="prmIndextermStart" required="yes" as="xs:string"/>
@@ -425,10 +425,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	Indexterm @end check
-     param:		$prmCurrentIndexKey
-     return:	$INDEX_CHECK_IGNORE_ELEMENT, $INDEX_CHECK_OK, $INDEX_CHECK_IGNORE_ATTRIBUTE
-     note:		Current is indexterm
+     function:    Indexterm @end check
+     param:        $prmCurrentIndexKey
+     return:    $INDEX_CHECK_IGNORE_ELEMENT, $INDEX_CHECK_OK, $INDEX_CHECK_IGNORE_ATTRIBUTE
+     note:        Current is indexterm
      -->
     <xsl:template name="indexEndAttrCheck">
         <xsl:param name="prmCurrentIndexKey" required="yes" as="xs:string"/>
@@ -486,10 +486,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Indexterm @start and @end check
-     param:		$prmCurrentIndexKey
-     return:	$INDEX_CHECK_IGNORE_ELEMENT, $INDEX_CHECK_OK, $INDEX_CHECK_IGNORE_ATTRIBUTE
-     note:		Current is indexterm
+     function:    Indexterm @start and @end check
+     param:        $prmCurrentIndexKey
+     return:    $INDEX_CHECK_IGNORE_ELEMENT, $INDEX_CHECK_OK, $INDEX_CHECK_IGNORE_ATTRIBUTE
+     note:        Current is indexterm
      -->
     <xsl:template name="indexBothAttrCheck">
         <xsl:param name="prmCurrentIndexKey" required="yes" as="xs:string"/>
@@ -525,10 +525,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Find indexterm that have specified @end attribute.
-     param:		$prmEnd,$prmRangeElem
-     return:	xs:boolean
-     note:		$prmRangeElem is $map or topicref
+     function:    Find indexterm that have specified @end attribute.
+     param:        $prmEnd,$prmRangeElem
+     return:    xs:boolean
+     note:        $prmRangeElem is $map or topicref
      -->
     <xsl:function name="ahf:findIndextermEnd" as="xs:boolean">
         <xsl:param name="prmEnd" as="xs:string"/>

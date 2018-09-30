@@ -55,10 +55,10 @@ E-mail : info@antennahouse.com
     
     <!-- Moved from dita2fo_common.xsl -->
     <!-- 
-     function:	Process indexterm in metadata
-     param:		prmTopicRef, prmTopicContent
-     return:	call indexterm template and make index-key or start FO object
-     note:		This template should be called from the beginning of topic/title template.
+     function:    Process indexterm in metadata
+     param:        prmTopicRef, prmTopicContent
+     return:    call indexterm template and make index-key or start FO object
+     note:        This template should be called from the beginning of topic/title template.
                 Changed to allow empty($prmTopicContent) 2011-07-25 t.makita
                 The indexterm must be exist before (<<) the $lastTopicRef. 
                 Otherwise it will be ignored by FO processor. 
@@ -108,10 +108,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Process indexterm in metadata
-     param:		prmTopicRef, prmTopicContent
-     return:	call indexterm template and make fo:index-range-end FO object
-     note:		This template should be called from the end of topicref.
+     function:    Process indexterm in metadata
+     param:        prmTopicRef, prmTopicContent
+     return:    call indexterm template and make fo:index-range-end FO object
+     note:        This template should be called from the end of topicref.
      -->
     <xsl:template name="processIndextermInMetadataEnd">
         <xsl:param name="prmTopicRef"     required="yes" as="element()"/>
@@ -171,10 +171,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	Complement indexterm[@end] in topic body portion
-        param:		prmTopicRef, prmTopicContent
-        return:	    call indexterm template and make fo:index-range-end FO object
-        note:		This template should be called from the end of topic.
+        function:    Complement indexterm[@end] in topic body portion
+        param:        prmTopicRef, prmTopicContent
+        return:        call indexterm template and make fo:index-range-end FO object
+        note:        This template should be called from the end of topic.
     -->
     <xsl:template name="processIndextermInTopicEnd">
         <xsl:param name="prmTopicRef"     required="yes" as="element()"/>
@@ -354,7 +354,7 @@ E-mail : info@antennahouse.com
                 <!-- end! -->
             </xsl:when>
             <xsl:when test="$prmGetIndexSeeFO">
-            	<!-- Somtimes indexterm exists as the child of index-see or index-see-also element -->
+                <!-- Somtimes indexterm exists as the child of index-see or index-see-also element -->
                 <fo:inline>
                     <xsl:value-of select="', '"/>
                 </fo:inline>
@@ -474,13 +474,13 @@ E-mail : info@antennahouse.com
         <xsl:variable name="topicRef" as="element()" select="."/>
         <xsl:variable name="id" as="xs:string" select="string(ahf:getIdAtts($topicRef,$topicRef,true())[1])"/>
         
-    	<!-- debug -->
-    	<xsl:if test="$indextermOriginCount != $indextermSortedCount">
+        <!-- debug -->
+        <xsl:if test="$indextermOriginCount != $indextermSortedCount">
             <xsl:call-template name="errorExit">
                 <xsl:with-param name="prmMes" 
                  select="ahf:replace($stMes600,('%before','%after'),(string($indextermOriginCount),string($indextermSortedCount)))"/>
             </xsl:call-template>
-    	</xsl:if>
+        </xsl:if>
     
         <xsl:if test="$pDebugIndexSortResult">
             <xsl:call-template name="warningContinue">
@@ -500,18 +500,18 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmMes" select="$stMes602"/>
             </xsl:call-template>
         </xsl:if>
-    	
+        
         <xsl:if test="$pOutputIndex and ($indextermSortedCount &gt; 0)">
-    	    <psmi:page-sequence>
+            <psmi:page-sequence>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqIndex')"/>
                 <fo:static-content flow-name="rgnIndexBeforeLeft">
-		            <xsl:call-template name="indexBeforeLeft"/>
+                    <xsl:call-template name="indexBeforeLeft"/>
                 </fo:static-content>
                 <fo:static-content flow-name="rgnIndexBeforeRight">
                     <xsl:call-template name="indexBeforeRight"/>
                 </fo:static-content>
                 <fo:static-content flow-name="rgnIndexAfterLeft">
-		            <xsl:call-template name="indexAfterLeft"/>
+                    <xsl:call-template name="indexAfterLeft"/>
                 </fo:static-content>
                 <fo:static-content flow-name="rgnIndexAfterRight">
                     <xsl:call-template name="indexAfterRight"/>
@@ -525,9 +525,9 @@ E-mail : info@antennahouse.com
                 <fo:static-content flow-name="rgnIndexBlankBody">
                     <xsl:call-template name="makeBlankBlock"/>
                 </fo:static-content>
-        		
-        		<!-- INDEX main flow -->
-        		<fo:flow flow-name="xsl-region-body">
+                
+                <!-- INDEX main flow -->
+                <fo:flow flow-name="xsl-region-body">
                     <!-- Make "INDEX" title  -->
                     <fo:block>
                         <xsl:copy-of select="ahf:getAttributeSet('atsIndexHeader')"/>
@@ -539,8 +539,8 @@ E-mail : info@antennahouse.com
                     </fo:block>
                     <!-- Make index content main -->
                     <xsl:call-template name="makeIndexContentControl"/>
-        		</fo:flow>
-        	</psmi:page-sequence>
+                </fo:flow>
+            </psmi:page-sequence>
         </xsl:if>
     </xsl:template>
     
@@ -1037,20 +1037,20 @@ E-mail : info@antennahouse.com
                   -->
                 <xsl:variable name="currentLevelIndexKey" select="ahf:getCurrentLevelIndexKey($prmCurrentId,$prmStartLevel)" as="xs:string"/>
                 <xsl:variable name="currentLevelIndexkeyId" as="xs:string">
-                	<xsl:choose>
-                		<xsl:when test="string($currentLevelIndexKey)">
-                			<xsl:sequence select="ahf:indexKeyToIdValue($currentLevelIndexKey)"/>
-                		</xsl:when>
-                		<xsl:otherwise>
-                			<xsl:sequence select="''"/>
-                		</xsl:otherwise>
-                	</xsl:choose>
+                    <xsl:choose>
+                        <xsl:when test="string($currentLevelIndexKey)">
+                            <xsl:sequence select="ahf:indexKeyToIdValue($currentLevelIndexKey)"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:sequence select="''"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:variable>
                 <fo:block>
                     <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLineOnly',('%level'),(string($prmStartLevel)))"/>
                     <xsl:if test="string($currentLevelIndexkeyId)">
-    	                <xsl:attribute name="id" select="$currentLevelIndexkeyId"/>
-    	            </xsl:if>
+                        <xsl:attribute name="id" select="$currentLevelIndexkeyId"/>
+                    </xsl:if>
                     <fo:inline><xsl:copy-of select="$indextermFO"/></fo:inline>
                 </fo:block>
                 <!-- Call recursively myself -->
@@ -1719,12 +1719,12 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmLevel" as="xs:integer"/>
         <xsl:variable name="indexkey" select="string($indextermSorted/index-data[@id=$prmId]/indexterm[$prmLevel]/@indexkey)" as="xs:string"/>
         <xsl:choose>
-        	<xsl:when test="$indextermSorted/index-data[@id=$prmId]/preceding-sibling::index-data/indexterm[$prmLevel][string(@indexkey) eq $indexkey ]">
-        		<xsl:sequence select="''"/>
-        	</xsl:when>
-        	<xsl:otherwise>
-        		<xsl:sequence select="$indexkey"/>
-        	</xsl:otherwise>
+            <xsl:when test="$indextermSorted/index-data[@id=$prmId]/preceding-sibling::index-data/indexterm[$prmLevel][string(@indexkey) eq $indexkey ]">
+                <xsl:sequence select="''"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="$indexkey"/>
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
     

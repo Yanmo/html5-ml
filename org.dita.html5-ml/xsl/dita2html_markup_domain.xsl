@@ -20,10 +20,10 @@
 >
 
     <!-- 
-        function:	markupname
-        param:	    
-        return:	    fo:inline
-        note:		
+        function:    markupname
+        param:        
+        return:        fo:inline
+        note:        
     -->
     <xsl:template match="*[contains(@class, ' markup-d/markupname ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="4">
         <xsl:sequence select="'atsMarkupName'"/>

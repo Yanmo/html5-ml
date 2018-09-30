@@ -26,13 +26,13 @@ E-mail : info@antennahouse.com
      -->
     
     <!-- 
-     function:	Generate glossary list template
-     param:		none 
-     return:	(fo:page-sequence)
+     function:    Generate glossary list template
+     param:        none 
+     return:    (fo:page-sequence)
      note:      1. Current context is booklist/glossarylist
-     			2. This template made by the basis of the promise 
-     			that all of the topicrefs to the glossentry 
-     			are located under *THIS* topicref.
+                 2. This template made by the basis of the promise 
+                 that all of the topicrefs to the glossentry 
+                 are located under *THIS* topicref.
      -->
     <xsl:template name="genGlossaryList" >
         <psmi:page-sequence>
@@ -88,10 +88,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Glossary list main template
-     param:		
-     return:	fo:block
-     note:		Current context is booklist/glossarylist
+     function:    Glossary list main template
+     param:        
+     return:    fo:block
+     note:        Current context is booklist/glossarylist
      -->
     <xsl:template name="genGlossaryListMain">
         <xsl:variable name="topicRef" select="."/>
@@ -217,10 +217,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	Process topic (glossarylist)
-        param:		prmTopicRef
-        return:	    topic contents
-        note:		Changed to output post-note per topic/body. 2011-07-28 t.makita
+        function:    Process topic (glossarylist)
+        param:        prmTopicRef
+        return:        topic contents
+        note:        Changed to output post-note per topic/body. 2011-07-28 t.makita
     -->
     <xsl:template match="*[contains(@class, ' topic/topic ')]" mode="PROCESS_GLOSSARYLIST_PREFIX_CONTENT">
         <xsl:param name="prmTopicRef" tunnel="yes"  required="yes" as="element()"/>
@@ -275,10 +275,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	Process topicref of the glossary list for sorting
-        param:		none
-        return:	    glossentry topic
-        note:		none
+        function:    Process topicref of the glossary list for sorting
+        param:        none
+        return:        glossentry topic
+        note:        none
     -->
     <xsl:template match="*[contains(@class,' map/topicref ')][@href]" mode="PROCESS_GLOSSARYLIST_TOPICREF_IN_TEMPORARY_TREE">
         
@@ -336,10 +336,10 @@ E-mail : info@antennahouse.com
         
     
     <!-- 
-        function:	Process topicref of the glossary list
-        param:		none
-        return:	    call glossentry templates
-        note:		none
+        function:    Process topicref of the glossary list
+        param:        none
+        return:        call glossentry templates
+        note:        none
     -->
     <xsl:template match="*[contains(@class,' map/topicref ')][@href]" mode="PROCESS_GLOSSARYLIST_TOPICREF">
         <!--xsl:param name="prmEditStatus" tunnel="yes" required="yes"/-->
@@ -377,20 +377,20 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	Process topicref that have no @href attribute
-        param:		none
-        return:	    call lower templates
-        note:		none
+        function:    Process topicref that have no @href attribute
+        param:        none
+        return:        call lower templates
+        note:        none
     -->
     <xsl:template match="*[contains(@class,' map/topicref ')][not(@href)]" mode="PROCESS_GLOSSARYLIST_TOPICREF">
         <xsl:apply-templates mode="#current"/>        
     </xsl:template>
     
     <!-- 
-        function:	Process glossentry
-        param:		prmTopicRef
-        return:	    topic contents
-        note:		Changed to output post-note per topic/body. 2011-07-28 t.makita
+        function:    Process glossentry
+        param:        prmTopicRef
+        return:        topic contents
+        note:        Changed to output post-note per topic/body. 2011-07-28 t.makita
     -->
     <xsl:template match="*[contains(@class, ' glossentry/glossentry ')]" mode="PROCESS_GLOSSARYLIST_CONTENT" priority="2">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()"/>
@@ -451,10 +451,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	Process glossgroup
-        param:		
-        return:	    topic contents
-        note:		
+        function:    Process glossgroup
+        param:        
+        return:        topic contents
+        note:        
     -->
     <xsl:template match="*[contains(@class, ' glossgroup/glossgroup ')]" mode="PROCESS_GLOSSARYLIST_CONTENT" priority="2">
         <fo:wrapper>
@@ -467,10 +467,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	glossterm template
-        param:	    prmTopicRef
-        return:	    fo:block or descendant generated fo objects
-        note:		Apply priority="6" to this template.
+        function:    glossterm template
+        param:        prmTopicRef
+        return:        fo:block or descendant generated fo objects
+        note:        Apply priority="6" to this template.
     -->
     <xsl:template match="*[contains(@class, ' glossentry/glossterm ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="6">
         <xsl:sequence select="'atsGlossTerm'"/>
@@ -491,10 +491,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
         
     <!-- 
-        function:	glossdef template
-        param:	    
-        return:	    fo:block or descendant generated fo objects
-        note:		Apply priority="6" to this template.
+        function:    glossdef template
+        param:        
+        return:        fo:block or descendant generated fo objects
+        note:        Apply priority="6" to this template.
     -->
     <xsl:template match="*[contains(@class, ' glossentry/glossdef ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="6">
         <xsl:sequence select="'atsGlossDef'"/>

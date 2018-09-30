@@ -18,10 +18,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	b template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    b template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' hi-d/b ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsB'"/>
@@ -37,10 +37,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	i template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    i template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' hi-d/i ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsI'"/>
@@ -56,10 +56,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	u template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    u template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' hi-d/u ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsU'"/>
@@ -75,10 +75,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	tt template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    tt template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' hi-d/tt ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsTt'"/>
@@ -94,10 +94,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	sup template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    sup template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' hi-d/sup ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsSup'"/>
@@ -113,10 +113,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	sub template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    sub template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' hi-d/sub ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsSub'"/>
@@ -132,10 +132,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!-- 
-     function:	line-through template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    line-through template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' hi-d/line-through ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsLineThrough'"/>
@@ -151,10 +151,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	line-through template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    line-through template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' hi-d/overline ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsOverLine'"/>

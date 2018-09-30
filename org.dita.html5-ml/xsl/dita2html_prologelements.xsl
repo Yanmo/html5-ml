@@ -16,10 +16,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	prolog template
-     param:	    
-     return:	
-     note:		This template will be never called.
+     function:    prolog template
+     param:        
+     return:    
+     note:        This template will be never called.
      -->
     <xsl:template match="*[contains(@class, ' topic/prolog ')]">
     </xsl:template>

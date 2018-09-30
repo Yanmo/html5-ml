@@ -32,9 +32,9 @@ FOR A PARTICULAR PURPOSE.
 
   <!-- 
      function:  Return psmi:page-sequence is for cover 
-     param:		  prmPsmiPageSeq
-     return:	  xs:boolean
-     note:		  Added 2015-08-26 t.makita
+     param:          prmPsmiPageSeq
+     return:      xs:boolean
+     note:          Added 2015-08-26 t.makita
      -->
   <xsl:function name="ahf:isCover">
     <xsl:param name="prmPsmiPageSeq" as="element(psmi:page-sequence)"/>
@@ -48,9 +48,9 @@ FOR A PARTICULAR PURPOSE.
   
   <!-- 
      function:  Return that the element is first effective occurence in fo:page-sequence 
-     param:		  prmElem
-     return:	  xs:boolean
-     note:		  Added 2015-08-26 t.makita
+     param:          prmElem
+     return:      xs:boolean
+     note:          Added 2015-08-26 t.makita
      -->
   <xsl:function name="ahf:isFirstNonPsmiPageSeqOrPsmiPageSeqWoCover">
     <xsl:param name="prmElem" as="element()"/>

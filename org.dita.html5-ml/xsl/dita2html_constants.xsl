@@ -30,7 +30,7 @@ E-mail : info@antennahouse.com
     <xsl:variable name="NaN" select="'NaN'" as="xs:string"/>
     <xsl:variable name="lf" select="'&#x0A;'" as="xs:string"/>
     <xsl:variable name="doubleApos" as="xs:string">
-    	<xsl:text>''</xsl:text>
+        <xsl:text>''</xsl:text>
     </xsl:variable>
     
     <!-- units -->

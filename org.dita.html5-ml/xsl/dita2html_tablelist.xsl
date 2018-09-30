@@ -20,10 +20,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	Generate table list template
-     param:		none
-     return:	(fo:page-sequence)
-     note:      Current is booklists/tablelist		
+     function:    Generate table list template
+     param:        none
+     return:    (fo:page-sequence)
+     note:      Current is booklists/tablelist        
      -->
     <xsl:template name="genTableList" >
         <xsl:if test="$tableExists">
@@ -89,10 +89,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	Figure list main template
-     param:		none
-     return:	fo:block
-     note:		current is booklists/tablelist
+     function:    Figure list main template
+     param:        none
+     return:    fo:block
+     note:        current is booklists/tablelist
      -->
     <xsl:template name="genTableListMain">
         <xsl:variable name="topicRef" as="element()" select="."/>
@@ -109,15 +109,15 @@ E-mail : info@antennahouse.com
                 <xsl:value-of select="$cTableListTitle"/>
             </fo:block>
             <!-- Make contents -->
-    		<xsl:apply-templates select="$map" mode="MAKE_TABLE_LIST"/>
+            <xsl:apply-templates select="$map" mode="MAKE_TABLE_LIST"/>
         </fo:block>
     </xsl:template>
      
     <!-- 
-     function:	General templates for figure list
-     param:		none
-     return:	
-     note:		none
+     function:    General templates for figure list
+     param:        none
+     return:    
+     note:        none
      -->
     <xsl:template match="*" mode="MAKE_TABLE_LIST">
         <xsl:apply-templates mode="MAKE_TABLE_LIST"/>
@@ -209,10 +209,10 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' map/reltable ')]" mode="MAKE_TABLE_LIST" />
     
     <!-- 
-     function:	templates for topicref
-     param:		none
-     return:	Table list line
-     note:		Process all of the map/topicref contents.
+     function:    templates for topicref
+     param:        none
+     return:    Table list line
+     note:        Process all of the map/topicref contents.
      -->
     <xsl:template match="*[contains(@class,' map/topicref ')][@href]" mode="MAKE_TABLE_LIST">
         <xsl:variable name="topicRef" select="."/>
@@ -238,10 +238,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	Make table title FO
-        param:		prmTopicRef, prmNeedId
-        return:	    fo:inline * 2
-        note:		This template must return exactly 2 <fo:inline> elements.
+        function:    Make table title FO
+        param:        prmTopicRef, prmNeedId
+        return:        fo:inline * 2
+        note:        This template must return exactly 2 <fo:inline> elements.
     -->
     <xsl:template match="*[contains(@class, ' topic/table ')]/*[contains(@class, ' topic/title ')]" priority="2" mode="MAKE_TABLE_LIST">
         <fo:inline>
@@ -258,10 +258,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Make table list line
-     param:		prmId, prmTitle
-     return:	fo:block
-     note:		
+     function:    Make table list line
+     param:        prmId, prmTitle
+     return:    fo:block
+     note:        
      -->
     <xsl:template name="makeTableListLine">
         <xsl:param name="prmId"    required="yes" as="xs:string"/>

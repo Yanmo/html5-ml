@@ -19,10 +19,10 @@ E-mail : info@antennahouse.com
     >
 
     <!-- 
-     function:	svg-container template
-     param:	    
-     return:	fo:wrapper
-     note:		svg-container is only a container of SVG itself or svgref
+     function:    svg-container template
+     param:        
+     return:    fo:wrapper
+     note:        svg-container is only a container of SVG itself or svgref
      -->
     <xsl:template match="*[contains(@class, ' svg-d/svg-container ')]" priority="2">
         <fo:wrapper>
@@ -32,10 +32,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	SVG contained in svg-container template
-     param:	    
-     return:	fo:instream-foreign-object
-     note:		SVG may be stored as only one child of svg-container.
+     function:    SVG contained in svg-container template
+     param:        
+     return:    fo:instream-foreign-object
+     note:        SVG may be stored as only one child of svg-container.
                 So ahf:getFoStyleAndProperty() is applied here.
      -->
     <xsl:template match="svg:svg">
@@ -48,10 +48,10 @@ E-mail : info@antennahouse.com
     <xsl:template match="svg:svg" mode="TEXT_ONLY"/>
 
     <!-- 
-     function:	svgref template
-     param:	    
-     return:	fo:external-graphic
-     note:		svg-ref may only exits as the child of svg-container.
+     function:    svgref template
+     param:        
+     return:    fo:external-graphic
+     note:        svg-ref may only exits as the child of svg-container.
                 So ahf:getFoStyleAndProperty() is applied here.
      -->
     <xsl:template match="*[contains(@class, ' svg-d/svgref ')]" priority="2">

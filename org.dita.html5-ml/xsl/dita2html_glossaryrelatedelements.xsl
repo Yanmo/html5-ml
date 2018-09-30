@@ -18,10 +18,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	abbreviated-form template
-     param:	    prmTopicRef
-     return:	fo:basic-link
-     note:		none
+     function:    abbreviated-form template
+     param:        prmTopicRef
+     return:    fo:basic-link
+     note:        none
      -->
     
     <xsl:template match="*[contains(@class,' abbrev-d/abbreviated-form ')]" priority="2">
@@ -125,7 +125,7 @@ E-mail : info@antennahouse.com
                         <xsl:otherwise>
                             <xsl:sequence select="$topicElement/*[contains(@class, ' glossentry/glossterm ')]"/>
                         </xsl:otherwise>
-    			                </xsl:choose>
+                                </xsl:choose>
                 </xsl:variable>
                 <fo:basic-link>
                     <xsl:copy-of select="$destAttr"/>

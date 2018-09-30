@@ -21,10 +21,10 @@ E-mail : info@antennahouse.com
     exclude-result-prefixes="xs ahf saxon">
     
     <!-- 
-     function:	Return topicref is for cover 
-     param:		prmTopicRef
-     return:	xs:boolean
-     note:		
+     function:    Return topicref is for cover 
+     param:        prmTopicRef
+     return:    xs:boolean
+     note:        
      -->
     <xsl:function name="ahf:isCoverTopicRef" as="xs:boolean">
         <xsl:param name="prmTopicRef" as="element()?"/>
@@ -33,10 +33,10 @@ E-mail : info@antennahouse.com
     </xsl:function>
 
     <!-- 
-     function:	Return topicref is for cover3 
-     param:		prmTopicRef
-     return:	xs:boolean
-     note:		
+     function:    Return topicref is for cover3 
+     param:        prmTopicRef
+     return:    xs:boolean
+     note:        
      -->
     <xsl:function name="ahf:isCover3TopicRef" as="xs:boolean">
         <xsl:param name="prmTopicRef" as="element()"/>
@@ -46,10 +46,10 @@ E-mail : info@antennahouse.com
     
 
     <!-- 
-     function:	Output cover N 
-     param:		prmTopicContent
-     return:	psmi:page-sequence
-     note:		
+     function:    Output cover N 
+     param:        prmTopicContent
+     return:    psmi:page-sequence
+     note:        
      -->
     <xsl:template name="outputCoverN">
         <xsl:param name="prmTopicContent" as="element()" required="yes"/>
@@ -77,10 +77,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	body for cover
-     param:	    prmTopicRef
-     return:	fo:wrapper
-     note:		
+     function:    body for cover
+     param:        prmTopicRef
+     return:    fo:wrapper
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' topic/body ')]" priority="20">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
@@ -98,10 +98,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	bodydiv for cover
-     param:		prmTopicRef
-     return:	fo:block-container
-     note:		
+     function:    bodydiv for cover
+     param:        prmTopicRef
+     return:    fo:block-container
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' topic/bodydiv ')]" priority="20">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
@@ -119,10 +119,10 @@ E-mail : info@antennahouse.com
     </xsl:template>    
 
     <!-- 
-     function:	bodydiv for cover backgroound
-     param:		prmTopicRef
-     return:	fo:block-container
-     note:		
+     function:    bodydiv for cover backgroound
+     param:        prmTopicRef
+     return:    fo:block-container
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' topic/bodydiv ')][descendant::*[contains(@class,' topic/image ')][@outputclass eq 'background']]" priority="22">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
@@ -144,10 +144,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	section for cover
-     param:		prmTopicRef
-     return:	fo:block
-     note:		
+     function:    section for cover
+     param:        prmTopicRef
+     return:    fo:block
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' topic/section ')]" priority="20">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
@@ -165,10 +165,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	draft-comment for cover
-     param:		prmTopicRef
-     return:	ignore
-     note:		
+     function:    draft-comment for cover
+     param:        prmTopicRef
+     return:    ignore
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' topic/draft-comment ')]" priority="20" mode="TEXT_ONLY">
         <xsl:next-match/>
@@ -185,10 +185,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!-- 
-     function:	image for cover
-     param:		prmTopicRef
-     return:	see probe
-     note:		
+     function:    image for cover
+     param:        prmTopicRef
+     return:    see probe
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' topic/image ')]" priority="20">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
@@ -231,9 +231,9 @@ E-mail : info@antennahouse.com
         </xsl:choose>
     </xsl:template>
     <!-- 
-     function:	data for cover: generates barcode
-     param:		prmTopicRef
-     return:	fo:external-graphic
+     function:    data for cover: generates barcode
+     param:        prmTopicRef
+     return:    fo:external-graphic
      note:      assume data/@name="barcode" express barcode
      -->
     <xsl:template match="*[contains(@class, ' topic/data ')][string(@name) eq 'barcode']" priority="20">
@@ -259,9 +259,9 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	data for cover: QR code
-     param:		prmTopicRef
-     return:	fo:external-graphic
+     function:    data for cover: QR code
+     param:        prmTopicRef
+     return:    fo:external-graphic
      note:      data/@name="qrcode" expresses QR code
                 data/@href is the target URL
      -->
@@ -283,10 +283,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	p for cover
-     param:		prmTopicRef
-     return:	fo:block
-     note:      		
+     function:    p for cover
+     param:        prmTopicRef
+     return:    fo:block
+     note:              
      -->
     <xsl:template match="*[contains(@class, ' topic/p ')]" priority="20">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
@@ -304,10 +304,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!-- 
-        function:	ph for cover
-        param:	    prmTopicRef
-        return:	    fo:inline-container, fo:block
-        note:		
+        function:    ph for cover
+        param:        prmTopicRef
+        return:        fo:inline-container, fo:block
+        note:        
     -->
     <xsl:template match="*[contains(@class,' topic/ph ')][string(@outputclass) eq 'inline-container']" priority="20">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>

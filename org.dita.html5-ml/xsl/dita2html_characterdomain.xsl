@@ -19,10 +19,10 @@
 >
 
     <!-- 
-        function:	cm (check mark) template
-        param:	    none
-        return:	    fo:inline
-        note:		cm is empty element.
+        function:    cm (check mark) template
+        param:        none
+        return:        fo:inline
+        note:        cm is empty element.
                     There is no needs to make mode="MODE_GET_STYLE" template.
     -->
     <xsl:template match="*[contains(@class, ' ch-d/cm ')]" priority="2">
@@ -68,10 +68,10 @@
     
 
     <!-- 
-        function:	br template
-        param:	    none
-        return:	    fo:block
-        note:		none
+        function:    br template
+        param:        none
+        return:        fo:block
+        note:        none
     -->
     <xsl:template match="*[contains(@class, ' ch-d/br ')]" priority="2">
         <xsl:variable name="br" as="element()" select="." />

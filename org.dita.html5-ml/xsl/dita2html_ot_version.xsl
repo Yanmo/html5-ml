@@ -21,10 +21,10 @@ URL : http://www.antennahouse.co.jp/
     exclude-result-prefixes="xs ahf" >
     
     <!-- 
-     function:	Compare DITA-OT version.
-     param:		prmVersion1: Version 1
+     function:    Compare DITA-OT version.
+     param:        prmVersion1: Version 1
                 prmVersion2: Version 2 
-     return:	xs:integer?
+     return:    xs:integer?
                 -1: Version 1 < Version 2
                  0: Version 1 = Version 2
                  1: Version 1 > Version 2
@@ -54,10 +54,10 @@ URL : http://www.antennahouse.co.jp/
     </xsl:function>
     
     <!-- 
-     function:	Compare DITA-OT version No.
-     param:		prmVersion1: Version 1
+     function:    Compare DITA-OT version No.
+     param:        prmVersion1: Version 1
                 prmVersion2: Version 2 
-     return:	xs:integer?
+     return:    xs:integer?
                 -1: Version 1 < Version 2
                  0: Version 1 = Version 2
                  1: Version 1 > Version 2
@@ -111,9 +111,9 @@ URL : http://www.antennahouse.co.jp/
     </xsl:function>
     
     <!-- 
-     function:	Get OT version number.
-     param:		prmVersionNo
-     return:	xs:integer?
+     function:    Get OT version number.
+     param:        prmVersionNo
+     return:    xs:integer?
      note:      
     -->
     <xsl:function name="ahf:getOtVersionNo" as="xs:integer?">

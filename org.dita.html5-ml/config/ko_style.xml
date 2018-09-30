@@ -46,7 +46,7 @@ URL : http://www.antennahouse.com/
         <variable name="Index_Thumbnail_Title"></variable>
      
         <!-- Literals for note -->
-     	<variable name="Note_Note">비고</variable>
+         <variable name="Note_Note">비고</variable>
      
         <!-- Index related -->
         <!-- Index See prefix and suffix -->

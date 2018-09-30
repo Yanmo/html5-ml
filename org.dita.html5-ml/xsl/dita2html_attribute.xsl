@@ -19,10 +19,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	Process %univ-atts; attribute
-     param:		prmElement, prmTopicRef,prmNeedId
-     return:	attribute node
-     note:		Added @clear attribute processing.
+     function:    Process %univ-atts; attribute
+     param:        prmElement, prmTopicRef,prmNeedId
+     return:    attribute node
+     note:        Added @clear attribute processing.
                 2016/07/17 t.makita
      -->
     <xsl:function name="ahf:getUnivAtts" as="attribute()*">
@@ -62,10 +62,10 @@ E-mail : info@antennahouse.com
     
 
     <!-- 
-     function:	Process %id-atts; attribute
-     param:		prmElement, prmTopicRef, prmNeedId
-     return:	attribute node
-     note:		Use template version for normal context such as topic/body/p.
+     function:    Process %id-atts; attribute
+     param:        prmElement, prmTopicRef, prmNeedId
+     return:    attribute node
+     note:        Use template version for normal context such as topic/body/p.
                 In most cases we can omit paramters.
                 <xsl:call-template name="ahf:getIdAtts"/>
                 Use function version for the special context such as generateing id for title.
@@ -265,10 +265,10 @@ E-mail : info@antennahouse.com
     
 
     <!-- 
-     function:	Process %localization-atts; attribute
-     param:		prmElement
-     return:	attribute node
-     note:		@dir="lro", "rlo" is not implemented.
+     function:    Process %localization-atts; attribute
+     param:        prmElement
+     return:    attribute node
+     note:        @dir="lro", "rlo" is not implemented.
      -->
     <xsl:function name="ahf:getLocalizationAtts" as="attribute()*">
         <xsl:param name="prmElement" as="element()"/>
@@ -299,10 +299,10 @@ E-mail : info@antennahouse.com
     
 
     <!-- 
-     function:	Process %display-atts; attribute
-     param:		prmElement, prmStyleName
-     return:	attribute node
-     note:		
+     function:    Process %display-atts; attribute
+     param:        prmElement, prmStyleName
+     return:    attribute node
+     note:        
      -->
     <xsl:function name="ahf:getDisplayAtts" as="attribute()*">
         <xsl:param name="prmElement" as="element()"/>
@@ -320,10 +320,10 @@ E-mail : info@antennahouse.com
     </xsl:function>
     
     <!-- 
-     function:	Process scale attribute
-     param:		prmElement, prmStyleAttrs
-     return:	attribute node
-     note:		
+     function:    Process scale attribute
+     param:        prmElement, prmStyleAttrs
+     return:    attribute node
+     note:        
      -->
     <xsl:function name="ahf:getScaleAtts" as="attribute()*">
         <xsl:param name="prmElement" as="element()"/>
@@ -350,10 +350,10 @@ E-mail : info@antennahouse.com
     </xsl:function>
     
     <!-- 
-     function:	Process frame attribute
-     param:		prmElement
-     return:	attribute node
-     note:		Added codes to adjust start-indent and end-indent considering frame width and original padding.
+     function:    Process frame attribute
+     param:        prmElement
+     return:    attribute node
+     note:        Added codes to adjust start-indent and end-indent considering frame width and original padding.
                 2014-01-17 t.makita
      -->
     <xsl:function name="ahf:getFrameAtts" as="attribute()*">
@@ -545,10 +545,10 @@ E-mail : info@antennahouse.com
     </xsl:function>
     
     <!-- 
-     function:	Process expanse/pgwide attribute
-     param:		prmElement
-     return:	attribute node
-     note:		
+     function:    Process expanse/pgwide attribute
+     param:        prmElement
+     return:    attribute node
+     note:        
      -->
     <xsl:function name="ahf:getExpanseAtts" as="attribute()*">
         <xsl:param name="prmElement" as="element()"/>
@@ -563,10 +563,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	Percent to number
-     param:		prmPercent,prmElement
-     return:	number
-     note:		
+     function:    Percent to number
+     param:        prmPercent,prmElement
+     return:    number
+     note:        
      -->
     <xsl:function name="ahf:percentToNumber" as="xs:double">
         <xsl:param name="prmPercent" as="xs:string"/>
@@ -587,10 +587,10 @@ E-mail : info@antennahouse.com
     </xsl:function>
     
     <!-- 
-     function:	Generate unique id cosidering multiple topic reference
-     param:		prmElement,prmTopicRef
-     return:	id string
-     note:		About the indexterm in topicref/topicmeta, the parameter 
+     function:    Generate unique id cosidering multiple topic reference
+     param:        prmElement,prmTopicRef
+     return:    id string
+     note:        About the indexterm in topicref/topicmeta, the parameter 
                 $prmTopicRef is empty.
      -->
     <xsl:function name="ahf:generateId" as="xs:string">

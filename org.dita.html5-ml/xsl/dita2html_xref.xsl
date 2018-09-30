@@ -19,10 +19,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	xref template
-     param:	    prmTopicRef, prmNeedId
-     return:	fo:basic-link or fo:inline
-     note:		none
+     function:    xref template
+     param:        prmTopicRef, prmNeedId
+     return:    fo:basic-link or fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' topic/xref ')]">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes"  as="element()?"/>
@@ -65,10 +65,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Genrate xref contents
-     param:	    prmTopicRef, prmNeedId, prmXref, prmDstAttr
-     return:	node()*
-     note:		none
+     function:    Genrate xref contents
+     param:        prmTopicRef, prmNeedId, prmXref, prmDstAttr
+     return:    node()*
+     note:        none
      -->
     <xsl:template name="genXrefContentNodes" as="node()*">
         <xsl:param name="prmTopicRef" required="yes"  as="element()?"/>
@@ -126,10 +126,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!-- 
-     function:	Get title of xref
-     param:		prmTopicRef, prmDestElement
-     return:	fo:inline (title string)
-     note:		THIS TEMPLATE DOES NOT GENERATE @id ATTRIBUTE
+     function:    Get title of xref
+     param:        prmTopicRef, prmDestElement
+     return:    fo:inline (title string)
+     note:        THIS TEMPLATE DOES NOT GENERATE @id ATTRIBUTE
      -->
     <xsl:template name="getXrefTitle" as="node()*">
         <xsl:param name="prmTitleTopicRef" required="yes" as="element()?"/>
@@ -422,10 +422,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!-- 
-     function:	Generate attribute and contents for fo:basic-link
-     param:		prmTopicRef, prmNeedId, prmXref, prmDestElement, prmDestId, prmXrefTitle
-     return:	FO objects
-     note:		This template generates attribute() then content node (text() or other inline element).
+     function:    Generate attribute and contents for fo:basic-link
+     param:        prmTopicRef, prmNeedId, prmXref, prmDestElement, prmDestId, prmXrefTitle
+     return:    FO objects
+     note:        This template generates attribute() then content node (text() or other inline element).
                 Do not generate ant content node for fo:basic-link before calling this template.
      -->
     <xsl:template name="genXrefAttrAndTitle" as="node()*">
@@ -538,10 +538,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	desc template
-        param:	    
-        return:	    only call descendant template
-        note:		This template is obsolute. (It will be never called)
+        function:    desc template
+        param:        
+        return:        only call descendant template
+        note:        This template is obsolute. (It will be never called)
         [Other descs]
         fig/desc:     dita2fo_bodyelements.xsl
         object/desc:  Ignored.

@@ -20,10 +20,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	Generate figure list template
-     param:		none
-     return:	(fo:page-sequence)
-     note:      Current is booklists/figurelist		
+     function:    Generate figure list template
+     param:        none
+     return:    (fo:page-sequence)
+     note:      Current is booklists/figurelist        
      -->
     <xsl:template name="genFigureList" >
         <xsl:if test="$figureExists">
@@ -90,10 +90,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	Figure list main template
-     param:		none
-     return:	fo:block
-     note:      Current is booklists/figurelist		
+     function:    Figure list main template
+     param:        none
+     return:    fo:block
+     note:      Current is booklists/figurelist        
      -->
     <xsl:template name="genFigureListMain">
     
@@ -112,15 +112,15 @@ E-mail : info@antennahouse.com
                 <xsl:value-of select="$cFigureListTitle"/>
             </fo:block>
             <!-- Make contents -->
-    		<xsl:apply-templates select="$map" mode="MAKE_FIGURE_LIST"/>
+            <xsl:apply-templates select="$map" mode="MAKE_FIGURE_LIST"/>
         </fo:block>
     </xsl:template>
      
     <!-- 
-     function:	General templates for figure list
-     param:		none
-     return:	
-     note:		none
+     function:    General templates for figure list
+     param:        none
+     return:    
+     note:        none
      -->
     <xsl:template match="*" mode="MAKE_FIGURE_LIST">
         <xsl:apply-templates mode="#current"/>
@@ -213,10 +213,10 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' map/reltable ')]" mode="MAKE_FIGURE_LIST" />
     
     <!-- 
-     function:	templates for topicref
-     param:		none
-     return:	Figure list line
-     note:		Process all of the map/topicref contents.
+     function:    templates for topicref
+     param:        none
+     return:    Figure list line
+     note:        Process all of the map/topicref contents.
      -->
     <xsl:template match="*[contains(@class,' map/topicref ')][@href]" mode="MAKE_FIGURE_LIST">
         <xsl:variable name="topicRef" select="."/>
@@ -242,10 +242,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	Make figure title FO
-        param:		
-        return:	    fo:inline * 2
-        note:		This template must return exactly 2 <fo:inline> elements.
+        function:    Make figure title FO
+        param:        
+        return:        fo:inline * 2
+        note:        This template must return exactly 2 <fo:inline> elements.
     -->
     <xsl:template match="*[contains(@class, ' topic/fig ')]/*[contains(@class, ' topic/title ')]" priority="2" mode="MAKE_FIGURE_LIST">
         <fo:inline>
@@ -262,10 +262,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Make figure list line
-     param:		prmId, prmTitle
-     return:	fo:list-block
-     note:		Changed to use fo:list-block. 
+     function:    Make figure list line
+     param:        prmId, prmTitle
+     return:    fo:list-block
+     note:        Changed to use fo:list-block. 
                 2011-09-09 t.makita
                 Added $prmTitleElem to apply language specific style for figure title line.
                 It is temporary applied only for the style named 'atsFigListBlock'.

@@ -34,10 +34,10 @@ E-mail : info@antennahouse.com
     <!-- NOTE: task/choice is implemented in dita2fo_bodyelemets.xsl as topic/li -->
     
     <!-- 
-     function:	steps template
-     param:	    
-     return:	fo:list-block
-     note:      No fn elements supposed in the steps		
+     function:    steps template
+     param:        
+     return:    fo:list-block
+     note:      No fn elements supposed in the steps        
      -->
     <xsl:template match="*[contains(@class, ' task/steps ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsSteps'"/>
@@ -71,10 +71,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	steps/step template
-     param:	    
-     return:	fo:list-item
-     note:		
+     function:    steps/step template
+     param:        
+     return:    fo:list-item
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' task/steps ')]/*[contains(@class,' task/step ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsStepItem'"/>
@@ -134,10 +134,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	stepsection template
-     param:	    
-     return:	fo:list-item
-     note:		Stepsection appears in the steps/step-unordered. 
+     function:    stepsection template
+     param:        
+     return:    fo:list-item
+     note:        Stepsection appears in the steps/step-unordered. 
                 However it must be formatted like section. No list number
                 or bullet are needed. (2011-10-24 t.makita)
      -->
@@ -164,10 +164,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	cmd template
-     param:	    
-     return:	fo:inline
-     note:		none
+     function:    cmd template
+     param:        
+     return:    fo:inline
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/cmd ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsCmd'"/>
@@ -183,10 +183,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	info template
-     param:	    
-     return:	fo:block
-     note:		none
+     function:    info template
+     param:        
+     return:    fo:block
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/info ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsInfo'"/>
@@ -202,10 +202,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	stepxmp template
-     param:	    
-     return:	fo:block
-     note:		none
+     function:    stepxmp template
+     param:        
+     return:    fo:block
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/stepxmp ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsStepxmp'"/>
@@ -221,10 +221,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	choicetable template
-     param:	    
-     return:	fo:table
-     note:		@keycol default value is defined 1 in DTD.
+     function:    choicetable template
+     param:        
+     return:    fo:table
+     note:        @keycol default value is defined 1 in DTD.
                 MODE_GET_STYLE is defined only for choicetable in this version.
      -->
     <xsl:template match="*[contains(@class, ' task/choicetable ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
@@ -424,10 +424,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	stepresult template
-     param:	    
-     return:	fo:block
-     note:		none
+     function:    stepresult template
+     param:        
+     return:    fo:block
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/stepresult ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsStepresult'"/>
@@ -443,10 +443,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	tutorialinfo template
-     param:	    
-     return:	fo:block
-     note:		none
+     function:    tutorialinfo template
+     param:        
+     return:    fo:block
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/tutorialinfo ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsTutorialinfo'"/>
@@ -463,10 +463,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	result template
-     param:	    
-     return:	fo:block
-     note:		none
+     function:    result template
+     param:        
+     return:    fo:block
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/result ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsResult'"/>
@@ -482,10 +482,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	postreq template
-     param:	    
-     return:	fo:block
-     note:		none
+     function:    postreq template
+     param:        
+     return:    fo:block
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' task/postreq ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsPostreq'"/>

@@ -36,12 +36,12 @@ E-mail : info@antennahouse.com
     
     <xsl:variable name="indextermSorted">
         <xsl:for-each select="i18n_index_saxon9:indexSortSaxon9($documentLang, $indextermOrigin, string($pAssumeSortasPinyin))">
-    		<xsl:copy>
-    			<xsl:copy-of select="@*"/>
-    			<xsl:attribute name="id" select="ahf:generateHistoryId(.)"/>
-    			<xsl:copy-of select="*"/>
-    		</xsl:copy>
-    	</xsl:for-each>
+            <xsl:copy>
+                <xsl:copy-of select="@*"/>
+                <xsl:attribute name="id" select="ahf:generateHistoryId(.)"/>
+                <xsl:copy-of select="*"/>
+            </xsl:copy>
+        </xsl:for-each>
     </xsl:variable>
     
     <xsl:variable name="indextermOriginCount" select="count($indextermOrigin/index-data)"/>

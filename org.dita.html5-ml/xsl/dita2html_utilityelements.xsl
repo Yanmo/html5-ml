@@ -23,10 +23,10 @@ E-mail : info@antennahouse.com
      -->
     
     <!-- 
-     function:	imagemap template
-     param:	    
-     return:	fo:block
-     note:		none
+     function:    imagemap template
+     param:        
+     return:    fo:block
+     note:        none
      -->
     <xsl:template match="*[contains(@class, ' ut-d/imagemap ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsImageMap'"/>
@@ -46,10 +46,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	area template
-     param:	    
-     return:	fo:wrapper
-     note:		none
+     function:    area template
+     param:        
+     return:    fo:wrapper
+     note:        none
      -->
     
     <xsl:template match="*[contains(@class,' ut-d/area ')]" priority="2">
@@ -61,10 +61,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	shape template
-     param:	    
-     return:	fo:wrapper
-     note:		none
+     function:    shape template
+     param:        
+     return:    fo:wrapper
+     note:        none
      -->
     <xsl:template match="*[contains(@class,' ut-d/shape ')]" priority="2">
         <fo:wrapper>
@@ -75,10 +75,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	coords template
-     param:	    
-     return:	fo:wrapper
-     note:		none
+     function:    coords template
+     param:        
+     return:    fo:wrapper
+     note:        none
      -->
     <xsl:template match="*[contains(@class,' ut-d/coords ')]" priority="2">
         <fo:wrapper>
@@ -89,10 +89,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	area/xref template
-     param:	    
-     return:	fo:wrapper
-     note:		none
+     function:    area/xref template
+     param:        
+     return:    fo:wrapper
+     note:        none
      -->
     <xsl:template match="*[contains(@class,' ut-d/area ')]/*[contains(@class,' topic/xref ')]" priority="2">
         <fo:wrapper>
@@ -103,10 +103,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!-- 
-     function:	sortas template
-     param:	    
-     return:	none
-     note:		none
+     function:    sortas template
+     param:        
+     return:    none
+     note:        none
      -->
     <xsl:template match="*[contains(@class,' ut-d/sort-as ')]" priority="2">
     </xsl:template>

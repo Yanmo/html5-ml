@@ -20,10 +20,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	Generate TOC template
-     param:		none
-     return:	fo:page-sequence
-     note:		Current is booklists/toc
+     function:    Generate TOC template
+     param:        none
+     return:    fo:page-sequence
+     note:        Current is booklists/toc
      -->
     <xsl:template name="genToc" >
         <psmi:page-sequence>
@@ -86,10 +86,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Generate TOC template for map
-     param:		none
-     return:	fo:page-sequence
-     note:		
+     function:    Generate TOC template for map
+     param:        none
+     return:    fo:page-sequence
+     note:        
      -->
     <xsl:template name="genMapToc" >
         <fo:page-sequence>
@@ -120,10 +120,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!-- 
-     function:	TOC's main template
-     param:		none
-     return:	none
-     note:		Current is booklists/toc or map
+     function:    TOC's main template
+     param:        none
+     return:    none
+     note:        Current is booklists/toc or map
                 2012-04-02 t.makita
      -->
     <xsl:template name="genTocMain">
@@ -157,15 +157,15 @@ E-mail : info@antennahouse.com
                 <xsl:value-of select="$title"/>
             </fo:block>
             <!-- Make contents -->
-    		<xsl:apply-templates select="$map" mode="MAKE_TOC"/>
+            <xsl:apply-templates select="$map" mode="MAKE_TOC"/>
         </fo:block>
     </xsl:template>
 
     <!-- 
-     function:	TOC's main template for simple map
-     param:		none
-     return:	none
-     note:		Context item is root
+     function:    TOC's main template for simple map
+     param:        none
+     return:    none
+     note:        Context item is root
      -->
     <xsl:template name="genMapTocMain">
         <fo:block>
@@ -185,10 +185,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!-- 
-     function:	General templates for TOC
-     param:		none
-     return:	
-     note:		none
+     function:    General templates for TOC
+     param:        none
+     return:    
+     note:        none
      -->
     <xsl:template match="*" mode="MAKE_TOC">
         <xsl:apply-templates mode="#current"/>
@@ -388,10 +388,10 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' map/reltable ')]" mode="MAKE_TOC" />
     
     <!-- 
-     function:	templates for topicref
-     param:		none
-     return:	TOC line
-     note:		Process all of the map/topicref contents.
+     function:    templates for topicref
+     param:        none
+     return:    TOC line
+     note:        Process all of the map/topicref contents.
                 Skip outputclass="coverN" & toc="no".
      -->
     <xsl:template match="*[contains(@class,' map/topicref ')][ahf:isCoverTopicRef(.)]" mode="MAKE_TOC" priority="2"/>
@@ -469,10 +469,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	Get title contents
-     param:		prmTopicRef, prmLinkContent
-     return:	title inline
-     note:		
+     function:    Get title contents
+     param:        prmTopicRef, prmLinkContent
+     return:    title inline
+     note:        
      -->
     <xsl:template name="ahf:getTitleContent" as="node()*">
         <xsl:param name="prmTopicRef" as="element()"/>
@@ -525,10 +525,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Make TOC line
-     param:		prmId, prmLevel, prmTitle
-     return:	TOC line
-     note:		
+     function:    Make TOC line
+     param:        prmId, prmLevel, prmTitle
+     return:    TOC line
+     note:        
      -->
     <xsl:template name="makeTocLine">
         <xsl:param name="prmId"    required="yes" as="xs:string"/>
@@ -544,7 +544,7 @@ E-mail : info@antennahouse.com
                             <fo:basic-link internal-destination="{$prmId}">
                                 <xsl:copy-of select="$prmTitle"/>
                             </fo:basic-link>
-                			<fo:leader leader-length.optimum="0pt">
+                            <fo:leader leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                             </fo:leader>
                             <fo:inline keep-with-next="always">
@@ -573,7 +573,7 @@ E-mail : info@antennahouse.com
                             <fo:basic-link internal-destination="{$prmId}">
                                 <xsl:copy-of select="$prmTitle"/>
                             </fo:basic-link>
-                			<fo:leader leader-length.optimum="0pt">
+                            <fo:leader leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                             </fo:leader>
                             <fo:inline keep-with-next="always">
@@ -602,7 +602,7 @@ E-mail : info@antennahouse.com
                             <fo:basic-link internal-destination="{$prmId}">
                                 <xsl:copy-of select="$prmTitle"/>
                             </fo:basic-link>
-                			<fo:leader leader-length.optimum="0pt">
+                            <fo:leader leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                             </fo:leader>
                             <fo:inline keep-with-next="always">
@@ -631,7 +631,7 @@ E-mail : info@antennahouse.com
                             <fo:basic-link internal-destination="{$prmId}">
                                 <xsl:copy-of select="$prmTitle"/>
                             </fo:basic-link>
-                			<fo:leader leader-length.optimum="0pt">
+                            <fo:leader leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                             </fo:leader>
                             <fo:inline keep-with-next="always">

@@ -44,8 +44,8 @@ E-mail : info@antennahouse.com
     
     <!-- Indexterm nodeset sorted result -->
     <xsl:variable name="indextermSorted">
-    	<xsl:choose>
-    	<xsl:when test="count($indextermOrigin/*) gt 0">
+        <xsl:choose>
+        <xsl:when test="count($indextermOrigin/*) gt 0">
             <xsl:variable name="tempSortResult">
                 <xsl:call-template name="indexSort">
                     <xsl:with-param name="prmIndexterm" select="$indextermOrigin"/>
@@ -60,11 +60,11 @@ E-mail : info@antennahouse.com
                     </xsl:copy>
                 </xsl:for-each>
             </xsl:document>
-    	</xsl:when>
-    	    <xsl:otherwise>
-    	        <xsl:document/>
-    	    </xsl:otherwise>
-    	</xsl:choose>
+        </xsl:when>
+            <xsl:otherwise>
+                <xsl:document/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:variable>
     
     <!-- counts -->

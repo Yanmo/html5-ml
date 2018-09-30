@@ -18,10 +18,10 @@ E-mail : info@antennahouse.com
 >
 
     <!-- 
-     function:	uicontrol template
-     param:	    
-     return:	fo:inline
-     note:		
+     function:    uicontrol template
+     param:        
+     return:    fo:inline
+     note:        
      -->
     <xsl:template match="*[contains(@class,' ui-d/uicontrol ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsUiControl'"/>
@@ -58,10 +58,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	wintitle template
-     param:	    
-     return:	fo:inline
-     note:		
+     function:    wintitle template
+     param:        
+     return:    fo:inline
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' ui-d/wintitle ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsWinTitle'"/>
@@ -78,10 +78,10 @@ E-mail : info@antennahouse.com
     
     
     <!-- 
-     function:	menucascade template
-     param:	    
-     return:	fo:inline
-     note:		
+     function:    menucascade template
+     param:        
+     return:    fo:inline
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' ui-d/menucascade ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsMenuCascade'"/>
@@ -97,10 +97,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	shortcut template
-     param:	    
-     return:	fo:inline
-     note:		
+     function:    shortcut template
+     param:        
+     return:    fo:inline
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' ui-d/shortcut ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsShortcut'"/>
@@ -116,10 +116,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	screen template
-     param:	    
-     return:	fo:block
-     note:		
+     function:    screen template
+     param:        
+     return:    fo:block
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' ui-d/screen ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
         <xsl:sequence select="'atsScreen'"/>

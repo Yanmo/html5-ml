@@ -23,10 +23,10 @@ E-mail : info@antennahouse.com
      -->
     
     <!-- 
-     function:	General template for debug
-     param:	    
-     return:	debug message
-     note:		
+     function:    General template for debug
+     param:        
+     return:    debug message
+     note:        
      -->
     <xsl:template match="*" priority="-3">
         <xsl:call-template name="warningContinue">
@@ -153,10 +153,10 @@ E-mail : info@antennahouse.com
          ========================
      -->
     <!-- 
-     function:	Get target contents copy as inline
-     param:		none
-     return:	fo:inline
-     note:		** DOES NOT GENERATE @id & PROCESS INDEXTERM. **
+     function:    Get target contents copy as inline
+     param:        none
+     return:    fo:inline
+     note:        ** DOES NOT GENERATE @id & PROCESS INDEXTERM. **
      -->
     <xsl:template match="*" mode="GET_CONTENTS">
         <fo:inline>
@@ -170,10 +170,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Generate blank page block
-     param:		none
-     return:	blank page fo:block
-     note:		Use $map/@xml:lang to get style.
+     function:    Generate blank page block
+     param:        none
+     return:    blank page fo:block
+     note:        Use $map/@xml:lang to get style.
      -->
     <xsl:template name="makeBlankBlock">
         <fo:block>
@@ -198,10 +198,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Generate Thumb index 
-     param:		prmId, prmClass
-     return:	
-     note:		Use $map/@xml:lang to get style
+     function:    Generate Thumb index 
+     param:        prmId, prmClass
+     return:    
+     note:        Use $map/@xml:lang to get style
      -->
     <xsl:template name="genThumbIndex">
         <xsl:param name="prmId" required="yes" as="xs:string"/>
@@ -222,10 +222,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Generate Thumb index main
-     param:		prmTopicRef (Used to get style by xml:lang)
-     return:	Thumb index fo:block
-     note:		current context is $thumIndexMap/*
+     function:    Generate Thumb index main
+     param:        prmTopicRef (Used to get style by xml:lang)
+     return:    Thumb index fo:block
+     note:        current context is $thumIndexMap/*
      -->
     <xsl:template name="genThumbIndexMain">
         
@@ -262,10 +262,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Get topic title generation mode
-     param:		prmTopicRref,prmTopicContent
-     return:	cRoundBulletTitleMode, cSquareBulletTitleMode, cNoRestrictionTitleMode
-     note:		
+     function:    Get topic title generation mode
+     param:        prmTopicRref,prmTopicContent
+     return:    cRoundBulletTitleMode, cSquareBulletTitleMode, cNoRestrictionTitleMode
+     note:        
      -->
     <xsl:function name="ahf:getTitleMode" as="xs:integer">
         <xsl:param name="prmTopicRef"  as="element()"/>

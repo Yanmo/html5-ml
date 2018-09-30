@@ -16,10 +16,10 @@ E-mail : info@antennahouse.com
     exclude-result-prefixes="xs ahf">
     
     <!-- 
-     function:	Generate id using element history (hierarchy)
-     param:	    prmElem
-     return:	id string
-     note:		Newly coded to avoid using generate-id() function.
+     function:    Generate id using element history (hierarchy)
+     param:        prmElem
+     return:    id string
+     note:        Newly coded to avoid using generate-id() function.
                 2014-09-13 t.makita
      -->
     <xsl:function name="ahf:generateHistoryId" as="xs:string">

@@ -18,10 +18,10 @@ E-mail : info@antennahouse.com
  >
 
     <!-- 
-     function:	Heading generation template for frontmatter
-     param:		prmLevel, prmTopicRef, prmTopicContent
-     return:	title contents
-     note:		
+     function:    Heading generation template for frontmatter
+     param:        prmLevel, prmTopicRef, prmTopicContent
+     return:    title contents
+     note:        
      -->
     <xsl:template name="genFrontmatterTitle">
         <xsl:param name="prmLevel"        required="yes" as="xs:integer"/>
@@ -95,10 +95,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Heading generation template for backmatter
-     param:		prmLevel, prmTopicRef, prmTopicContent
-     return:	title contents
-     note:		Same as frontmatter
+     function:    Heading generation template for backmatter
+     param:        prmLevel, prmTopicRef, prmTopicContent
+     return:    title contents
+     note:        Same as frontmatter
      -->
     <xsl:template name="genBackmatterTitle">
         <xsl:param name="prmLevel"        required="yes" as="xs:integer"/>
@@ -113,10 +113,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Heading generation template for part/chapter
-     param:		prmTopicRef, prmTopicContent
-     return:	title contents
-     note:		
+     function:    Heading generation template for part/chapter
+     param:        prmTopicRef, prmTopicContent
+     return:    title contents
+     note:        
      -->
     <xsl:template name="genChapterTitle">
         <xsl:param name="prmTopicRef"     required="yes" as="element()"/>
@@ -262,20 +262,20 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Heading title template
-     param:		
-     return:	title contents
-     note:		
+     function:    Heading title template
+     param:        
+     return:    title contents
+     note:        
      -->
     <xsl:template match="*[contains(@class, ' topic/title ')]">
         <xsl:apply-templates/>
     </xsl:template>
     
     <!-- 
-     function:	Heading generation template for appendix
-     param:		prmTopicRef, prmTopicContent
-     return:	title contents
-     note:		
+     function:    Heading generation template for appendix
+     param:        prmTopicRef, prmTopicContent
+     return:    title contents
+     note:        
       -->
     <xsl:template name="genAppendixTitle">
         <xsl:param name="prmTopicRef"     required="yes" as="element()"/>
@@ -416,10 +416,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-        function:	Heading generation template for appendices
-        param:		prmTopicRef, prmTopicContent
-        return:	    title contents
-        note:		This template is inttended for appendices[not(@href)] element.
+        function:    Heading generation template for appendices
+        param:        prmTopicRef, prmTopicContent
+        return:        title contents
+        note:        This template is inttended for appendices[not(@href)] element.
                     Deprecated. 2015-01-20 t.makita
     -->
     <!--xsl:template name="genAppendicesTitle">
@@ -468,10 +468,10 @@ E-mail : info@antennahouse.com
     </xsl:template-->
     
     <!-- 
-     function:	Square bullet heading generation 
-     param:		prmTopicRef, prmTopicContent
-     return:	title contents
-     note:		for nested topic/concept/task/reference or toc="no" specified contents
+     function:    Square bullet heading generation 
+     param:        prmTopicRef, prmTopicContent
+     return:    title contents
+     note:        for nested topic/concept/task/reference or toc="no" specified contents
      -->
     <xsl:template name="genSquareBulletTitle">
         <xsl:param name="prmTopicRef"     required="yes" as="element()"/>
@@ -591,9 +591,9 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Round bullet heading generation 
-     param:		prmTopicRef, prmTopicContent
-     return:	Title contents
+     function:    Round bullet heading generation 
+     param:        prmTopicRef, prmTopicContent
+     return:    Title contents
      note:
       -->
     <xsl:template name="genRoundBulletTitle">
@@ -714,10 +714,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
     
     <!-- 
-     function:	Generate fo:marker from topichead/topicref element
-     param:		prmTopicRef (topichead or topicref)
-     return:	fo:marker
-     note:		Deprecated
+     function:    Generate fo:marker from topichead/topicref element
+     param:        prmTopicRef (topichead or topicref)
+     return:    fo:marker
+     note:        Deprecated
      -->
     <xsl:template name="makeMarker">
         <xsl:param name="prmTopicRef"     required="yes" as="element()"/>
@@ -754,10 +754,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!-- 
-     function:	Generate prefix of title
-     param:		prmTopicRef
-     return:	prefix of title 
-     note:		none
+     function:    Generate prefix of title
+     param:        prmTopicRef
+     return:    prefix of title 
+     note:        none
      -->
     <xsl:template name="genTitlePrefix" as="xs:string">
         <xsl:param name="prmTopicRef" required="yes" as="element()"/>
@@ -863,10 +863,10 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!-- 
-     function:	Generate level of topicref
-     param:		prmTopicRef
-     return:	xs:string 
-     note:		none
+     function:    Generate level of topicref
+     param:        prmTopicRef
+     return:    xs:string 
+     note:        none
      -->
     <xsl:function name="ahf:genLevelTitlePrefix" as="xs:string">
         <xsl:param name="prmTopicRef" as="element()"/>
@@ -876,10 +876,10 @@ E-mail : info@antennahouse.com
     </xsl:function>
 
     <!-- 
-     function:	Generate level of topicref
-     param:		prmTopicRef,prmCutLimit
-     return:	xs:string 
-     note:		Ancestor or self of $prmTopicref will be cut by $prmCutLevel level.
+     function:    Generate level of topicref
+     param:        prmTopicRef,prmCutLimit
+     return:    xs:string 
+     note:        Ancestor or self of $prmTopicref will be cut by $prmCutLevel level.
                 This function is used for table & fig numbering title prefix.
                 2014-09-16 t.makita
      -->
@@ -892,10 +892,10 @@ E-mail : info@antennahouse.com
     </xsl:function>
 
     <!-- 
-     function:	Get preceding-sibling topicref count
-     param:		prmTopicRef
-     return:	xs:string* 
-     note:		topicref/@toc="no" is not counted.
+     function:    Get preceding-sibling topicref count
+     param:        prmTopicRef
+     return:    xs:string* 
+     note:        topicref/@toc="no" is not counted.
                 Fix topicref counting bug.
                 2015-08-07 t.makita
      -->
