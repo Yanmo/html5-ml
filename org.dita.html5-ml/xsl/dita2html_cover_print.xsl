@@ -231,7 +231,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    data for cover: generates barcode
      param:        prmTopicRef
-     return:    fo:external-graphic
+     return:    img
      note:      assume data/@name="barcode" express barcode
      -->
     <xsl:template match="*[contains(@class, ' topic/data ')][string(@name) eq 'barcode']" priority="20">
@@ -245,10 +245,10 @@ E-mail : info@antennahouse.com
                     <xsl:sequence select="normalize-space(string-join($texts,''))"/>
                 </xsl:variable>
                 <xsl:variable name="barCodeSrc" as="xs:string" select="concat(ahf:getVarValue('cBarCodeSrc'),$text)"/>
-                <fo:external-graphic>
+                <img>
                     <xsl:attribute name="src" select="$barCodeSrc"/>
                     <xsl:copy-of select="ahf:getFoPropertyWithPageVariables(.)"/>
-                </fo:external-graphic>
+                </img>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:next-match/>
@@ -259,7 +259,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    data for cover: QR code
      param:        prmTopicRef
-     return:    fo:external-graphic
+     return:    img
      note:      data/@name="qrcode" expresses QR code
                 data/@href is the target URL
      -->
@@ -269,10 +269,10 @@ E-mail : info@antennahouse.com
             <xsl:when test="ahf:isCoverTopicRef($prmTopicRef)">
                     <xsl:variable name="href" as="xs:string" select="string(@href)"/>
                     <xsl:variable name="qrCodeSrc" as="xs:string" select="concat(ahf:getVarValue('cQrCodeSrc'),$href)"/>
-                    <fo:external-graphic>
+                    <img>
                         <xsl:attribute name="src" select="$qrCodeSrc"/>
                         <xsl:copy-of select="ahf:getFoPropertyWithPageVariables(.)"/>
-                    </fo:external-graphic>
+                    </img>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:next-match/>

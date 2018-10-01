@@ -49,17 +49,17 @@ E-mail : info@antennahouse.com
     <!--
      function:    svgref template
      param:
-     return:    fo:external-graphic
+     return:    img
      note:        svg-ref may only exits as the child of svg-container.
                 So ahf:getFoStyleAndProperty() is applied here.
      -->
     <xsl:template match="*[contains(@class, ' svg-d/svgref ')]" priority="2">
-        <fo:external-graphic>
+        <img>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:attribute name="src" select="ahf:getImageUrl(.)"/>
             <xsl:attribute name="content-type" select="'content-type:xml/svg'"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(parent::*[1])"/>
-        </fo:external-graphic>
+        </img>
     </xsl:template>
 
 </xsl:stylesheet>

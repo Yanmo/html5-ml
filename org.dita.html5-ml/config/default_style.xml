@@ -758,12 +758,12 @@ URL : http://www.antennahouse.com/
                 <attribute name="top">0mm</attribute>
             </attribute-set>
             
-            <!-- Barcode fo:external-graphic/@src
+            <!-- Barcode img/@src
                  Add barcode text after this text
              -->
             <variable name="cBarCodeSrc">data:application/vnd.ah-barcode;type=Code39;scale=1;text=none;qz=0;w=0.25mm;h=9.075mm;r=2.5;cd=none,</variable>
             
-            <!--QR code fo:external-graphic/@src
+            <!--QR code img/@src
                  Add barcode text after this text
              -->
             <variable name="cQrCodeSrc">data:application/vnd.ah-barcode;type=QR;scale=1,</variable>

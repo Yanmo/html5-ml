@@ -48,13 +48,13 @@
     <!--
         function:    mathml-d/mathmlref
         param:        none
-        return:        fo:external-graphic
+        return:        img
         note:        none
     -->
     <xsl:template match="*[contains(@class, ' mathml-d/mathmlref ')]" priority="2">
-        <fo:external-graphic content-type="content-type:application/mathml+xml">
+        <img content-type="content-type:application/mathml+xml">
             <xsl:attribute name="src" select="ahf:getImageUrl(.)"/>
-        </fo:external-graphic>
+        </img>
     </xsl:template>
 
 </xsl:stylesheet>

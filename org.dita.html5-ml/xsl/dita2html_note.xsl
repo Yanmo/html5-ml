@@ -33,11 +33,11 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
             <xsl:choose>
                 <xsl:when test="($type eq 'note') or not(string($type))">
-                    <fo:external-graphic>
+                    <img>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsNoteNoteIconImage'"/>
                         </xsl:call-template>
-                    </fo:external-graphic>
+                    </img>
                     <xsl:call-template name="getVarValueWithLangAsText">
                         <xsl:with-param name="prmVarName" select="'Note_Note'"/>
                     </xsl:call-template>
@@ -48,11 +48,11 @@ E-mail : info@antennahouse.com
                     </span>
                 </xsl:when>
                 <xsl:when test="$type eq 'tip'">
-                    <fo:external-graphic>
+                    <img>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsNoteTipIconImage'"/>
                         </xsl:call-template>
-                    </fo:external-graphic>
+                    </img>
                     <xsl:call-template name="getVarValueWithLangAsText">
                         <xsl:with-param name="prmVarName" select="'Note_Tip'"/>
                     </xsl:call-template>
@@ -63,11 +63,11 @@ E-mail : info@antennahouse.com
                     </span>
                 </xsl:when>
                 <xsl:when test="$type eq 'fastpath'">
-                    <fo:external-graphic>
+                    <img>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsNoteFastPathIconImage'"/>
                         </xsl:call-template>
-                    </fo:external-graphic>
+                    </img>
                     <xsl:call-template name="getVarValueWithLangAsText">
                         <xsl:with-param name="prmVarName" select="'Note_FastPath'"/>
                     </xsl:call-template>
@@ -78,11 +78,11 @@ E-mail : info@antennahouse.com
                     </span>
                 </xsl:when>
                 <xsl:when test="$type = ('important','restriction','remember','trouble')">
-                    <fo:external-graphic>
+                    <img>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsNoteImportantIconImage'"/>
                         </xsl:call-template>
-                    </fo:external-graphic>
+                    </img>
                     <xsl:call-template name="getVarValueWithLangAsText">
                         <xsl:with-param name="prmVarName" as="xs:string">
                             <xsl:choose>
@@ -100,11 +100,11 @@ E-mail : info@antennahouse.com
                     </span>
                 </xsl:when>
                 <xsl:when test="$type = ('caution','attention','warning','notice','danger')">
-                    <fo:external-graphic>
+                    <img>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsNoteCautionIconImage'"/>
                         </xsl:call-template>
-                    </fo:external-graphic>
+                    </img>
                     <xsl:call-template name="getVarValueWithLangAsText">
                         <xsl:with-param name="prmVarName" as="xs:string">
                             <xsl:choose>
@@ -135,11 +135,11 @@ E-mail : info@antennahouse.com
                             </xsl:otherwise>
                         </xsl:choose>
                     </xsl:variable>
-                    <fo:external-graphic>
+                    <img>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsNoteOtherIconImage'"/>
                         </xsl:call-template>
-                    </fo:external-graphic>
+                    </img>
                     <xsl:value-of select="$otherTitle"/>
                     <span>
                         <xsl:call-template name="getAttributeSetWithLang">

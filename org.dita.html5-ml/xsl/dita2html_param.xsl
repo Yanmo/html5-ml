@@ -222,7 +222,7 @@ E-mail : info@antennahouse.com
     <xsl:variable name="pMakeIndexForMap" select="boolean($PRM_MAKE_INDEX_FOR_MAP eq $cYes)"
         as="xs:boolean"/>
 
-    <!-- Generate alt-text for fo:external-graphic
+    <!-- Generate alt-text for img
          2015-03-11 t.makita
      -->
     <xsl:param name="PRM_MAKE_ALT_TEXT" required="no" as="xs:string" select="$cNo"/>

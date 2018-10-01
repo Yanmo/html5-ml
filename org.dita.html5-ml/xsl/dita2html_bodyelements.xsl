@@ -1004,7 +1004,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    image template
      param:
-     return:    fo:external-graphic (fo:block)
+     return:    img (fo:block)
      note:        Add block/inline specific attribute-set.
                 2015-06-04 t.makita
      -->
@@ -1046,19 +1046,19 @@ E-mail : info@antennahouse.com
             <xsl:when test="$prmImage/@longdescref">
                 <a>
                     <xsl:attribute name="external-destination" select="concat('url(',$prmImage/@longdescref,')')"/>
-                    <fo:external-graphic>
+                    <img>
                         <xsl:call-template name="ahf:getUnivAtts"/>
                         <xsl:copy-of select="ahf:getImageCommonAttr($prmImage)"/>
                         <xsl:copy-of select="ahf:getFoStyleAndProperty($prmImage)"/>
-                    </fo:external-graphic>
+                    </img>
                 </a>
             </xsl:when>
             <xsl:otherwise>
-                <fo:external-graphic>
+                <img>
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:copy-of select="ahf:getImageCommonAttr($prmImage)"/>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty($prmImage)"/>
-                </fo:external-graphic>
+                </img>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
