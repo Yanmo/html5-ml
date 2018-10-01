@@ -275,7 +275,7 @@ E-mail : info@antennahouse.com
                             </span>
                         </span>
                         <a internal-destination="{$prmId}">
-                            <fo:page-number-citation ref-id="{$prmId}" />
+                            <span ref-id="{$prmId}" />
                         </a>
                     </div>
                 </fo:list-item-body>

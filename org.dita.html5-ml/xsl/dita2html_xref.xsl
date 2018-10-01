@@ -452,7 +452,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmVarName" select="'Xref_Prefix'"/>
                         <xsl:with-param name="prmElem" select="$prmXref"/>
                     </xsl:call-template>
-                    <fo:page-number-citation ref-id="{$prmDestId}"/>
+                    <span ref-id="{$prmDestId}"/>
                     <xsl:call-template name="getVarValueWithLangAsText">
                         <xsl:with-param name="prmVarName" select="'Xref_Suffix'"/>
                         <xsl:with-param name="prmElem" select="$prmXref"/>
@@ -470,7 +470,7 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmVarName" select="'Xref_Prefix'"/>
                     <xsl:with-param name="prmElem" select="$prmXref"/>
                 </xsl:call-template>
-                <fo:page-number-citation ref-id="{$prmDestId}"/>
+                <span ref-id="{$prmDestId}"/>
                 <xsl:call-template name="getVarValueWithLangAsText">
                     <xsl:with-param name="prmVarName" select="'Xref_Suffix'"/>
                     <xsl:with-param name="prmElem" select="$prmXref"/>
@@ -494,7 +494,7 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmVarName" select="'Xref_Prefix'"/>
                     <xsl:with-param name="prmElem" select="$prmXref"/>
                 </xsl:call-template>
-                <fo:page-number-citation ref-id="{$prmDestId}"/>
+                <span ref-id="{$prmDestId}"/>
                 <xsl:call-template name="getVarValueWithLangAsText">
                     <xsl:with-param name="prmVarName" select="'Xref_Suffix'"/>
                     <xsl:with-param name="prmElem" select="$prmXref"/>
@@ -519,7 +519,7 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmVarName" select="'Xref_Prefix'"/>
                     <xsl:with-param name="prmElem" select="$prmXref"/>
                 </xsl:call-template>
-                <fo:page-number-citation ref-id="{$prmDestId}"/>
+                <span ref-id="{$prmDestId}"/>
                 <xsl:call-template name="getVarValueWithLangAsText">
                     <xsl:with-param name="prmVarName" select="'Xref_Suffix'"/>
                     <xsl:with-param name="prmElem" select="$prmXref"/>

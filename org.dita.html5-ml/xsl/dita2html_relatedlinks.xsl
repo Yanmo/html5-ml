@@ -260,7 +260,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmVarName" select="'Relatedlink_Prefix'"/>
                         <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
                     </xsl:call-template>
-                    <fo:page-number-citation ref-id="{$topicId}"/>
+                    <span ref-id="{$topicId}"/>
                     <xsl:call-template name="getVarValueWithLang">
                         <xsl:with-param name="prmVarName" select="'Relatedlink_Suffix'"/>
                         <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
@@ -279,7 +279,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmVarName" select="'Relatedlink_Prefix'"/>
                         <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
                     </xsl:call-template>
-                    <fo:page-number-citation ref-id="{$topicId}"/>
+                    <span ref-id="{$topicId}"/>
                     <xsl:call-template name="getVarValueWithLang">
                         <xsl:with-param name="prmVarName" select="'Relatedlink_Suffix'"/>
                         <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
