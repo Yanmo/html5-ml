@@ -23,7 +23,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    properties template
      param:
-     return:    fo:table
+     return:    table
      note:        MODE_GET_STYLE is defined only for properties in this version.
      -->
     <xsl:template match="*[contains(@class, ' reference/properties ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
@@ -35,7 +35,7 @@ E-mail : info@antennahouse.com
         <xsl:variable name="propertiesAttr" as="attribute()*">
             <xsl:call-template name="getAttributeSetWithLang"/>
         </xsl:variable>
-        <fo:table>
+        <table>
             <xsl:copy-of select="$propertiesAttr"/>
             <xsl:copy-of select="ahf:getDisplayAtts(.,$propertiesAttr)"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -50,19 +50,19 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates select="*[contains(@class,' reference/prophead ')]">
                 <xsl:with-param name="prmKeyCol" select="$keyCol"/>
             </xsl:apply-templates>
-            <fo:table-body>
+            <tbody>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPropertyTableBody')"/>
                 <xsl:apply-templates select="*[contains(@class,' reference/property ')]">
                     <xsl:with-param name="prmKeyCol" select="$keyCol"/>
                 </xsl:apply-templates>
-            </fo:table-body>
-        </fo:table>
+            </tbody>
+        </table>
     </xsl:template>
 
     <!--
      function:    prophead template
      param:        prmKeyCol
-     return:    fo:table-header
+     return:    thead
      note:        prophead is optional.
                 proptypehd, propvaluehd, propvaluehd are all optional.
                 This stylesheet apply bold for prophead if properties/@keycol is not defined.
@@ -70,15 +70,15 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' reference/prophead ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
 
-        <fo:table-header>
+        <thead>
             <xsl:copy-of select="ahf:getAttributeSet('atsPropertyTableHeader')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:table-row>
+            <tr>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPropertyTableRow')"/>
                 <!-- proptypehd -->
                 <xsl:if test="exists(*[contains(@class, ' reference/proptypehd ')])">
-                    <fo:table-cell>
+                    <td>
                         <xsl:copy-of select="ahf:getAttributeSet('atsPropertyTableHeaderCell')"/>
                         <xsl:choose>
                             <xsl:when test="$prmKeyCol eq 1">
@@ -89,11 +89,11 @@ E-mail : info@antennahouse.com
                             </xsl:when>
                         </xsl:choose>
                         <xsl:apply-templates select="*[contains(@class, ' reference/proptypehd ')]"/>
-                    </fo:table-cell>
+                    </td>
                 </xsl:if>
                 <!-- propvaluehd -->
                 <xsl:if test="exists(*[contains(@class, ' reference/propvaluehd ')])">
-                    <fo:table-cell>
+                    <td>
                         <xsl:copy-of select="ahf:getAttributeSet('atsPropertyTableHeaderCell')"/>
                         <xsl:choose>
                             <xsl:when test="$prmKeyCol eq 2">
@@ -104,11 +104,11 @@ E-mail : info@antennahouse.com
                             </xsl:when>
                         </xsl:choose>
                         <xsl:apply-templates select="*[contains(@class, ' reference/propvaluehd ')]"/>
-                    </fo:table-cell>
+                    </td>
                 </xsl:if>
                 <!-- propvaluehd -->
                 <xsl:if test="exists(*[contains(@class, ' reference/propdeschd ')])">
-                    <fo:table-cell>
+                    <td>
                         <xsl:copy-of select="ahf:getAttributeSet('atsPropertyTableHeaderCell')"/>
                         <xsl:choose>
                             <xsl:when test="$prmKeyCol eq 3">
@@ -119,10 +119,10 @@ E-mail : info@antennahouse.com
                             </xsl:when>
                         </xsl:choose>
                         <xsl:apply-templates select="*[contains(@class, ' reference/propdeschd ')]"/>
-                    </fo:table-cell>
+                    </td>
                 </xsl:if>
-            </fo:table-row>
-        </fo:table-header>
+            </tr>
+        </thead>
     </xsl:template>
 
     <!--
@@ -170,18 +170,18 @@ E-mail : info@antennahouse.com
     <!--
      function:    property template
      param:        prmKeyCol
-     return:    fo:table-row
+     return:    tr
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/property ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
 
-        <fo:table-row>
+        <tr>
             <xsl:copy-of select="ahf:getAttributeSet('atsPropertyTableRow')"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <!-- proptype -->
             <xsl:if test="exists(*[contains(@class, ' reference/proptype ')])">
-                <fo:table-cell>
+                <td>
                     <xsl:copy-of select="ahf:getAttributeSet('atsPropertyTableBodyCell')"/>
                     <xsl:choose>
                         <xsl:when test="$prmKeyCol eq 1">
@@ -192,11 +192,11 @@ E-mail : info@antennahouse.com
                         </xsl:otherwise>
                     </xsl:choose>
                     <xsl:apply-templates select="*[contains(@class, ' reference/proptype ')]"/>
-                </fo:table-cell>
+                </td>
             </xsl:if>
             <!-- propvalue -->
             <xsl:if test="exists(*[contains(@class, ' reference/propvalue ')])">
-                <fo:table-cell>
+                <td>
                     <xsl:copy-of select="ahf:getAttributeSet('atsPropertyTableBodyCell')"/>
                     <xsl:choose>
                         <xsl:when test="$prmKeyCol eq 2">
@@ -207,11 +207,11 @@ E-mail : info@antennahouse.com
                         </xsl:otherwise>
                     </xsl:choose>
                     <xsl:apply-templates select="*[contains(@class, ' reference/propvalue ')]"/>
-                </fo:table-cell>
+                </td>
             </xsl:if>
             <!-- propdesc -->
             <xsl:if test="exists(*[contains(@class, ' reference/propdesc ')])">
-                <fo:table-cell>
+                <td>
                     <xsl:copy-of select="ahf:getAttributeSet('atsPropertyTableBodyCell')"/>
                     <xsl:choose>
                         <xsl:when test="$prmKeyCol eq 3">
@@ -222,9 +222,9 @@ E-mail : info@antennahouse.com
                         </xsl:otherwise>
                     </xsl:choose>
                     <xsl:apply-templates select="*[contains(@class, ' reference/propdesc ')]"/>
-                </fo:table-cell>
+                </td>
             </xsl:if>
-        </fo:table-row>
+        </tr>
     </xsl:template>
 
     <!--

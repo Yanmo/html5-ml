@@ -222,7 +222,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    choicetable template
      param:
-     return:    fo:table
+     return:    table
      note:        @keycol default value is defined 1 in DTD.
                 MODE_GET_STYLE is defined only for choicetable in this version.
      -->
@@ -236,9 +236,9 @@ E-mail : info@antennahouse.com
         <xsl:variable name="choiceTableAttr" as="attribute()*">
             <xsl:call-template name="getAttributeSetWithLang"/>
         </xsl:variable>
-        <fo:table-and-caption>
+        <div class="table">
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)[name() eq 'text-align']"/>
-            <fo:table>
+            <table>
                 <xsl:copy-of select="$choiceTableAttr"/>
                 <xsl:copy-of select="ahf:getDisplayAtts(.,$choiceTableAttr)"/>
                 <xsl:call-template name="ahf:getUnivAtts"/>
@@ -257,11 +257,11 @@ E-mail : info@antennahouse.com
                         </xsl:apply-templates>
                     </xsl:when>
                     <xsl:otherwise>
-                        <fo:table-header>
+                        <thead>
                             <xsl:copy-of select="ahf:getAttributeSet('atsChhead')"/>
-                            <fo:table-row>
+                            <tr>
                                 <xsl:copy-of select="ahf:getAttributeSet('atsChheadRow')"/>
-                                <fo:table-cell>
+                                <td>
                                     <xsl:copy-of select="ahf:getAttributeSet('atsChoptionhd')"/>
                                     <xsl:choose>
                                         <xsl:when test="$keyCol = 1">
@@ -276,8 +276,8 @@ E-mail : info@antennahouse.com
                                             <xsl:with-param name="prmVarName" select="'Choptionhd'"/>
                                         </xsl:call-template>
                                     </div>
-                                </fo:table-cell>
-                                <fo:table-cell>
+                                </td>
+                                <td>
                                     <xsl:copy-of select="ahf:getAttributeSet('atsChdeschd')"/>
                                     <xsl:choose>
                                         <xsl:when test="$keyCol = 2">
@@ -292,43 +292,43 @@ E-mail : info@antennahouse.com
                                             <xsl:with-param name="prmVarName" select="'Chdeschd'"/>
                                         </xsl:call-template>
                                     </div>
-                                </fo:table-cell>
-                            </fo:table-row>
-                        </fo:table-header>
+                                </td>
+                            </tr>
+                        </thead>
                     </xsl:otherwise>
                 </xsl:choose>
 
-                <fo:table-body>
+                <tbody>
                     <xsl:copy-of select="ahf:getAttributeSet('atsChbody')"/>
                     <xsl:apply-templates select="*[contains(@class, ' task/chrow ')]">
                         <xsl:with-param name="prmKeyCol"   select="$keyCol"/>
                     </xsl:apply-templates>
-                </fo:table-body>
+                </tbody>
 
-            </fo:table>
-        </fo:table-and-caption>
+            </table>
+        </div>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/chhead ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
 
-        <fo:table-header>
+        <thead>
             <xsl:copy-of select="ahf:getAttributeSet('atsChhead')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:table-row>
+            <tr>
                 <xsl:copy-of select="ahf:getAttributeSet('atsChheadRow')"/>
                 <xsl:apply-templates>
                     <xsl:with-param name="prmKeyCol"   select="$prmKeyCol"/>
                 </xsl:apply-templates>
-            </fo:table-row>
-        </fo:table-header>
+            </tr>
+        </thead>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/chhead ')]/*[contains(@class, ' task/choptionhd ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
 
-        <fo:table-cell>
+        <td>
             <xsl:copy-of select="ahf:getAttributeSet('atsChoptionhd')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:choose>
@@ -343,13 +343,13 @@ E-mail : info@antennahouse.com
             <div>
                 <xsl:apply-templates/>
             </div>
-        </fo:table-cell>
+        </td>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/chhead ')]/*[contains(@class, ' task/chdeschd ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
 
-        <fo:table-cell>
+        <td>
             <xsl:copy-of select="ahf:getAttributeSet('atsChdeschd')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:choose>
@@ -364,26 +364,26 @@ E-mail : info@antennahouse.com
             <div>
                 <xsl:apply-templates/>
             </div>
-        </fo:table-cell>
+        </td>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/chrow ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
 
-        <fo:table-row>
+        <tr>
             <xsl:copy-of select="ahf:getAttributeSet('atsChrow')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates>
                 <xsl:with-param name="prmKeyCol"   select="$prmKeyCol"/>
             </xsl:apply-templates>
-        </fo:table-row>
+        </tr>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/chrow ')]/*[contains(@class, ' task/choption ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
 
-        <fo:table-cell>
+        <td>
             <xsl:copy-of select="ahf:getAttributeSet('atsChoption')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:choose>
@@ -398,13 +398,13 @@ E-mail : info@antennahouse.com
             <div>
                 <xsl:apply-templates/>
             </div>
-        </fo:table-cell>
+        </td>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/chrow ')]/*[contains(@class, ' task/chdesc ')]" priority="2">
         <xsl:param name="prmKeyCol"   required="yes"  as="xs:integer"/>
 
-        <fo:table-cell>
+        <td>
             <xsl:copy-of select="ahf:getAttributeSet('atsChdesc')"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:choose>
@@ -419,7 +419,7 @@ E-mail : info@antennahouse.com
             <div>
                 <xsl:apply-templates/>
             </div>
-        </fo:table-cell>
+        </td>
     </xsl:template>
 
     <!--
