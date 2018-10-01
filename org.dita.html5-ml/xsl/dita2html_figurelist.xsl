@@ -232,8 +232,8 @@ E-mail : info@antennahouse.com
     <!--
      function:    Make figure list line
      param:        prmId, prmTitle
-     return:    fo:list-block
-     note:        Changed to use fo:list-block.
+     return:    ul
+     note:        Changed to use ul.
                 2011-09-09 t.makita
                 Added $prmTitleElem to apply language specific style for figure title line.
                 It is temporary applied only for the style named 'atsFigListBlock'.
@@ -244,7 +244,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmTitle" required="yes" as="node()*"/>
         <xsl:param name="prmTitleElem" required="yes" as="element()"/>
 
-        <fo:list-block>
+        <ul>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsFigListBlock'"/>
                 <xsl:with-param name="prmElem" select="$prmTitleElem"/>
@@ -280,7 +280,7 @@ E-mail : info@antennahouse.com
                     </div>
                 </fo:list-item-body>
             </fo:list-item>
-        </fo:list-block>
+        </ul>
     </xsl:template>
 
 </xsl:stylesheet>

@@ -270,13 +270,13 @@ E-mail : info@antennahouse.com
     <!--
      function:    Output synnote
      param:        prmTopicRef, prmNeedId
-     return:    fo:list-block
+     return:    ul
      note:        current is syntaxdiagram.
      -->
     <xsl:template name="outputSynNote">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
         <xsl:param name="prmNeedId" tunnel="yes" required="no" as="xs:boolean" select="true()"/>
-        <fo:list-block>
+        <ul>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsSynNoteListBlock'"/>
             </xsl:call-template>
@@ -325,7 +325,7 @@ E-mail : info@antennahouse.com
                     </fo:list-item-body>
                 </fo:list-item>
             </xsl:for-each>
-        </fo:list-block>
+        </ul>
     </xsl:template>
 
     <!-- syntaxdiagram/title is implementaed as fig/title in dita2fo_bodyelements.xsl -->

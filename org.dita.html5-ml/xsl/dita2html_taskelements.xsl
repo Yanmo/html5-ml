@@ -35,7 +35,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    steps template
      param:
-     return:    fo:list-block
+     return:    ul
      note:      No fn elements supposed in the steps
      -->
     <xsl:template match="*[contains(@class, ' task/steps ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
@@ -54,14 +54,14 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="numberFormat" select="ahf:getOlNumberFormat(.,$stepNumberFormat)" as="xs:string"/>
-        <fo:list-block>
+        <ul>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates>
                 <xsl:with-param name="prmNumberFormat" select="$numberFormat"/>
             </xsl:apply-templates>
-        </fo:list-block>
+        </ul>
         <!--xsl:if test="not($pDisplayFnAtEndOfTopic)">
             <xsl:call-template name="makeFootNote">
                 <xsl:with-param name="prmElement"  select="."/>

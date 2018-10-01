@@ -115,7 +115,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    ol template
      param:
-     return:    Numbered list (fo:list-block)
+     return:    Numbered list (ul)
      note:        Call "processOl" for overriding from other plug-ins.
                 2015-08-25 t.makita
      -->
@@ -135,14 +135,14 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="numberFormat" select="ahf:getOlNumberFormat(.,$olNumberFormat)" as="xs:string"/>
-        <fo:list-block>
+        <ul>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates>
                 <xsl:with-param name="prmNumberFormat" select="$numberFormat"/>
             </xsl:apply-templates>
-        </fo:list-block>
+        </ul>
         <xsl:if test="not($pDisplayFnAtEndOfTopic)">
             <xsl:call-template name="makeFootNote">
                 <xsl:with-param name="prmElement"  select="."/>
@@ -242,7 +242,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    ul template
      param:
-     return:    Unordered list (fo:list-block)
+     return:    Unordered list (ul)
      note:        Call "processUl" for overriding from other plug-ins.
                 2015-08-25 t.makita
      -->
@@ -255,12 +255,12 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template name="processUl">
-        <fo:list-block>
+        <ul>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:list-block>
+        </ul>
         <xsl:if test="not($pDisplayFnAtEndOfTopic)">
             <xsl:call-template name="makeFootNote">
                 <xsl:with-param name="prmElement"  select="."/>
@@ -315,7 +315,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    sl template
      param:
-     return:    fo:list-block
+     return:    ul
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' topic/sl ')]" mode="MODE_GET_STYLE" as="xs:string*">
@@ -324,14 +324,14 @@ E-mail : info@antennahouse.com
 
     <xsl:template match="*[contains(@class,' topic/sl ')]">
         <xsl:variable name="doCompact" select="string(@compact) eq 'yes'" as="xs:boolean"/>
-        <fo:list-block>
+        <ul>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates>
                 <xsl:with-param name="prmDoCompact"   select="$doCompact"/>
             </xsl:apply-templates>
-        </fo:list-block>
+        </ul>
     </xsl:template>
 
 
@@ -778,7 +778,7 @@ E-mail : info@antennahouse.com
 
     <xsl:template match="*[contains(@class, ' topic/section ')]/*[contains(@class, ' topic/title ')]" priority="2">
 
-        <fo:list-block>
+        <ul>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsHeader5List'"/>
             </xsl:call-template>
@@ -803,7 +803,7 @@ E-mail : info@antennahouse.com
                     </div>
                 </fo:list-item-body>
             </fo:list-item>
-        </fo:list-block>
+        </ul>
     </xsl:template>
 
     <!--
@@ -857,7 +857,7 @@ E-mail : info@antennahouse.com
 
     <xsl:template match="*[contains(@class, ' topic/example ')]/*[contains(@class, ' topic/title ')]" priority="2">
 
-        <fo:list-block>
+        <ul>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:call-template name="ahf:getLocalizationAtts"/>
@@ -882,7 +882,7 @@ E-mail : info@antennahouse.com
                     </div>
                 </fo:list-item-body>
             </fo:list-item>
-        </fo:list-block>
+        </ul>
     </xsl:template>
 
 

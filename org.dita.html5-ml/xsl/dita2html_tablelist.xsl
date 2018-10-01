@@ -236,7 +236,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmTitle" required="yes" as="node()*"/>
         <xsl:param name="prmTitleElem" required="yes" as="element()"/>
 
-        <fo:list-block>
+        <ul>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsTableListBlock'"/>
                 <xsl:with-param name="prmElem" select="$prmTitleElem"/>
@@ -272,7 +272,7 @@ E-mail : info@antennahouse.com
                     </div>
                 </fo:list-item-body>
             </fo:list-item>
-        </fo:list-block>
+        </ul>
     </xsl:template>
 
 </xsl:stylesheet>

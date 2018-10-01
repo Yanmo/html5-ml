@@ -479,7 +479,7 @@ E-mail : info@antennahouse.com
         <xsl:choose>
             <xsl:when test="exists($prmTopicContent)">
                 <xsl:variable name="titleElement" select="$prmTopicContent/child::*[contains(@class, ' topic/title ')][1]"/>
-                <fo:list-block>
+                <ul>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsHeader4List'"/>
                         <xsl:with-param name="prmElem" select="$titleElement"/>
@@ -528,10 +528,10 @@ E-mail : info@antennahouse.com
                             </div>
                         </fo:list-item-body>
                     </fo:list-item>
-                </fo:list-block>
+                </ul>
             </xsl:when>
             <xsl:otherwise>
-                <fo:list-block>
+                <ul>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsHeader4List'"/>
                         <xsl:with-param name="prmElem" select="$prmTopicRef"/>
@@ -584,7 +584,7 @@ E-mail : info@antennahouse.com
                             </div>
                         </fo:list-item-body>
                     </fo:list-item>
-                </fo:list-block>
+                </ul>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -602,7 +602,7 @@ E-mail : info@antennahouse.com
         <xsl:choose>
             <xsl:when test="exists($prmTopicContent)">
                 <xsl:variable name="titleElement" select="$prmTopicContent/child::*[contains(@class, ' topic/title ')][1]"/>
-                <fo:list-block>
+                <ul>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsHeader5List'"/>
                         <xsl:with-param name="prmElem" select="$titleElement"/>
@@ -651,10 +651,10 @@ E-mail : info@antennahouse.com
                             </div>
                         </fo:list-item-body>
                     </fo:list-item>
-                </fo:list-block>
+                </ul>
             </xsl:when>
             <xsl:otherwise>
-                <fo:list-block>
+                <ul>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsHeader5List'"/>
                         <xsl:with-param name="prmElem" select="$prmTopicRef"/>
@@ -707,7 +707,7 @@ E-mail : info@antennahouse.com
                             </div>
                         </fo:list-item-body>
                     </fo:list-item>
-                </fo:list-block>
+                </ul>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
