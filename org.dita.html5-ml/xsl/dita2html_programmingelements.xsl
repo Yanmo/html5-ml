@@ -27,7 +27,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class,' pr-d/apiname ')]" priority="2">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -69,7 +69,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class,' pr-d/codeph ')]" priority="2">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -88,7 +88,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class,' pr-d/option ')]" priority="2">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -107,7 +107,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class,' pr-d/parmname ')]" priority="2">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -226,7 +226,7 @@ E-mail : info@antennahouse.com
      note:        none
      -->
     <xsl:template match="*[contains(@class,' pr-d/synph ')]" priority="2">
-        <fo:inline>
+        <span>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
@@ -524,7 +524,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmVarName" select="'Sd_Optional_Prefix'"/>
             </xsl:call-template>
         </xsl:if>
-        <fo:inline>
+        <span>
             <xsl:call-template name="ahf:getLocalizationAtts"/>
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -676,7 +676,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmVarName" select="'Sd_Optional_Prefix'"/>
             </xsl:call-template>
         </xsl:if>
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getLocalizationAtts"/>
             <xsl:call-template name="ahf:getIdAtts"/>
@@ -715,7 +715,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmVarName" select="'Sd_Optional_Prefix'"/>
             </xsl:call-template>
         </xsl:if>
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getLocalizationAtts"/>
             <xsl:call-template name="ahf:getIdAtts"/>
@@ -753,7 +753,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmVarName" select="'Sd_Optional_Prefix'"/>
             </xsl:call-template>
         </xsl:if>
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getLocalizationAtts"/>
             <xsl:call-template name="ahf:getIdAtts"/>
@@ -791,7 +791,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmVarName" select="'Sd_Optional_Prefix'"/>
             </xsl:call-template>
         </xsl:if>
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:copy-of select="ahf:getLocalizationAtts(.)"/>
             <xsl:call-template name="ahf:getIdAtts"/>
@@ -829,7 +829,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmVarName" select="'Sd_Optional_Prefix'"/>
             </xsl:call-template>
         </xsl:if>
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getLocalizationAtts"/>
             <xsl:call-template name="ahf:getIdAtts"/>
@@ -850,7 +850,7 @@ E-mail : info@antennahouse.com
      note:        @importance is processed in processGroup template.
      -->
     <xsl:template match="*[contains(@class,' pr-d/repsep ')]" priority="2">
-        <fo:inline>
+        <span>
             <xsl:call-template name="ahf:getLocalizationAtts"/>
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>

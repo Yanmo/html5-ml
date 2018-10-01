@@ -176,7 +176,7 @@ E-mail : info@antennahouse.com
                 </xsl:variable>
                 <xsl:choose>
                     <xsl:when test="string($topicTitlePrefix)">
-                        <fo:inline>
+                        <span>
                             <xsl:value-of select="$topicTitlePrefix"/>
                             <xsl:text>&#x00A0;</xsl:text>
                         </fo:inline>
@@ -195,7 +195,7 @@ E-mail : info@antennahouse.com
                         <xsl:variable name="sectionTitle" as="node()*">
                             <xsl:apply-templates select="$prmDestElement/*[contains(@class, ' topic/title ')]" mode="GET_CONTENTS"/>
                         </xsl:variable>
-                        <fo:inline>
+                        <span>
                             <xsl:call-template name="getVarValueWithLangAsText">
                                 <xsl:with-param name="prmVarName" select="'Level5_Label_Char'"/>
                                 <xsl:with-param name="prmElem" select="$prmDestElement"/>
@@ -221,7 +221,7 @@ E-mail : info@antennahouse.com
                         <xsl:variable name="exampleTitle" as="node()*">
                             <xsl:apply-templates select="$prmDestElement/*[contains(@class, ' topic/title ')]" mode="GET_CONTENTS"/>
                         </xsl:variable>
-                        <fo:inline>
+                        <span>
                             <xsl:call-template name="getVarValueWithLangAsText">
                                 <xsl:with-param name="prmVarName" select="'Level5_Label_Char'"/>
                                 <xsl:with-param name="prmElem" select="$prmDestElement"/>
@@ -255,7 +255,7 @@ E-mail : info@antennahouse.com
                     </xsl:for-each>
                 </xsl:variable>
                 <xsl:variable name="olFormat" as="xs:string" select="ahf:getOlNumberFormat($prmDestElement,$olNumberFormat)"/>
-                <fo:inline>
+                <span>
                     <xsl:number format="{$olFormat}"
                         value="count($prmDestElement/preceding-sibling::*[contains(@class, ' topic/li ')][not(contains(@class,' task/stepsection '))]) + 1"/>
                 </fo:inline>
@@ -273,7 +273,7 @@ E-mail : info@antennahouse.com
                             select="ahf:getTableTitlePrefix($prmTitleTopicRef,$prmDestElement)"
                             as="xs:string"/>
 
-                        <fo:inline>
+                        <span>
                             <xsl:value-of select="$tableTitleSuffix"/>
                             <xsl:text>&#x00A0;</xsl:text>
                             <xsl:copy-of select="$tableTitle"/>
@@ -301,7 +301,7 @@ E-mail : info@antennahouse.com
                             select="ahf:getFigTitlePrefix($prmTitleTopicRef,$prmDestElement)"
                             as="xs:string"/>
 
-                        <fo:inline>
+                        <span>
                             <xsl:value-of select="$figTitleSuffix"/>
                             <xsl:text>&#x00A0;</xsl:text>
                             <xsl:copy-of select="$figTitle"/>
@@ -379,7 +379,7 @@ E-mail : info@antennahouse.com
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:variable>
-                <fo:inline>
+                <span>
                     <xsl:copy-of select="$equtionNumberResult"/>
                 </fo:inline>
             </xsl:when>
@@ -387,7 +387,7 @@ E-mail : info@antennahouse.com
             <!-- fn -->
             <xsl:when test="$prmDestElement[contains(@class, ' topic/fn ')]">
                 <xsl:variable name="fnTitle" as="xs:string" select="ahf:getFootnotePrefix($prmDestElement, $prmTitleTopicRef)"/>
-                <fo:inline>
+                <span>
                     <xsl:value-of select="$fnTitle"/>
                 </fo:inline>
             </xsl:when>
@@ -397,7 +397,7 @@ E-mail : info@antennahouse.com
                 <xsl:variable name="title" as="node()*">
                     <xsl:apply-templates select="$prmDestElement/*[contains(@class, ' topic/title ')]" mode="GET_CONTENTS"/>
                 </xsl:variable>
-                <fo:inline>
+                <span>
                     <xsl:copy-of select="$title"/>
                 </fo:inline>
             </xsl:when>
@@ -411,7 +411,7 @@ E-mail : info@antennahouse.com
                 <xsl:variable name="title" as="node()*">
                     <xsl:apply-templates select="$prmDestElement" mode="TEXT_ONLY"/>
                 </xsl:variable>
-                <fo:inline>
+                <span>
                     <xsl:copy-of select="$title"/>
                 </fo:inline>
             </xsl:otherwise>
@@ -446,7 +446,7 @@ E-mail : info@antennahouse.com
                 <xsl:copy-of select="ahf:getAttributeSet('atsXref')"/>
                 <xsl:copy-of select="ahf:getUnivAtts($prmXref,$prmTopicRef,$prmNeedId)"/>
                 <xsl:copy-of select="ahf:getFoStyleAndProperty($prmXref)"/>
-                <fo:inline>
+                <span>
                     <xsl:copy-of  select="$prmXrefTitle"/>
                     <xsl:call-template name="getVarValueWithLangAsText">
                         <xsl:with-param name="prmVarName" select="'Xref_Prefix'"/>

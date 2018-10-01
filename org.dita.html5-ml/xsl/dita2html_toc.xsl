@@ -150,7 +150,7 @@ E-mail : info@antennahouse.com
                 <xsl:copy-of select="ahf:getAttributeSet('atsFmHeader1')"/>
                 <xsl:attribute name="id" select="$id"/>
                 <fo:marker marker-class-name="{$cTitleBody}">
-                    <fo:inline><xsl:value-of select="$title"/></fo:inline>
+                    <span><xsl:value-of select="$title"/></fo:inline>
                 </fo:marker>
                 <xsl:value-of select="$title"/>
             </fo:block>
@@ -173,7 +173,7 @@ E-mail : info@antennahouse.com
                 <xsl:copy-of select="ahf:getAttributeSet('atsFmHeader1')"/>
                 <xsl:attribute name="id" select="$cTocId"/>
                 <fo:marker marker-class-name="{$cTitleBody}">
-                    <fo:inline><xsl:value-of select="$cTocTitle"/></fo:inline>
+                    <span><xsl:value-of select="$cTocTitle"/></fo:inline>
                 </fo:marker>
                 <xsl:value-of select="$cTocTitle"/>
             </fo:block>
@@ -485,7 +485,7 @@ E-mail : info@antennahouse.com
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:if test="string(normalize-space($titlePrefix))">
-                    <fo:inline>
+                    <span>
                         <xsl:value-of select="$titlePrefix"/>
                         <xsl:text>&#x00A0;&#x00A0;</xsl:text>
                     </fo:inline>
@@ -501,10 +501,10 @@ E-mail : info@antennahouse.com
                     <xsl:apply-templates select="$prmTopicRef/*[contains(@class,' map/topicmeta ')]/*[contains(@class,' topic/navtitle ')]" mode="GET_CONTENTS"/>
                 </xsl:when>
                 <xsl:when test="$prmTopicRef/@navtitle">
-                    <fo:inline><xsl:value-of select="string($prmTopicRef/@navtitle)"/></fo:inline>
+                    <span><xsl:value-of select="string($prmTopicRef/@navtitle)"/></fo:inline>
                 </xsl:when>
                 <xsl:when test="string($prmDefaultTitle)">
-                    <fo:inline><xsl:value-of select="$prmDefaultTitle"/></fo:inline>
+                    <span><xsl:value-of select="$prmDefaultTitle"/></fo:inline>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:sequence select="()"/>
@@ -545,7 +545,7 @@ E-mail : info@antennahouse.com
                             <fo:leader leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                             </fo:leader>
-                            <fo:inline keep-with-next="always">
+                            <span keep-with-next="always">
                                 <fo:leader>
                                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                                 </fo:leader>
@@ -556,7 +556,7 @@ E-mail : info@antennahouse.com
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:copy-of select="ahf:getAttributeSet('atsTocTitleOnly')"/>
-                            <fo:inline>
+                            <span>
                                 <xsl:copy-of select="$prmTitle"/>
                             </fo:inline>
                         </xsl:otherwise>
@@ -574,7 +574,7 @@ E-mail : info@antennahouse.com
                             <fo:leader leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                             </fo:leader>
-                            <fo:inline keep-with-next="always">
+                            <span keep-with-next="always">
                                 <fo:leader>
                                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                                 </fo:leader>
@@ -585,7 +585,7 @@ E-mail : info@antennahouse.com
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:copy-of select="ahf:getAttributeSet('atsTocTitleOnly')"/>
-                            <fo:inline>
+                            <span>
                                 <xsl:copy-of select="$prmTitle"/>
                             </fo:inline>
                         </xsl:otherwise>
@@ -603,7 +603,7 @@ E-mail : info@antennahouse.com
                             <fo:leader leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                             </fo:leader>
-                            <fo:inline keep-with-next="always">
+                            <span keep-with-next="always">
                                 <fo:leader>
                                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                                 </fo:leader>
@@ -614,7 +614,7 @@ E-mail : info@antennahouse.com
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:copy-of select="ahf:getAttributeSet('atsTocTitleOnly')"/>
-                            <fo:inline>
+                            <span>
                                 <xsl:copy-of select="$prmTitle"/>
                             </fo:inline>
                         </xsl:otherwise>
@@ -632,7 +632,7 @@ E-mail : info@antennahouse.com
                             <fo:leader leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                             </fo:leader>
-                            <fo:inline keep-with-next="always">
+                            <span keep-with-next="always">
                                 <fo:leader>
                                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                                 </fo:leader>
@@ -643,7 +643,7 @@ E-mail : info@antennahouse.com
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:copy-of select="ahf:getAttributeSet('atsTocTitleOnly')"/>
-                            <fo:inline>
+                            <span>
                                 <xsl:copy-of select="$prmTitle"/>
                             </fo:inline>
                         </xsl:otherwise>

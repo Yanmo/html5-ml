@@ -272,12 +272,12 @@ E-mail : info@antennahouse.com
                         </xsl:apply-templates>
                     </xsl:when>
                     <xsl:when test="$root/*[contains(@class, ' map/map ')]/@title">
-                        <fo:inline>
+                        <span>
                             <xsl:value-of select="$root/*[contains(@class, ' map/map ')]/@title"/>
                         </fo:inline>
                     </xsl:when>
                     <xsl:otherwise>
-                        <fo:inline/>
+                        <span/>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:when>
@@ -300,7 +300,7 @@ E-mail : info@antennahouse.com
                 </xsl:choose>
             </xsl:when>
             <xsl:otherwise>
-                <fo:inline>
+                <span>
                     <xsl:value-of select="'&lt; Dummy Book Title &gt;'"/>
                 </fo:inline>
             </xsl:otherwise>

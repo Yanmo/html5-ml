@@ -219,7 +219,7 @@ E-mail : info@antennahouse.com
             </xsl:when>
             <xsl:otherwise>
                 <!-- inline level image -->
-                <fo:inline>
+                <span>
                     <xsl:call-template name="ahf:processImage">
                         <xsl:with-param name="prmImage" select="."/>
                     </xsl:call-template>
@@ -312,7 +312,7 @@ E-mail : info@antennahouse.com
 
         <xsl:choose>
             <xsl:when test="ahf:isCoverTopicRef($prmTopicRef)">
-                <fo:inline-container>
+                <span-container>
                     <xsl:copy-of select="ahf:getFoPropertyWithPageVariables(.)"/>
                     <xsl:apply-templates/>
                 </fo:inline-container>

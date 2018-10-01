@@ -57,7 +57,7 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
                 </xsl:call-template>
             </fo:leader>
-            <fo:inline>
+            <span>
                 <xsl:call-template name="getAttributeSetWithLang">
                     <xsl:with-param name="prmAttrSetName" select="'atsRelatedLinkInline'"/>
                     <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
@@ -123,7 +123,7 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmAttrSetName" select="'atsRelatedLinkBlock'"/>
                     <xsl:with-param name="prmElem" select="if (exists($topicTitle)) then $topicTitle else $link"/>
                 </xsl:call-template>
-                <fo:inline>
+                <span>
                     <xsl:choose>
                         <xsl:when test="$isLinkInside">
                             <xsl:choose>
@@ -170,7 +170,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmTopicRef" required="yes"  as="element()?"/>
         <xsl:param name="prmNeedId"   required="yes"  as="xs:boolean"/>
 
-        <fo:inline>
+        <span>
             <xsl:copy-of select="ahf:getAttributeSet('atsLinkText')"/>
             <xsl:copy-of select="ahf:getUnivAtts(.,$prmTopicRef,$prmNeedId)"/>
             <xsl:apply-templates>
@@ -181,7 +181,7 @@ E-mail : info@antennahouse.com
     </xsl:template-->
 
     <xsl:template match="*[contains(@class, ' map/linktext ')] | *[contains(@class, ' topic/linktext ')]">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsLinkText'"/>
             </xsl:call-template>
@@ -245,7 +245,7 @@ E-mail : info@antennahouse.com
             <xsl:when test="($titleMode eq $cSquareBulletTitleMode) or ($titleMode eq $cRoundBulletTitleMode)">
                 <!-- Link line for square/round bullet item -->
                 <fo:basic-link internal-destination="{$topicId}">
-                    <fo:inline>
+                    <span>
                         <xsl:attribute name="font-family">
                             <xsl:call-template name="getVarValueWithLang">
                                 <xsl:with-param name="prmVarName" select="'General_Bullet_Font'"/>

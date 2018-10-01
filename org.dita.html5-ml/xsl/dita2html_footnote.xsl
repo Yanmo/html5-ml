@@ -52,7 +52,7 @@ E-mail : info@antennahouse.com
             <fo:leader>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteLeader1')"/>
             </fo:leader>
-            <fo:inline>
+            <span>
                 <xsl:value-of select="ahf:getVarValue('Postnote_Title')"/>
                 <xsl:call-template name="getVarValueWithLangAsText">
                     <xsl:with-param name="prmVarName" select="'atsPostnoteInline'"/>
@@ -168,7 +168,7 @@ E-mail : info@antennahouse.com
         <!-- Make related-link title block -->
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsFootNoteBeforeBlock')"/>
-            <fo:inline>&#xA0;</fo:inline>
+            <span>&#xA0;</fo:inline>
         </fo:block>
 
         <!-- process postnote -->
@@ -179,7 +179,7 @@ E-mail : info@antennahouse.com
         <!-- Make postnote end block -->
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsFootNoteAfterBlock')"/>
-            <fo:inline>&#xA0;</fo:inline>
+            <span>&#xA0;</fo:inline>
         </fo:block>
     </xsl:template>
 

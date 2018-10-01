@@ -27,7 +27,7 @@
         <xsl:variable name="check" as="element()" select="." />
         <xsl:choose>
             <xsl:when test="string($check/@value) eq 'yes'">
-                <fo:inline>
+                <span>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsCmYes'"/>
                     </xsl:call-template>
@@ -38,7 +38,7 @@
                 </fo:inline>
             </xsl:when>
             <xsl:when test="string($check/@value) eq 'no'">
-                <fo:inline>
+                <span>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsCmNo'"/>
                     </xsl:call-template>
@@ -49,7 +49,7 @@
                 </fo:inline>
             </xsl:when>
             <xsl:when test="string($check/@value) eq 'dc'">
-                <fo:inline>
+                <span>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsCmDc'"/>
                     </xsl:call-template>

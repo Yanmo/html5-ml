@@ -89,7 +89,7 @@ E-mail : info@antennahouse.com
             <xsl:choose>
                 <xsl:when test="exists($linkContents)">
                     <xsl:variable name="title" as="element()" select="$linkContents/child::*[contains(@class, ' topic/title ')][1]"/>
-                    <fo:inline>
+                    <span>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsThumbIndexBlock'"/>
                             <xsl:with-param name="prmElem" select="$title"/>
@@ -103,7 +103,7 @@ E-mail : info@antennahouse.com
                 </xsl:when>
                 <xsl:when test="$topicRef/*[contains(@class,' map/topicmeta ')]/*[contains(@class,' topic/navtitle ')]">
                     <xsl:variable name="navTitle" as="element()" select="$topicRef/*[contains(@class,' map/topicmeta ')]/*[contains(@class,' topic/navtitle ')][1]"/>
-                    <fo:inline>
+                    <span>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsThumbIndexBlock'"/>
                             <xsl:with-param name="prmElem" select="$navTitle"/>
@@ -116,7 +116,7 @@ E-mail : info@antennahouse.com
                     </fo:inline>
                 </xsl:when>
                 <xsl:otherwise>
-                    <fo:inline>
+                    <span>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsThumbIndexBlock'"/>
                             <xsl:with-param name="prmElem" select="$topicRef"/>

@@ -46,7 +46,8 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="stlyeDump"/>
         </xsl:if>
         <xsl:call-template name="documentCheck"/>
-        <fo:root>
+        <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+        <html>
             <xsl:copy-of select="ahf:getAttributeSet('atsRoot')"/>
 
             <!-- Complement xml:lang -->
@@ -56,7 +57,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="genLayoutMasterSet"/>
 
             <!-- Bookmark tree -->
-               <xsl:call-template name="genBookmarkTree"/>
+            <xsl:call-template name="genBookmarkTree"/>
 
             <!-- Make cover -->
             <xsl:if test="not($hasCover)">
@@ -89,7 +90,7 @@ E-mail : info@antennahouse.com
 
             <!--xsl:call-template name="makeDummyContents"/-->
 
-        </fo:root>
+        </html>
     </xsl:template>
 
 
@@ -100,13 +101,11 @@ E-mail : info@antennahouse.com
      note:        none
      -->
     <xsl:template name="makeDummyContents">
-        <fo:page-sequence master-reference="pmsPageSeqChapter">
-            <fo:flow flow-name="xsl-region-body">
-                <fo:block>
-                    Hello World!
-                </fo:block>
-            </fo:flow>
-        </fo:page-sequence>
+        <html master-reference="pmsPageSeqChapter">
+            <body flow-name="xsl-region-body">
+                <p>Hello World!</p>
+            </body>
+        </html>
     </xsl:template>
 
 </xsl:stylesheet>

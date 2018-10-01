@@ -162,11 +162,11 @@ E-mail : info@antennahouse.com
                     <xsl:if test="($level eq 1) or ($level eq 2)">
                         <xsl:if test="$pAddNumberingTitlePrefix">
                             <fo:marker marker-class-name="{$cTitlePrefix}">
-                                <fo:inline><xsl:value-of select="$titlePrefix"/></fo:inline>
+                                <span><xsl:value-of select="$titlePrefix"/></fo:inline>
                             </fo:marker>
                         </xsl:if>
                         <fo:marker marker-class-name="{$cTitleBody}">
-                            <fo:inline>
+                            <span>
                                 <!-- This fo:marker is used only for making the running header in fo:region-after.
                                      The font-family is assumed serif.
                                      So style name become temporary "atsChapterRegionAfterBlock"
@@ -221,11 +221,11 @@ E-mail : info@antennahouse.com
                     <xsl:if test="($level eq 1) or ($level eq 2)">
                         <xsl:if test="$pAddNumberingTitlePrefix">
                             <fo:marker marker-class-name="{$cTitlePrefix}">
-                                <fo:inline><xsl:value-of select="$titlePrefix"/></fo:inline>
+                                <span><xsl:value-of select="$titlePrefix"/></fo:inline>
                             </fo:marker>
                         </xsl:if>
                         <fo:marker marker-class-name="{$cTitleBody}">
-                            <fo:inline>
+                            <span>
                                 <xsl:call-template name="getAttributeSetWithLang">
                                     <xsl:with-param name="prmAttrSetName" select="'atsChapterRegionAfterBlock'"/>
                                     <xsl:with-param name="prmElem" select="$prmTopicRef"/>
@@ -324,11 +324,11 @@ E-mail : info@antennahouse.com
                     <xsl:if test="($level eq 1) or ($level eq 2)">
                         <xsl:if test="$pAddNumberingTitlePrefix">
                             <fo:marker marker-class-name="{$cTitlePrefix}">
-                                <fo:inline><xsl:value-of select="$titlePrefix"/></fo:inline>
+                                <span><xsl:value-of select="$titlePrefix"/></fo:inline>
                             </fo:marker>
                         </xsl:if>
                         <fo:marker marker-class-name="{$cTitleBody}">
-                            <fo:inline>
+                            <span>
                                 <xsl:call-template name="getAttributeSetWithLang">
                                     <xsl:with-param name="prmAttrSetName" select="'atsChapterRegionAfterBlock'"/>
                                     <xsl:with-param name="prmElem" select="$titleElement"/>
@@ -379,7 +379,7 @@ E-mail : info@antennahouse.com
                             </fo:marker>
                         </xsl:if>
                         <fo:marker marker-class-name="{$cTitleBody}">
-                            <fo:inline>
+                            <span>
                                 <xsl:call-template name="getAttributeSetWithLang">
                                     <xsl:with-param name="prmAttrSetName" select="'atsChapterRegionAfterBlock'"/>
                                     <xsl:with-param name="prmElem" select="$prmTopicRef"/>
@@ -502,7 +502,7 @@ E-mail : info@antennahouse.com
                                     <xsl:with-param name="prmTopicRef"      select="$prmTopicRef"/>
                                     <xsl:with-param name="prmTopicContent" select="$prmTopicContent"/>
                                 </xsl:call-template>
-                                <fo:inline>
+                                <span>
                                     <xsl:call-template name="getAttributeSetWithLang">
                                         <xsl:with-param name="prmAttrSetName" select="'atsHeader4LabelInline'"/>
                                         <xsl:with-param name="prmElem" select="$titleElement"/>
@@ -552,7 +552,7 @@ E-mail : info@antennahouse.com
                                     <xsl:with-param name="prmTopicRef"      select="$prmTopicRef"/>
                                     <xsl:with-param name="prmTopicContent" select="$prmTopicContent"/>
                                 </xsl:call-template>
-                                <fo:inline>
+                                <span>
                                     <xsl:call-template name="getAttributeSetWithLang">
                                         <xsl:with-param name="prmAttrSetName" select="'atsHeader4LabelInline'"/>
                                         <xsl:with-param name="prmElem" select="$prmTopicRef"/>
@@ -625,7 +625,7 @@ E-mail : info@antennahouse.com
                                     <xsl:with-param name="prmTopicRef"      select="$prmTopicRef"/>
                                     <xsl:with-param name="prmTopicContent" select="$prmTopicContent"/>
                                 </xsl:call-template>
-                                <fo:inline>
+                                <span>
                                     <xsl:call-template name="getAttributeSetWithLang">
                                         <xsl:with-param name="prmAttrSetName" select="'atsHeader5LabelInline'"/>
                                         <xsl:with-param name="prmElem" select="$titleElement"/>
@@ -675,7 +675,7 @@ E-mail : info@antennahouse.com
                                     <xsl:with-param name="prmTopicRef"      select="$prmTopicRef"/>
                                     <xsl:with-param name="prmTopicContent" select="$prmTopicContent"/>
                                 </xsl:call-template>
-                                <fo:inline>
+                                <span>
                                     <xsl:call-template name="getAttributeSetWithLang">
                                         <xsl:with-param name="prmAttrSetName" select="'atsHeader5LabelInline'"/>
                                         <xsl:with-param name="prmElem" select="$prmTopicRef"/>
@@ -744,11 +744,11 @@ E-mail : info@antennahouse.com
 
         <xsl:if test="$pAddNumberingTitlePrefix">
             <fo:marker marker-class-name="{$cTitlePrefix}">
-                <fo:inline><xsl:value-of select="$titlePrefix"/></fo:inline>
+                <span><xsl:value-of select="$titlePrefix"/></fo:inline>
             </fo:marker>
         </xsl:if>
         <fo:marker marker-class-name="{$cTitleBody}">
-            <fo:inline><xsl:copy-of select="$title"/></fo:inline>
+            <span><xsl:copy-of select="$title"/></fo:inline>
         </fo:marker>
     </xsl:template>
 

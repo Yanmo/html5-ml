@@ -128,7 +128,7 @@ E-mail : info@antennahouse.com
 
         <!-- FO of this indexterm -->
         <xsl:variable name="indextermFO" as="node()*">
-            <fo:inline>
+            <span>
                 <xsl:copy-of select="ahf:getUnivAtts(.,(),false())"/>
                 <xsl:apply-templates>
                     <xsl:with-param name="prmTopicRef" tunnel="yes" select="()"/>
@@ -315,7 +315,7 @@ E-mail : info@antennahouse.com
 
         <!-- index-see FO -->
         <xsl:variable name="indexSeeFO" as="node()*">
-            <fo:inline>
+            <span>
                 <xsl:copy-of select="ahf:getUnivAtts(.,(),false())"/>
                 <xsl:apply-templates>
                     <xsl:with-param name="prmTopicRef" tunnel="yes" select="()"/>
@@ -403,7 +403,7 @@ E-mail : info@antennahouse.com
 
         <!-- index-see-also FO -->
         <xsl:variable name="indexSeeAlsoFO" as="node()*">
-            <fo:inline>
+            <span>
                 <xsl:copy-of select="ahf:getUnivAtts(.,(),false())"/>
                 <xsl:apply-templates>
                     <xsl:with-param name="prmTopicRef" tunnel="yes" select="()"/>

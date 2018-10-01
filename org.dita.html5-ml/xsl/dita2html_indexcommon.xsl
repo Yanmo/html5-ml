@@ -353,10 +353,10 @@ E-mail : info@antennahouse.com
             </xsl:when>
             <xsl:when test="$prmGetIndexSeeFO">
                 <!-- Somtimes indexterm exists as the child of index-see or index-see-also element -->
-                <fo:inline>
+                <span>
                     <xsl:value-of select="', '"/>
                 </fo:inline>
-                <fo:inline>
+                <span>
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:apply-templates>
                         <xsl:with-param name="prmGetIndexSeeFO" tunnel="yes" select="$prmGetIndexSeeFO"/>
@@ -400,7 +400,7 @@ E-mail : info@antennahouse.com
                 <!-- end! -->
             </xsl:when>
             <xsl:when test="$prmGetIndexSeeFO">
-                <fo:inline>
+                <span>
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:apply-templates>
                         <xsl:with-param name="prmGetIndexSeeFO" tunnel="yes" select="$prmGetIndexSeeFO"/>
@@ -531,7 +531,7 @@ E-mail : info@antennahouse.com
                         <xsl:copy-of select="ahf:getAttributeSet('atsIndexHeader')"/>
                         <xsl:attribute name="id" select="$id"/>
                         <fo:marker marker-class-name="{$cTitleBody}">
-                            <fo:inline><xsl:copy-of select="$cIndexTitle"/></fo:inline>
+                            <span><xsl:copy-of select="$cIndexTitle"/></fo:inline>
                         </fo:marker>
                         <xsl:value-of select="$cIndexTitle"/>
                     </fo:block>
@@ -616,7 +616,7 @@ E-mail : info@antennahouse.com
                         <xsl:copy-of select="ahf:getAttributeSet('atsIndexHeader')"/>
                         <xsl:attribute name="id" select="$cIndexId"/>
                         <fo:marker marker-class-name="{$cTitleBody}">
-                            <fo:inline><xsl:copy-of select="$cIndexTitle"/></fo:inline>
+                            <span><xsl:copy-of select="$cIndexTitle"/></fo:inline>
                         </fo:marker>
                         <xsl:value-of select="$cIndexTitle"/>
                     </fo:block>
@@ -1049,7 +1049,7 @@ E-mail : info@antennahouse.com
                     <xsl:if test="string($currentLevelIndexkeyId)">
                         <xsl:attribute name="id" select="$currentLevelIndexkeyId"/>
                     </xsl:if>
-                    <fo:inline><xsl:copy-of select="$indextermFO"/></fo:inline>
+                    <span><xsl:copy-of select="$indextermFO"/></fo:inline>
                 </fo:block>
                 <!-- Call recursively myself -->
                 <xsl:call-template name="outIndextermDetailLine">
@@ -1065,7 +1065,7 @@ E-mail : info@antennahouse.com
                 <!-- This line is title and fo:index-citation-list -->
                 <fo:block>
                     <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLine',('%level'),(string($prmStartLevel)))"/>
-                    <fo:inline>
+                    <span>
                         <xsl:if test="$pMakeSeeLink">
                             <xsl:attribute name="id">
                                 <xsl:value-of select="ahf:indexKeyToIdValue($prmCurrentIndexKey)"/>
@@ -1076,7 +1076,7 @@ E-mail : info@antennahouse.com
                     <fo:leader>
                         <xsl:copy-of select="ahf:getAttributeSet('atsIndexLeader1')"/>
                     </fo:leader>
-                    <fo:inline>
+                    <span>
                         <xsl:copy-of select="ahf:getAttributeSet('atsIndex2ndLeaderInline')"/>
                         <fo:leader>
                             <xsl:copy-of select="ahf:getAttributeSet('atsIndexLeader2')"/>
@@ -1156,7 +1156,7 @@ E-mail : info@antennahouse.com
             <!-- Output see also block -->
             <fo:block>
                 <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLineSee',('%level'),(string($prmStartLevel)))"/>
-                <fo:inline>
+                <span>
                     <xsl:copy-of select="ahf:getAttributeSet('atsSeeAlsoPrefix')"/>
                     <xsl:value-of select="$cSeeAlsoPrefix"/>
                 </fo:inline>
@@ -1167,12 +1167,12 @@ E-mail : info@antennahouse.com
                         </fo:basic-link>
                     </xsl:when>
                     <xsl:otherwise>
-                        <fo:inline>
+                        <span>
                             <xsl:copy-of select="$prmCurrentSeeAlsoFO"/>
                         </fo:inline>
                     </xsl:otherwise>
                 </xsl:choose>
-                <fo:inline>
+                <span>
                     <xsl:copy-of select="ahf:getAttributeSet('atsSeeAlsoSuffix')"/>
                     <xsl:value-of select="$cSeeAlsoSuffix"/>
                 </fo:inline>
@@ -1230,7 +1230,7 @@ E-mail : info@antennahouse.com
                 <!-- This line is only indexterm title -->
                 <fo:block>
                     <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLine',('%level'),(string($prmStartLevel)))"/>
-                    <fo:inline><xsl:copy-of select="$indextermFO"/></fo:inline>
+                    <span><xsl:copy-of select="$indextermFO"/></fo:inline>
                 </fo:block>
                 <!-- Call recursively myself -->
                 <xsl:call-template name="outSeeDetailLine">
@@ -1278,10 +1278,10 @@ E-mail : info@antennahouse.com
                         <!-- indexterm + see -->
                         <fo:block>
                             <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLineSee',('%level'),(string($prmStartLevel)))"/>
-                            <fo:inline>
+                            <span>
                                 <xsl:copy-of select="$indextermFO"/>
                             </fo:inline>
-                            <fo:inline>
+                            <span>
                                 <xsl:copy-of select="ahf:getAttributeSet('atsSeePrefix')"/>
                                 <xsl:value-of select="$cSeePrefixLevel1"/>
                             </fo:inline>
@@ -1292,12 +1292,12 @@ E-mail : info@antennahouse.com
                                     </fo:basic-link>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <fo:inline>
+                                    <span>
                                         <xsl:value-of select="$prmCurrentSeeFO"/>
                                     </fo:inline>
                                 </xsl:otherwise>
                             </xsl:choose>
-                            <fo:inline>
+                            <span>
                                 <xsl:copy-of select="ahf:getAttributeSet('atsSeeSuffix')"/>
                                 <xsl:value-of select="$cSeeSuffixLevel1"/>
                             </fo:inline>
@@ -1308,7 +1308,7 @@ E-mail : info@antennahouse.com
                             <!-- indexterm -->
                             <fo:block>
                                 <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLineOnly',('%level'),(string($prmStartLevel)))"/>
-                                <fo:inline>
+                                <span>
                                     <xsl:value-of select="$indextermFO"/>
                                 </fo:inline>
                             </fo:block>
@@ -1316,7 +1316,7 @@ E-mail : info@antennahouse.com
                         <!-- See entry as indented-->
                         <fo:block>
                             <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLineSee',('%level'),(string($prmStartLevel + 1)))"/>
-                            <fo:inline>
+                            <span>
                                 <xsl:copy-of select="ahf:getAttributeSet('atsSeePrefix')"/>
                                 <xsl:value-of select="$cSeePrefixLevel2"/>
                             </fo:inline>
@@ -1327,12 +1327,12 @@ E-mail : info@antennahouse.com
                                     </fo:basic-link>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <fo:inline>
+                                    <span>
                                         <xsl:copy-of select="$prmCurrentSeeFO"/>
                                     </fo:inline>
                                 </xsl:otherwise>
                             </xsl:choose>
-                            <fo:inline>
+                            <span>
                                 <xsl:copy-of select="ahf:getAttributeSet('atsSeeSuffix')"/>
                                 <xsl:value-of select="$cSeeSuffixLevel2"/>
                             </fo:inline>
@@ -1397,7 +1397,7 @@ E-mail : info@antennahouse.com
                         <!-- See entry as indented-->
                         <fo:block>
                             <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLineSee',('%level'),(string($prmStartLevel)))"/>
-                            <fo:inline>
+                            <span>
                                 <xsl:copy-of select="ahf:getAttributeSet('atsSeePrefix')"/>
                                 <xsl:copy-of select="$cSeePrefixLevel2"/>
                             </fo:inline>
@@ -1408,12 +1408,12 @@ E-mail : info@antennahouse.com
                                     </fo:basic-link>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <fo:inline>
+                                    <span>
                                         <xsl:copy-of select="$prmCurrentSeeFO"/>
                                     </fo:inline>
                                 </xsl:otherwise>
                             </xsl:choose>
-                            <fo:inline>
+                            <span>
                                 <xsl:copy-of select="ahf:getAttributeSet('atsSeeSuffix')"/>
                                 <xsl:copy-of select="$cSeeSuffixLevel2"/>
                             </fo:inline>

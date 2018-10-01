@@ -133,7 +133,7 @@
                     <xsl:call-template name="getAttributeSetWithLang"/>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                     <!-- equation body -->
-                    <fo:inline>
+                    <span>
                         <xsl:apply-templates select="$candidateEquationBody"/>
                     </fo:inline>
                     <fo:leader>
@@ -226,7 +226,7 @@
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' equation-d/equation-number ')]" as="element()" priority="2">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -257,7 +257,7 @@
     -->
     <xsl:template name="generateAutoEquationNumber" as="element()">
         <xsl:param name="prmEquationBlock" tunnel="yes" required="yes" as="element()"/>
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsEquationNumber'"/>
                 <xsl:with-param name="prmElem" select="$prmEquationBlock"/>

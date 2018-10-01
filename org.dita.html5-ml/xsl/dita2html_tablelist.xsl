@@ -102,7 +102,7 @@ E-mail : info@antennahouse.com
                 <xsl:copy-of select="ahf:getAttributeSet('atsFmHeader1')"/>
                 <xsl:attribute name="id" select="$id"/>
                 <fo:marker marker-class-name="{$cTitleBody}">
-                    <fo:inline><xsl:copy-of select="$cTableListTitle"/></fo:inline>
+                    <span><xsl:copy-of select="$cTableListTitle"/></fo:inline>
                 </fo:marker>
                 <xsl:value-of select="$cTableListTitle"/>
             </fo:block>
@@ -239,17 +239,17 @@ E-mail : info@antennahouse.com
         function:    Make table title FO
         param:        prmTopicRef, prmNeedId
         return:        fo:inline * 2
-        note:        This template must return exactly 2 <fo:inline> elements.
+        note:        This template must return exactly 2 <span> elements.
     -->
     <xsl:template match="*[contains(@class, ' topic/table ')]/*[contains(@class, ' topic/title ')]" priority="2" mode="MAKE_TABLE_LIST">
-        <fo:inline>
+        <span>
             <xsl:call-template name="ahf:getTableTitlePrefix">
                 <xsl:with-param name="prmTable" select="parent::*"/>
             </xsl:call-template>
             <xsl:text>&#x00A0;</xsl:text>
             <xsl:text>&#x00A0;</xsl:text>
         </fo:inline>
-        <fo:inline>
+        <span>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:apply-templates/>
         </fo:inline>
@@ -291,7 +291,7 @@ E-mail : info@antennahouse.com
                         <fo:leader leader-length.optimum="0pt">
                             <xsl:copy-of select="ahf:getAttributeSet('atsTableListLeader')"/>
                         </fo:leader>
-                        <fo:inline keep-with-next="always">
+                        <span keep-with-next="always">
                             <fo:leader>
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTableListLeader')"/>
                             </fo:leader>

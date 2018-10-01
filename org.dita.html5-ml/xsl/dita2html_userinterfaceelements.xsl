@@ -31,7 +31,7 @@ E-mail : info@antennahouse.com
             <!-- Child of menucascade -->
             <xsl:if test="preceding-sibling::*[contains(@class, ' ui-d/uicontrol ')]">
                 <!-- preceding uicontrol -->
-                <fo:inline>
+                <span>
                     <!-- append '&gt;' -->
                     <xsl:call-template name="getVarValueWithLangAsText">
                         <xsl:with-param name="prmVarName" select="'MenuCascade_Symbol'"/>
@@ -40,11 +40,11 @@ E-mail : info@antennahouse.com
             </xsl:if>
         </xsl:if>
         <!-- Add prefix and suffix for uicontrol -->
-        <fo:inline>
+        <span>
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'UiControl_Prefix'"/>
             </xsl:call-template>
-            <fo:inline>
+            <span>
                 <xsl:call-template name="getAttributeSetWithLang"/>
                 <xsl:call-template name="ahf:getUnivAtts"/>
                 <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -67,7 +67,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class,' ui-d/wintitle ')]" priority="2">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -87,7 +87,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class,' ui-d/menucascade ')]" priority="2">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -106,7 +106,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class,' ui-d/shortcut ')]" priority="2">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>

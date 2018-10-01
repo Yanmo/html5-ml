@@ -75,7 +75,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template name="processPh">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -100,7 +100,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template name="processKeyword">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -375,7 +375,7 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <fo:list-item-label end-indent="label-end()">
                 <fo:block>
-                    <fo:inline/>
+                    <span/>
                 </fo:block>
             </fo:list-item-label>
             <fo:list-item-body start-indent="body-start()">
@@ -1292,7 +1292,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmVarName" select="'Cite_Suffix'"/>
             </xsl:call-template>
         </xsl:variable>
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -1444,7 +1444,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmVarName" select="'Q_Suffix'"/>
             </xsl:call-template>
         </xsl:variable>
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -1718,7 +1718,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template name="processTerm">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -1752,14 +1752,14 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class,' topic/tm ')]">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
 
             <xsl:apply-templates/>
 
-            <fo:inline>
+            <span>
                 <xsl:call-template name="getAttributeSetWithLang">
                     <xsl:with-param name="prmAttrSetName" select="'atsTmSymbol'"/>
                 </xsl:call-template>

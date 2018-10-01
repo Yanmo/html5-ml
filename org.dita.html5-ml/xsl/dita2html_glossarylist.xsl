@@ -130,7 +130,7 @@ E-mail : info@antennahouse.com
                             </xsl:choose>
                         </xsl:variable>
                         <fo:marker marker-class-name="{$cTitleBody}">
-                            <fo:inline><xsl:copy-of select="$glossaryListTitleText"/></fo:inline>
+                            <span><xsl:copy-of select="$glossaryListTitleText"/></fo:inline>
                         </fo:marker>
                         <xsl:choose>
                             <xsl:when test="$topicRef/*[contains(@class,' map/topicmeta ')]/*[contains(@class,' topic/navtitle ')]">
@@ -139,12 +139,12 @@ E-mail : info@antennahouse.com
                                 </xsl:apply-templates>
                             </xsl:when>
                             <xsl:when test="$topicRef/@navtitle">
-                                <fo:inline>
+                                <span>
                                     <xsl:value-of select="string($topicRef/@navtitle)"/>
                                 </fo:inline>
                             </xsl:when>
                             <xsl:otherwise>
-                                <fo:inline>
+                                <span>
                                     <xsl:value-of select="$cGlossaryListTitle"/>
                                 </fo:inline>
                             </xsl:otherwise>
@@ -476,7 +476,7 @@ E-mail : info@antennahouse.com
 
     <xsl:template match="*[contains(@class, ' glossentry/glossterm ')]"  mode="PROCESS_GLOSSARYLIST_CONTENT">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -499,7 +499,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' glossentry/glossdef ')]"  mode="PROCESS_GLOSSARYLIST_CONTENT">
-        <fo:inline>
+        <span>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>

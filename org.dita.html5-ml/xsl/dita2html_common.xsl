@@ -157,7 +157,7 @@ E-mail : info@antennahouse.com
      note:        ** DOES NOT GENERATE @id & PROCESS INDEXTERM. **
      -->
     <xsl:template match="*" mode="GET_CONTENTS">
-        <fo:inline>
+        <span>
             <xsl:copy-of select="ahf:getUnivAtts(.,(),false())"/>
             <xsl:apply-templates>
                 <xsl:with-param name="prmTopicRef" tunnel="yes" select="()"/>
@@ -176,17 +176,17 @@ E-mail : info@antennahouse.com
     <xsl:template name="makeBlankBlock">
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsBlankPageBlock')"/>
-            <fo:inline-container>
+            <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsBlankPageInlineContainerBlock')"/>
                 <fo:block>
                     <xsl:copy-of select="ahf:getAttributeSet('atsBlankPageInlineBlock')"/>
                 </fo:block>
             </fo:inline-container>
-            <fo:inline>
+            <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsBlankPageInlineTextBlock')"/>
                 <xsl:value-of select="$cBlankPageTitle"/>
             </fo:inline>
-            <fo:inline-container>
+            <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsBlankPageInlineContainerBlock')"/>
                 <fo:block>
                     <xsl:copy-of select="ahf:getAttributeSet('atsBlankPageInlineBlock')"/>
@@ -230,11 +230,11 @@ E-mail : info@antennahouse.com
         <xsl:variable name="offset" select="concat(string((@index -1) * 10),'mm')"/>
         <fo:block>
             <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexBlock')"/>
-            <fo:inline-container>
+            <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexPaddingInlineContainer1')"/>
             </fo:inline-container>
-            <fo:inline-container width="{$offset}"/>
-            <fo:inline-container>
+            <span-container width="{$offset}"/>
+            <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexInlineContainer')"/>
                 <fo:block-container>
                     <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexBlockContainer')"/>
@@ -244,13 +244,13 @@ E-mail : info@antennahouse.com
                     </fo:block>
                 </fo:block-container>
             </fo:inline-container>
-            <fo:inline-container>
+            <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexPaddingInlineContainer2')"/>
             </fo:inline-container>
-            <fo:inline-container>
+            <span-container>
                 <fo:block>
                     <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexTitleBlock')"/>
-                    <fo:inline>
+                    <span>
                         <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexTitleInline')"/>
                         <xsl:copy-of select="title/node()"/>
                     </fo:inline>
