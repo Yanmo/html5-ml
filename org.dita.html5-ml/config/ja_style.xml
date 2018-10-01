@@ -180,7 +180,7 @@ URL : http://www.antennahouse.com/
 
         <!-- codeblock -->
         <attribute-set name="atsCodeBlock" use-attribute-sets="atsPre">
-            <attribute name="axf:text-autospace-width">0%</attribute>
+            <attribute name="text-autospace-width">0%</attribute>
         </attribute-set>
 
     </programming-elements-attribute>

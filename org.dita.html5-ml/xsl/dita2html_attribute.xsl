@@ -137,7 +137,7 @@ E-mail : info@antennahouse.com
                                 </xsl:choose>
                                 <!--xsl:if test="$refedTopic"-->
                                 <!-- Add named destination -->
-                                <xsl:attribute name="axf:destination-type" select="'xyz-top'"/>
+                                <xsl:attribute name="destination-type" select="'xyz-top'"/>
                                 <!--/xsl:if-->
                             </xsl:when>
                             <xsl:otherwise>

@@ -1131,7 +1131,7 @@ E-mail : info@antennahouse.com
                 </xsl:variable>
                 <xsl:sequence select="string-join($tempAltText,'')"/>
             </xsl:variable>
-            <xsl:attribute name="axf:alttext" select="$altText"/>
+            <xsl:attribute name="alttext" select="$altText"/>
         </xsl:if>
 
         <!--inline/block specific attributes -->
@@ -1823,7 +1823,7 @@ E-mail : info@antennahouse.com
                     <xsl:when test="$isLinkToPdf">
                         <xsl:variable name="modifiedHref" select="replace($prmHref,'(\.PDF#|\.pdf#)','$1nameddest=')"/>
                         <xsl:attribute name="external-destination" select="concat('url(', $modifiedHref, ')')"/>
-                        <xsl:attribute name="axf:action-type" select="'gotor'"/>
+                        <xsl:attribute name="action-type" select="'gotor'"/>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:attribute name="external-destination" select="concat('url(', $prmHref, ')')"/>

@@ -313,7 +313,7 @@ E-mail : info@antennahouse.com
             <xsl:when test="contains(lower-case($href),'.pdf#')">
                 <!-- Link to PDF named destination -->
                 <xsl:variable name="tempHref" as="xs:string" select="replace($prmHref,'#','#nameddest=')"/>
-                <a external-destination="{$tempHref}" axf:action-type="gotor">
+                <a external-destination="{$tempHref}" action-type="gotor">
                     <xsl:value-of select="$prmLinktext"/>
                 </a>
             </xsl:when>

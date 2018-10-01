@@ -75,7 +75,7 @@
                                 <xsl:variable name="ahsExt" as="xs:string" select="'ahs-'"/>
                                 <xsl:choose>
                                     <xsl:when test="starts-with($tempPropName,$axfExt)">
-                                        <xsl:sequence select="concat('axf:',substring-after($tempPropName,$axfExt))"/>
+                                        <xsl:sequence select="concat('',substring-after($tempPropName,$axfExt))"/>
                                     </xsl:when>
                                     <xsl:when test="starts-with($tempPropName,$ahsExt)">
                                         <xsl:sequence select="''"/>
@@ -143,7 +143,7 @@
                                 <xsl:variable name="axfExt" as="xs:string" select="'axf-'"/>
                                 <xsl:choose>
                                     <xsl:when test="starts-with($tempPropName,$axfExt)">
-                                        <xsl:sequence select="concat('axf:',substring-after($tempPropName,$axfExt))"/>
+                                        <xsl:sequence select="concat('',substring-after($tempPropName,$axfExt))"/>
                                     </xsl:when>
                                     <xsl:otherwise>
                                         <xsl:sequence select="$tempPropName"/>

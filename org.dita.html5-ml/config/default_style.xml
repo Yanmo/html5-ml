@@ -424,16 +424,16 @@ URL : http://www.antennahouse.com/
 
             <!-- Crop region & print mark -->
             <attribute-set name="atsCommonCropAndPrintMark">
-                <attribute name="axf:crop-offset-top">$Crop_Size_V</attribute>
-                <attribute name="axf:crop-offset-bottom">$Crop_Size_V</attribute>
-                <attribute name="axf:crop-offset-left">$Crop_Size_H</attribute>
-                <attribute name="axf:crop-offset-right">$Crop_Size_H</attribute>
-                <attribute name="axf:crop-area-visibility">visible</attribute>
-                <attribute name="axf:bleed">$Bleed_Size</attribute>
-                <attribute name="axf:printer-marks">crop cross</attribute>
-                <attribute name="axf:printer-marks-line-color">rgb-icc(#CMYK,0%,0%,0%,100%)</attribute>
-                <attribute name="axf:printer-marks-line-length">auto</attribute>
-                <attribute name="axf:printer-marks-line-width">auto</attribute>
+                <attribute name="crop-offset-top">$Crop_Size_V</attribute>
+                <attribute name="crop-offset-bottom">$Crop_Size_V</attribute>
+                <attribute name="crop-offset-left">$Crop_Size_H</attribute>
+                <attribute name="crop-offset-right">$Crop_Size_H</attribute>
+                <attribute name="crop-area-visibility">visible</attribute>
+                <attribute name="bleed">$Bleed_Size</attribute>
+                <attribute name="printer-marks">crop cross</attribute>
+                <attribute name="printer-marks-line-color">rgb-icc(#CMYK,0%,0%,0%,100%)</attribute>
+                <attribute name="printer-marks-line-length">auto</attribute>
+                <attribute name="printer-marks-line-width">auto</attribute>
             </attribute-set>
 
             <!-- monospace style -->
@@ -475,10 +475,10 @@ URL : http://www.antennahouse.com/
                 <attribute name="font-family">$General_Text_Font</attribute>
                 <attribute name="line-stacking-strategy">line-height</attribute>
                 <attribute name="text-align">start</attribute>
-                <attribute name="axf:line-break">normal</attribute>
+                <attribute name="line-break">normal</attribute>
                 <attribute name="color">$General_Text_Color</attribute>
                 <attribute name="hyphenate">$General_Do_Hyphenation</attribute>
-                <attribute name="axf:hyphenation-minimum-character-count">$General_Hyphenation_Minimum_Character_Count</attribute>
+                <attribute name="hyphenation-minimum-character-count">$General_Hyphenation_Minimum_Character_Count</attribute>
                 <attribute name="hyphenation-keep">column</attribute>
             </attribute-set>
         </root-attribute-set>
@@ -671,11 +671,11 @@ URL : http://www.antennahouse.com/
             </attribute-set>
 
             <attribute-set name="atsFloatMoveKeep">
-                <attribute name="axf:float-move">keep</attribute>
+                <attribute name="float-move">keep</attribute>
             </attribute-set>
 
             <attribute-set name="atsFloatMoveAutoNext">
-                <attribute name="axf:float-move">auto-next</attribute>
+                <attribute name="float-move">auto-next</attribute>
             </attribute-set>
         </common-attribute>
 
@@ -1150,7 +1150,7 @@ URL : http://www.antennahouse.com/
             <attribute-set name="atsIndexLine">
                 <attribute name="font-size">$Index_Line_Font_Size</attribute>
                 <!--attribute name="space-after">1mm</attribute-->
-                <attribute name="axf:text-align-first">justify</attribute>
+                <attribute name="text-align-first">justify</attribute>
                 <attribute name="text-align">justify</attribute>
                 <attribute name="text-align-last">justify</attribute>
                 <attribute name="text-indent">($Index_Indent_Value) * -1</attribute>
@@ -1175,7 +1175,7 @@ URL : http://www.antennahouse.com/
 
             <!-- Index + see line -->
             <attribute-set name="atsIndexLineSee" use-attribute-sets="atsIndexLine">
-                <attribute name="axf:text-align-first">left</attribute>
+                <attribute name="text-align-first">left</attribute>
                 <attribute name="text-align">left</attribute>
                 <attribute name="text-align-last">left</attribute>
                 <attribute name="keep-with-previous">always</attribute>
@@ -1779,24 +1779,24 @@ URL : http://www.antennahouse.com/
             <variable name="Fig_Float_Margin_X">1mm</variable>
             
             <attribute-set name="atsFloatFigLeft">
-                <attribute name="axf:float">start</attribute>
+                <attribute name="float">start</attribute>
                 <attribute name="start-indent">0mm</attribute>
                 <attribute name="end-indent">0mm</attribute>
                 <attribute name="clear">both</attribute>
-                <attribute name="axf:float-margin-x">$Fig_Float_Margin_X</attribute>
-                <attribute name="axf:float-move">keep</attribute>
+                <attribute name="float-margin-x">$Fig_Float_Margin_X</attribute>
+                <attribute name="float-move">keep</attribute>
             </attribute-set>
 
             <attribute-set name="atsFloatFigGroupLeft" use-attribute-sets="atsFloatFigLeft">
             </attribute-set>
 
             <attribute-set name="atsFloatFigRight">
-                <attribute name="axf:float">end</attribute>
+                <attribute name="float">end</attribute>
                 <attribute name="start-indent">0mm</attribute>
                 <attribute name="end-indent">0mm</attribute>
                 <attribute name="clear">both</attribute>
-                <attribute name="axf:float-margin-x">$Fig_Float_Margin_X</attribute>
-                <attribute name="axf:float-move">keep</attribute>
+                <attribute name="float-margin-x">$Fig_Float_Margin_X</attribute>
+                <attribute name="float-move">keep</attribute>
             </attribute-set>
 
             <attribute-set name="atsFloatFigGroupRight" use-attribute-sets="atsFloatFigRight">
@@ -1814,7 +1814,7 @@ URL : http://www.antennahouse.com/
 
             <attribute-set name="atsFloatFigGroupAuto">
                 <attribute name="clear">none</attribute>
-                <attribute name="axf:float-wrap">skip</attribute>
+                <attribute name="float-wrap">skip</attribute>
             </attribute-set>
 
             <!-- figgroup (??) -->
@@ -1827,11 +1827,11 @@ URL : http://www.antennahouse.com/
             <variable name="Fig_Group_Float_Margin_X">$Fig_Float_Margin_X</variable>
             
             <attribute-set name="atsFigGroupFloatLeft">
-                <attribute name="axf:float-margin-x">$Fig_Group_Float_Margin_X</attribute>
+                <attribute name="float-margin-x">$Fig_Group_Float_Margin_X</attribute>
             </attribute-set>
             
             <attribute-set name="atsFigGroupFloatRight">
-                <attribute name="axf:float-margin-x">$Fig_Group_Float_Margin_X</attribute>
+                <attribute name="float-margin-x">$Fig_Group_Float_Margin_X</attribute>
             </attribute-set>
             
 
@@ -2040,7 +2040,7 @@ URL : http://www.antennahouse.com/
                 <attribute name="reference-orientation">90</attribute>
                 <attribute name="overflow">error-if-overflow</attribute>
                 <!--attribute name="overflow">condense</attribute>
-                <attribute name="axf:overflow-condense">font-size</attribute-->
+                <attribute name="overflow-condense">font-size</attribute-->
             </attribute-set>
             
             <!-- simpletable -->
@@ -2220,7 +2220,7 @@ URL : http://www.antennahouse.com/
                 <attribute name="space-after">1mm</attribute>
                 <attribute name="line-stacking-strategy">max-height</attribute>
                 <attribute name="keep-with-next">always</attribute>
-                <attribute name="axf:leader-expansion">force</attribute>
+                <attribute name="leader-expansion">force</attribute>
             </attribute-set>
 
             <attribute-set name="atsNoteNoteIconImage">
@@ -2446,15 +2446,15 @@ URL : http://www.antennahouse.com/
                 <attribute name="start-indent">inherited-property-value(start-indent) + $codeBlockPaddingSize</attribute>
                 <attribute name="end-indent">inherited-property-value(end-indent) + $codeBlockPaddingSize</attribute>
                 <attribute name="hyphenate">false</attribute>
-                <attribute name="axf:word-break">break-all</attribute>
-                <attribute name="axf:word-wrap">break-word</attribute>
+                <attribute name="word-break">break-all</attribute>
+                <attribute name="word-wrap">break-word</attribute>
             </attribute-set>
 
             <!-- codeph -->
             <attribute-set name="atsCodePh" use-attribute-sets="atsMonospaceStyle">
                 <attribute name="hyphenate">false</attribute>
-                <attribute name="axf:word-break ">break-all</attribute>
-                <attribute name="axf:word-wrap">break-word</attribute>
+                <attribute name="word-break ">break-all</attribute>
+                <attribute name="word-wrap">break-word</attribute>
             </attribute-set>
 
             <!-- option -->
@@ -2577,8 +2577,8 @@ URL : http://www.antennahouse.com/
             <!-- filepath -->
             <attribute-set name="atsFilePath" use-attribute-sets="atsMonospaceStyle">
                 <attribute name="hyphenate">false</attribute>
-                <attribute name="axf:word-break">break-all</attribute>
-                <attribute name="axf:word-wrap">break-word</attribute>
+                <attribute name="word-break">break-all</attribute>
+                <attribute name="word-wrap">break-word</attribute>
             </attribute-set>
 
             <!-- userinput -->

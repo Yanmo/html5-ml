@@ -121,7 +121,7 @@ URL : http://www.antennahouse.co.jp/
         <xsl:variable name="url" as="xs:string" select="concat('url(',$modifiedHref,')')"/>
         <xsl:attribute name="external-destination" select="$url"/>
         <xsl:if test="$isLinkToInsidePdf">
-            <xsl:attribute name="axf:action-type" select="'gotor'"/>
+            <xsl:attribute name="action-type" select="'gotor'"/>
         </xsl:if>
     </xsl:template>
 

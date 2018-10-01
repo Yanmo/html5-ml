@@ -26,7 +26,7 @@
     
     <attribute-sets>
         <attribute-set name="atsEquationBlock">
-            <attribute name="axf:leader-expansion">force</attribute>
+            <attribute name="leader-expansion">force</attribute>
         </attribute-set>
         
         <attribute-set name="atsEquationBlockNonTextualParent">
