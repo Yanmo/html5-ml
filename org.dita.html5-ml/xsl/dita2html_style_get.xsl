@@ -151,7 +151,7 @@
                  <xsl:template match="p">
                      <div>
                        <xsl:call-template name="getAttributeSetWithElem"/>
-                     </fo:block>
+                     </div>
                  </xsl:template>
 
                 Also the corresponding "p" element must implememt following

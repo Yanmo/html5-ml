@@ -31,26 +31,26 @@ E-mail : info@antennahouse.com
                         <div>
                             <xsl:copy-of select="ahf:getAttributeSet('atsCoverBookLibrary')"/>
                             <xsl:copy-of select="$bookLibrary"/>
-                        </fo:block>
+                        </div>
                     </xsl:if>
                     <div>
                         <xsl:copy-of select="ahf:getAttributeSet('atsCoverBookTitle')"/>
                         <xsl:copy-of select="$bookTitle"/>
-                    </fo:block>
+                    </div>
                     <xsl:if test="exists($bookAltTitle)">
                         <div>
                             <xsl:copy-of select="ahf:getAttributeSet('atsCoverAltBookTitle')"/>
                             <xsl:copy-of select="$bookAltTitle"/>
-                        </fo:block>
+                        </div>
                     </xsl:if>
-                </fo:block-container>
+                </div>
                 <div>
                     <xsl:copy-of select="ahf:getAttributeSet('atsCoverBookMetaBC')"/>
                     <div>
                         <xsl:copy-of select="ahf:getAttributeSet('atsCoverBookMeta')"/>
                         <xsl:apply-templates select="$map//*[contains(@class,' bookmap/bookmeta ')]" mode="cover"/>
-                    </fo:block>
-                </fo:block-container>
+                    </div>
+                </div>
             </fo:flow>
         </fo:page-sequence>
     </xsl:template>
@@ -68,25 +68,25 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' xnal-d/namedetails ')]" mode="cover">
         <div>
             <xsl:apply-templates mode="#current"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xnal-d/addressdetails ')]" mode="cover">
         <div>
             <xsl:apply-templates mode="#current"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xnal-d/contactnumbers ')]" mode="cover">
         <div>
             <xsl:apply-templates mode="#current"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xnal-d/emailaddresses ')]" mode="cover">
         <div>
             <xsl:apply-templates mode="#current"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/source ')]" mode="cover"/>
@@ -94,7 +94,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' bookmap/publisherinformation ')]" mode="cover">
         <div>
             <xsl:apply-templates mode="#current"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' bookmap/bookmeta ')]//*[contains(@class, ' topic/category ')]" mode="cover"/>
@@ -106,13 +106,13 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' bookmap/bookid ')]" mode="cover">
         <div>
             <xsl:apply-templates mode="#current"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' bookmap/bookrights ')]" mode="cover">
         <div>
             <xsl:apply-templates mode="#current"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template match="*" mode="cover">

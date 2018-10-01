@@ -179,7 +179,7 @@ E-mail : info@antennahouse.com
                         <span>
                             <xsl:value-of select="$topicTitlePrefix"/>
                             <xsl:text>&#x00A0;</xsl:text>
-                        </fo:inline>
+                        </span>
                         <xsl:copy-of select="$topicTitleBody"/>
                     </xsl:when>
                     <xsl:otherwise>
@@ -202,7 +202,7 @@ E-mail : info@antennahouse.com
                             </xsl:call-template>
                             <xsl:text>&#x00A0;</xsl:text>
                             <xsl:copy-of select="$sectionTitle"/>
-                        </fo:inline>
+                        </span>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:call-template name="warningContinue">
@@ -228,7 +228,7 @@ E-mail : info@antennahouse.com
                             </xsl:call-template>
                             <xsl:text>&#x00A0;</xsl:text>
                             <xsl:copy-of select="$exampleTitle"/>
-                        </fo:inline>
+                        </span>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:call-template name="warningContinue">
@@ -258,7 +258,7 @@ E-mail : info@antennahouse.com
                 <span>
                     <xsl:number format="{$olFormat}"
                         value="count($prmDestElement/preceding-sibling::*[contains(@class, ' topic/li ')][not(contains(@class,' task/stepsection '))]) + 1"/>
-                </fo:inline>
+                </span>
             </xsl:when>
 
             <!-- table -->
@@ -277,7 +277,7 @@ E-mail : info@antennahouse.com
                             <xsl:value-of select="$tableTitleSuffix"/>
                             <xsl:text>&#x00A0;</xsl:text>
                             <xsl:copy-of select="$tableTitle"/>
-                        </fo:inline>
+                        </span>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:call-template name="warningContinue">
@@ -305,7 +305,7 @@ E-mail : info@antennahouse.com
                             <xsl:value-of select="$figTitleSuffix"/>
                             <xsl:text>&#x00A0;</xsl:text>
                             <xsl:copy-of select="$figTitle"/>
-                        </fo:inline>
+                        </span>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:call-template name="warningContinue">
@@ -381,7 +381,7 @@ E-mail : info@antennahouse.com
                 </xsl:variable>
                 <span>
                     <xsl:copy-of select="$equtionNumberResult"/>
-                </fo:inline>
+                </span>
             </xsl:when>
 
             <!-- fn -->
@@ -389,7 +389,7 @@ E-mail : info@antennahouse.com
                 <xsl:variable name="fnTitle" as="xs:string" select="ahf:getFootnotePrefix($prmDestElement, $prmTitleTopicRef)"/>
                 <span>
                     <xsl:value-of select="$fnTitle"/>
-                </fo:inline>
+                </span>
             </xsl:when>
 
             <!-- Other elements that have title -->
@@ -399,7 +399,7 @@ E-mail : info@antennahouse.com
                 </xsl:variable>
                 <span>
                     <xsl:copy-of select="$title"/>
-                </fo:inline>
+                </span>
             </xsl:when>
 
             <!-- Others -->
@@ -413,7 +413,7 @@ E-mail : info@antennahouse.com
                 </xsl:variable>
                 <span>
                     <xsl:copy-of select="$title"/>
-                </fo:inline>
+                </span>
             </xsl:otherwise>
         </xsl:choose>
 
@@ -457,7 +457,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmVarName" select="'Xref_Suffix'"/>
                         <xsl:with-param name="prmElem" select="$prmXref"/>
                     </xsl:call-template>
-                </fo:inline>
+                </span>
             </xsl:when>
 
             <!-- section/example -->

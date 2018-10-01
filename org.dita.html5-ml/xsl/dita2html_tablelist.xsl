@@ -102,13 +102,13 @@ E-mail : info@antennahouse.com
                 <xsl:copy-of select="ahf:getAttributeSet('atsFmHeader1')"/>
                 <xsl:attribute name="id" select="$id"/>
                 <fo:marker marker-class-name="{$cTitleBody}">
-                    <span><xsl:copy-of select="$cTableListTitle"/></fo:inline>
+                    <span><xsl:copy-of select="$cTableListTitle"/></span>
                 </fo:marker>
                 <xsl:value-of select="$cTableListTitle"/>
-            </fo:block>
+            </div>
             <!-- Make contents -->
             <xsl:apply-templates select="$map" mode="MAKE_TABLE_LIST"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -248,11 +248,11 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
             <xsl:text>&#x00A0;</xsl:text>
             <xsl:text>&#x00A0;</xsl:text>
-        </fo:inline>
+        </span>
         <span>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -280,7 +280,7 @@ E-mail : info@antennahouse.com
                         <fo:basic-link internal-destination="{$prmId}">
                             <xsl:copy-of select="$prmTitle[1]"/>
                         </fo:basic-link>
-                    </fo:block>
+                    </div>
                 </fo:list-item-label>
                 <fo:list-item-body>
                     <xsl:copy-of select="ahf:getAttributeSet('atsTableListBody')"/>
@@ -295,11 +295,11 @@ E-mail : info@antennahouse.com
                             <fo:leader>
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTableListLeader')"/>
                             </fo:leader>
-                        </fo:inline>
+                        </span>
                         <fo:basic-link internal-destination="{$prmId}">
                             <fo:page-number-citation ref-id="{$prmId}" />
                         </fo:basic-link>
-                    </fo:block>
+                    </div>
                 </fo:list-item-body>
             </fo:list-item>
         </fo:list-block>

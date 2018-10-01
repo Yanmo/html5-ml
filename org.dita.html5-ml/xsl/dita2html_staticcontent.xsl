@@ -26,14 +26,14 @@ E-mail : info@antennahouse.com
         <!-- No contents, border only -->
         <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionBeforeLeftBlock')"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template name="frontmatterBeforeRight">
         <!-- No contents, border only -->
         <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionBeforeRightBlock')"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template name="frontmatterAfterLeft">
@@ -42,7 +42,7 @@ E-mail : info@antennahouse.com
             <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
                 <fo:page-number/>
-            </fo:inline>
+            </span>
             <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionAfter_InlineContainer')"/>
             </fo:inline-container>
@@ -54,12 +54,12 @@ E-mail : info@antennahouse.com
             <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
                 <fo:page-number/>
-            </fo:inline>
+            </span>
             <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionAfter_InlineContainer')"/>
             </fo:inline-container>
             <fo:retrieve-marker retrieve-class-name="{$cTitleBody}"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template name="frontmatterAfterRight">
@@ -72,8 +72,8 @@ E-mail : info@antennahouse.com
             <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
                 <fo:page-number/>
-            </fo:inline>
-        </fo:block>
+            </span>
+        </div>
     </xsl:template>
 
     <!--
@@ -86,14 +86,14 @@ E-mail : info@antennahouse.com
         <!-- No contents, border only -->
         <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionBeforeLeftBlock')"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template name="chapterBeforeRight">
         <!-- No contents, border only -->
         <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionBeforeRightBlock')"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template name="chapterAfterLeft">
@@ -102,7 +102,7 @@ E-mail : info@antennahouse.com
             <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
                 <fo:page-number/>
-            </fo:inline>
+            </span>
             <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionAfter_InlineContainer')"/>
             </fo:inline-container>
@@ -113,7 +113,7 @@ E-mail : info@antennahouse.com
             <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
                 <fo:page-number/>
-            </fo:inline>
+            </span>
             <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionAfter_InlineContainer')"/>
             </fo:inline-container>
@@ -123,7 +123,7 @@ E-mail : info@antennahouse.com
                 <xsl:text> </xsl:text>
             </xsl:if>
             <fo:retrieve-marker retrieve-class-name="{$cTitleBody}"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template name="chapterAfterRight">
@@ -141,8 +141,8 @@ E-mail : info@antennahouse.com
             <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
                 <fo:page-number/>
-            </fo:inline>
-        </fo:block>
+            </span>
+        </div>
     </xsl:template>
 
     <!-- Current context is topicref
@@ -188,14 +188,14 @@ E-mail : info@antennahouse.com
         <!-- No contents, border only -->
         <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionBeforeLeftBlock')"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template name="indexBeforeRight">
         <!-- No contents, border only -->
         <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionBeforeRightBlock')"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template name="indexAfterLeft">
@@ -204,7 +204,7 @@ E-mail : info@antennahouse.com
             <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
                 <fo:page-number/>
-            </fo:inline>
+            </span>
             <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionAfter_InlineContainer')"/>
             </fo:inline-container>
@@ -216,12 +216,12 @@ E-mail : info@antennahouse.com
             <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
                 <fo:page-number/>
-            </fo:inline>
+            </span>
             <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionAfter_InlineContainer')"/>
             </fo:inline-container>
             <fo:retrieve-marker retrieve-class-name="{$cTitleBody}"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template name="indexAfterRight">
@@ -234,8 +234,8 @@ E-mail : info@antennahouse.com
             <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
                 <fo:page-number/>
-            </fo:inline>
-        </fo:block>
+            </span>
+        </div>
     </xsl:template>
 
     <xsl:template name="indexEndRight">
@@ -263,14 +263,14 @@ E-mail : info@antennahouse.com
         <!-- No contents, border only -->
         <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionBeforeLeftBlock')"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template name="backmatterBeforeRight">
         <!-- No contents, border only -->
         <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionBeforeRightBlock')"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template name="backmatterAfterLeft">
@@ -279,7 +279,7 @@ E-mail : info@antennahouse.com
             <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
                 <fo:page-number/>
-            </fo:inline>
+            </span>
             <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionAfter_InlineContainer')"/>
             </fo:inline-container>
@@ -291,12 +291,12 @@ E-mail : info@antennahouse.com
             <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
                 <fo:page-number/>
-            </fo:inline>
+            </span>
             <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionAfter_InlineContainer')"/>
             </fo:inline-container>
             <fo:retrieve-marker retrieve-class-name="{$cTitleBody}"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template name="backmatterAfterRight">
@@ -309,8 +309,8 @@ E-mail : info@antennahouse.com
             <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
                 <fo:page-number/>
-            </fo:inline>
-        </fo:block>
+            </span>
+        </div>
     </xsl:template>
 
 </xsl:stylesheet>

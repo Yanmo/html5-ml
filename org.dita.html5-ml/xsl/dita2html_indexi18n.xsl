@@ -135,7 +135,7 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmNeedId"   tunnel="yes" select="false()"/>
                     <xsl:with-param name="prmGetIndextermFO" tunnel="yes" select="true()"/>
                 </xsl:apply-templates>
-            </fo:inline>
+            </span>
         </xsl:variable>
 
         <!-- Current sortas text -->
@@ -322,7 +322,7 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmNeedId"   select="false()"/>
                     <xsl:with-param name="prmGetIndexSeeFO" tunnel="yes" select="true()"/>
                 </xsl:apply-templates>
-            </fo:inline>
+            </span>
         </xsl:variable>
 
         <!-- index-see reference key -->
@@ -410,7 +410,7 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmNeedId"   tunnel="yes" select="false()"/>
                     <xsl:with-param name="prmGetIndexSeeFO" tunnel="yes" select="true()"/>
                 </xsl:apply-templates>
-            </fo:inline>
+            </span>
         </xsl:variable>
 
         <!-- index-see-also reference key -->

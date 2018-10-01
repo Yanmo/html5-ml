@@ -84,7 +84,7 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmAttrSetName" select="'atsFloatFigBc'"/>
                 </xsl:call-template>
                 <xsl:apply-templates/>
-            </fo:block-container>
+            </div>
         </fo:float>
     </xsl:template>
 
@@ -141,8 +141,8 @@ E-mail : info@antennahouse.com
                 <div>
                     <xsl:apply-templates select="node() except *[contains(@class, ' topic/title ')]"/>
                     <xsl:apply-templates select="*[contains(@class, ' topic/title ')]"/>
-                </fo:block>
-            </fo:block-container>
+                </div>
+            </div>
         </fo:float>
     </xsl:template>
 

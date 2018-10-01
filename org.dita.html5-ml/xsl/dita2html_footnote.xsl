@@ -58,11 +58,11 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmVarName" select="'atsPostnoteInline'"/>
                     <xsl:with-param name="prmElem" select="$prmTopicContent"/>
                 </xsl:call-template>
-            </fo:inline>
+            </span>
             <fo:leader>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteLeader2')"/>
             </fo:leader>
-        </fo:block>
+        </div>
 
         <!-- process postnote -->
         <xsl:call-template name="processPostnote">
@@ -76,7 +76,7 @@ E-mail : info@antennahouse.com
             <fo:leader>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteLeader3')"/>
             </fo:leader>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -109,7 +109,7 @@ E-mail : info@antennahouse.com
                         <div>
                             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteLabel')"/>
                             <xsl:value-of select="ahf:getFootnotePrefix($fn,$prmTopicRef)"/>
-                        </fo:block>
+                        </div>
                     </fo:list-item-label>
                     <fo:list-item-body start-indent="body-start()">
                         <div>
@@ -123,7 +123,7 @@ E-mail : info@antennahouse.com
                                 <xsl:with-param name="prmTopicRef" select="$prmTopicRef"/>
                                 <xsl:with-param name="prmNeedId"   select="true()"/>
                             </xsl:apply-templates>
-                        </fo:block>
+                        </div>
                     </fo:list-item-body>
                 </fo:list-item>
             </xsl:for-each>
@@ -168,8 +168,8 @@ E-mail : info@antennahouse.com
         <!-- Make related-link title block -->
         <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsFootNoteBeforeBlock')"/>
-            <span>&#xA0;</fo:inline>
-        </fo:block>
+            <span>&#xA0;</span>
+        </div>
 
         <!-- process postnote -->
         <xsl:call-template name="processFootNote">
@@ -179,8 +179,8 @@ E-mail : info@antennahouse.com
         <!-- Make postnote end block -->
         <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsFootNoteAfterBlock')"/>
-            <span>&#xA0;</fo:inline>
-        </fo:block>
+            <span>&#xA0;</span>
+        </div>
     </xsl:template>
 
     <!--
@@ -208,7 +208,7 @@ E-mail : info@antennahouse.com
                         <div>
                             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteLabel')"/>
                             <xsl:value-of select="ahf:getFootnotePrefix2($fn,$prmElement)"/>
-                        </fo:block>
+                        </div>
                     </fo:list-item-label>
                     <fo:list-item-body start-indent="body-start()">
                         <div>
@@ -225,7 +225,7 @@ E-mail : info@antennahouse.com
                             </xsl:if>
                             <xsl:copy-of select="ahf:getFoStyleAndProperty($fn)"/>
                             <xsl:apply-templates/>
-                        </fo:block>
+                        </div>
                     </fo:list-item-body>
                 </fo:list-item>
             </xsl:for-each>

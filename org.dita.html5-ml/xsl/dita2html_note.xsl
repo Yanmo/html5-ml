@@ -148,18 +148,18 @@ E-mail : info@antennahouse.com
                     </fo:leader>
                 </xsl:when>
             </xsl:choose>
-        </fo:block>
+        </div>
         <!--Note body -->
         <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
         <!-- line after -->
         <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsNoteAfterBlock')"/>
             <xsl:value-of select="'&#x00A0;'"/>
-        </fo:block>
+        </div>
     </xsl:template>
 
 </xsl:stylesheet>

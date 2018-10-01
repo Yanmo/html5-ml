@@ -130,7 +130,7 @@ E-mail : info@antennahouse.com
                             </xsl:choose>
                         </xsl:variable>
                         <fo:marker marker-class-name="{$cTitleBody}">
-                            <span><xsl:copy-of select="$glossaryListTitleText"/></fo:inline>
+                            <span><xsl:copy-of select="$glossaryListTitleText"/></span>
                         </fo:marker>
                         <xsl:choose>
                             <xsl:when test="$topicRef/*[contains(@class,' map/topicmeta ')]/*[contains(@class,' topic/navtitle ')]">
@@ -141,16 +141,16 @@ E-mail : info@antennahouse.com
                             <xsl:when test="$topicRef/@navtitle">
                                 <span>
                                     <xsl:value-of select="string($topicRef/@navtitle)"/>
-                                </fo:inline>
+                                </span>
                             </xsl:when>
                             <xsl:otherwise>
                                 <span>
                                     <xsl:value-of select="$cGlossaryListTitle"/>
-                                </fo:inline>
+                                </span>
                             </xsl:otherwise>
                         </xsl:choose>
-                    </fo:block>
-                </fo:block>
+                    </div>
+                </div>
             </xsl:otherwise>
         </xsl:choose>
 
@@ -269,7 +269,7 @@ E-mail : info@antennahouse.com
             <!-- related-links -->
             <xsl:apply-templates select="child::*[contains(@class,' topic/related-links ')]"/>
 
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -423,7 +423,7 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmTopicRef" select="$prmTopicRef"/>
                     <xsl:with-param name="prmNeedId"   select="true()"/>
                 </xsl:apply-templates-->
-            </fo:block>
+            </div>
 
             <!-- postnote (footnote) -->
             <xsl:if test="child::*[contains(@class, ' glossentry/glossdef ')]">
@@ -445,7 +445,7 @@ E-mail : info@antennahouse.com
             <!-- related-links -->
             <xsl:apply-templates select="child::*[contains(@class,' topic/related-links ')]"/>
 
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -485,7 +485,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmTopicContent" select="ancestor::*[contains(@class,' topic/topic ')][1]"/>
             </xsl:call-template>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -504,7 +504,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
 </xsl:stylesheet>

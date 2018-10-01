@@ -61,7 +61,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmTopicRef" tunnel="yes" select="$prmTopicRef"/>
                         <xsl:with-param name="prmTopicTitleStyle" tunnel="yes" select="$attrSetName"/>
                     </xsl:apply-templates>
-                </fo:block>
+                </div>
             </xsl:when>
             <xsl:otherwise>
                 <div>
@@ -88,7 +88,7 @@ E-mail : info@antennahouse.com
                             <xsl:value-of select="$prmDefaultTitle"/>
                         </xsl:otherwise>
                     </xsl:choose>
-                </fo:block>
+                </div>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -162,7 +162,7 @@ E-mail : info@antennahouse.com
                     <xsl:if test="($level eq 1) or ($level eq 2)">
                         <xsl:if test="$pAddNumberingTitlePrefix">
                             <fo:marker marker-class-name="{$cTitlePrefix}">
-                                <span><xsl:value-of select="$titlePrefix"/></fo:inline>
+                                <span><xsl:value-of select="$titlePrefix"/></span>
                             </fo:marker>
                         </xsl:if>
                         <fo:marker marker-class-name="{$cTitleBody}">
@@ -182,7 +182,7 @@ E-mail : info@antennahouse.com
                                     <xsl:with-param name="prmRequiredProperty" tunnel="yes" select="('font-family')"/>
                                 </xsl:call-template>
                                 <xsl:copy-of select="$titleForMarker"/>
-                            </fo:inline>
+                            </span>
                         </fo:marker>
                     </xsl:if>
                     <xsl:call-template name="processIndextermInMetadata">
@@ -197,7 +197,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmTopicRef" tunnel="yes" select="$prmTopicRef"/>
                         <xsl:with-param name="prmTopicTitleStyle" tunnel="yes" select="$attrSetName"/>
                     </xsl:apply-templates>
-                </fo:block>
+                </div>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:variable name="titleForMarker" as="node()*">
@@ -221,7 +221,7 @@ E-mail : info@antennahouse.com
                     <xsl:if test="($level eq 1) or ($level eq 2)">
                         <xsl:if test="$pAddNumberingTitlePrefix">
                             <fo:marker marker-class-name="{$cTitlePrefix}">
-                                <span><xsl:value-of select="$titlePrefix"/></fo:inline>
+                                <span><xsl:value-of select="$titlePrefix"/></span>
                             </fo:marker>
                         </xsl:if>
                         <fo:marker marker-class-name="{$cTitleBody}">
@@ -233,7 +233,7 @@ E-mail : info@antennahouse.com
                                     <xsl:with-param name="prmRequiredProperty" tunnel="yes" select="('font-family')"/>
                                 </xsl:call-template>
                                 <xsl:copy-of select="$titleForMarker"/>
-                            </fo:inline>
+                            </span>
                         </fo:marker>
                     </xsl:if>
                     <xsl:call-template name="processIndextermInMetadata">
@@ -255,7 +255,7 @@ E-mail : info@antennahouse.com
                             <xsl:value-of select="$prmTopicRef/@navtitle"/>
                         </xsl:when>
                     </xsl:choose>
-                </fo:block>
+                </div>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -324,7 +324,7 @@ E-mail : info@antennahouse.com
                     <xsl:if test="($level eq 1) or ($level eq 2)">
                         <xsl:if test="$pAddNumberingTitlePrefix">
                             <fo:marker marker-class-name="{$cTitlePrefix}">
-                                <span><xsl:value-of select="$titlePrefix"/></fo:inline>
+                                <span><xsl:value-of select="$titlePrefix"/></span>
                             </fo:marker>
                         </xsl:if>
                         <fo:marker marker-class-name="{$cTitleBody}">
@@ -336,7 +336,7 @@ E-mail : info@antennahouse.com
                                     <xsl:with-param name="prmRequiredProperty" tunnel="yes" select="('font-family')"/>
                                 </xsl:call-template>
                                 <xsl:copy-of select="$titleForMarker"/>
-                            </fo:inline>
+                            </span>
                         </fo:marker>
                     </xsl:if>
                     <xsl:call-template name="processIndextermInMetadata">
@@ -351,7 +351,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmTopicRef" tunnel="yes" select="$prmTopicRef"/>
                         <xsl:with-param name="prmTopicTitleStyle" tunnel="yes" select="$attrSetName"/>
                     </xsl:apply-templates>
-                </fo:block>
+                </div>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:variable name="titleForMarker" as="node()*">
@@ -387,7 +387,7 @@ E-mail : info@antennahouse.com
                                     <xsl:with-param name="prmRequiredProperty" tunnel="yes" select="('font-family')"/>
                                 </xsl:call-template>
                                 <xsl:copy-of select="$titleForMarker"/>
-                            </fo:inline>
+                            </span>
                         </fo:marker>
                     </xsl:if>
                     <xsl:call-template name="processIndextermInMetadata">
@@ -409,7 +409,7 @@ E-mail : info@antennahouse.com
                             <xsl:value-of select="$prmTopicRef/@navtitle"/>
                         </xsl:when>
                     </xsl:choose>
-                </fo:block>
+                </div>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -463,7 +463,7 @@ E-mail : info@antennahouse.com
                     <xsl:value-of select="ahf:getVarValue('Appendices_Title')"></xsl:value-of>
                 </xsl:otherwise>
             </xsl:choose>
-        </fo:block>
+        </div>
     </xsl:template-->
 
     <!--
@@ -511,8 +511,8 @@ E-mail : info@antennahouse.com
                                         <xsl:with-param name="prmVarName" select="'Level4_Label_Char'"/>
                                         <xsl:with-param name="prmElem" select="$titleElement"/>
                                     </xsl:call-template>
-                                </fo:inline>
-                            </fo:block>
+                                </span>
+                            </div>
                         </fo:list-item-label>
                         <fo:list-item-body start-indent="body-start()">
                             <div>
@@ -525,7 +525,7 @@ E-mail : info@antennahouse.com
                                     <xsl:with-param name="prmTopicRef" tunnel="yes" select="$prmTopicRef"/>
                                     <xsl:with-param name="prmTopicTitleStyle" tunnel="yes" select="'atsHeader4Body'"/>
                                 </xsl:apply-templates>
-                            </fo:block>
+                            </div>
                         </fo:list-item-body>
                     </fo:list-item>
                 </fo:list-block>
@@ -561,8 +561,8 @@ E-mail : info@antennahouse.com
                                         <xsl:with-param name="prmVarName" select="'Level4_Label_Char'"/>
                                         <xsl:with-param name="prmElem" select="$prmTopicRef"/>
                                     </xsl:call-template>
-                                </fo:inline>
-                            </fo:block>
+                                </span>
+                            </div>
                         </fo:list-item-label>
                         <fo:list-item-body start-indent="body-start()">
                             <div>
@@ -581,7 +581,7 @@ E-mail : info@antennahouse.com
                                         <xsl:value-of select="$prmTopicRef/@navtitle"/>
                                     </xsl:when>
                                 </xsl:choose>
-                            </fo:block>
+                            </div>
                         </fo:list-item-body>
                     </fo:list-item>
                 </fo:list-block>
@@ -634,8 +634,8 @@ E-mail : info@antennahouse.com
                                         <xsl:with-param name="prmVarName" select="'Level5_Label_Char'"/>
                                         <xsl:with-param name="prmElem" select="$titleElement"/>
                                     </xsl:call-template>
-                                </fo:inline>
-                            </fo:block>
+                                </span>
+                            </div>
                         </fo:list-item-label>
                         <fo:list-item-body start-indent="body-start()">
                             <div>
@@ -648,7 +648,7 @@ E-mail : info@antennahouse.com
                                     <xsl:with-param name="prmTopicRef" tunnel="yes" select="$prmTopicRef"/>
                                     <xsl:with-param name="prmTopicTitleStyle" tunnel="yes" select="'atsHeader5Body'"/>
                                 </xsl:apply-templates>
-                            </fo:block>
+                            </div>
                         </fo:list-item-body>
                     </fo:list-item>
                 </fo:list-block>
@@ -684,8 +684,8 @@ E-mail : info@antennahouse.com
                                         <xsl:with-param name="prmVarName" select="'Level5_Label_Char'"/>
                                         <xsl:with-param name="prmElem" select="$prmTopicRef"/>
                                     </xsl:call-template>
-                                </fo:inline>
-                            </fo:block>
+                                </span>
+                            </div>
                         </fo:list-item-label>
                         <fo:list-item-body start-indent="body-start()">
                             <div>
@@ -704,7 +704,7 @@ E-mail : info@antennahouse.com
                                         <xsl:value-of select="$prmTopicRef/@navtitle"/>
                                     </xsl:when>
                                 </xsl:choose>
-                            </fo:block>
+                            </div>
                         </fo:list-item-body>
                     </fo:list-item>
                 </fo:list-block>
@@ -744,11 +744,11 @@ E-mail : info@antennahouse.com
 
         <xsl:if test="$pAddNumberingTitlePrefix">
             <fo:marker marker-class-name="{$cTitlePrefix}">
-                <span><xsl:value-of select="$titlePrefix"/></fo:inline>
+                <span><xsl:value-of select="$titlePrefix"/></span>
             </fo:marker>
         </xsl:if>
         <fo:marker marker-class-name="{$cTitleBody}">
-            <span><xsl:copy-of select="$title"/></fo:inline>
+            <span><xsl:copy-of select="$title"/></span>
         </fo:marker>
     </xsl:template>
 

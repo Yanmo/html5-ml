@@ -135,7 +135,7 @@
                     <!-- equation body -->
                     <span>
                         <xsl:apply-templates select="$candidateEquationBody"/>
-                    </fo:inline>
+                    </span>
                     <fo:leader>
                         <xsl:call-template name="getAttributeSet">
                             <xsl:with-param name="prmAttrSetName" select="'atsEquationLeader'"/>
@@ -152,7 +152,7 @@
                             </xsl:call-template>
                         </xsl:otherwise>
                     </xsl:choose>
-                </fo:block>
+                </div>
             </xsl:when>
             <!-- generate only equation -->
             <xsl:otherwise>
@@ -161,7 +161,7 @@
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                     <xsl:apply-templates select="$candidateEquationBody"/>
-                </fo:block>
+                </div>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -246,7 +246,7 @@
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'Equation_Number_Suffix'"/>
             </xsl:call-template>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -273,7 +273,7 @@
                 <xsl:with-param name="prmVarName" select="'Equation_Number_Suffix'"/>
                 <xsl:with-param name="prmElem" select="$prmEquationBlock"/>
             </xsl:call-template>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--

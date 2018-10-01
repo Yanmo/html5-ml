@@ -91,7 +91,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -121,7 +121,7 @@ E-mail : info@antennahouse.com
             <xsl:value-of select="@name"/>
             <xsl:text>=</xsl:text>
             <xsl:value-of select="@value"/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -140,7 +140,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:value-of select="@state"/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--

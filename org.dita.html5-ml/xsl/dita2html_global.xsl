@@ -274,7 +274,7 @@ E-mail : info@antennahouse.com
                     <xsl:when test="$root/*[contains(@class, ' map/map ')]/@title">
                         <span>
                             <xsl:value-of select="$root/*[contains(@class, ' map/map ')]/@title"/>
-                        </fo:inline>
+                        </span>
                     </xsl:when>
                     <xsl:otherwise>
                         <span/>
@@ -302,7 +302,7 @@ E-mail : info@antennahouse.com
             <xsl:otherwise>
                 <span>
                     <xsl:value-of select="'&lt; Dummy Book Title &gt;'"/>
-                </fo:inline>
+                </span>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>

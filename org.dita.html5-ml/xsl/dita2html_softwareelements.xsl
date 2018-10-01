@@ -32,7 +32,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -55,7 +55,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -74,7 +74,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
 
@@ -94,7 +94,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -113,7 +113,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -132,7 +132,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -151,7 +151,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -170,7 +170,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
 </xsl:stylesheet>

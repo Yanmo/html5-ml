@@ -355,7 +355,7 @@ E-mail : info@antennahouse.com
                     </xsl:call-template>
                 </xsl:otherwise>
             </xsl:choose>
-        </fo:block>
+        </div>
 
         <xsl:apply-templates select="child::*[contains(@class,' map/topicref ')]" mode="PROCESS_BACKMATTER"/>
 
@@ -483,7 +483,7 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates select="child::*[contains(@class, ' topic/topic ')]" mode="OUTPUT_BACKMATTER">
                 <xsl:with-param name="prmTitleMode"  select="$prmTitleMode"/>
             </xsl:apply-templates>
-        </fo:block>
+        </div>
     </xsl:template>
 
 </xsl:stylesheet>

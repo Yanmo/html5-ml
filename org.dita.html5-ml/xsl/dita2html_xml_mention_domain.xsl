@@ -39,7 +39,7 @@
             <xsl:call-template name="getVarValueAsText">
                 <xsl:with-param name="prmVarName" select="'NumCharRef_Suffix'"/>
             </xsl:call-template>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xml-d/numcharref ')]" priority="6" mode="TEXT_ONLY">
@@ -74,13 +74,13 @@
                 <xsl:call-template name="getVarValueAsText">
                     <xsl:with-param name="prmVarName" select="'ParameterEntity_Prefix'"/>
                 </xsl:call-template>
-            </fo:inline>
+            </span>
             <span>
                 <xsl:call-template name="getAttributeSet">
                     <xsl:with-param name="prmAttrSetName" select="'atsParameterEntityBody'"/>
                 </xsl:call-template>
                 <xsl:apply-templates/>
-            </fo:inline>
+            </span>
             <span>
                 <xsl:call-template name="getAttributeSet">
                     <xsl:with-param name="prmAttrSetName" select="'atsParameterEntitySuffix'"/>
@@ -88,8 +88,8 @@
                 <xsl:call-template name="getVarValueAsText">
                     <xsl:with-param name="prmVarName" select="'ParameterEntity_Suffix'"/>
                 </xsl:call-template>
-            </fo:inline>
-        </fo:inline>
+            </span>
+        </span>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xml-d/parameterentity ')]" priority="6" mode="TEXT_ONLY">
@@ -124,13 +124,13 @@
                 <xsl:call-template name="getVarValueAsText">
                     <xsl:with-param name="prmVarName" select="'TextEntity_Prefix'"/>
                 </xsl:call-template>
-            </fo:inline>
+            </span>
             <span>
                 <xsl:call-template name="getAttributeSet">
                     <xsl:with-param name="prmAttrSetName" select="'atsTextEntityBody'"/>
                 </xsl:call-template>
                 <xsl:apply-templates/>
-            </fo:inline>
+            </span>
             <span>
                 <xsl:call-template name="getAttributeSet">
                     <xsl:with-param name="prmAttrSetName" select="'atsTextEntitySuffix'"/>
@@ -138,8 +138,8 @@
                 <xsl:call-template name="getVarValueAsText">
                     <xsl:with-param name="prmVarName" select="'TextEntity_Suffix'"/>
                 </xsl:call-template>
-            </fo:inline>
-        </fo:inline>
+            </span>
+        </span>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xml-d/textentity ')]" priority="6" mode="TEXT_ONLY">
@@ -174,14 +174,14 @@
                 <xsl:call-template name="getVarValueAsText">
                     <xsl:with-param name="prmVarName" select="'XmlAtt_Prefix'"/>
                 </xsl:call-template>
-            </fo:inline>
+            </span>
             <span>
                 <xsl:call-template name="getAttributeSet">
                     <xsl:with-param name="prmAttrSetName" select="'atsXmlAttBody'"/>
                 </xsl:call-template>
                 <xsl:apply-templates/>
-            </fo:inline>
-        </fo:inline>
+            </span>
+        </span>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xml-d/xmlatt ')]" priority="6" mode="TEXT_ONLY">
@@ -213,13 +213,13 @@
                 <xsl:call-template name="getVarValueAsText">
                     <xsl:with-param name="prmVarName" select="'XmlElement_Prefix'"/>
                 </xsl:call-template>
-            </fo:inline>
+            </span>
             <span>
                 <xsl:call-template name="getAttributeSet">
                     <xsl:with-param name="prmAttrSetName" select="'atsXmlElementBody'"/>
                 </xsl:call-template>
                 <xsl:apply-templates/>
-            </fo:inline>
+            </span>
             <span>
                 <xsl:call-template name="getAttributeSet">
                     <xsl:with-param name="prmAttrSetName" select="'atsXmlElementSuffix'"/>
@@ -227,8 +227,8 @@
                 <xsl:call-template name="getVarValueAsText">
                     <xsl:with-param name="prmVarName" select="'XmlElement_Suffix'"/>
                 </xsl:call-template>
-            </fo:inline>
-        </fo:inline>
+            </span>
+        </span>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xml-d/xmlelement ')]" priority="6" mode="TEXT_ONLY">
@@ -257,7 +257,7 @@
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xml-d/xmlnsname ')]" priority="6" mode="TEXT_ONLY">
@@ -280,7 +280,7 @@
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xml-d/xmlpi ')]" priority="6" mode="TEXT_ONLY">

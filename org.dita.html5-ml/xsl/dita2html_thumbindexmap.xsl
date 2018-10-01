@@ -99,7 +99,7 @@ E-mail : info@antennahouse.com
                         <xsl:apply-templates select="$title" mode="GET_CONTENTS">
                             <xsl:with-param name="prmRequiredProperty" tunnel="yes" select="('font-family')"/>
                         </xsl:apply-templates>
-                    </fo:inline>
+                    </span>
                 </xsl:when>
                 <xsl:when test="$topicRef/*[contains(@class,' map/topicmeta ')]/*[contains(@class,' topic/navtitle ')]">
                     <xsl:variable name="navTitle" as="element()" select="$topicRef/*[contains(@class,' map/topicmeta ')]/*[contains(@class,' topic/navtitle ')][1]"/>
@@ -113,7 +113,7 @@ E-mail : info@antennahouse.com
                         <xsl:apply-templates select="$navTitle" mode="GET_CONTENTS">
                             <xsl:with-param name="prmRequiredProperty" tunnel="yes" select="('font-family')"/>
                         </xsl:apply-templates>
-                    </fo:inline>
+                    </span>
                 </xsl:when>
                 <xsl:otherwise>
                     <span>
@@ -124,7 +124,7 @@ E-mail : info@antennahouse.com
                             <xsl:with-param name="prmRequiredProperty" tunnel="yes" select="('font-family')"/>
                         </xsl:call-template>
                         <xsl:value-of select="@navtitle"/>
-                    </fo:inline>
+                    </span>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>

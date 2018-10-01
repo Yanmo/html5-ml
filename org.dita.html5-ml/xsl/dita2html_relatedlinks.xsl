@@ -66,14 +66,14 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmVarName" select="'Relatedlink_Title'"/>
                     <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
                 </xsl:call-template>
-            </fo:inline>
+            </span>
             <fo:leader>
                 <xsl:call-template name="getAttributeSetWithLang">
                     <xsl:with-param name="prmAttrSetName" select="'atsRelatedLinkLeader2'"/>
                     <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
                 </xsl:call-template>
             </fo:leader>
-        </fo:block>
+        </div>
 
         <!-- process link -->
         <xsl:call-template name="processLink">
@@ -92,7 +92,7 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
                 </xsl:call-template>
             </fo:leader>
-        </fo:block>
+        </div>
     </xsl:template>
 
 
@@ -155,8 +155,8 @@ E-mail : info@antennahouse.com
                             </xsl:call-template>
                         </xsl:otherwise>
                     </xsl:choose>
-                </fo:inline>
-            </fo:block>
+                </span>
+            </div>
         </xsl:for-each>
     </xsl:template>
 
@@ -177,7 +177,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmTopicRef" select="$prmTopicRef"/>
                 <xsl:with-param name="prmNeedId"   select="$prmNeedId"/>
             </xsl:apply-templates>
-        </fo:inline>
+        </span>
     </xsl:template-->
 
     <xsl:template match="*[contains(@class, ' map/linktext ')] | *[contains(@class, ' topic/linktext ')]">
@@ -188,7 +188,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:apply-templates>
             </xsl:apply-templates>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -253,7 +253,7 @@ E-mail : info@antennahouse.com
                             </xsl:call-template>
                         </xsl:attribute>
                         <xsl:value-of select="$titlePrefix"/>
-                    </fo:inline>
+                    </span>
                     <xsl:text>&#x2002;</xsl:text>
                     <xsl:copy-of select="$titleContent"/>
                     <xsl:call-template name="getVarValueWithLang">

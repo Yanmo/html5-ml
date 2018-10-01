@@ -3042,7 +3042,7 @@ URL : http://www.antennahouse.com/
     <formatting-objects>
         
         <formatting-object name="foColSpanDummyBlock">
-            <div span="all" line-height="0mm">&#xA0;</fo:block>
+            <div span="all" line-height="0mm">&#xA0;</div>
         </formatting-object>
 
     </formatting-objects>

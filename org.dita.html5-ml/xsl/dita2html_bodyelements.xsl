@@ -55,7 +55,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -80,7 +80,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -105,7 +105,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -185,7 +185,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmAttrSetName" select="'atsOlLabel'"/>
                     </xsl:call-template>
                     <xsl:number format="{$prmNumberFormat}" value="count(preceding-sibling::*[contains(@class,' topic/li ')][not(contains(@class,' task/stepsection '))]) + 1"/>
-                </fo:block>
+                </div>
             </fo:list-item-label>
             <fo:list-item-body start-indent="body-start()">
                 <div>
@@ -193,7 +193,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmAttrSetName" select="'atsP'"/>
                     </xsl:call-template>
                     <xsl:apply-templates/>
-                </fo:block>
+                </div>
             </fo:list-item-body>
         </fo:list-item>
     </xsl:template>
@@ -299,7 +299,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmAttrSetName" select="'atsUlLabel'"/>
                     </xsl:call-template>
                     <xsl:value-of select="$ulLabelChar"/>
-                </fo:block>
+                </div>
             </fo:list-item-label>
             <fo:list-item-body start-indent="body-start()">
                 <div>
@@ -307,7 +307,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmAttrSetName" select="'atsP'"/>
                     </xsl:call-template>
                     <xsl:apply-templates/>
-                </fo:block>
+                </div>
             </fo:list-item-body>
         </fo:list-item>
     </xsl:template>
@@ -376,12 +376,12 @@ E-mail : info@antennahouse.com
             <fo:list-item-label end-indent="label-end()">
                 <div>
                     <span/>
-                </fo:block>
+                </div>
             </fo:list-item-label>
             <fo:list-item-body start-indent="body-start()">
                 <div>
                     <xsl:apply-templates/>
-                </fo:block>
+                </div>
             </fo:list-item-body>
         </fo:list-item>
     </xsl:template>
@@ -415,7 +415,7 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmElement"  select="."/>
                 </xsl:call-template>
             </xsl:if>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/dl ')][not($pFormatDlAsBlock)]">
@@ -506,7 +506,7 @@ E-mail : info@antennahouse.com
                 </xsl:if>
                 <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                 <xsl:apply-templates/>
-            </fo:block>
+            </div>
         </fo:table-cell>
     </xsl:template>
 
@@ -545,7 +545,7 @@ E-mail : info@antennahouse.com
                 </xsl:if>
                 <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                 <xsl:apply-templates/>
-            </fo:block>
+            </div>
         </fo:table-cell>
     </xsl:template>
 
@@ -567,7 +567,7 @@ E-mail : info@antennahouse.com
             <xsl:apply-templates>
                 <xsl:with-param name="prmDoCompact" select="$prmDoCompact"/>
             </xsl:apply-templates>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/dlentry ')][not($pFormatDlAsBlock)]">
@@ -621,7 +621,7 @@ E-mail : info@antennahouse.com
                     select="ahf:getPropertyRatio($dlCompactAttrValBlock,$dlCompactRatioBlockDt)"/>
             </xsl:if>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/dt ')][not($pFormatDlAsBlock)]">
@@ -661,7 +661,7 @@ E-mail : info@antennahouse.com
                     </xsl:call-template>
                 </xsl:if>
                 <xsl:apply-templates/>
-            </fo:block>
+            </div>
         </fo:table-cell>
     </xsl:template>
 
@@ -703,7 +703,7 @@ E-mail : info@antennahouse.com
             </xsl:if>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/dd ')][not($pFormatDlAsBlock)]">
@@ -737,7 +737,7 @@ E-mail : info@antennahouse.com
                         select="ahf:getPropertyRatio($dlCompactAttrVal,$dlCompactRatio)"/>
                 </xsl:if>
                 <xsl:apply-templates/>
-            </fo:block>
+            </div>
         </fo:table-cell>
     </xsl:template>
 
@@ -763,7 +763,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -794,13 +794,13 @@ E-mail : info@antennahouse.com
                         <xsl:call-template name="getVarValueWithLang">
                             <xsl:with-param name="prmVarName" select="'Level5_Label_Char'"/>
                         </xsl:call-template>
-                    </fo:block>
+                    </div>
                 </fo:list-item-label>
                 <fo:list-item-body start-indent="body-start()">
                     <div>
                         <xsl:call-template name="getAttributeSetWithLang"/>
                         <xsl:apply-templates/>
-                    </fo:block>
+                    </div>
                 </fo:list-item-body>
             </fo:list-item>
         </fo:list-block>
@@ -841,7 +841,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
 
@@ -871,7 +871,7 @@ E-mail : info@antennahouse.com
                         <xsl:call-template name="getVarValueWithLang">
                             <xsl:with-param name="prmVarName" select="'Level5_Label_Char'"/>
                         </xsl:call-template>
-                    </fo:block>
+                    </div>
                 </fo:list-item-label>
                 <fo:list-item-body start-indent="body-start()">
                     <div>
@@ -879,7 +879,7 @@ E-mail : info@antennahouse.com
                             <xsl:with-param name="prmAttrSetName" select="'atsHeader5Body'"/>
                         </xsl:call-template>
                         <xsl:apply-templates/>
-                    </fo:block>
+                    </div>
                 </fo:list-item-body>
             </fo:list-item>
         </fo:list-block>
@@ -910,7 +910,7 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates select="*[contains(@class,' topic/desc ')]"/>
             <xsl:apply-templates select="*[not(contains(@class,' topic/title '))][not(contains(@class,' topic/desc '))]"/>
-        </fo:block>
+        </div>
         <!-- process title last -->
         <xsl:apply-templates select="*[contains(@class,' topic/title ')]"/>
     </xsl:template>
@@ -926,7 +926,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!-- fig/title -->
@@ -948,7 +948,7 @@ E-mail : info@antennahouse.com
             <xsl:value-of select="$figTitlePrefix"/>
             <xsl:text>&#x00A0;</xsl:text>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -976,7 +976,7 @@ E-mail : info@antennahouse.com
             </xsl:if>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates select="*[not(contains(@class,' topic/title '))]"/>
-        </fo:block>
+        </div>
         <!-- process title last -->
         <xsl:apply-templates select="*[contains(@class,' topic/title ')]"/>
     </xsl:template>
@@ -998,7 +998,7 @@ E-mail : info@antennahouse.com
             </xsl:if>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -1020,15 +1020,15 @@ E-mail : info@antennahouse.com
                                 <xsl:copy-of select="ahf:getImageBlockAttr(.)"/>
                                 <xsl:call-template name="ahf:processImage"/>
                                 <xsl:apply-templates/>
-                            </fo:block>
-                        </fo:block-container>
+                            </div>
+                        </div>
                     </xsl:when>
                     <xsl:otherwise>
                         <div>
                             <xsl:copy-of select="ahf:getImageBlockAttr(.)"/>
                             <xsl:call-template name="ahf:processImage"/>
                             <xsl:apply-templates/>
-                        </fo:block>
+                        </div>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:when>
@@ -1245,7 +1245,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -1268,7 +1268,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -1299,7 +1299,7 @@ E-mail : info@antennahouse.com
             <xsl:value-of select="$citePrefix"/>
             <xsl:apply-templates/>
             <xsl:value-of select="$citeSuffix"/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -1408,9 +1408,9 @@ E-mail : info@antennahouse.com
                             </xsl:choose>
                         </xsl:otherwise>
                     </xsl:choose>
-                </fo:block>
+                </div>
             </xsl:if>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -1451,7 +1451,7 @@ E-mail : info@antennahouse.com
             <xsl:value-of select="$qPrefix"/>
             <xsl:apply-templates/>
             <xsl:value-of select="$qSuffix"/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -1520,9 +1520,9 @@ E-mail : info@antennahouse.com
                     <xsl:value-of select="@disposition"/>
                 </xsl:if>
                 <xsl:value-of select="$draftCommentTitleSuffix"/>
-            </fo:block>
+            </div>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -1723,7 +1723,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -1792,8 +1792,8 @@ E-mail : info@antennahouse.com
                         <xsl:value-of select="$tmSymbolService"/>
                     </xsl:when>
                 </xsl:choose>
-            </fo:inline>
-        </fo:inline>
+            </span>
+        </span>
 
     </xsl:template>
 

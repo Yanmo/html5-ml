@@ -40,9 +40,9 @@ E-mail : info@antennahouse.com
                     <xsl:value-of select="@remap"/>
                 </xsl:if>
                 <xsl:value-of select="$requiredCleanupTitleSuffix"/>
-            </fo:block>
+            </div>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
 </xsl:stylesheet>

@@ -164,7 +164,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmNeedId"   tunnel="yes" select="false()"/>
                 <xsl:with-param name="prmGetContent" tunnel="yes" select="true()"/>
             </xsl:apply-templates>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -180,19 +180,19 @@ E-mail : info@antennahouse.com
                 <xsl:copy-of select="ahf:getAttributeSet('atsBlankPageInlineContainerBlock')"/>
                 <div>
                     <xsl:copy-of select="ahf:getAttributeSet('atsBlankPageInlineBlock')"/>
-                </fo:block>
+                </div>
             </fo:inline-container>
             <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsBlankPageInlineTextBlock')"/>
                 <xsl:value-of select="$cBlankPageTitle"/>
-            </fo:inline>
+            </span>
             <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsBlankPageInlineContainerBlock')"/>
                 <div>
                     <xsl:copy-of select="ahf:getAttributeSet('atsBlankPageInlineBlock')"/>
-                </fo:block>
+                </div>
             </fo:inline-container>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -241,8 +241,8 @@ E-mail : info@antennahouse.com
                     <div>
                         <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexColor')"/>
                         <xsl:value-of select="@label"/>
-                    </fo:block>
-                </fo:block-container>
+                    </div>
+                </div>
             </fo:inline-container>
             <span-container>
                 <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexPaddingInlineContainer2')"/>
@@ -253,10 +253,10 @@ E-mail : info@antennahouse.com
                     <span>
                         <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexTitleInline')"/>
                         <xsl:copy-of select="title/node()"/>
-                    </fo:inline>
-                </fo:block>
+                    </span>
+                </div>
             </fo:inline-container>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--

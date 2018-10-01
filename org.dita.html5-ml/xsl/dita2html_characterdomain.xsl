@@ -35,7 +35,7 @@
                     <xsl:call-template name="getVarValueWithLang">
                         <xsl:with-param name="prmVarName" select="'cCheckYes'"/>
                     </xsl:call-template>
-                </fo:inline>
+                </span>
             </xsl:when>
             <xsl:when test="string($check/@value) eq 'no'">
                 <span>
@@ -46,7 +46,7 @@
                     <xsl:call-template name="getVarValueWithLang">
                         <xsl:with-param name="prmVarName" select="'cCheckNo'"/>
                     </xsl:call-template>
-                </fo:inline>
+                </span>
             </xsl:when>
             <xsl:when test="string($check/@value) eq 'dc'">
                 <span>
@@ -57,7 +57,7 @@
                     <xsl:call-template name="getVarValueWithLang">
                         <xsl:with-param name="prmVarName" select="'cCheckDc'"/>
                     </xsl:call-template>
-                </fo:inline>
+                </span>
             </xsl:when>
             <xsl:otherwise>
             </xsl:otherwise>
@@ -79,13 +79,13 @@
                 <div>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                     <xsl:text>&#xA0;</xsl:text>
-                </fo:block>
+                </div>
             </xsl:when>
             <xsl:otherwise>
                 <!-- Single br -->
                 <div>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-                </fo:block>
+                </div>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>

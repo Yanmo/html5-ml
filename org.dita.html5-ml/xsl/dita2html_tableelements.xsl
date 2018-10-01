@@ -31,7 +31,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmAttrSetName" select="'atsBlockContainerForLandscapeTable'"/>
             </xsl:call-template>
             <xsl:next-match/>
-        </fo:block-container>
+        </div>
     </xsl:template>
 
     <!--
@@ -48,7 +48,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmAttrSetName" select="'atsBlockContainerForPgWideTable'"/>
             </xsl:call-template>
             <xsl:next-match/>
-        </fo:block-container>
+        </div>
     </xsl:template>
 
     <!--
@@ -118,7 +118,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -148,7 +148,7 @@ E-mail : info@antennahouse.com
             <xsl:value-of select="$tableTitlePrefix"/>
             <xsl:text>&#x00A0;</xsl:text>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -594,13 +594,13 @@ E-mail : info@antennahouse.com
                         <xsl:attribute name="width" select="concat(string($prmRowHeight),'em')"/>
                         <div>
                             <xsl:apply-templates/>
-                        </fo:block>
-                    </fo:block-container>
+                        </div>
+                    </div>
                 </xsl:when>
                 <xsl:otherwise>
                     <div>
                         <xsl:apply-templates/>
-                    </fo:block>
+                    </div>
                 </xsl:otherwise>
             </xsl:choose>
         </fo:table-cell>
@@ -868,7 +868,7 @@ E-mail : info@antennahouse.com
             <div>
                 <xsl:call-template name="ahf:getUnivAtts"/>
                 <xsl:apply-templates/>
-            </fo:block>
+            </div>
         </fo:table-cell>
     </xsl:template>
 
@@ -896,7 +896,7 @@ E-mail : info@antennahouse.com
             <div>
                 <xsl:call-template name="ahf:getUnivAtts"/>
                 <xsl:apply-templates/>
-            </fo:block>
+            </div>
         </fo:table-cell>
     </xsl:template>
 

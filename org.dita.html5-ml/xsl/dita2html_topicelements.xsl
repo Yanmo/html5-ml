@@ -80,7 +80,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -117,7 +117,7 @@ E-mail : info@antennahouse.com
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                     <xsl:apply-templates/>
-                </fo:block>
+                </div>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -148,7 +148,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmMakeComplementEnd" tunnel="yes" select="true()"/>
                 <xsl:with-param name="prmRangeElem" tunnel="yes" select="$body"/>
             </xsl:apply-templates>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -162,7 +162,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--

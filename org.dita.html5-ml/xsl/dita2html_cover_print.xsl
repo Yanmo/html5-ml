@@ -69,7 +69,7 @@ E-mail : info@antennahouse.com
                     </xsl:call-template>
                     <xsl:copy-of select="ahf:getAttributeSetWithPageVariables('atsCoverBlockContainer')"/>
                     <xsl:apply-templates select="$prmTopicContent/*[contains(@class,'topic/body ')]"/>
-                </fo:block-container>
+                </div>
             </fo:flow>
         </psmi:page-sequence>
     </xsl:template>
@@ -108,7 +108,7 @@ E-mail : info@antennahouse.com
                 <div>
                     <xsl:copy-of select="ahf:getFoPropertyWithPageVariables(.)"/>
                     <xsl:apply-templates/>
-                </fo:block-container>
+                </div>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:next-match/>
@@ -133,7 +133,7 @@ E-mail : info@antennahouse.com
                     <xsl:copy-of select="$foProperty"/>
                     <xsl:copy-of select="ahf:getFoPropertyWithPageVariables($bgImageElem)[name() ne 'href']"/>
                     <xsl:attribute name="background-image" select="$bgImageHref"/>
-                </fo:block-container>
+                </div>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:next-match/>
@@ -154,7 +154,7 @@ E-mail : info@antennahouse.com
                 <div>
                     <xsl:copy-of select="ahf:getFoPropertyWithPageVariables(.)"/>
                     <xsl:apply-templates/>
-                </fo:block>
+                </div>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:next-match/>
@@ -204,8 +204,8 @@ E-mail : info@antennahouse.com
                                 <!-- Image processing -->
                                 <xsl:call-template name="ahf:processImage"/>
                                 <xsl:apply-templates/>
-                            </fo:block>
-                        </fo:block-container>
+                            </div>
+                        </div>
                     </xsl:when>
                     <xsl:otherwise>
                         <div>
@@ -213,7 +213,7 @@ E-mail : info@antennahouse.com
                             <!-- Image processing -->
                             <xsl:call-template name="ahf:processImage"/>
                             <xsl:apply-templates/>
-                        </fo:block>
+                        </div>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:when>
@@ -224,7 +224,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmImage" select="."/>
                     </xsl:call-template>
                     <xsl:apply-templates/>
-                </fo:inline>
+                </span>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -293,7 +293,7 @@ E-mail : info@antennahouse.com
                 <div>
                     <xsl:copy-of select="ahf:getFoPropertyWithPageVariables(.)"/>
                     <xsl:apply-templates/>
-                </fo:block>
+                </div>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:next-match/>
@@ -331,7 +331,7 @@ E-mail : info@antennahouse.com
                 <div>
                     <xsl:copy-of select="ahf:getFoPropertyWithPageVariables(.)"/>
                     <xsl:apply-templates/>
-                </fo:block>
+                </div>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:next-match/>

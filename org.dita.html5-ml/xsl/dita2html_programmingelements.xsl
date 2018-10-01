@@ -32,7 +32,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -55,7 +55,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -74,7 +74,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -93,7 +93,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -112,7 +112,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -178,7 +178,7 @@ E-mail : info@antennahouse.com
             </xsl:if>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -197,7 +197,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -216,7 +216,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
     <!--
@@ -230,7 +230,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -262,7 +262,7 @@ E-mail : info@antennahouse.com
             <xsl:if test="descendant::*[contains(@class,' pr-d/synnote ')]">
                 <xsl:call-template name="outputSynNote"/>
             </xsl:if>
-        </fo:block>
+        </div>
         <!-- process title last -->
         <xsl:apply-templates select="*[contains(@class,' topic/title ')]"/>
     </xsl:template>
@@ -308,7 +308,7 @@ E-mail : info@antennahouse.com
                                                 from="*[contains(@class,' pr-d/syntaxdiagram')]"/>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        </fo:block>
+                        </div>
                     </fo:list-item-label>
                     <fo:list-item-body start-indent="body-start()">
                         <div>
@@ -321,7 +321,7 @@ E-mail : info@antennahouse.com
                             </xsl:if>
                             <xsl:copy-of select="ahf:getFoStyleAndProperty($synnote)"/>
                             <xsl:apply-templates/>
-                        </fo:block>
+                        </div>
                     </fo:list-item-body>
                 </fo:list-item>
             </xsl:for-each>
@@ -363,7 +363,7 @@ E-mail : info@antennahouse.com
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                     <xsl:call-template name="processGroup"/>
-                </fo:block>
+                </div>
             </xsl:when>
             <xsl:otherwise>
                 <fo:wrapper>
@@ -535,7 +535,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'Sd_Fragment_Ref_Suffix'"/>
             </xsl:call-template>
-        </fo:inline>
+        </span>
         <xsl:if test="$isOptional">
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'Sd_Optional_Suffix'"/>
@@ -682,7 +682,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
         <xsl:if test="$isOptional">
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'Sd_Optional_Suffix'"/>
@@ -721,7 +721,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
         <xsl:if test="$isOptional">
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'Sd_Optional_Suffix'"/>
@@ -759,7 +759,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
         <xsl:if test="$isOptional">
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'Sd_Optional_Suffix'"/>
@@ -797,7 +797,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
         <xsl:if test="$isOptional">
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'Sd_Optional_Suffix'"/>
@@ -835,7 +835,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
         <xsl:if test="$isOptional">
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'Sd_Optional_Suffix'"/>
@@ -856,7 +856,7 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
             <xsl:text> </xsl:text>
-        </fo:inline>
+        </span>
     </xsl:template>
 
 </xsl:stylesheet>

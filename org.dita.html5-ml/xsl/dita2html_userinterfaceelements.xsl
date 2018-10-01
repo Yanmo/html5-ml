@@ -36,7 +36,7 @@ E-mail : info@antennahouse.com
                     <xsl:call-template name="getVarValueWithLangAsText">
                         <xsl:with-param name="prmVarName" select="'MenuCascade_Symbol'"/>
                     </xsl:call-template>
-                </fo:inline>
+                </span>
             </xsl:if>
         </xsl:if>
         <!-- Add prefix and suffix for uicontrol -->
@@ -49,11 +49,11 @@ E-mail : info@antennahouse.com
                 <xsl:call-template name="ahf:getUnivAtts"/>
                 <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                 <xsl:apply-templates/>
-            </fo:inline>
+            </span>
             <xsl:call-template name="getVarValueWithLangAsText">
                 <xsl:with-param name="prmVarName" select="'UiControl_Suffix'"/>
             </xsl:call-template>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -72,7 +72,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
 
@@ -92,7 +92,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -111,7 +111,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:inline>
+        </span>
     </xsl:template>
 
     <!--
@@ -134,7 +134,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:block>
+        </div>
     </xsl:template>
 
 </xsl:stylesheet>
