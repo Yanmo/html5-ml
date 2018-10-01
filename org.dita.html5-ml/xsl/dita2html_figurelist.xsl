@@ -252,15 +252,15 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
             <li>
                 <xsl:copy-of select="ahf:getAttributeSet('atsFigListItem')"/>
-                <fo:list-item-label>
+                <span class="list-label">
                     <xsl:copy-of select="ahf:getAttributeSet('atsFigListLabel')"/>
                     <div>
                         <a internal-destination="{$prmId}">
                             <xsl:copy-of select="$prmTitle[1]"/>
                         </a>
                     </div>
-                </fo:list-item-label>
-                <fo:list-item-body>
+                </span>
+                <span class="list-body">
                     <xsl:copy-of select="ahf:getAttributeSet('atsFigListBody')"/>
                     <div>
                         <a internal-destination="{$prmId}">
@@ -278,7 +278,7 @@ E-mail : info@antennahouse.com
                             <span ref-id="{$prmId}" />
                         </a>
                     </div>
-                </fo:list-item-body>
+                </span>
             </li>
         </ul>
     </xsl:template>

@@ -105,13 +105,13 @@ E-mail : info@antennahouse.com
                     <xsl:if test="position() eq 1">
                         <xsl:attribute name="space-before" select="'0mm'"/>
                     </xsl:if>
-                    <fo:list-item-label end-indent="label-end()">
+                    <span class="list-label" end-indent="label-end()">
                         <div>
                             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteLabel')"/>
                             <xsl:value-of select="ahf:getFootnotePrefix($fn,$prmTopicRef)"/>
                         </div>
-                    </fo:list-item-label>
-                    <fo:list-item-body start-indent="body-start()">
+                    </span>
+                    <span class="list-body" start-indent="body-start()">
                         <div>
                             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteBody')"/>
                             <xsl:copy-of select="ahf:getUnivAtts($fn,$prmTopicRef,true())"/>
@@ -124,7 +124,7 @@ E-mail : info@antennahouse.com
                                 <xsl:with-param name="prmNeedId"   select="true()"/>
                             </xsl:apply-templates>
                         </div>
-                    </fo:list-item-body>
+                    </span>
                 </li>
             </xsl:for-each>
         </ul>
@@ -204,13 +204,13 @@ E-mail : info@antennahouse.com
                     <xsl:if test="position() eq 1">
                         <xsl:attribute name="space-before" select="'0mm'"/>
                     </xsl:if>
-                    <fo:list-item-label end-indent="label-end()">
+                    <span class="list-label" end-indent="label-end()">
                         <div>
                             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteLabel')"/>
                             <xsl:value-of select="ahf:getFootnotePrefix2($fn,$prmElement)"/>
                         </div>
-                    </fo:list-item-label>
-                    <fo:list-item-body start-indent="body-start()">
+                    </span>
+                    <span class="list-body" start-indent="body-start()">
                         <div>
                             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteBody')"/>
                             <xsl:call-template name="ahf:getUnivAtts">
@@ -226,7 +226,7 @@ E-mail : info@antennahouse.com
                             <xsl:copy-of select="ahf:getFoStyleAndProperty($fn)"/>
                             <xsl:apply-templates/>
                         </div>
-                    </fo:list-item-body>
+                    </span>
                 </li>
             </xsl:for-each>
         </ul>

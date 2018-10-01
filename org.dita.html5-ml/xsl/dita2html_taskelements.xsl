@@ -95,15 +95,15 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:list-item-label end-indent="label-end()">
+            <span class="list-label" end-indent="label-end()">
                 <div>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsStepLabel'"/>
                     </xsl:call-template>
                     <xsl:number format="{$prmNumberFormat}" value="count(preceding-sibling::*[contains(@class,' topic/li ')][not(contains(@class,' task/stepsection '))]) + 1"/>
                 </div>
-            </fo:list-item-label>
-            <fo:list-item-body start-indent="body-start()">
+            </span>
+            <span class="list-body" start-indent="body-start()">
                 <xsl:call-template name="getAttributeSetWithLang">
                     <xsl:with-param name="prmAttrSetName" select="'atsStepBody'"/>
                 </xsl:call-template>
@@ -124,7 +124,7 @@ E-mail : info@antennahouse.com
                     </xsl:call-template>
                     <xsl:apply-templates/>
                 </div>
-            </fo:list-item-body>
+            </span>
         </li>
     </xsl:template>
 
@@ -150,15 +150,15 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:list-item-label>
+            <span class="list-label">
                 <div/>
-            </fo:list-item-label>
-            <fo:list-item-body start-indent="inherited-property-value(start-indent)">
+            </span>
+            <span class="list-body" start-indent="inherited-property-value(start-indent)">
                 <div>
                     <xsl:copy-of select="ahf:getAttributeSet('atsP')"/>
                     <xsl:apply-templates/>
                 </div>
-            </fo:list-item-body>
+            </span>
         </li>
     </xsl:template>
 

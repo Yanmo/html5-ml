@@ -492,7 +492,7 @@ E-mail : info@antennahouse.com
                             <xsl:with-param name="prmAttrSetName" select="'atsHeader4ListItem'"/>
                             <xsl:with-param name="prmElem" select="$titleElement"/>
                         </xsl:call-template>
-                        <fo:list-item-label end-indent="label-end()">
+                        <span class="list-label" end-indent="label-end()">
                             <div>
                                 <xsl:call-template name="getAttributeSetWithLang">
                                     <xsl:with-param name="prmAttrSetName" select="'atsHeader4Label'"/>
@@ -513,8 +513,8 @@ E-mail : info@antennahouse.com
                                     </xsl:call-template>
                                 </span>
                             </div>
-                        </fo:list-item-label>
-                        <fo:list-item-body start-indent="body-start()">
+                        </span>
+                        <span class="list-body" start-indent="body-start()">
                             <div>
                                 <xsl:call-template name="getAttributeSetWithLang">
                                     <xsl:with-param name="prmAttrSetName" select="'atsHeader4Body'"/>
@@ -526,7 +526,7 @@ E-mail : info@antennahouse.com
                                     <xsl:with-param name="prmTopicTitleStyle" tunnel="yes" select="'atsHeader4Body'"/>
                                 </xsl:apply-templates>
                             </div>
-                        </fo:list-item-body>
+                        </span>
                     </li>
                 </ul>
             </xsl:when>
@@ -542,7 +542,7 @@ E-mail : info@antennahouse.com
                             <xsl:with-param name="prmAttrSetName" select="'atsHeader4ListItem'"/>
                             <xsl:with-param name="prmElem" select="$prmTopicRef"/>
                         </xsl:call-template>
-                        <fo:list-item-label end-indent="label-end()">
+                        <span class="list-label" end-indent="label-end()">
                             <div>
                                 <xsl:call-template name="getAttributeSetWithLang">
                                     <xsl:with-param name="prmAttrSetName" select="'atsHeader4Label'"/>
@@ -563,8 +563,8 @@ E-mail : info@antennahouse.com
                                     </xsl:call-template>
                                 </span>
                             </div>
-                        </fo:list-item-label>
-                        <fo:list-item-body start-indent="body-start()">
+                        </span>
+                        <span class="list-body" start-indent="body-start()">
                             <div>
                                 <xsl:call-template name="getAttributeSetWithLang">
                                     <xsl:with-param name="prmAttrSetName" select="'atsHeader4Body'"/>
@@ -582,7 +582,7 @@ E-mail : info@antennahouse.com
                                     </xsl:when>
                                 </xsl:choose>
                             </div>
-                        </fo:list-item-body>
+                        </span>
                     </li>
                 </ul>
             </xsl:otherwise>
@@ -615,7 +615,7 @@ E-mail : info@antennahouse.com
                             <xsl:with-param name="prmAttrSetName" select="'atsHeader5ListItem'"/>
                             <xsl:with-param name="prmElem" select="$titleElement"/>
                         </xsl:call-template>
-                        <fo:list-item-label end-indent="label-end()">
+                        <span class="list-label" end-indent="label-end()">
                             <div>
                                 <xsl:call-template name="getAttributeSetWithLang">
                                     <xsl:with-param name="prmAttrSetName" select="'atsHeader5Label'"/>
@@ -636,8 +636,8 @@ E-mail : info@antennahouse.com
                                     </xsl:call-template>
                                 </span>
                             </div>
-                        </fo:list-item-label>
-                        <fo:list-item-body start-indent="body-start()">
+                        </span>
+                        <span class="list-body" start-indent="body-start()">
                             <div>
                                 <xsl:call-template name="getAttributeSetWithLang">
                                     <xsl:with-param name="prmAttrSetName" select="'atsHeader5Body'"/>
@@ -649,7 +649,7 @@ E-mail : info@antennahouse.com
                                     <xsl:with-param name="prmTopicTitleStyle" tunnel="yes" select="'atsHeader5Body'"/>
                                 </xsl:apply-templates>
                             </div>
-                        </fo:list-item-body>
+                        </span>
                     </li>
                 </ul>
             </xsl:when>
@@ -665,7 +665,7 @@ E-mail : info@antennahouse.com
                             <xsl:with-param name="prmAttrSetName" select="'atsHeader5ListItem'"/>
                             <xsl:with-param name="prmElem" select="$prmTopicRef"/>
                         </xsl:call-template>
-                        <fo:list-item-label end-indent="label-end()">
+                        <span class="list-label" end-indent="label-end()">
                             <div>
                                 <xsl:call-template name="getAttributeSetWithLang">
                                     <xsl:with-param name="prmAttrSetName" select="'atsHeader5Label'"/>
@@ -686,8 +686,8 @@ E-mail : info@antennahouse.com
                                     </xsl:call-template>
                                 </span>
                             </div>
-                        </fo:list-item-label>
-                        <fo:list-item-body start-indent="body-start()">
+                        </span>
+                        <span class="list-body" start-indent="body-start()">
                             <div>
                                 <xsl:call-template name="getAttributeSetWithLang">
                                     <xsl:with-param name="prmAttrSetName" select="'atsHeader5Body'"/>
@@ -705,7 +705,7 @@ E-mail : info@antennahouse.com
                                     </xsl:when>
                                 </xsl:choose>
                             </div>
-                        </fo:list-item-body>
+                        </span>
                     </li>
                 </ul>
             </xsl:otherwise>

@@ -289,7 +289,7 @@ E-mail : info@antennahouse.com
                     <xsl:if test="position() eq 1">
                         <xsl:attribute name="space-before" select="'0mm'"/>
                     </xsl:if>
-                    <fo:list-item-label end-indent="label-end()">
+                    <span class="list-label" end-indent="label-end()">
                         <div>
                             <xsl:call-template name="getAttributeSetWithLang">
                                 <xsl:with-param name="prmAttrSetName" select="'atsSynNoteLabel'"/>
@@ -309,8 +309,8 @@ E-mail : info@antennahouse.com
                                 </xsl:otherwise>
                             </xsl:choose>
                         </div>
-                    </fo:list-item-label>
-                    <fo:list-item-body start-indent="body-start()">
+                    </span>
+                    <span class="list-body" start-indent="body-start()">
                         <div>
                             <xsl:call-template name="getAttributeSetWithLang">
                                 <xsl:with-param name="prmAttrSetName" select="'atsSynNoteBody'"/>
@@ -322,7 +322,7 @@ E-mail : info@antennahouse.com
                             <xsl:copy-of select="ahf:getFoStyleAndProperty($synnote)"/>
                             <xsl:apply-templates/>
                         </div>
-                    </fo:list-item-body>
+                    </span>
                 </li>
             </xsl:for-each>
         </ul>

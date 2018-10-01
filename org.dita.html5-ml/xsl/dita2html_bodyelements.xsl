@@ -179,22 +179,22 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:list-item-label end-indent="label-end()">
+            <span class="list-label" end-indent="label-end()">
                 <div>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsOlLabel'"/>
                     </xsl:call-template>
                     <xsl:number format="{$prmNumberFormat}" value="count(preceding-sibling::*[contains(@class,' topic/li ')][not(contains(@class,' task/stepsection '))]) + 1"/>
                 </div>
-            </fo:list-item-label>
-            <fo:list-item-body start-indent="body-start()">
+            </span>
+            <span class="list-body" start-indent="body-start()">
                 <div>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsP'"/>
                     </xsl:call-template>
                     <xsl:apply-templates/>
                 </div>
-            </fo:list-item-body>
+            </span>
         </li>
     </xsl:template>
 
@@ -293,22 +293,22 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:list-item-label end-indent="label-end()">
+            <span class="list-label" end-indent="label-end()">
                 <div>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsUlLabel'"/>
                     </xsl:call-template>
                     <xsl:value-of select="$ulLabelChar"/>
                 </div>
-            </fo:list-item-label>
-            <fo:list-item-body start-indent="body-start()">
+            </span>
+            <span class="list-body" start-indent="body-start()">
                 <div>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsP'"/>
                     </xsl:call-template>
                     <xsl:apply-templates/>
                 </div>
-            </fo:list-item-body>
+            </span>
         </li>
     </xsl:template>
 
@@ -373,16 +373,16 @@ E-mail : info@antennahouse.com
                 </xsl:when>
             </xsl:choose>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:list-item-label end-indent="label-end()">
+            <span class="list-label" end-indent="label-end()">
                 <div>
                     <span/>
                 </div>
-            </fo:list-item-label>
-            <fo:list-item-body start-indent="body-start()">
+            </span>
+            <span class="list-body" start-indent="body-start()">
                 <div>
                     <xsl:apply-templates/>
                 </div>
-            </fo:list-item-body>
+            </span>
         </li>
     </xsl:template>
 
@@ -786,7 +786,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getLocalizationAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <li>
-                <fo:list-item-label end-indent="label-end()">
+                <span class="list-label" end-indent="label-end()">
                     <div>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsHeader5Label'"/>
@@ -795,13 +795,13 @@ E-mail : info@antennahouse.com
                             <xsl:with-param name="prmVarName" select="'Level5_Label_Char'"/>
                         </xsl:call-template>
                     </div>
-                </fo:list-item-label>
-                <fo:list-item-body start-indent="body-start()">
+                </span>
+                <span class="list-body" start-indent="body-start()">
                     <div>
                         <xsl:call-template name="getAttributeSetWithLang"/>
                         <xsl:apply-templates/>
                     </div>
-                </fo:list-item-body>
+                </span>
             </li>
         </ul>
     </xsl:template>
@@ -863,7 +863,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getLocalizationAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <li>
-                <fo:list-item-label end-indent="label-end()">
+                <span class="list-label" end-indent="label-end()">
                     <div>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsHeader5Label'"/>
@@ -872,15 +872,15 @@ E-mail : info@antennahouse.com
                             <xsl:with-param name="prmVarName" select="'Level5_Label_Char'"/>
                         </xsl:call-template>
                     </div>
-                </fo:list-item-label>
-                <fo:list-item-body start-indent="body-start()">
+                </span>
+                <span class="list-body" start-indent="body-start()">
                     <div>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsHeader5Body'"/>
                         </xsl:call-template>
                         <xsl:apply-templates/>
                     </div>
-                </fo:list-item-body>
+                </span>
             </li>
         </ul>
     </xsl:template>
