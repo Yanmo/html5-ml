@@ -487,7 +487,7 @@ E-mail : info@antennahouse.com
                     </xsl:call-template>
                     <xsl:copy-of select="ahf:getIdAtts($titleElement,$prmTopicRef,true())"/>
                     <xsl:copy-of select="ahf:getLocalizationAtts($titleElement)"/>
-                    <fo:list-item>
+                    <li>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsHeader4ListItem'"/>
                             <xsl:with-param name="prmElem" select="$titleElement"/>
@@ -527,7 +527,7 @@ E-mail : info@antennahouse.com
                                 </xsl:apply-templates>
                             </div>
                         </fo:list-item-body>
-                    </fo:list-item>
+                    </li>
                 </ul>
             </xsl:when>
             <xsl:otherwise>
@@ -537,7 +537,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmElem" select="$prmTopicRef"/>
                         <xsl:with-param name="prmDoInherit" select="true()"/>
                     </xsl:call-template>
-                    <fo:list-item>
+                    <li>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsHeader4ListItem'"/>
                             <xsl:with-param name="prmElem" select="$prmTopicRef"/>
@@ -583,7 +583,7 @@ E-mail : info@antennahouse.com
                                 </xsl:choose>
                             </div>
                         </fo:list-item-body>
-                    </fo:list-item>
+                    </li>
                 </ul>
             </xsl:otherwise>
         </xsl:choose>
@@ -610,7 +610,7 @@ E-mail : info@antennahouse.com
                     </xsl:call-template>
                     <xsl:copy-of select="ahf:getIdAtts($titleElement,$prmTopicRef,true())"/>
                     <xsl:copy-of select="ahf:getLocalizationAtts($titleElement)"/>
-                    <fo:list-item>
+                    <li>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsHeader5ListItem'"/>
                             <xsl:with-param name="prmElem" select="$titleElement"/>
@@ -650,7 +650,7 @@ E-mail : info@antennahouse.com
                                 </xsl:apply-templates>
                             </div>
                         </fo:list-item-body>
-                    </fo:list-item>
+                    </li>
                 </ul>
             </xsl:when>
             <xsl:otherwise>
@@ -660,7 +660,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmElem" select="$prmTopicRef"/>
                         <xsl:with-param name="prmDoInherit" select="true()"/>
                     </xsl:call-template>
-                    <fo:list-item>
+                    <li>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsHeader5ListItem'"/>
                             <xsl:with-param name="prmElem" select="$prmTopicRef"/>
@@ -706,7 +706,7 @@ E-mail : info@antennahouse.com
                                 </xsl:choose>
                             </div>
                         </fo:list-item-body>
-                    </fo:list-item>
+                    </li>
                 </ul>
             </xsl:otherwise>
         </xsl:choose>

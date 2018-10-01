@@ -250,7 +250,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmElem" select="$prmTitleElem"/>
                 <xsl:with-param name="prmDoInherit" select="true()"/>
             </xsl:call-template>
-            <fo:list-item>
+            <li>
                 <xsl:copy-of select="ahf:getAttributeSet('atsFigListItem')"/>
                 <fo:list-item-label>
                     <xsl:copy-of select="ahf:getAttributeSet('atsFigListLabel')"/>
@@ -279,7 +279,7 @@ E-mail : info@antennahouse.com
                         </a>
                     </div>
                 </fo:list-item-body>
-            </fo:list-item>
+            </li>
         </ul>
     </xsl:template>
 

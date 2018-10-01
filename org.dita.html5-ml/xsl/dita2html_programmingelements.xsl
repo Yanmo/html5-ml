@@ -282,7 +282,7 @@ E-mail : info@antennahouse.com
             </xsl:call-template>
             <xsl:for-each select="descendant::*[contains(@class, ' pr-d/synnote ')]">
                 <xsl:variable name="synnote" select="."/>
-                <fo:list-item>
+                <li>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsSynNoteLi'"/>
                     </xsl:call-template>
@@ -323,7 +323,7 @@ E-mail : info@antennahouse.com
                             <xsl:apply-templates/>
                         </div>
                     </fo:list-item-body>
-                </fo:list-item>
+                </li>
             </xsl:for-each>
         </ul>
     </xsl:template>

@@ -174,7 +174,7 @@ E-mail : info@antennahouse.com
     <xsl:template name="processOlLi">
         <xsl:param name="prmNumberFormat" required="yes" as="xs:string"/>
 
-        <fo:list-item>
+        <li>
             <!-- Set list-item attribute. -->
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -195,7 +195,7 @@ E-mail : info@antennahouse.com
                     <xsl:apply-templates/>
                 </div>
             </fo:list-item-body>
-        </fo:list-item>
+        </li>
     </xsl:template>
 
     <!--
@@ -289,7 +289,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmVarName" select="'Ul_Label_Char'"/>
             </xsl:call-template>
         </xsl:variable>
-        <fo:list-item>
+        <li>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -309,7 +309,7 @@ E-mail : info@antennahouse.com
                     <xsl:apply-templates/>
                 </div>
             </fo:list-item-body>
-        </fo:list-item>
+        </li>
     </xsl:template>
 
     <!--
@@ -342,7 +342,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' topic/sl ')]/*[contains(@class,' topic/sli ')]">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
 
-        <fo:list-item>
+        <li>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:choose>
@@ -383,7 +383,7 @@ E-mail : info@antennahouse.com
                     <xsl:apply-templates/>
                 </div>
             </fo:list-item-body>
-        </fo:list-item>
+        </li>
     </xsl:template>
 
     <!--
@@ -785,7 +785,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:call-template name="ahf:getLocalizationAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:list-item>
+            <li>
                 <fo:list-item-label end-indent="label-end()">
                     <div>
                         <xsl:call-template name="getAttributeSetWithLang">
@@ -802,7 +802,7 @@ E-mail : info@antennahouse.com
                         <xsl:apply-templates/>
                     </div>
                 </fo:list-item-body>
-            </fo:list-item>
+            </li>
         </ul>
     </xsl:template>
 
@@ -862,7 +862,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:call-template name="ahf:getLocalizationAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:list-item>
+            <li>
                 <fo:list-item-label end-indent="label-end()">
                     <div>
                         <xsl:call-template name="getAttributeSetWithLang">
@@ -881,7 +881,7 @@ E-mail : info@antennahouse.com
                         <xsl:apply-templates/>
                     </div>
                 </fo:list-item-body>
-            </fo:list-item>
+            </li>
         </ul>
     </xsl:template>
 

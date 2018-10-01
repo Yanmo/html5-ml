@@ -98,7 +98,7 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteListBlock')"/>
             <xsl:for-each select="$prmTopicContent/descendant::*[contains(@class,' topic/fn ')]">
                 <xsl:variable name="fn" select="."/>
-                <fo:list-item>
+                <li>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmElem" select="$fn"/>
                     </xsl:call-template>
@@ -125,7 +125,7 @@ E-mail : info@antennahouse.com
                             </xsl:apply-templates>
                         </div>
                     </fo:list-item-body>
-                </fo:list-item>
+                </li>
             </xsl:for-each>
         </ul>
     </xsl:template>
@@ -197,7 +197,7 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteListBlock')"/>
             <xsl:for-each select="$prmElement/descendant::*[contains(@class,' topic/fn ')]">
                 <xsl:variable name="fn" select="."/>
-                <fo:list-item>
+                <li>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmElem" select="$fn"/>
                     </xsl:call-template>
@@ -227,7 +227,7 @@ E-mail : info@antennahouse.com
                             <xsl:apply-templates/>
                         </div>
                     </fo:list-item-body>
-                </fo:list-item>
+                </li>
             </xsl:for-each>
         </ul>
     </xsl:template>

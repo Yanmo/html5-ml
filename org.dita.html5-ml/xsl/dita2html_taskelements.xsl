@@ -90,7 +90,7 @@ E-mail : info@antennahouse.com
     <xsl:template name="processStep">
         <xsl:param name="prmNumberFormat" required="yes" as="xs:string"/>
 
-        <fo:list-item>
+        <li>
             <!-- Set list-item attribute. -->
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -125,7 +125,7 @@ E-mail : info@antennahouse.com
                     <xsl:apply-templates/>
                 </div>
             </fo:list-item-body>
-        </fo:list-item>
+        </li>
     </xsl:template>
 
     <!-- Ignore floatfig in info -->
@@ -145,7 +145,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/stepsection ')]" priority="2">
-        <fo:list-item>
+        <li>
             <!-- Set list-item attribute. -->
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -159,7 +159,7 @@ E-mail : info@antennahouse.com
                     <xsl:apply-templates/>
                 </div>
             </fo:list-item-body>
-        </fo:list-item>
+        </li>
     </xsl:template>
 
     <!--
