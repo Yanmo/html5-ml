@@ -22,7 +22,7 @@ E-mail : info@antennahouse.com
      note:        none
      -->
     <xsl:template name="genBookmarkTree">
-        <fo:bookmark-tree>
+        <ul>
             <xsl:if test="$isMap and $pMakeTocForMap">
                 <xsl:call-template name="genMapTocBookmark"/>
             </xsl:if>
@@ -30,7 +30,7 @@ E-mail : info@antennahouse.com
             <xsl:if test="$isMap and $pMakeIndexForMap and $pOutputIndex and ($indextermSortedCount gt 0)">
                 <xsl:call-template name="genMapIndexBookmark"/>
             </xsl:if>
-        </fo:bookmark-tree>
+        </ul>
     </xsl:template>
 
     <!--
@@ -40,12 +40,10 @@ E-mail : info@antennahouse.com
      note:        none
      -->
     <xsl:template name="genMapTocBookmark">
-        <fo:bookmark>
+        <li>
             <xsl:attribute name="internal-destination" select="$cTocId"/>
-            <fo:bookmark-title>
-                <xsl:value-of select="$cTocTitle"/>
-            </fo:bookmark-title>
-        </fo:bookmark>
+            <p><xsl:value-of select="$cTocTitle"/></p>
+        </li>
     </xsl:template>
 
     <!--
@@ -55,12 +53,10 @@ E-mail : info@antennahouse.com
      note:        none
      -->
     <xsl:template name="genMapIndexBookmark">
-        <fo:bookmark>
+        <li>
             <xsl:attribute name="internal-destination" select="$cIndexId"/>
-            <fo:bookmark-title>
-                <xsl:value-of select="$cIndexTitle"/>
-            </fo:bookmark-title>
-        </fo:bookmark>
+            <p><xsl:value-of select="$cIndexTitle"/></p>
+        </li>
     </xsl:template>
 
     <!--
@@ -429,7 +425,7 @@ E-mail : info@antennahouse.com
                 <!-- Ignore this element and descendant. -->
             </xsl:when>
             <xsl:otherwise>
-                <fo:bookmark starting-state="{$cStartingState}">
+                <li starting-state="{$cStartingState}">
                     <xsl:choose>
                         <xsl:when test="exists($oid)">
                             <xsl:attribute name="internal-destination">
@@ -444,15 +440,15 @@ E-mail : info@antennahouse.com
                             </xsl:attribute>
                         </xsl:otherwise>
                     </xsl:choose>
-                    <fo:bookmark-title>
+                    <p>
                         <xsl:call-template name="genTitle">
                             <xsl:with-param name="prmTopicRef" select="$topicRef"/>
                             <xsl:with-param name="prmDefaultTitle" select="$prmDefaultTitle"/>
                         </xsl:call-template>
-                    </fo:bookmark-title>
+                    </p>
                     <!-- Navigate to lower level -->
                     <xsl:apply-templates mode="#current"/>
-                </fo:bookmark>
+                </li>
             </xsl:otherwise>
         </xsl:choose>
 
@@ -636,14 +632,14 @@ E-mail : info@antennahouse.com
     <xsl:template name="genGlossaryListBookMark">
         <xsl:variable name="topicRef" as="element()" select="."/>
         <xsl:variable name="id" as="xs:string" select="string(ahf:getIdAtts($topicRef,$topicRef,true())[1])"/>
-        <fo:bookmark starting-state="{$cStartingState}">
+        <li starting-state="{$cStartingState}">
             <xsl:attribute name="internal-destination" select="$id"/>
-            <fo:bookmark-title>
+            <p>
                 <xsl:call-template name="genBookmarkTitle">
                     <xsl:with-param name="prmTopicRef" select="."/>
                     <xsl:with-param name="prmDefaultTitle" select="$cGlossaryListTitle"/>
                 </xsl:call-template>
-            </fo:bookmark-title>
+            </p>
             <!-- Process child topicref -->
             <xsl:choose>
                 <xsl:when test="$pSortGlossEntry">
@@ -676,7 +672,7 @@ E-mail : info@antennahouse.com
                         <xsl:choose>
                             <xsl:when test="exists($topicRef)">
                                 <xsl:variable name="oid" select="ahf:getIdAtts($glossEntry,$topicRef,true())" as="attribute()*"/>
-                                <fo:bookmark starting-state="{$cStartingState}">
+                                <li starting-state="{$cStartingState}">
                                     <xsl:choose>
                                         <xsl:when test="exists($oid)">
                                             <xsl:attribute name="internal-destination">
@@ -686,10 +682,10 @@ E-mail : info@antennahouse.com
                                         </xsl:when>
                                         <xsl:otherwise/>
                                     </xsl:choose>
-                                    <fo:bookmark-title>
+                                    <p>
                                         <xsl:value-of select="$glossEntry/@glossterm"/>
-                                    </fo:bookmark-title>
-                                </fo:bookmark>
+                                    </p>
+                                </li>
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:call-template name="errorExit">
@@ -704,7 +700,7 @@ E-mail : info@antennahouse.com
                     <xsl:apply-templates select="child::*[contains(@class,' map/topicref ')]" mode="MAKE_BOOKMARK"/>
                 </xsl:otherwise>
             </xsl:choose>
-        </fo:bookmark>
+        </li>
     </xsl:template>
 
     <!--
@@ -833,7 +829,7 @@ E-mail : info@antennahouse.com
             </xsl:choose>
         </xsl:variable>
 
-        <fo:bookmark>
+        <li>
             <xsl:attribute name="starting-state" select="$prmStartingState"/>
             <xsl:choose>
                 <xsl:when test="string($prmInternalDest)">
@@ -844,13 +840,13 @@ E-mail : info@antennahouse.com
                 </xsl:when>
                 <xsl:otherwise/>
             </xsl:choose>
-            <fo:bookmark-title>
+            <p>
                 <xsl:value-of select="$title"/>
-            </fo:bookmark-title>
+            </p>
             <xsl:if test="$prmProcessChild">
                 <xsl:apply-templates select="child::*[contains(@class,' map/topicref ')]" mode="MAKE_BOOKMARK"/>
             </xsl:if>
-        </fo:bookmark>
+        </li>
     </xsl:template>
 
 </xsl:stylesheet>
