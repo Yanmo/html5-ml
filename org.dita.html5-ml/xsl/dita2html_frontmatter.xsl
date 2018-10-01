@@ -393,7 +393,7 @@ E-mail : info@antennahouse.com
                                                          [not(contains(@class, ' bookmap/frontmatter '))])"/>
         <xsl:variable name="titleMode" select="ahf:getTitleMode($topicRef,())" as="xs:integer"/>
 
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsBase'"/>
                 <xsl:with-param name="prmDoInherit" select="true()"/>
@@ -493,7 +493,7 @@ E-mail : info@antennahouse.com
                                                                    [not(contains(@class, ' bookmap/frontmatter '))]
                                                                    )"/>
         <xsl:variable name="isTopLevelTopic" as="xs:boolean" select="empty(ancestor::*[contains(@class,' topic/topic ')])"/>
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:call-template name="ahf:getLocalizationAtts"/>

@@ -35,7 +35,7 @@ E-mail : info@antennahouse.com
         <xsl:variable name="imageMapAttr" as="attribute()*">
             <xsl:call-template name="getAttributeSetWithLang"/>
         </xsl:variable>
-        <fo:block>
+        <div>
             <xsl:copy-of select="$imageMapAttr"/>
             <xsl:copy-of select="ahf:getDisplayAtts(.,$imageMapAttr)"/>
             <xsl:call-template name="ahf:getUnivAtts"/>

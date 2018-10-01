@@ -25,28 +25,28 @@ E-mail : info@antennahouse.com
         <fo:page-sequence master-reference="pmsPageSeqCover">
             <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqBase')"/>
             <fo:flow flow-name="xsl-region-body">
-                <fo:block-container>
+                <div>
                     <xsl:copy-of select="ahf:getAttributeSet('atsCoverBookTitleBC')"/>
                     <xsl:if test="exists($bookLibrary)">
-                        <fo:block>
+                        <div>
                             <xsl:copy-of select="ahf:getAttributeSet('atsCoverBookLibrary')"/>
                             <xsl:copy-of select="$bookLibrary"/>
                         </fo:block>
                     </xsl:if>
-                    <fo:block>
+                    <div>
                         <xsl:copy-of select="ahf:getAttributeSet('atsCoverBookTitle')"/>
                         <xsl:copy-of select="$bookTitle"/>
                     </fo:block>
                     <xsl:if test="exists($bookAltTitle)">
-                        <fo:block>
+                        <div>
                             <xsl:copy-of select="ahf:getAttributeSet('atsCoverAltBookTitle')"/>
                             <xsl:copy-of select="$bookAltTitle"/>
                         </fo:block>
                     </xsl:if>
                 </fo:block-container>
-                <fo:block-container>
+                <div>
                     <xsl:copy-of select="ahf:getAttributeSet('atsCoverBookMetaBC')"/>
-                    <fo:block>
+                    <div>
                         <xsl:copy-of select="ahf:getAttributeSet('atsCoverBookMeta')"/>
                         <xsl:apply-templates select="$map//*[contains(@class,' bookmap/bookmeta ')]" mode="cover"/>
                     </fo:block>
@@ -66,25 +66,25 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xnal-d/namedetails ')]" mode="cover">
-        <fo:block>
+        <div>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xnal-d/addressdetails ')]" mode="cover">
-        <fo:block>
+        <div>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xnal-d/contactnumbers ')]" mode="cover">
-        <fo:block>
+        <div>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' xnal-d/emailaddresses ')]" mode="cover">
-        <fo:block>
+        <div>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>
@@ -92,7 +92,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' topic/source ')]" mode="cover"/>
 
     <xsl:template match="*[contains(@class, ' bookmap/publisherinformation ')]" mode="cover">
-        <fo:block>
+        <div>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>
@@ -104,13 +104,13 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' bookmap/bookmeta ')]//*[contains(@class, ' topic/prodinfo ')]" mode="cover"/>
 
     <xsl:template match="*[contains(@class, ' bookmap/bookid ')]" mode="cover">
-        <fo:block>
+        <div>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' bookmap/bookrights ')]" mode="cover">
-        <fo:block>
+        <div>
             <xsl:apply-templates mode="#current"/>
         </fo:block>
     </xsl:template>

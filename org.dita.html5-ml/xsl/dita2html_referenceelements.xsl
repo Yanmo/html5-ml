@@ -132,7 +132,7 @@ E-mail : info@antennahouse.com
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/proptypehd ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
@@ -146,7 +146,7 @@ E-mail : info@antennahouse.com
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/propvaluehd ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
@@ -160,7 +160,7 @@ E-mail : info@antennahouse.com
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/propdeschd ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
@@ -234,7 +234,7 @@ E-mail : info@antennahouse.com
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/proptype ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
@@ -248,7 +248,7 @@ E-mail : info@antennahouse.com
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/propvalue ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
@@ -262,7 +262,7 @@ E-mail : info@antennahouse.com
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' reference/propdesc ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>

@@ -143,10 +143,10 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        <fo:block>
+        <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsBase')"/>
             <!-- Title -->
-            <fo:block>
+            <div>
                 <xsl:copy-of select="ahf:getAttributeSet('atsFmHeader1')"/>
                 <xsl:attribute name="id" select="$id"/>
                 <fo:marker marker-class-name="{$cTitleBody}">
@@ -166,10 +166,10 @@ E-mail : info@antennahouse.com
      note:        Context item is root
      -->
     <xsl:template name="genMapTocMain">
-        <fo:block>
+        <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsBase')"/>
             <!-- Title -->
-            <fo:block>
+            <div>
                 <xsl:copy-of select="ahf:getAttributeSet('atsFmHeader1')"/>
                 <xsl:attribute name="id" select="$cTocId"/>
                 <fo:marker marker-class-name="{$cTitleBody}">
@@ -535,7 +535,7 @@ E-mail : info@antennahouse.com
 
         <xsl:choose>
             <xsl:when test="$prmLevel eq 1">
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLevel1')"/>
                     <xsl:choose>
                         <xsl:when test="string($prmId)">
@@ -564,7 +564,7 @@ E-mail : info@antennahouse.com
                 </fo:block>
             </xsl:when>
             <xsl:when test="$prmLevel eq 2">
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLevel2')"/>
                     <xsl:choose>
                         <xsl:when test="string($prmId)">
@@ -593,7 +593,7 @@ E-mail : info@antennahouse.com
                 </fo:block>
             </xsl:when>
             <xsl:when test="$prmLevel eq 3">
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLevel3')"/>
                     <xsl:choose>
                         <xsl:when test="string($prmId)">
@@ -622,7 +622,7 @@ E-mail : info@antennahouse.com
                 </fo:block>
             </xsl:when>
             <xsl:otherwise>
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLevel4')"/>
                     <xsl:choose>
                         <xsl:when test="string($prmId)">

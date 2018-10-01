@@ -75,7 +75,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template name="processAbstract">
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -112,7 +112,7 @@ E-mail : info@antennahouse.com
             </xsl:when>
             <xsl:otherwise>
                 <!-- Independent shortdesc -->
-                <fo:block>
+                <div>
                     <xsl:call-template name="getAttributeSetWithLang"/>
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -135,7 +135,7 @@ E-mail : info@antennahouse.com
 
     <xsl:template match="*[contains(@class, ' topic/body ')]">
         <xsl:variable name="body" select="."/>
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -158,7 +158,7 @@ E-mail : info@antennahouse.com
         note:       Bodydiv needs no special formattings. (2011-10-25 t.makita)
     -->
     <xsl:template match="*[contains(@class, ' topic/bodydiv ')]">
-        <fo:block>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>

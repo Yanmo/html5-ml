@@ -46,7 +46,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmRelatedLinks" required="yes" as="element()"/>
 
         <!-- Make related-link title block -->
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsRelatedLinkTitleBeforeBlock'"/>
                 <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
@@ -81,7 +81,7 @@ E-mail : info@antennahouse.com
         </xsl:call-template>
 
         <!-- Make related-link end block -->
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsRelatedLinkTitleAfterBlock'"/>
                 <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
@@ -118,7 +118,7 @@ E-mail : info@antennahouse.com
             <xsl:variable name="topicContent" as="element()?" select="if ($isLinkInside) then ahf:getTopicFromLink($link) else ()"/>
             <xsl:variable name="topicRef" as="element()?" select="if (exists($topicContent)) then ahf:getTopicRef($topicContent) else ()"/>
             <xsl:variable name="topicTitle" as="element()?" select="if (exists($topicContent)) then $topicContent/child::*[contains(@class,' topic/title ')][1] else ()"/>
-            <fo:block>
+            <div>
                 <xsl:call-template name="getAttributeSetWithLang">
                     <xsl:with-param name="prmAttrSetName" select="'atsRelatedLinkBlock'"/>
                     <xsl:with-param name="prmElem" select="if (exists($topicTitle)) then $topicTitle else $link"/>

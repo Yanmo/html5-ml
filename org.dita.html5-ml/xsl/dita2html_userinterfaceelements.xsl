@@ -128,7 +128,7 @@ E-mail : info@antennahouse.com
         <xsl:variable name="screenAttr" as="attribute()*">
             <xsl:call-template name="getAttributeSetWithLang"/>
         </xsl:variable>
-        <fo:block>
+        <div>
             <xsl:copy-of select="$screenAttr"/>
             <xsl:copy-of select="ahf:getDisplayAtts(.,$screenAttr)"/>
             <xsl:call-template name="ahf:getUnivAtts"/>

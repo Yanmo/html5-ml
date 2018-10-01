@@ -76,14 +76,14 @@
         <xsl:choose>
             <xsl:when test="exists($br/preceding-sibling::node()[1][contains(@class,' ch-d/br ')])">
                 <!-- Continiuous br -->
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                     <xsl:text>&#xA0;</xsl:text>
                 </fo:block>
             </xsl:when>
             <xsl:otherwise>
                 <!-- Single br -->
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                 </fo:block>
             </xsl:otherwise>

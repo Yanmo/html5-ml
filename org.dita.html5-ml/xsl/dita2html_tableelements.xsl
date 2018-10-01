@@ -26,7 +26,7 @@ E-mail : info@antennahouse.com
      note:        Table will be located by 90 degrees counterclockwise from the text flow.
      -->
     <xsl:template match="*[contains(@class, ' topic/table ')][string(@orient) eq 'land']" priority="4">
-        <fo:block-container>
+        <div>
             <xsl:call-template name="getAttributeSet">
                 <xsl:with-param name="prmAttrSetName" select="'atsBlockContainerForLandscapeTable'"/>
             </xsl:call-template>
@@ -43,7 +43,7 @@ E-mail : info@antennahouse.com
                 2016-09-23 t.makita
      -->
     <xsl:template match="*[contains(@class, ' topic/table ')][string(@pgwide) eq '1']" priority="2">
-        <fo:block-container>
+        <div>
             <xsl:call-template name="getAttributeSet">
                 <xsl:with-param name="prmAttrSetName" select="'atsBlockContainerForPgWideTable'"/>
             </xsl:call-template>
@@ -113,7 +113,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/table ')]/*[contains(@class, ' topic/desc ')]">
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -141,7 +141,7 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmTable" select="parent::*[1]"/>
             </xsl:call-template>
         </xsl:variable>
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -587,18 +587,18 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:choose>
                 <xsl:when test="string(@rotate) eq '1'">
-                    <fo:block-container>
+                    <div>
                         <xsl:call-template name="getAttributeSet">
                             <xsl:with-param name="prmAttrSetName" select="'atsRotatedEntry'"/>
                         </xsl:call-template>
                         <xsl:attribute name="width" select="concat(string($prmRowHeight),'em')"/>
-                        <fo:block>
+                        <div>
                             <xsl:apply-templates/>
                         </fo:block>
                     </fo:block-container>
                 </xsl:when>
                 <xsl:otherwise>
-                    <fo:block>
+                    <div>
                         <xsl:apply-templates/>
                     </fo:block>
                 </xsl:otherwise>
@@ -865,7 +865,7 @@ E-mail : info@antennahouse.com
                 </xsl:when>
             </xsl:choose>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:block>
+            <div>
                 <xsl:call-template name="ahf:getUnivAtts"/>
                 <xsl:apply-templates/>
             </fo:block>
@@ -893,7 +893,7 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:block>
+            <div>
                 <xsl:call-template name="ahf:getUnivAtts"/>
                 <xsl:apply-templates/>
             </fo:block>

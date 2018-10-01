@@ -27,12 +27,12 @@ E-mail : info@antennahouse.com
     <xsl:variable name="requiredCleanupTitleSuffix" select="ahf:getVarValue('Required_Cleanup_Title_Suffix')"/>
 
     <xsl:template match="*[contains(@class,' topic/required-cleanup ')]">
-        <fo:block>
+        <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsRequiredCleanup')"/>
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:call-template name="ahf:getLocalizationAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:block>
+            <div>
                 <xsl:copy-of select="ahf:getAttributeSet('atsRequiredCleanupTitle')"/>
                 <xsl:value-of select="$requiredCleanupTitlePrefix"/>
                 <xsl:if test="string(@remap)">

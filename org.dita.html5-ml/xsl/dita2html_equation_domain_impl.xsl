@@ -128,7 +128,7 @@
         <xsl:choose>
             <!-- generate equation and equation number-->
             <xsl:when test="$outputEquationAndNumber">
-                <fo:block>
+                <div>
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:call-template name="getAttributeSetWithLang"/>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -156,7 +156,7 @@
             </xsl:when>
             <!-- generate only equation -->
             <xsl:otherwise>
-                <fo:block>
+                <div>
                     <xsl:call-template name="getAttributeSetWithLang"/>
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>

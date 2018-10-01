@@ -145,7 +145,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' map/topicref ')][not(@href)]" mode="PROCESS_TOPICREF">
         <xsl:variable name="topicRef" select="." as="element()"/>
         <xsl:variable name="titleMode" select="ahf:getTitleMode($topicRef,())" as="xs:integer"/>
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsBase'"/>
                 <xsl:with-param name="prmDoInherit" select="true()"/>
@@ -222,7 +222,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmTitleMode"   required="yes" as="xs:integer"/>
 
         <xsl:variable name="isTopLevelTopic" as="xs:boolean" select="empty(ancestor::*[contains(@class,' topic/topic ')])"/>
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:call-template name="ahf:getLocalizationAtts"/>

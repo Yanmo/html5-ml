@@ -106,9 +106,9 @@ E-mail : info@antennahouse.com
                 </xsl:apply-templates>
             </xsl:when>
             <xsl:otherwise>
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getAttributeSet('atsBaseGlossaryListPrefixContent')"/>
-                    <fo:block>
+                    <div>
                         <xsl:copy-of select="ahf:getAttributeSet('atsSpanAll')"/>
                         <xsl:copy-of select="ahf:getAttributeSet('atsFmHeader1')"/>
                         <xsl:copy-of select="ahf:getIdAtts($topicRef,$topicRef,true())"/>
@@ -223,7 +223,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class, ' topic/topic ')]" mode="PROCESS_GLOSSARYLIST_PREFIX_CONTENT">
         <xsl:param name="prmTopicRef" tunnel="yes"  required="yes" as="element()"/>
 
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsBaseGlossaryListPrefixContent'"/>
                 <xsl:with-param name="prmDoInherit" select="true()"/>
@@ -394,7 +394,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()"/>
         <!--xsl:param name="prmTitleMode"   required="yes" as="xs:integer"/-->
 
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsBaseGlossaryList'"/>
                 <xsl:with-param name="prmDoInherit" select="true()"/>
@@ -403,7 +403,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getLocalizationAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
 
-            <fo:block>
+            <div>
                 <xsl:call-template name="getAttributeSetWithLang">
                     <xsl:with-param name="prmAttrSetName" select="'atsGlossEntry'"/>
                     <xsl:with-param name="prmDoInherit" select="true()"/>

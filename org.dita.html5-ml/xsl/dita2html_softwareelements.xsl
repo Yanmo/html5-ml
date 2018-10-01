@@ -49,7 +49,7 @@ E-mail : info@antennahouse.com
         <xsl:variable name="msgBlockAttr" as="attribute()*">
             <xsl:call-template name="getAttributeSetWithLang"/>
         </xsl:variable>
-        <fo:block>
+        <div>
             <xsl:copy-of select="$msgBlockAttr"/>
             <xsl:copy-of select="ahf:getDisplayAtts(.,$msgBlockAttr)"/>
             <xsl:call-template name="ahf:getUnivAtts"/>

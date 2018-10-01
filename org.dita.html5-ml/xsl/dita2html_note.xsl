@@ -27,7 +27,7 @@ E-mail : info@antennahouse.com
 
     <xsl:template match="*[contains(@class, ' topic/note ')]">
         <xsl:variable name="type" as="xs:string" select="string(@type)"/>
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang">
                 <xsl:with-param name="prmAttrSetName" select="'atsNoteTitleLine'"/>
             </xsl:call-template>
@@ -150,13 +150,13 @@ E-mail : info@antennahouse.com
             </xsl:choose>
         </fo:block>
         <!--Note body -->
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:apply-templates/>
         </fo:block>
         <!-- line after -->
-        <fo:block>
+        <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsNoteAfterBlock')"/>
             <xsl:value-of select="'&#x00A0;'"/>
         </fo:block>

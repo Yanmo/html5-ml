@@ -49,7 +49,7 @@ E-mail : info@antennahouse.com
         <xsl:variable name="codeBlockAttr" as="attribute()*">
             <xsl:call-template name="getAttributeSetWithLang"/>
         </xsl:variable>
-        <fo:block>
+        <div>
             <xsl:copy-of select="$codeBlockAttr"/>
             <xsl:copy-of select="ahf:getDisplayAtts(.,$codeBlockAttr)"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -150,7 +150,7 @@ E-mail : info@antennahouse.com
     <xsl:template match="*[contains(@class,' pr-d/plentry ')]" priority="2">
         <xsl:param name="prmDoCompact" required="yes" as="xs:boolean"/>
 
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <!-- apply compact spacing -->
@@ -192,7 +192,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class,' pr-d/pt ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -211,7 +211,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class,' pr-d/pd ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -250,7 +250,7 @@ E-mail : info@antennahouse.com
         <xsl:variable name="syntaxDiagramAttr" as="attribute()*">
             <xsl:call-template name="getAttributeSetWithLang"/>
         </xsl:variable>
-        <fo:block>
+        <div>
             <xsl:copy-of select="$syntaxDiagramAttr"/>
             <xsl:copy-of select="ahf:getDisplayAtts(.,$syntaxDiagramAttr)"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
@@ -290,7 +290,7 @@ E-mail : info@antennahouse.com
                         <xsl:attribute name="space-before" select="'0mm'"/>
                     </xsl:if>
                     <fo:list-item-label end-indent="label-end()">
-                        <fo:block>
+                        <div>
                             <xsl:call-template name="getAttributeSetWithLang">
                                 <xsl:with-param name="prmAttrSetName" select="'atsSynNoteLabel'"/>
                             </xsl:call-template>
@@ -311,7 +311,7 @@ E-mail : info@antennahouse.com
                         </fo:block>
                     </fo:list-item-label>
                     <fo:list-item-body start-indent="body-start()">
-                        <fo:block>
+                        <div>
                             <xsl:call-template name="getAttributeSetWithLang">
                                 <xsl:with-param name="prmAttrSetName" select="'atsSynNoteBody'"/>
                             </xsl:call-template>
@@ -358,7 +358,7 @@ E-mail : info@antennahouse.com
         <xsl:choose>
             <xsl:when test="parent::*[contains(@class, ' pr-d/syntaxdiagram ')]
                          or parent::*[contains(@class, ' pr-d/fragment ')]">
-                <fo:block>
+                <div>
                     <xsl:call-template name="getAttributeSetWithLang"/>
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>

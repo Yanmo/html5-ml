@@ -149,7 +149,7 @@
          notes: This template will be called in the following manner:
 
                  <xsl:template match="p">
-                     <fo:block>
+                     <div>
                        <xsl:call-template name="getAttributeSetWithElem"/>
                      </fo:block>
                  </xsl:template>

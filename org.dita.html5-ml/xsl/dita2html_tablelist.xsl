@@ -95,10 +95,10 @@ E-mail : info@antennahouse.com
     <xsl:template name="genTableListMain">
         <xsl:variable name="topicRef" as="element()" select="."/>
         <xsl:variable name="id" as="xs:string" select="string(ahf:getIdAtts($topicRef,$topicRef,true())[1])"/>
-        <fo:block>
+        <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsBase')"/>
             <!-- Title -->
-            <fo:block>
+            <div>
                 <xsl:copy-of select="ahf:getAttributeSet('atsFmHeader1')"/>
                 <xsl:attribute name="id" select="$id"/>
                 <fo:marker marker-class-name="{$cTitleBody}">
@@ -276,7 +276,7 @@ E-mail : info@antennahouse.com
                 <xsl:copy-of select="ahf:getAttributeSet('atsTableListItem')"/>
                 <fo:list-item-label>
                     <xsl:copy-of select="ahf:getAttributeSet('atsTableListLabel')"/>
-                    <fo:block>
+                    <div>
                         <fo:basic-link internal-destination="{$prmId}">
                             <xsl:copy-of select="$prmTitle[1]"/>
                         </fo:basic-link>
@@ -284,7 +284,7 @@ E-mail : info@antennahouse.com
                 </fo:list-item-label>
                 <fo:list-item-body>
                     <xsl:copy-of select="ahf:getAttributeSet('atsTableListBody')"/>
-                    <fo:block>
+                    <div>
                         <fo:basic-link internal-destination="{$prmId}">
                             <xsl:copy-of select="$prmTitle[2]"/>
                         </fo:basic-link>

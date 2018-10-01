@@ -161,7 +161,7 @@ E-mail : info@antennahouse.com
         </xsl:variable>
 
         <xsl:if test="exists($indextermRangeEnd)">
-            <fo:block-container>
+            <div>
                 <xsl:copy-of select="$indextermRangeEnd"/>
             </fo:block-container>
         </xsl:if>
@@ -211,7 +211,7 @@ E-mail : info@antennahouse.com
             </xsl:apply-templates>
         </xsl:variable>
         <xsl:if test="exists($indextermRangeEnd)">
-            <fo:block-container>
+            <div>
                 <xsl:copy-of select="$indextermRangeEnd"/>
             </fo:block-container>
         </xsl:if>
@@ -527,7 +527,7 @@ E-mail : info@antennahouse.com
                 <!-- INDEX main flow -->
                 <fo:flow flow-name="xsl-region-body">
                     <!-- Make "INDEX" title  -->
-                    <fo:block>
+                    <div>
                         <xsl:copy-of select="ahf:getAttributeSet('atsIndexHeader')"/>
                         <xsl:attribute name="id" select="$id"/>
                         <fo:marker marker-class-name="{$cTitleBody}">
@@ -612,7 +612,7 @@ E-mail : info@antennahouse.com
                 <!-- INDEX main flow -->
                 <fo:flow flow-name="xsl-region-body">
                     <!-- Make "INDEX" title  -->
-                    <fo:block>
+                    <div>
                         <xsl:copy-of select="ahf:getAttributeSet('atsIndexHeader')"/>
                         <xsl:attribute name="id" select="$cIndexId"/>
                         <fo:marker marker-class-name="{$cTitleBody}">
@@ -712,7 +712,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmNextId"     required="yes" as="xs:string"/>
 
         <!-- set group label -->
-        <fo:block>
+        <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexGroupTitle')"/>
             <!-- CHANGE: If group-label == "#NUMERIC", replace it symbol label.
                  2009-03-27 t.makita
@@ -1044,7 +1044,7 @@ E-mail : info@antennahouse.com
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:variable>
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLineOnly',('%level'),(string($prmStartLevel)))"/>
                     <xsl:if test="string($currentLevelIndexkeyId)">
                         <xsl:attribute name="id" select="$currentLevelIndexkeyId"/>
@@ -1063,7 +1063,7 @@ E-mail : info@antennahouse.com
             </xsl:when>
             <xsl:when test="$prmStartLevel = $prmMaxLevel">
                 <!-- This line is title and fo:index-citation-list -->
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLine',('%level'),(string($prmStartLevel)))"/>
                     <span>
                         <xsl:if test="$pMakeSeeLink">
@@ -1154,7 +1154,7 @@ E-mail : info@antennahouse.com
 
         <xsl:if test="$seeAlso != $nextSeeAlso">
             <!-- Output see also block -->
-            <fo:block>
+            <div>
                 <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLineSee',('%level'),(string($prmStartLevel)))"/>
                 <span>
                     <xsl:copy-of select="ahf:getAttributeSet('atsSeeAlsoPrefix')"/>
@@ -1228,7 +1228,7 @@ E-mail : info@antennahouse.com
         <xsl:choose>
             <xsl:when test="$prmStartLevel &lt; $prmMaxLevel">
                 <!-- This line is only indexterm title -->
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLine',('%level'),(string($prmStartLevel)))"/>
                     <span><xsl:copy-of select="$indextermFO"/></fo:inline>
                 </fo:block>
@@ -1276,7 +1276,7 @@ E-mail : info@antennahouse.com
                     </xsl:when>
                     <xsl:when test="($prmNestedIndexterm = 0) and (not($prmMultipleSee))">
                         <!-- indexterm + see -->
-                        <fo:block>
+                        <div>
                             <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLineSee',('%level'),(string($prmStartLevel)))"/>
                             <span>
                                 <xsl:copy-of select="$indextermFO"/>
@@ -1306,7 +1306,7 @@ E-mail : info@antennahouse.com
                     <xsl:otherwise>
                         <xsl:if test="$prmStart">
                             <!-- indexterm -->
-                            <fo:block>
+                            <div>
                                 <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLineOnly',('%level'),(string($prmStartLevel)))"/>
                                 <span>
                                     <xsl:value-of select="$indextermFO"/>
@@ -1314,7 +1314,7 @@ E-mail : info@antennahouse.com
                             </fo:block>
                         </xsl:if>
                         <!-- See entry as indented-->
-                        <fo:block>
+                        <div>
                             <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLineSee',('%level'),(string($prmStartLevel + 1)))"/>
                             <span>
                                 <xsl:copy-of select="ahf:getAttributeSet('atsSeePrefix')"/>
@@ -1395,7 +1395,7 @@ E-mail : info@antennahouse.com
                     </xsl:when>
                     <xsl:otherwise>
                         <!-- See entry as indented-->
-                        <fo:block>
+                        <div>
                             <xsl:copy-of select="ahf:getAttributeSetReplacing('atsIndexLineSee',('%level'),(string($prmStartLevel)))"/>
                             <span>
                                 <xsl:copy-of select="ahf:getAttributeSet('atsSeePrefix')"/>

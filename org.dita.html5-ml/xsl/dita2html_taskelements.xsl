@@ -96,7 +96,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <fo:list-item-label end-indent="label-end()">
-                <fo:block>
+                <div>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsStepLabel'"/>
                     </xsl:call-template>
@@ -118,7 +118,7 @@ E-mail : info@antennahouse.com
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:for-each>
-                <fo:block>
+                <div>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsP'"/>
                     </xsl:call-template>
@@ -151,10 +151,10 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <fo:list-item-label>
-                <fo:block/>
+                <div/>
             </fo:list-item-label>
             <fo:list-item-body start-indent="inherited-property-value(start-indent)">
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getAttributeSet('atsP')"/>
                     <xsl:apply-templates/>
                 </fo:block>
@@ -192,7 +192,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/info ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -211,7 +211,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/stepxmp ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -271,7 +271,7 @@ E-mail : info@antennahouse.com
                                             <xsl:copy-of select="ahf:getAttributeSet('atsChNoKeyCol')"/>
                                         </xsl:otherwise>
                                     </xsl:choose>
-                                    <fo:block>
+                                    <div>
                                         <xsl:call-template name="getVarValueWithLangAsText">
                                             <xsl:with-param name="prmVarName" select="'Choptionhd'"/>
                                         </xsl:call-template>
@@ -287,7 +287,7 @@ E-mail : info@antennahouse.com
                                             <xsl:copy-of select="ahf:getAttributeSet('atsChNoKeyCol')"/>
                                         </xsl:otherwise>
                                     </xsl:choose>
-                                    <fo:block>
+                                    <div>
                                         <xsl:call-template name="getVarValueWithLangAsText">
                                             <xsl:with-param name="prmVarName" select="'Chdeschd'"/>
                                         </xsl:call-template>
@@ -340,7 +340,7 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:block>
+            <div>
                 <xsl:apply-templates/>
             </fo:block>
         </fo:table-cell>
@@ -361,7 +361,7 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:block>
+            <div>
                 <xsl:apply-templates/>
             </fo:block>
         </fo:table-cell>
@@ -395,7 +395,7 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:block>
+            <div>
                 <xsl:apply-templates/>
             </fo:block>
         </fo:table-cell>
@@ -416,7 +416,7 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
-            <fo:block>
+            <div>
                 <xsl:apply-templates/>
             </fo:block>
         </fo:table-cell>
@@ -433,7 +433,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/stepresult ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -452,7 +452,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/tutorialinfo ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -472,7 +472,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/result ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -491,7 +491,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' task/postreq ')]" priority="2">
-        <fo:block>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>

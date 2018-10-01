@@ -63,7 +63,7 @@ E-mail : info@antennahouse.com
                 <xsl:attribute name="initial-page-number" select="'auto-odd'"/>
             </xsl:if>
             <fo:flow flow-name="xsl-region-body">
-                <fo:block-container>
+                <div>
                     <xsl:call-template name="ahf:getIdAtts">
                         <xsl:with-param name="prmElement" select="$prmTopicContent"/>
                     </xsl:call-template>
@@ -105,7 +105,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
         <xsl:choose>
             <xsl:when test="ahf:isCoverTopicRef($prmTopicRef)">
-                <fo:block-container>
+                <div>
                     <xsl:copy-of select="ahf:getFoPropertyWithPageVariables(.)"/>
                     <xsl:apply-templates/>
                 </fo:block-container>
@@ -128,7 +128,7 @@ E-mail : info@antennahouse.com
             <xsl:when test="ahf:isCoverTopicRef($prmTopicRef)">
                 <xsl:variable name="bgImageElem" as="element()*" select="descendant::*[contains(@class,' topic/image ')][@outputclass eq 'background'][1]"/>
                 <xsl:variable name="bgImageHref" as="xs:string" select="concat('url(',$pMapDirUrl,string($bgImageElem/@href),')')"/>
-                <fo:block-container>
+                <div>
                     <xsl:variable name="foProperty" as="attribute()*" select="ahf:getFoPropertyWithPageVariables(.)"/>
                     <xsl:copy-of select="$foProperty"/>
                     <xsl:copy-of select="ahf:getFoPropertyWithPageVariables($bgImageElem)[name() ne 'href']"/>
@@ -151,7 +151,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
         <xsl:choose>
             <xsl:when test="ahf:isCoverTopicRef($prmTopicRef)">
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getFoPropertyWithPageVariables(.)"/>
                     <xsl:apply-templates/>
                 </fo:block>
@@ -198,8 +198,8 @@ E-mail : info@antennahouse.com
                 <!-- block level image -->
                 <xsl:choose>
                     <xsl:when test="$pAutoScaleDownToFit">
-                        <fo:block-container>
-                            <fo:block start-indent="0mm">
+                        <div>
+                            <div start-indent="0mm">
                                 <xsl:copy-of select="ahf:getImageBlockAttr(.)"/>
                                 <!-- Image processing -->
                                 <xsl:call-template name="ahf:processImage"/>
@@ -208,7 +208,7 @@ E-mail : info@antennahouse.com
                         </fo:block-container>
                     </xsl:when>
                     <xsl:otherwise>
-                        <fo:block>
+                        <div>
                             <xsl:copy-of select="ahf:getImageBlockAttr(.)"/>
                             <!-- Image processing -->
                             <xsl:call-template name="ahf:processImage"/>
@@ -290,7 +290,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
         <xsl:choose>
             <xsl:when test="ahf:isCoverTopicRef($prmTopicRef)">
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getFoPropertyWithPageVariables(.)"/>
                     <xsl:apply-templates/>
                 </fo:block>
@@ -328,7 +328,7 @@ E-mail : info@antennahouse.com
 
         <xsl:choose>
             <xsl:when test="ahf:isCoverTopicRef($prmTopicRef)">
-                <fo:block>
+                <div>
                     <xsl:copy-of select="ahf:getFoPropertyWithPageVariables(.)"/>
                     <xsl:apply-templates/>
                 </fo:block>
