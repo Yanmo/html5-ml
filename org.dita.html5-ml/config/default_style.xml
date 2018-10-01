@@ -1034,7 +1034,7 @@ URL : http://www.antennahouse.com/
                 <attribute name="text-align">$General_Region_After_Right_Align</attribute>
             </attribute-set>
 
-            <!-- Part/Chapter region-after spacing fo:inline-container -->
+            <!-- Part/Chapter region-after spacing span -->
             <attribute-set name="atsChapterRegionAfter_InlineContainer">
                 <attribute name="width">5mm</attribute>
             </attribute-set>

@@ -304,7 +304,7 @@ E-mail : info@antennahouse.com
     <!--
         function:    ph for cover
         param:        prmTopicRef
-        return:        fo:inline-container, fo:block
+        return:        span, fo:block
         note:
     -->
     <xsl:template match="*[contains(@class,' topic/ph ')][string(@outputclass) eq 'inline-container']" priority="20">
@@ -312,10 +312,10 @@ E-mail : info@antennahouse.com
 
         <xsl:choose>
             <xsl:when test="ahf:isCoverTopicRef($prmTopicRef)">
-                <span-container>
+                <span>
                     <xsl:copy-of select="ahf:getFoPropertyWithPageVariables(.)"/>
                     <xsl:apply-templates/>
-                </fo:inline-container>
+                </span>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:next-match/>
