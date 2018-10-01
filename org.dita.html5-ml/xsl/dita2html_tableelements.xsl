@@ -54,12 +54,12 @@ E-mail : info@antennahouse.com
     <!--
      function:    table template
      param:
-     return:    fo:wrapper
+     return:    div
      note:
      -->
     <xsl:template match="*[contains(@class, ' topic/table ')]">
         <xsl:variable name="tableAttr" select="ahf:getTableAttr(.)" as="element()"/>
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:if test="empty(@id) and child::*[contains(@class, ' topic/title ')]">
                 <xsl:call-template name="ahf:generateIdAttr"/>
@@ -79,7 +79,7 @@ E-mail : info@antennahouse.com
             <xsl:if test="$pOutputTableTitleAfter">
                 <xsl:apply-templates select="*[contains(@class, ' topic/title ')]"/>
             </xsl:if>
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--

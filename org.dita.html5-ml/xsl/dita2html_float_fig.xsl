@@ -50,7 +50,7 @@ E-mail : info@antennahouse.com
     <!--
      function:  floating figure
      param:
-     return:    fo:float or fo:wrapper
+     return:    fo:float or div
      note:      This function is still experimental.
      -->
     <xsl:template match="*[contains(@class, ' floatfig-d/floatfig ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
@@ -89,12 +89,12 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' floatfig-d/floatfig ')][string(@float) eq 'none']" priority="2" name="processFloatFigNone">
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates select="node() except *[contains(@class, ' topic/title ')]"/>
             <xsl:apply-templates select="*[contains(@class, ' topic/title ')]"/>
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--

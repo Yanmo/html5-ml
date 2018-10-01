@@ -61,7 +61,7 @@ E-mail : info@antennahouse.com
                    topic/prolog/metadata/keywords/indexterm
                 - prmRangeElem
                   Tunnel parameter. This paramter specifies tha range to search indexterm[@end].
-     return:    fo:wrapper, fo:index-range-begin, fo:index-range-end
+     return:    div, fo:index-range-begin, fo:index-range-end
      note:        Entry point has moved to dita2fo_indexcommon.xsl.
                 This template is called from dita2fo_indexcommon.xsl.
      -->
@@ -284,14 +284,14 @@ E-mail : info@antennahouse.com
                 </fo:index-range-begin>
             </xsl:when>
             <xsl:when test="($prmMakeKeyAndStart or $prmNormalProcessing) and string($currentIndexKey)">
-                <!-- Generate fo:wrapper with index-key attribute -->
-                <fo:wrapper index-key="{$currentIndexKey}">
+                <!-- Generate div with index-key attribute -->
+                <div index-key="{$currentIndexKey}">
                     <!--xsl:attribute name="index-class">
                         Index-class is needed if author use range indexterm that
                         extend part to part or chapter to chapter.
                         Generally there isn't a such case.
                     </xsl:attribute-->
-                </fo:wrapper>
+                </div>
             </xsl:when>
             <xsl:otherwise>
             </xsl:otherwise>

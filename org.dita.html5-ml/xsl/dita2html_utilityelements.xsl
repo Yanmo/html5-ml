@@ -47,58 +47,58 @@ E-mail : info@antennahouse.com
     <!--
      function:    area template
      param:
-     return:    fo:wrapper
+     return:    div
      note:        none
      -->
 
     <xsl:template match="*[contains(@class,' ut-d/area ')]" priority="2">
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--
      function:    shape template
      param:
-     return:    fo:wrapper
+     return:    div
      note:        none
      -->
     <xsl:template match="*[contains(@class,' ut-d/shape ')]" priority="2">
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <!-- ignore contents -->
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--
      function:    coords template
      param:
-     return:    fo:wrapper
+     return:    div
      note:        none
      -->
     <xsl:template match="*[contains(@class,' ut-d/coords ')]" priority="2">
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <!-- ignore contents -->
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--
      function:    area/xref template
      param:
-     return:    fo:wrapper
+     return:    div
      note:        none
      -->
     <xsl:template match="*[contains(@class,' ut-d/area ')]/*[contains(@class,' topic/xref ')]" priority="2">
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <!-- ignore xref -->
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--

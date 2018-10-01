@@ -47,13 +47,13 @@ E-mail : info@antennahouse.com
     <!--
      function:    foreign template
      param:
-     return:    If content is MathML or SVG return fo:wrapper & fo:instream-foreign-object
+     return:    If content is MathML or SVG return div & fo:instream-foreign-object
      note:        Added 2011-08-22 t.makita
      -->
     <xsl:template match="*[contains(@class, ' topic/foreign ')]">
         <xsl:variable name="childElem" select="child::*[1]" as="element()*"/>
         <xsl:if test="exists($childElem)">
-            <fo:wrapper>
+            <div>
                 <xsl:call-template name="ahf:getUnivAtts"/>
                 <xsl:choose>
                     <xsl:when test="namespace-uri($childElem)='http://www.w3.org/1998/Math/MathML'">
@@ -71,7 +71,7 @@ E-mail : info@antennahouse.com
                         </fo:instream-foreign-object>
                     </xsl:when>
                 </xsl:choose>
-            </fo:wrapper>
+            </div>
         </xsl:if>
     </xsl:template>
 

@@ -24,10 +24,10 @@
         note:        Only process child elements.
     -->
     <xsl:template match="*[contains(@class, ' mathml-d/mathml ')]" priority="2">
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:apply-templates/>
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--

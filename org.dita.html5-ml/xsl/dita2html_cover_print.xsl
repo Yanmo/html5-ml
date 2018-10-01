@@ -77,17 +77,17 @@ E-mail : info@antennahouse.com
     <!--
      function:    body for cover
      param:        prmTopicRef
-     return:    fo:wrapper
+     return:    div
      note:
      -->
     <xsl:template match="*[contains(@class, ' topic/body ')]" priority="20">
         <xsl:param name="prmTopicRef" tunnel="yes" required="yes" as="element()?"/>
         <xsl:choose>
             <xsl:when test="ahf:isCoverTopicRef($prmTopicRef)">
-                <fo:wrapper>
+                <div>
                     <xsl:copy-of select="ahf:getFoProperty(.)"/>
                     <xsl:apply-templates/>
-                </fo:wrapper>
+                </div>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:next-match/>

@@ -22,7 +22,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    div template
      param:
-     return:    fo:wrapper with its contents
+     return:    div with its contents
      note:        div is used for only grouping the contents
                 It has no intended style
      -->
@@ -31,12 +31,12 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' topic/div ')]">
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--
@@ -809,7 +809,7 @@ E-mail : info@antennahouse.com
     <!--
         function:    Sectiondiv template
         param:
-        return:        fo:wrapper
+        return:        div
         note:        2011-10-27 t.makita
     -->
     <xsl:template match="*[contains(@class, ' topic/sectiondiv ')]" mode="MODE_GET_STYLE" as="xs:string*">
@@ -817,12 +817,12 @@ E-mail : info@antennahouse.com
 
     <xsl:template match="*[contains(@class, ' topic/sectiondiv ')]">
 
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--
@@ -1729,16 +1729,16 @@ E-mail : info@antennahouse.com
     <!--
         function:    text template
         param:
-        return:        fo:wrapper
+        return:        div
         note:        Text is only a container for text.
-        Generate a fo:wrapper. (2011-10-27 t.makita)
+        Generate a div. (2011-10-27 t.makita)
     -->
     <xsl:template match="*[contains(@class,' topic/text ')]">
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--

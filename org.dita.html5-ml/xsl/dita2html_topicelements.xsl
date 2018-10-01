@@ -104,11 +104,11 @@ E-mail : info@antennahouse.com
         <xsl:choose>
             <xsl:when test="parent::*[contains(@class, ' topic/abstract ')]">
                 <!-- Child of abstract -->
-                <fo:wrapper>
+                <div>
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                     <xsl:apply-templates/>
-                </fo:wrapper>
+                </div>
             </xsl:when>
             <xsl:otherwise>
                 <!-- Independent shortdesc -->
@@ -126,7 +126,7 @@ E-mail : info@antennahouse.com
      function:    body template
      param:        prmTopicRef, prmNeedId
      return:    fo:block
-     note:        Generate fo:block instead of fo:wrapper because it is sometimes needed for debugging generated areas.
+     note:        Generate fo:block instead of div because it is sometimes needed for debugging generated areas.
                 2016-09-23 t.makita
      -->
     <xsl:template match="*[contains(@class, ' topic/body ')]" mode="MODE_GET_STYLE" as="xs:string*">
@@ -154,7 +154,7 @@ E-mail : info@antennahouse.com
     <!--
         function:    bodydiv template
         param:        prmTopicRef, prmNeedId
-        return:        fo:wrapper
+        return:        div
         note:       Bodydiv needs no special formattings. (2011-10-25 t.makita)
     -->
     <xsl:template match="*[contains(@class, ' topic/bodydiv ')]">

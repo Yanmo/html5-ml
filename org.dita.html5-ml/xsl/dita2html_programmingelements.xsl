@@ -118,7 +118,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    parml template
      param:
-     return:    fo:wrapper
+     return:    div
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' pr-d/parml ')]" mode="MODE_GET_STYLE" as="xs:string*" priority="2">
@@ -127,14 +127,14 @@ E-mail : info@antennahouse.com
 
     <xsl:template match="*[contains(@class,' pr-d/parml ')]" priority="2">
         <xsl:variable name="doCompact" select="string(@compact) eq 'yes'" as="xs:boolean"/>
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates>
                 <xsl:with-param name="prmDoCompact"  select="$doCompact"/>
             </xsl:apply-templates>
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--
@@ -366,11 +366,11 @@ E-mail : info@antennahouse.com
                 </div>
             </xsl:when>
             <xsl:otherwise>
-                <fo:wrapper>
+                <div>
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                     <xsl:call-template name="processGroup"/>
-                </fo:wrapper>
+                </div>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -471,15 +471,15 @@ E-mail : info@antennahouse.com
     <!--
      function:    fragment template
      param:
-     return:    fo:wrapper
+     return:    div
      note:        none
      -->
     <xsl:template match="*[contains(@class,' pr-d/fragment ')]" priority="2">
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
 
@@ -546,15 +546,15 @@ E-mail : info@antennahouse.com
     <!--
      function:    synblk template
      param:
-     return:    fo:wrapper
+     return:    div
      note:        none
      -->
     <xsl:template match="*[contains(@class,' pr-d/synblk ')]" priority="2">
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--

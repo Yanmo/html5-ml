@@ -20,14 +20,14 @@ E-mail : info@antennahouse.com
     <!--
      function:    svg-container template
      param:
-     return:    fo:wrapper
+     return:    div
      note:        svg-container is only a container of SVG itself or svgref
      -->
     <xsl:template match="*[contains(@class, ' svg-d/svg-container ')]" priority="2">
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:apply-templates/>
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--

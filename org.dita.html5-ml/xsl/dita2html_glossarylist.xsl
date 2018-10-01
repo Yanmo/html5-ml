@@ -425,13 +425,13 @@ E-mail : info@antennahouse.com
         note:
     -->
     <xsl:template match="*[contains(@class, ' glossgroup/glossgroup ')]" mode="PROCESS_GLOSSARYLIST_CONTENT" priority="2">
-        <fo:wrapper>
+        <div>
             <xsl:call-template name="ahf:getIdAtts"/>
             <xsl:call-template name="ahf:getLocalizationAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <!-- glossgroup or glossentry -->
             <xsl:apply-templates select="*[contains(@class, ' glossgroup/glossgroup ')] | *[contains(@class, ' glossentry/glossentry ')]" mode="#current"/>
-        </fo:wrapper>
+        </div>
     </xsl:template>
 
     <!--
