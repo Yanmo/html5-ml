@@ -49,9 +49,9 @@ E-mail : info@antennahouse.com
         <!-- Make related-link title block -->
         <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteTitleBeforeBlock')"/>
-            <fo:leader>
+            <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteLeader1')"/>
-            </fo:leader>
+            </span>
             <span>
                 <xsl:value-of select="ahf:getVarValue('Postnote_Title')"/>
                 <xsl:call-template name="getVarValueWithLangAsText">
@@ -59,9 +59,9 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmElem" select="$prmTopicContent"/>
                 </xsl:call-template>
             </span>
-            <fo:leader>
+            <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteLeader2')"/>
-            </fo:leader>
+            </span>
         </div>
 
         <!-- process postnote -->
@@ -73,9 +73,9 @@ E-mail : info@antennahouse.com
         <!-- Make postnote end block -->
         <div>
             <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteTitleAfterBlock')"/>
-            <fo:leader>
+            <span>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPostnoteLeader3')"/>
-            </fo:leader>
+            </span>
         </div>
     </xsl:template>
 

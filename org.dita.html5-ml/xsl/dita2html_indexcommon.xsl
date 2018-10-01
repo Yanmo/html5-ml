@@ -1031,14 +1031,14 @@ E-mail : info@antennahouse.com
                         </xsl:if>
                         <xsl:copy-of select="$indextermFO"/>
                     </span>
-                    <fo:leader>
+                    <span>
                         <xsl:copy-of select="ahf:getAttributeSet('atsIndexLeader1')"/>
-                    </fo:leader>
+                    </span>
                     <span>
                         <xsl:copy-of select="ahf:getAttributeSet('atsIndex2ndLeaderInline')"/>
-                        <fo:leader>
+                        <span>
                             <xsl:copy-of select="ahf:getAttributeSet('atsIndexLeader2')"/>
-                        </fo:leader>
+                        </span>
                     </span>
                     <fo:index-page-citation-list>
                         <fo:index-page-citation-list-separator>

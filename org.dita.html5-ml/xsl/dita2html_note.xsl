@@ -41,11 +41,11 @@ E-mail : info@antennahouse.com
                     <xsl:call-template name="getVarValueWithLangAsText">
                         <xsl:with-param name="prmVarName" select="'Note_Note'"/>
                     </xsl:call-template>
-                    <fo:leader>
+                    <span>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsNoteLeader'"/>
                         </xsl:call-template>
-                    </fo:leader>
+                    </span>
                 </xsl:when>
                 <xsl:when test="$type eq 'tip'">
                     <fo:external-graphic>
@@ -56,11 +56,11 @@ E-mail : info@antennahouse.com
                     <xsl:call-template name="getVarValueWithLangAsText">
                         <xsl:with-param name="prmVarName" select="'Note_Tip'"/>
                     </xsl:call-template>
-                    <fo:leader>
+                    <span>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsNoteLeader'"/>
                         </xsl:call-template>
-                    </fo:leader>
+                    </span>
                 </xsl:when>
                 <xsl:when test="$type eq 'fastpath'">
                     <fo:external-graphic>
@@ -71,11 +71,11 @@ E-mail : info@antennahouse.com
                     <xsl:call-template name="getVarValueWithLangAsText">
                         <xsl:with-param name="prmVarName" select="'Note_FastPath'"/>
                     </xsl:call-template>
-                    <fo:leader>
+                    <span>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsNoteLeader'"/>
                         </xsl:call-template>
-                    </fo:leader>
+                    </span>
                 </xsl:when>
                 <xsl:when test="$type = ('important','restriction','remember','trouble')">
                     <fo:external-graphic>
@@ -93,11 +93,11 @@ E-mail : info@antennahouse.com
                             </xsl:choose>
                         </xsl:with-param>
                     </xsl:call-template>
-                    <fo:leader>
+                    <span>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsNoteLeader'"/>
                         </xsl:call-template>
-                    </fo:leader>
+                    </span>
                 </xsl:when>
                 <xsl:when test="$type = ('caution','attention','warning','notice','danger')">
                     <fo:external-graphic>
@@ -116,11 +116,11 @@ E-mail : info@antennahouse.com
                             </xsl:choose>
                         </xsl:with-param>
                     </xsl:call-template>
-                    <fo:leader>
+                    <span>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsNoteLeader'"/>
                         </xsl:call-template>
-                    </fo:leader>
+                    </span>
                 </xsl:when>
                 <xsl:when test="$type eq 'other'">
                     <xsl:variable name="otherTitle" as="xs:string">
@@ -141,11 +141,11 @@ E-mail : info@antennahouse.com
                         </xsl:call-template>
                     </fo:external-graphic>
                     <xsl:value-of select="$otherTitle"/>
-                    <fo:leader>
+                    <span>
                         <xsl:call-template name="getAttributeSetWithLang">
                             <xsl:with-param name="prmAttrSetName" select="'atsNoteLeader'"/>
                         </xsl:call-template>
-                    </fo:leader>
+                    </span>
                 </xsl:when>
             </xsl:choose>
         </div>

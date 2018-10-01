@@ -136,11 +136,11 @@
                     <span>
                         <xsl:apply-templates select="$candidateEquationBody"/>
                     </span>
-                    <fo:leader>
+                    <span>
                         <xsl:call-template name="getAttributeSet">
                             <xsl:with-param name="prmAttrSetName" select="'atsEquationLeader'"/>
                         </xsl:call-template>
-                    </fo:leader>
+                    </span>
                     <!-- equation-number -->
                     <xsl:choose>
                         <xsl:when test="exists($candidateEquationNumber)">

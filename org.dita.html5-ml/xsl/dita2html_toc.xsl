@@ -497,13 +497,13 @@ E-mail : info@antennahouse.com
                             <a internal-destination="{$prmId}">
                                 <xsl:copy-of select="$prmTitle"/>
                             </a>
-                            <fo:leader leader-length.optimum="0pt">
+                            <span leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
-                            </fo:leader>
+                            </span>
                             <span keep-with-next="always">
-                                <fo:leader>
+                                <span>
                                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
-                                </fo:leader>
+                                </span>
                             </span>
                             <a internal-destination="{$prmId}">
                                 <fo:page-number-citation ref-id="{$prmId}" />
@@ -526,13 +526,13 @@ E-mail : info@antennahouse.com
                             <a internal-destination="{$prmId}">
                                 <xsl:copy-of select="$prmTitle"/>
                             </a>
-                            <fo:leader leader-length.optimum="0pt">
+                            <span leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
-                            </fo:leader>
+                            </span>
                             <span keep-with-next="always">
-                                <fo:leader>
+                                <span>
                                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
-                                </fo:leader>
+                                </span>
                             </span>
                             <a internal-destination="{$prmId}">
                                 <fo:page-number-citation ref-id="{$prmId}" />
@@ -555,13 +555,13 @@ E-mail : info@antennahouse.com
                             <a internal-destination="{$prmId}">
                                 <xsl:copy-of select="$prmTitle"/>
                             </a>
-                            <fo:leader leader-length.optimum="0pt">
+                            <span leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
-                            </fo:leader>
+                            </span>
                             <span keep-with-next="always">
-                                <fo:leader>
+                                <span>
                                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
-                                </fo:leader>
+                                </span>
                             </span>
                             <a internal-destination="{$prmId}">
                                 <fo:page-number-citation ref-id="{$prmId}" />
@@ -584,13 +584,13 @@ E-mail : info@antennahouse.com
                             <a internal-destination="{$prmId}">
                                 <xsl:copy-of select="$prmTitle"/>
                             </a>
-                            <fo:leader leader-length.optimum="0pt">
+                            <span leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
-                            </fo:leader>
+                            </span>
                             <span keep-with-next="always">
-                                <fo:leader>
+                                <span>
                                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
-                                </fo:leader>
+                                </span>
                             </span>
                             <a internal-destination="{$prmId}">
                                 <fo:page-number-citation ref-id="{$prmId}" />

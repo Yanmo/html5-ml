@@ -51,12 +51,12 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmAttrSetName" select="'atsRelatedLinkTitleBeforeBlock'"/>
                 <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
             </xsl:call-template>
-            <fo:leader>
+            <span>
                 <xsl:call-template name="getAttributeSetWithLang">
                     <xsl:with-param name="prmAttrSetName" select="'atsRelatedLinkLeader1'"/>
                     <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
                 </xsl:call-template>
-            </fo:leader>
+            </span>
             <span>
                 <xsl:call-template name="getAttributeSetWithLang">
                     <xsl:with-param name="prmAttrSetName" select="'atsRelatedLinkInline'"/>
@@ -67,12 +67,12 @@ E-mail : info@antennahouse.com
                     <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
                 </xsl:call-template>
             </span>
-            <fo:leader>
+            <span>
                 <xsl:call-template name="getAttributeSetWithLang">
                     <xsl:with-param name="prmAttrSetName" select="'atsRelatedLinkLeader2'"/>
                     <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
                 </xsl:call-template>
-            </fo:leader>
+            </span>
         </div>
 
         <!-- process link -->
@@ -86,12 +86,12 @@ E-mail : info@antennahouse.com
                 <xsl:with-param name="prmAttrSetName" select="'atsRelatedLinkTitleAfterBlock'"/>
                 <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
             </xsl:call-template>
-            <fo:leader>
+            <span>
                 <xsl:call-template name="getAttributeSetWithLang">
                     <xsl:with-param name="prmAttrSetName" select="'atsRelatedLinkLeader3'"/>
                     <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
                 </xsl:call-template>
-            </fo:leader>
+            </span>
         </div>
     </xsl:template>
 
