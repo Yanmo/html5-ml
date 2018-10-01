@@ -62,7 +62,7 @@ E-mail : info@antennahouse.com
                 <!-- Start cover3 from odd page -->
                 <xsl:attribute name="initial-page-number" select="'auto-odd'"/>
             </xsl:if>
-            <fo:flow flow-name="xsl-region-body">
+            <body flow-name="xsl-region-body">
                 <div>
                     <xsl:call-template name="ahf:getIdAtts">
                         <xsl:with-param name="prmElement" select="$prmTopicContent"/>
@@ -70,7 +70,7 @@ E-mail : info@antennahouse.com
                     <xsl:copy-of select="ahf:getAttributeSetWithPageVariables('atsCoverBlockContainer')"/>
                     <xsl:apply-templates select="$prmTopicContent/*[contains(@class,'topic/body ')]"/>
                 </div>
-            </fo:flow>
+            </body>
         </psmi:page-sequence>
     </xsl:template>
 

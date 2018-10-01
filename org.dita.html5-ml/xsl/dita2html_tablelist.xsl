@@ -20,7 +20,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    Generate table list template
      param:        none
-     return:    (fo:page-sequence)
+     return:    (html)
      note:      Current is booklists/tablelist
      -->
     <xsl:template name="genTableList" >
@@ -48,9 +48,9 @@ E-mail : info@antennahouse.com
                         <fo:static-content flow-name="rgnFrontmatterBlankBody">
                             <xsl:call-template name="makeBlankBlock"/>
                         </fo:static-content>
-                        <fo:flow flow-name="xsl-region-body">
+                        <body flow-name="xsl-region-body">
                             <xsl:call-template name="genTableListMain"/>
-                        </fo:flow>
+                        </body>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:choose>
@@ -76,9 +76,9 @@ E-mail : info@antennahouse.com
                         <fo:static-content flow-name="rgnBackmatterBlankBody">
                             <xsl:call-template name="makeBlankBlock"/>
                         </fo:static-content>
-                        <fo:flow flow-name="xsl-region-body">
+                        <body flow-name="xsl-region-body">
                             <xsl:call-template name="genTableListMain"/>
-                        </fo:flow>
+                        </body>
                     </xsl:otherwise>
                 </xsl:choose>
             </psmi:page-sequence>

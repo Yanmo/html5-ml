@@ -19,7 +19,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    Generate back matter
      param:        none
-     return:    fo:page-sequence
+     return:    html
      note:        Called from dita2fo_main.xsl
      -->
     <xsl:template match="*[contains(@class, ' bookmap/backmatter ')]" >
@@ -28,7 +28,7 @@ E-mail : info@antennahouse.com
                     | descendant::*[contains(@class,' bookmap/indexlist ')][not(@href)]
                     | descendant::*[contains(@class,' bookmap/figurelist ')][not(@href)]
                     | descendant::*[contains(@class,' bookmap/tablelist ')][not(@href)]">
-            <fo:page-sequence>
+            <html>
                 <xsl:call-template name="getAttributeSet">
                     <xsl:with-param name="prmAttrSetName" select="'atsPageSeqBackmatter'"/>
                 </xsl:call-template>
@@ -47,10 +47,10 @@ E-mail : info@antennahouse.com
                 <fo:static-content flow-name="rgnBackmatterBlankBody">
                     <xsl:call-template name="makeBlankBlock"/>
                 </fo:static-content>
-                <fo:flow flow-name="xsl-region-body">
+                <body flow-name="xsl-region-body">
                     <xsl:apply-templates mode="PROCESS_BACKMATTER"/>
-                </fo:flow>
-            </fo:page-sequence>
+                </body>
+            </html>
         </xsl:if>
     </xsl:template>
 

@@ -46,7 +46,7 @@ FOR A PARTICULAR PURPOSE.
   </xsl:function>
 
   <!--
-     function:  Return that the element is first effective occurence in fo:page-sequence
+     function:  Return that the element is first effective occurence in html
      param:          prmElem
      return:      xs:boolean
      note:          Added 2015-08-26 t.makita
@@ -73,11 +73,11 @@ FOR A PARTICULAR PURPOSE.
       Handle a sequence of pages, only if it has the expected psmi:page-sequence
       children in the flow.
     -->
-    <xsl:template match="fo:page-sequence">
+    <xsl:template match="html">
       <xsl:choose>
-        <xsl:when test="fo:flow/psmi:page-sequence"><!--accommodate new semantic-->
+        <xsl:when test="body/psmi:page-sequence"><!--accommodate new semantic-->
           <!-- Remove this xsl:if restriction.
-               If we only want to make fo:page-sequence from nested structure,
+               If we only want to make html from nested structure,
                this check is not needed. (t.makita)
             -->
           <!--xsl:if test="@force-page-count = 'even' or
@@ -88,7 +88,7 @@ FOR A PARTICULAR PURPOSE.
               <xsl:value-of select="@force-page-count"/>
             </xsl:message>
           </xsl:if-->
-          <xsl:apply-templates select="fo:flow/*[1]" mode="psmi:do-flow-children"/>
+          <xsl:apply-templates select="body/*[1]" mode="psmi:do-flow-children"/>
         </xsl:when>
         <xsl:when test="descendant::psmi:*"><!--unexpected location for semantic-->
           <xsl:call-template name="psmi:preserve"/><!-- this will catch each-->
@@ -104,7 +104,7 @@ FOR A PARTICULAR PURPOSE.
     -->
 
     <xsl:template match="*" mode="psmi:do-flow-children">
-      <fo:page-sequence>
+      <html>
                                                     <!--page-sequence attributes-->
         <xsl:copy-of select="../../@*[not(name(.)='initial-page-number')]"/>
         <xsl:if test="self::psmi:page-sequence">
@@ -167,8 +167,8 @@ FOR A PARTICULAR PURPOSE.
               </xsl:if>
             </xsl:for-each-->
                                               <!--do the psmi:page-sequence flow-->
-            <fo:flow>
-              <xsl:if test="not(fo:flow)">
+            <body>
+              <xsl:if test="not(body)">
                 <xsl:message>
                   <xsl:call-template name="psmi:name-this"/>
                   <xsl:text> requires a </xsl:text>
@@ -176,7 +176,7 @@ FOR A PARTICULAR PURPOSE.
                   <xsl:text> child</xsl:text>
                 </xsl:message>
               </xsl:if>
-              <xsl:for-each select="fo:flow">
+              <xsl:for-each select="body">
                 <xsl:copy-of select="@*"/>
                 <xsl:if test="not(@flow-name)">
                   <xsl:message>
@@ -187,20 +187,20 @@ FOR A PARTICULAR PURPOSE.
                                         <!--all flow contents belong in sequence-->
                 <xsl:apply-templates select="*"/>
               </xsl:for-each>
-            </fo:flow>
+            </body>
           </xsl:when>
           <xsl:otherwise><!--only following siblings up to psmi:page-sequence-->
-                         <!--use all of the fo:page-sequence's non-flow children-->
+                         <!--use all of the html's non-flow children-->
             <xsl:copy-of select="../../fo:title|../../fo:static-content"/>
-                           <!--use all of the fo:page-sequence's flow attributes-->
-            <fo:flow>
+                           <!--use all of the html's flow attributes-->
+            <body>
               <xsl:copy-of select="../@*"/>
                   <!--only use as much flow as up to the next psmi:page-sequence-->
               <xsl:call-template name="copy-until-psmi"/>
-            </fo:flow>
+            </body>
           </xsl:otherwise>
         </xsl:choose>
-      </fo:page-sequence>
+      </html>
                                    <!--move to the next need for a page sequence-->
       <xsl:choose>
         <xsl:when test="self::psmi:page-sequence">

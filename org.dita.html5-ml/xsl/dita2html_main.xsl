@@ -97,7 +97,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    Test for dummy output
      param:        none
-     return:    fo:page-sequence
+     return:    html
      note:        none
      -->
     <xsl:template name="makeDummyContents">

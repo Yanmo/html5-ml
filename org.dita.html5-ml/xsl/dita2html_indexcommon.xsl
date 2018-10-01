@@ -465,7 +465,7 @@ E-mail : info@antennahouse.com
     <!--
          Function: Make index page sequence
          Param:    none.
-         Return:   fo:page-sequence
+         Return:   html
          Note:     Current is booklists/indexlist
       -->
     <xsl:template name="genIndex">
@@ -525,7 +525,7 @@ E-mail : info@antennahouse.com
                 </fo:static-content>
 
                 <!-- INDEX main flow -->
-                <fo:flow flow-name="xsl-region-body">
+                <body flow-name="xsl-region-body">
                     <!-- Make "INDEX" title  -->
                     <div>
                         <xsl:copy-of select="ahf:getAttributeSet('atsIndexHeader')"/>
@@ -537,7 +537,7 @@ E-mail : info@antennahouse.com
                     </div>
                     <!-- Make index content main -->
                     <xsl:call-template name="makeIndexContentControl"/>
-                </fo:flow>
+                </body>
             </psmi:page-sequence>
         </xsl:if>
     </xsl:template>
@@ -552,7 +552,7 @@ E-mail : info@antennahouse.com
     <!--
          Function: Make index page sequence for simple map
          Param:    none.
-         Return:   fo:page-sequence
+         Return:   html
          Note:
       -->
     <xsl:template name="genMapIndex">
@@ -585,7 +585,7 @@ E-mail : info@antennahouse.com
         </xsl:if>
 
         <xsl:if test="$indextermSortedCount &gt; 0">
-            <fo:page-sequence>
+            <html>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqIndex')"/>
                 <fo:static-content flow-name="rgnIndexBeforeLeft">
                     <xsl:call-template name="indexBeforeRight"/>
@@ -610,7 +610,7 @@ E-mail : info@antennahouse.com
                 </fo:static-content>
 
                 <!-- INDEX main flow -->
-                <fo:flow flow-name="xsl-region-body">
+                <body flow-name="xsl-region-body">
                     <!-- Make "INDEX" title  -->
                     <div>
                         <xsl:copy-of select="ahf:getAttributeSet('atsIndexHeader')"/>
@@ -622,8 +622,8 @@ E-mail : info@antennahouse.com
                     </div>
                     <!-- Make index content main -->
                     <xsl:call-template name="makeIndexContentControl"/>
-                </fo:flow>
-            </fo:page-sequence>
+                </body>
+            </html>
         </xsl:if>
     </xsl:template>
 

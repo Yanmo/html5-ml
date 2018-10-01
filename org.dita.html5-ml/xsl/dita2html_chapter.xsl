@@ -33,14 +33,14 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!--
-     function:    Generate content fo:page-sequence from part or chapter
+     function:    Generate content html from part or chapter
      param:        none (curent is top-level topicref)
-     return:    fo:page-sequence
+     return:    html
      note:      FIX: Page number bug. 2011-09-08 t.makita
      -->
     <xsl:template name="processChapterMain">
 
-        <fo:page-sequence>
+        <html>
             <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqChapter')"/>
             <xsl:choose>
                 <xsl:when test="$isBookMap">
@@ -84,10 +84,10 @@ E-mail : info@antennahouse.com
             <fo:static-content flow-name="rgnChapterBlankBody">
                 <xsl:call-template name="makeBlankBlock"/>
             </fo:static-content>
-            <fo:flow flow-name="xsl-region-body">
+            <body flow-name="xsl-region-body">
                 <xsl:apply-templates select="." mode="PROCESS_TOPICREF"/>
-            </fo:flow>
-        </fo:page-sequence>
+            </body>
+        </html>
     </xsl:template>
 
 

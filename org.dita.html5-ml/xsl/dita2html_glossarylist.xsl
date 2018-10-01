@@ -26,7 +26,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    Generate glossary list template
      param:        none
-     return:    (fo:page-sequence)
+     return:    (html)
      note:      1. Current context is booklist/glossarylist
                  2. This template made by the basis of the promise
                  that all of the topicrefs to the glossentry
@@ -56,9 +56,9 @@ E-mail : info@antennahouse.com
                     <fo:static-content flow-name="rgnGlossaryListBlankBody">
                         <xsl:call-template name="makeBlankBlock"/>
                     </fo:static-content>
-                    <fo:flow flow-name="xsl-region-body">
+                    <body flow-name="xsl-region-body">
                         <xsl:call-template name="genGlossaryListMain"/>
-                    </fo:flow>
+                    </body>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqGlossaryList')"/>
@@ -77,9 +77,9 @@ E-mail : info@antennahouse.com
                     <fo:static-content flow-name="rgnGlossaryListBlankBody">
                         <xsl:call-template name="makeBlankBlock"/>
                     </fo:static-content>
-                    <fo:flow flow-name="xsl-region-body">
+                    <body flow-name="xsl-region-body">
                         <xsl:call-template name="genGlossaryListMain"/>
-                    </fo:flow>
+                    </body>
                 </xsl:otherwise>
             </xsl:choose>
         </psmi:page-sequence>

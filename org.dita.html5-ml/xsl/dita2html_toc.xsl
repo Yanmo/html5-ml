@@ -20,7 +20,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    Generate TOC template
      param:        none
-     return:    fo:page-sequence
+     return:    html
      note:        Current is booklists/toc
      -->
     <xsl:template name="genToc" >
@@ -47,9 +47,9 @@ E-mail : info@antennahouse.com
                     <fo:static-content flow-name="rgnFrontmatterBlankBody">
                         <xsl:call-template name="makeBlankBlock"/>
                     </fo:static-content>
-                    <fo:flow flow-name="xsl-region-body">
+                    <body flow-name="xsl-region-body">
                         <xsl:call-template name="genTocMain"/>
-                    </fo:flow>
+                    </body>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:choose>
@@ -75,9 +75,9 @@ E-mail : info@antennahouse.com
                     <fo:static-content flow-name="rgnBackmatterBlankBody">
                         <xsl:call-template name="makeBlankBlock"/>
                     </fo:static-content>
-                    <fo:flow flow-name="xsl-region-body">
+                    <body flow-name="xsl-region-body">
                         <xsl:call-template name="genTocMain"/>
-                    </fo:flow>
+                    </body>
                 </xsl:otherwise>
             </xsl:choose>
         </psmi:page-sequence>
@@ -86,11 +86,11 @@ E-mail : info@antennahouse.com
     <!--
      function:    Generate TOC template for map
      param:        none
-     return:    fo:page-sequence
+     return:    html
      note:
      -->
     <xsl:template name="genMapToc" >
-        <fo:page-sequence>
+        <html>
             <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqFrontmatter')"/>
             <xsl:if test="not(preceding-sibling::*) and
                 not(parent::*/preceding-sibling::*[contains(@class,' map/topicref ')])">
@@ -111,10 +111,10 @@ E-mail : info@antennahouse.com
             <fo:static-content flow-name="rgnFrontmatterBlankBody">
                 <xsl:call-template name="makeBlankBlock"/>
             </fo:static-content>
-            <fo:flow flow-name="xsl-region-body">
+            <body flow-name="xsl-region-body">
                 <xsl:call-template name="genMapTocMain"/>
-            </fo:flow>
-        </fo:page-sequence>
+            </body>
+        </html>
     </xsl:template>
 
     <!--

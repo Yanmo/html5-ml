@@ -20,7 +20,7 @@ E-mail : info@antennahouse.com
      param:        prmTopicRef, prmNeedId
      return:    fo:bidi-override
      note:        fo:bidi-override is defined as %inline. If FO processor needs %block context, this template should not work!
-                Ex: Child of fo:flow, table elements (colspec,thead,tbody,row,entry,sthead,strow,stentry) are not allowed to generate fo:bidi-override.
+                Ex: Child of body, table elements (colspec,thead,tbody,row,entry,sthead,strow,stentry) are not allowed to generate fo:bidi-override.
                 This is checked using ahf:isBidiOverrideAllowedElem() function.
      -->
     <xsl:template match="*[exists(@dir)][ahf:isBidiOverrideAllowedElem(.)]" priority="30">
@@ -65,7 +65,7 @@ E-mail : info@antennahouse.com
      function:    Return that generating fo:bidi-override is valid or not.
      param:        prmElem
      return:    xs:boolaen
-     note:        Element topic sometimes comes as the child of fo:flow. So it is not valid to use @dir for it.
+     note:        Element topic sometimes comes as the child of body. So it is not valid to use @dir for it.
                 Another table elements are also invalid.
      -->
     <xsl:function name="ahf:isBidiOverrideAllowedElem" as="xs:boolean">

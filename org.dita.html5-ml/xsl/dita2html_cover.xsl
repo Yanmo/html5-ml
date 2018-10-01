@@ -18,13 +18,13 @@ E-mail : info@antennahouse.com
     <!--
      function:    cover generate template
      param:        none
-     return:    fo:page-sequence
+     return:    html
      note:        Current context is "/".
      -->
     <xsl:template name="genCover">
-        <fo:page-sequence master-reference="pmsPageSeqCover">
+        <html master-reference="pmsPageSeqCover">
             <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqBase')"/>
-            <fo:flow flow-name="xsl-region-body">
+            <body flow-name="xsl-region-body">
                 <div>
                     <xsl:copy-of select="ahf:getAttributeSet('atsCoverBookTitleBC')"/>
                     <xsl:if test="exists($bookLibrary)">
@@ -51,8 +51,8 @@ E-mail : info@antennahouse.com
                         <xsl:apply-templates select="$map//*[contains(@class,' bookmap/bookmeta ')]" mode="cover"/>
                     </div>
                 </div>
-            </fo:flow>
-        </fo:page-sequence>
+            </body>
+        </html>
     </xsl:template>
 
     <!--
