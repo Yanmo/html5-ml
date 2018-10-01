@@ -6,15 +6,15 @@
     - Default value for property use.i18n.index.lib is "no".
       If you use I18n Index Library, set this property explicitly to "yes" in DITA-OT command-line.
       -Duse.i18n.index.lib=yes
-      If I18n Index Library is not installed in DITA-OT, do not set property use.i18n.index.lib to "yes". 
+      If I18n Index Library is not installed in DITA-OT, do not set property use.i18n.index.lib to "yes".
     - If I18n Index Library plug-in is installed, following property are passed from [DITA-OT]/build.xml.
       com.antennahouse.i18n.home
       com.antennahouse.i18n_index.plugin.lib
   -->
-<project name="org.dita.html5.build"  basedir=".">
+<project name="org.dita.html5-ml.build"  basedir=".">
     <import file="build_transform.xml"/>
     <import file="build_disp_properties.xml"/>
-    
+
     <!-- Set property -->
     <property name="merged.file" value="${dita.map.filename.root}_MERGED.xml" />
     <property name="converted.merged.file" value="${dita.map.filename.root}_CONVERTED.xml" />
@@ -26,7 +26,7 @@
     <condition property="i18n.home" value="${com.antennahouse.i18n.home}">
         <isset property="com.antennahouse.i18n.home"/>
     </condition>
-    
+
     <!-- I18n Index Library Path
          - Available only when I18n Index Library is installed in DITA-OT as plugin.
       -->
@@ -60,77 +60,77 @@
             </and>
         </condition>
     </fail>
-    
+
     <!-- XSLT parameter
          Set initial value only when ${use.saxon.transform}="yes"
          If you use JAXP transform, the stylesheet initial value is used.
      -->
     <condition property="style.def.file" value="config/default_style.xml">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="assume.sortas.pinyin" value="no" >
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="make.see.link" value="yes">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="include.frontmatter.to.toc" value="no">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="add.numbering.title.prefix" value="yes" >
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="add.part.to.title" value="yes" >
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="add.thumbnail.index" value="yes" >
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="xml.lang" value="''" >
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <property name="output.pdf" value="${dita.map.filename.root}.pdf"/>
     <condition property="output.draft.comment" value="no">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="output.required.cleanup" value="no">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="use.oid" value="no">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="format.dl.as.block" value="yes">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="debug.style" value="no">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <!--condition property="apply.toc.attr" value="yes">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition-->
     <!--condition property="online.pdf" value="yes">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition-->
     <condition property="sort.glossentry" value="yes">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="output.start.message" value="yes">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="auto.scale.down.to.fit" value="yes">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="make.toc.for.map" value="yes">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="make.index.for.map" value="yes">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="make.alt.txt" value="no">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="paper.size" value="Letter">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="image.in.output.folder" value="no">
         <isset property="preprocess.copy-image.skip"/>
@@ -141,29 +141,29 @@
         </not>
     </condition>
     <condition property="output.crop.region" value="no">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
 
     <property name="output.type" value="web"/>
 
     <condition property="exclude.cover.from.counting.page" value="yes">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="number.equation.block.unconditionally" value="no">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
     <condition property="exclude.auto.numbering.from.equation.figure" value="yes">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
-    
+
     <condition property="debug.index.sort.result" value="no">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
 
     <property name="skip.pdf.generation" value="no"/>
 
     <condition property="output.index" value="yes">
-        <equals arg1="${use.saxon.transform}" arg2="yes"/> 
+        <equals arg1="${use.saxon.transform}" arg2="yes"/>
     </condition>
 
     <!-- Make absolute path for temporary directory -->
@@ -176,21 +176,21 @@
 
     <!-- Make URL for input directory -->
     <makeurl property="user.input.dir.url" file="${user.input.dir}"/>
-    
+
     <!-- Make URL for output directory -->
     <makeurl property="output.dir.url" file="${dita.map.output.dir}"/>
-    
+
     <!-- Main target -->
-    <target name="merged2pdf">
+    <target name="merged2html5.ml">
         <echo message="dita.temp.dir=${dita.temp.dir} build.temp.dir=${build.temp.dir}"/>
         <echo message="dita.dir=${dita.dir}"/>
         <echo message="basedir=${basedir}"/>
         <echo message="outputFile=${dita.map.output.dir}${file.separator}${output.pdf}"/>
         <antcall target="build.disp.property"/>
-        <antcall target="transform.merged2pdf.impl">
+        <antcall target="transform.merged2html5.ml.impl">
             <param name="prmInputFile"  value="${build.temp.dir}${file.separator}${merged.file}"/>
             <param name="prmOutputFile" value="${dita.map.output.dir}${file.separator}${output.pdf}"/>
         </antcall>
     </target>
-    
+
 </project>

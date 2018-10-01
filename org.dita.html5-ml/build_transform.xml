@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!-- Build file for merged middle file to PDF transformation
      Revision History
-     - Newly created. 
+     - Newly created.
        2015-05-07 t.makita
-     [Parameter] 
+     [Parameter]
      prmInputFile:  Merged middle file path
      prmOutputFile: PDF file path
   -->
@@ -30,7 +30,7 @@
     <target name="build.project.class.path"
         depends="build.project.class.path.wo.plugin,build.project.class.path.with.plugin"/>
 
-    <target name="transform.merged2pdf.impl">
+    <target name="transform.merged2html5.ml.impl">
 
         <antcall target="transform.merged">
             <param name="prmInputFile" value="${prmInputFile}"/>
@@ -63,7 +63,7 @@
 
     <!-- Convert merged middle file -->
     <target name="transform.merged">
-        <property name="stylesheet" value="${xsl.dir}${file.separator}dita2fo_convmerged_shell.xsl"/>
+        <property name="stylesheet" value="${xsl.dir}${file.separator}dita2html_convmerged_shell.xsl"/>
         <antcall target="transform.merged.common">
             <param name="prmInputFile" value="${prmInputFile}"/>
             <param name="prmOutputFile" value="${prmOutputFile}"/>
@@ -73,7 +73,7 @@
 
     <!-- Make XSL-FO(PSMI) from merged middle file -->
     <target name="transform.merged2psmi">
-        <property name="stylesheet" value="${xsl.dir}${file.separator}dita2fo_shell.xsl"/>
+        <property name="stylesheet" value="${xsl.dir}${file.separator}dita2html_shell.xsl"/>
         <antcall target="transform.merged.common">
             <param name="prmInputFile" value="${prmInputFile}"/>
             <param name="prmOutputFile" value="${prmOutputFile}"/>

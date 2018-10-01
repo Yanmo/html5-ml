@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <property name="html5.ml.plugin.folder" value="org.dita.html5.ml"/>
+  <property name="html5.ml.plugin.folder" value="org.dita.html5-ml"/>
   <property name="html5.ml.dir" value="plugins"/>
 
   <!-- Set property not to copy image unless ${copy.image.to.output.folder} = "yes" -->
