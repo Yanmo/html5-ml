@@ -152,10 +152,10 @@ FOR A PARTICULAR PURPOSE.
                                      <!--psmi:page-sequence title has precedence-->
             <xsl:copy-of select="(../../fo:title|fo:title)[last()]"/>
                             <!--psmi:page-sequence static-content has precedence-->
-            <xsl:copy-of select="fo:static-content"/>
+            <!-- <xsl:copy-of select="fo:static-content"/> -->
                   <!--get other static-content not already in psmi:page-sequence-->
-            <xsl:variable name="static-content-flow-names"
-                          select="fo:static-content/@flow-name"/>
+            <!-- <xsl:variable name="static-content-flow-names"
+                          select="fo:static-content/@flow-name"/> -->
             <!-- FIX: It is not a good idea to copy the paretnt's fo:static-content
                       because there is a pattern that psmi:page-sequence does not
                       have corresponding fo:static-content.
@@ -191,7 +191,7 @@ FOR A PARTICULAR PURPOSE.
           </xsl:when>
           <xsl:otherwise><!--only following siblings up to psmi:page-sequence-->
                          <!--use all of the html's non-flow children-->
-            <xsl:copy-of select="../../fo:title|../../fo:static-content"/>
+            <!-- <xsl:copy-of select="../../fo:title|../../fo:static-content"/> -->
                            <!--use all of the html's flow attributes-->
             <body>
               <xsl:copy-of select="../@*"/>

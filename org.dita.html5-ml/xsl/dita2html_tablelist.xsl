@@ -33,21 +33,6 @@ E-mail : info@antennahouse.com
                                       not(parent::*/preceding-sibling::*[contains(@class,' map/topicref ')])">
                             <xsl:attribute name="initial-page-number" select="'1'"/>
                         </xsl:if>
-                        <fo:static-content flow-name="rgnFrontmatterBeforeLeft">
-                            <xsl:call-template name="frontmatterBeforeLeft"/>
-                        </fo:static-content>
-                        <fo:static-content flow-name="rgnFrontmatterBeforeRight">
-                            <xsl:call-template name="frontmatterBeforeRight"/>
-                        </fo:static-content>
-                        <fo:static-content flow-name="rgnFrontmatterAfterLeft">
-                            <xsl:call-template name="frontmatterAfterLeft"/>
-                        </fo:static-content>
-                        <fo:static-content flow-name="rgnFrontmatterAfterRight">
-                            <xsl:call-template name="frontmatterAfterRight"/>
-                        </fo:static-content>
-                        <fo:static-content flow-name="rgnFrontmatterBlankBody">
-                            <xsl:call-template name="makeBlankBlock"/>
-                        </fo:static-content>
                         <body flow-name="xsl-region-body">
                             <xsl:call-template name="genTableListMain"/>
                         </body>
@@ -61,21 +46,6 @@ E-mail : info@antennahouse.com
                                 <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqBackmatter')"/>
                             </xsl:otherwise>
                         </xsl:choose>
-                        <fo:static-content flow-name="rgnBackmatterBeforeLeft">
-                            <xsl:call-template name="backmatterBeforeLeft"/>
-                        </fo:static-content>
-                        <fo:static-content flow-name="rgnBackmatterBeforeRight">
-                            <xsl:call-template name="backmatterBeforeRight"/>
-                        </fo:static-content>
-                        <fo:static-content flow-name="rgnBackmatterAfterLeft">
-                            <xsl:call-template name="backmatterAfterLeft"/>
-                        </fo:static-content>
-                        <fo:static-content flow-name="rgnBackmatterAfterRight">
-                            <xsl:call-template name="backmatterAfterRight"/>
-                        </fo:static-content>
-                        <fo:static-content flow-name="rgnBackmatterBlankBody">
-                            <xsl:call-template name="makeBlankBlock"/>
-                        </fo:static-content>
                         <body flow-name="xsl-region-body">
                             <xsl:call-template name="genTableListMain"/>
                         </body>

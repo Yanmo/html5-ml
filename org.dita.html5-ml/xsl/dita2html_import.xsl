@@ -27,7 +27,6 @@ E-mail : info@antennahouse.com
    <xsl:include href="dita2html_tablelist.xsl"/>
    <xsl:include href="dita2html_chapter.xsl"/>
    <xsl:include href="dita2html_backmatter.xsl"/>
-   <xsl:include href="dita2html_staticcontent.xsl"/>
    <xsl:include href="dita2html_footnote.xsl"/>
    <xsl:include href="dita2html_relatedlinks.xsl"/>
    <xsl:include href="dita2html_topicelements.xsl"/>

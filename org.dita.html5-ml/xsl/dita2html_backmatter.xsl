@@ -32,21 +32,6 @@ E-mail : info@antennahouse.com
                 <xsl:call-template name="getAttributeSet">
                     <xsl:with-param name="prmAttrSetName" select="'atsPageSeqBackmatter'"/>
                 </xsl:call-template>
-                <fo:static-content flow-name="rgnBackmatterBeforeLeft">
-                    <xsl:call-template name="backmatterBeforeLeft"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnBackmatterBeforeRight">
-                    <xsl:call-template name="backmatterBeforeRight"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnBackmatterAfterLeft">
-                    <xsl:call-template name="backmatterAfterLeft"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnBackmatterAfterRight">
-                    <xsl:call-template name="backmatterAfterRight"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnBackmatterBlankBody">
-                    <xsl:call-template name="makeBlankBlock"/>
-                </fo:static-content>
                 <body flow-name="xsl-region-body">
                     <xsl:apply-templates mode="PROCESS_BACKMATTER"/>
                 </body>

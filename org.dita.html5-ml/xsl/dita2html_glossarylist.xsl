@@ -41,42 +41,12 @@ E-mail : info@antennahouse.com
                                   not(parent::*/preceding-sibling::*[contains(@class,' map/topicref ')])">
                         <xsl:attribute name="initial-page-number" select="'1'"/>
                     </xsl:if>
-                    <fo:static-content flow-name="rgnGlossaryListBeforeLeft">
-                        <xsl:call-template name="frontmatterBeforeLeft"/>
-                    </fo:static-content>
-                    <fo:static-content flow-name="rgnGlossaryListBeforeRight">
-                        <xsl:call-template name="frontmatterBeforeRight"/>
-                    </fo:static-content>
-                    <fo:static-content flow-name="rgnGlossaryListAfterLeft">
-                        <xsl:call-template name="frontmatterAfterLeft"/>
-                    </fo:static-content>
-                    <fo:static-content flow-name="rgnGlossaryListAfterRight">
-                        <xsl:call-template name="frontmatterAfterRight"/>
-                    </fo:static-content>
-                    <fo:static-content flow-name="rgnGlossaryListBlankBody">
-                        <xsl:call-template name="makeBlankBlock"/>
-                    </fo:static-content>
                     <body flow-name="xsl-region-body">
                         <xsl:call-template name="genGlossaryListMain"/>
                     </body>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqGlossaryList')"/>
-                    <fo:static-content flow-name="rgnGlossaryListBeforeLeft">
-                        <xsl:call-template name="backmatterBeforeLeft"/>
-                    </fo:static-content>
-                    <fo:static-content flow-name="rgnGlossaryListBeforeRight">
-                        <xsl:call-template name="backmatterBeforeRight"/>
-                    </fo:static-content>
-                    <fo:static-content flow-name="rgnGlossaryListAfterLeft">
-                        <xsl:call-template name="backmatterAfterLeft"/>
-                    </fo:static-content>
-                    <fo:static-content flow-name="rgnGlossaryListAfterRight">
-                        <xsl:call-template name="backmatterAfterRight"/>
-                    </fo:static-content>
-                    <fo:static-content flow-name="rgnGlossaryListBlankBody">
-                        <xsl:call-template name="makeBlankBlock"/>
-                    </fo:static-content>
                     <body flow-name="xsl-region-body">
                         <xsl:call-template name="genGlossaryListMain"/>
                     </body>

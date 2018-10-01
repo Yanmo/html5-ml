@@ -502,27 +502,6 @@ E-mail : info@antennahouse.com
         <xsl:if test="$pOutputIndex and ($indextermSortedCount &gt; 0)">
             <psmi:page-sequence>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqIndex')"/>
-                <fo:static-content flow-name="rgnIndexBeforeLeft">
-                    <xsl:call-template name="indexBeforeLeft"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnIndexBeforeRight">
-                    <xsl:call-template name="indexBeforeRight"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnIndexAfterLeft">
-                    <xsl:call-template name="indexAfterLeft"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnIndexAfterRight">
-                    <xsl:call-template name="indexAfterRight"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnIndexEndRight">
-                    <xsl:call-template name="indexEndRight"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnIndexEndLeft">
-                    <xsl:call-template name="indexEndLeft"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnIndexBlankBody">
-                    <xsl:call-template name="makeBlankBlock"/>
-                </fo:static-content>
 
                 <!-- INDEX main flow -->
                 <body flow-name="xsl-region-body">
@@ -587,27 +566,6 @@ E-mail : info@antennahouse.com
         <xsl:if test="$indextermSortedCount &gt; 0">
             <html>
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqIndex')"/>
-                <fo:static-content flow-name="rgnIndexBeforeLeft">
-                    <xsl:call-template name="indexBeforeRight"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnIndexBeforeRight">
-                    <xsl:call-template name="indexBeforeRight"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnIndexAfterLeft">
-                    <xsl:call-template name="indexAfterLeft"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnIndexAfterRight">
-                    <xsl:call-template name="indexAfterRight"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnIndexEndRight">
-                    <xsl:call-template name="indexEndRight"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnIndexEndLeft">
-                    <xsl:call-template name="indexEndLeft"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnIndexBlankBody">
-                    <xsl:call-template name="makeBlankBlock"/>
-                </fo:static-content>
 
                 <!-- INDEX main flow -->
                 <body flow-name="xsl-region-body">

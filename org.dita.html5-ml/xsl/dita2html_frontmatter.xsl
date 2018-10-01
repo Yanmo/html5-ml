@@ -32,21 +32,6 @@ E-mail : info@antennahouse.com
                 <xsl:copy-of select="ahf:getAttributeSet('atsPageSeqFrontmatter')"/>
                 <xsl:attribute name="initial-page-number" select="'1'"/>
 
-                <fo:static-content flow-name="rgnFrontmatterBeforeLeft">
-                    <xsl:call-template name="frontmatterBeforeLeft"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnFrontmatterBeforeRight">
-                    <xsl:call-template name="frontmatterBeforeRight"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnFrontmatterAfterLeft">
-                    <xsl:call-template name="frontmatterAfterLeft"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnFrontmatterAfterRight">
-                    <xsl:call-template name="frontmatterAfterRight"/>
-                </fo:static-content>
-                <fo:static-content flow-name="rgnFrontmatterBlankBody">
-                    <xsl:call-template name="makeBlankBlock"/>
-                </fo:static-content>
                 <body flow-name="xsl-region-body">
                     <xsl:apply-templates mode="PROCESS_FRONTMATTER"/>
                 </body>

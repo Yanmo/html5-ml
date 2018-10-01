@@ -63,27 +63,6 @@ E-mail : info@antennahouse.com
                     </xsl:if>
                 </xsl:otherwise>
             </xsl:choose>
-            <fo:static-content flow-name="rgnChapterBeforeLeft">
-                <xsl:call-template name="chapterBeforeLeft"/>
-            </fo:static-content>
-            <fo:static-content flow-name="rgnChapterBeforeRight">
-                <xsl:call-template name="chapterBeforeRight"/>
-            </fo:static-content>
-            <fo:static-content flow-name="rgnChapterAfterLeft">
-                <xsl:call-template name="chapterAfterLeft"/>
-            </fo:static-content>
-            <fo:static-content flow-name="rgnChapterAfterRight">
-                <xsl:call-template name="chapterAfterRight"/>
-            </fo:static-content>
-            <fo:static-content flow-name="rgnChapterEndRight">
-                <xsl:call-template name="chapterEndRight"/>
-            </fo:static-content>
-            <fo:static-content flow-name="rgnChapterEndLeft">
-                <xsl:call-template name="chapterEndLeft"/>
-            </fo:static-content>
-            <fo:static-content flow-name="rgnChapterBlankBody">
-                <xsl:call-template name="makeBlankBlock"/>
-            </fo:static-content>
             <body flow-name="xsl-region-body">
                 <xsl:apply-templates select="." mode="PROCESS_TOPICREF"/>
             </body>
