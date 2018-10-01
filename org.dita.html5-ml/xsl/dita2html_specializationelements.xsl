@@ -47,7 +47,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    foreign template
      param:
-     return:    If content is MathML or SVG return div & fo:instream-foreign-object
+     return:    If content is MathML or SVG return div & object
      note:        Added 2011-08-22 t.makita
      -->
     <xsl:template match="*[contains(@class, ' topic/foreign ')]">
@@ -58,17 +58,17 @@ E-mail : info@antennahouse.com
                 <xsl:choose>
                     <xsl:when test="namespace-uri($childElem)='http://www.w3.org/1998/Math/MathML'">
                         <!-- Content is MathML -->
-                        <fo:instream-foreign-object content-type="content-type:application/mathml+xml">
+                        <object content-type="content-type:application/mathml+xml">
                             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                             <xsl:copy-of select="$childElem"/>
-                        </fo:instream-foreign-object>
+                        </object>
                     </xsl:when>
                     <xsl:when test="namespace-uri($childElem)='http://www.w3.org/2000/svg'">
                         <!-- Content is SVG -->
-                        <fo:instream-foreign-object content-type="content-type:image/svg+xml">
+                        <object content-type="content-type:image/svg+xml">
                             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                             <xsl:copy-of select="$childElem"/>
-                        </fo:instream-foreign-object>
+                        </object>
                     </xsl:when>
                 </xsl:choose>
             </div>

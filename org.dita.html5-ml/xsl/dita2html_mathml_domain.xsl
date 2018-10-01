@@ -33,16 +33,16 @@
     <!--
         function:    m:math
         param:        none
-        return:        fo:instream-foreign-object
+        return:        object
         note:        none
     -->
     <xsl:template match="*[contains(@class, ' mathml-d/mathml ')]/m:math">
-        <fo:instream-foreign-object>
+        <object>
             <xsl:copy>
                 <xsl:copy-of select="@*"/>
                 <xsl:copy-of select="node()"/>
             </xsl:copy>
-        </fo:instream-foreign-object>
+        </object>
     </xsl:template>
 
     <!--

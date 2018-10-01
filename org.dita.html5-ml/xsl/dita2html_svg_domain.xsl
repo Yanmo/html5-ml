@@ -33,15 +33,15 @@ E-mail : info@antennahouse.com
     <!--
      function:    SVG contained in svg-container template
      param:
-     return:    fo:instream-foreign-object
+     return:    object
      note:        SVG may be stored as only one child of svg-container.
                 So ahf:getFoStyleAndProperty() is applied here.
      -->
     <xsl:template match="svg:svg">
-        <fo:instream-foreign-object>
+        <object>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(parent::*[1])"/>
             <xsl:copy-of select="."/>
-        </fo:instream-foreign-object>
+        </object>
     </xsl:template>
 
     <xsl:template match="svg:svg" mode="TEXT_ONLY"/>
