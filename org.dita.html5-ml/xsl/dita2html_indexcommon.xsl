@@ -509,9 +509,9 @@ E-mail : info@antennahouse.com
                     <div>
                         <xsl:copy-of select="ahf:getAttributeSet('atsIndexHeader')"/>
                         <xsl:attribute name="id" select="$id"/>
-                        <fo:marker marker-class-name="{$cTitleBody}">
+                        <a marker-class-name="{$cTitleBody}">
                             <span><xsl:copy-of select="$cIndexTitle"/></span>
-                        </fo:marker>
+                        </a>
                         <xsl:value-of select="$cIndexTitle"/>
                     </div>
                     <!-- Make index content main -->
@@ -573,9 +573,9 @@ E-mail : info@antennahouse.com
                     <div>
                         <xsl:copy-of select="ahf:getAttributeSet('atsIndexHeader')"/>
                         <xsl:attribute name="id" select="$cIndexId"/>
-                        <fo:marker marker-class-name="{$cTitleBody}">
+                        <a marker-class-name="{$cTitleBody}">
                             <span><xsl:copy-of select="$cIndexTitle"/></span>
-                        </fo:marker>
+                        </a>
                         <xsl:value-of select="$cIndexTitle"/>
                     </div>
                     <!-- Make index content main -->
@@ -1120,9 +1120,9 @@ E-mail : info@antennahouse.com
                 </span>
                 <xsl:choose>
                     <xsl:when test="$pMakeSeeLink">
-                        <fo:basic-link internal-destination="{$seeAlsoId}">
+                        <a internal-destination="{$seeAlsoId}">
                             <xsl:copy-of select="$prmCurrentSeeAlsoFO"/>
-                        </fo:basic-link>
+                        </a>
                     </xsl:when>
                     <xsl:otherwise>
                         <span>
@@ -1245,9 +1245,9 @@ E-mail : info@antennahouse.com
                             </span>
                             <xsl:choose>
                                 <xsl:when test="$pMakeSeeLink">
-                                    <fo:basic-link internal-destination="{$seeKeyId}">
+                                    <a internal-destination="{$seeKeyId}">
                                         <xsl:copy-of select="$prmCurrentSeeFO"/>
-                                    </fo:basic-link>
+                                    </a>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <span>
@@ -1280,9 +1280,9 @@ E-mail : info@antennahouse.com
                             </span>
                             <xsl:choose>
                                 <xsl:when test="$pMakeSeeLink">
-                                    <fo:basic-link internal-destination="{$seeKeyId}">
+                                    <a internal-destination="{$seeKeyId}">
                                         <xsl:copy-of select="$prmCurrentSeeFO"/>
-                                    </fo:basic-link>
+                                    </a>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <span>
@@ -1361,9 +1361,9 @@ E-mail : info@antennahouse.com
                             </span>
                             <xsl:choose>
                                 <xsl:when test="$pMakeSeeLink">
-                                    <fo:basic-link internal-destination="{$seeKeyId}">
+                                    <a internal-destination="{$seeKeyId}">
                                         <xsl:copy-of select="$prmCurrentSeeFO"/>
-                                    </fo:basic-link>
+                                    </a>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <span>

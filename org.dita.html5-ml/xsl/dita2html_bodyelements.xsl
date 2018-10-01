@@ -1044,14 +1044,14 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmImage"    required="no" as="element()" select="."/>
         <xsl:choose>
             <xsl:when test="$prmImage/@longdescref">
-                <fo:basic-link>
+                <a>
                     <xsl:attribute name="external-destination" select="concat('url(',$prmImage/@longdescref,')')"/>
                     <fo:external-graphic>
                         <xsl:call-template name="ahf:getUnivAtts"/>
                         <xsl:copy-of select="ahf:getImageCommonAttr($prmImage)"/>
                         <xsl:copy-of select="ahf:getFoStyleAndProperty($prmImage)"/>
                     </fo:external-graphic>
-                </fo:basic-link>
+                </a>
             </xsl:when>
             <xsl:otherwise>
                 <fo:external-graphic>
@@ -1310,11 +1310,11 @@ E-mail : info@antennahouse.com
                 Treate @scope="peer" as external considering DITA-OT standard processing.
                 If <longdescref> exists, its attributes precede the attributes of <lq>.
                 (2011-10-27 t.makita)
-                Change lq/@href processing. Remove fo:basic-link generation temporary.
+                Change lq/@href processing. Remove a generation temporary.
                 - If it is started by "#", it is a usual id. (DITA-OT 1.8.5 or later)
                 - Otherwise it is a raw href. (Until DITA-OT 1.8.4)
                 2014-10-29 t.makita
-                Fix the fo:basic-link generation by getting the DITA-OT version.
+                Fix the a generation by getting the DITA-OT version.
                 As DITA-OT doesn't maintain longdescref/@href, it is no longer used.
                 2014-11-10 t.makita
      -->
@@ -1384,10 +1384,10 @@ E-mail : info@antennahouse.com
                             </xsl:variable>
                             <xsl:choose>
                                 <xsl:when test="exists($destAttr)">
-                                    <fo:basic-link>
+                                    <a>
                                         <xsl:copy-of select="$destAttr"/>
                                         <xsl:value-of select="@reftitle"/>
-                                    </fo:basic-link>
+                                    </a>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <xsl:value-of select="@reftitle"/>
@@ -1397,10 +1397,10 @@ E-mail : info@antennahouse.com
                         <xsl:otherwise>
                             <xsl:choose>
                                 <xsl:when test="string($href)">
-                                    <fo:basic-link>
+                                    <a>
                                         <xsl:copy-of select="ahf:makeBasicLinkDestination($href,$prmScope,.)"/>
                                         <xsl:value-of select="@reftitle"/>
-                                    </fo:basic-link>
+                                    </a>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <xsl:value-of select="@reftitle"/>
@@ -1528,7 +1528,7 @@ E-mail : info@antennahouse.com
     <!--
         function:    fn template
         param:
-        return:        fo:basic-link(fo:footnote)
+        return:        a(fo:footnote)
         note:        BUG-FIX: Don't generate any element if @id exists.
                     2015-05-26 t.makita
     -->
@@ -1557,10 +1557,10 @@ E-mail : info@antennahouse.com
                     <xsl:call-template name="ahf:generateId"/>
                 </xsl:variable>
                 <xsl:if test="string($id)">
-                    <fo:basic-link internal-destination="{$id}">
+                    <a internal-destination="{$id}">
                         <xsl:copy-of select="ahf:getAttributeSet('atsFnPrefix')"/>
                         <xsl:value-of select="$fnPrefix"/>
-                    </fo:basic-link>
+                    </a>
                 </xsl:if>
             </xsl:otherwise>
         </xsl:choose>
@@ -1802,7 +1802,7 @@ E-mail : info@antennahouse.com
           Common templates
          ======================== -->
     <!--
-     function:    Make fo:basic-link attribute external-destination/internal-destination
+     function:    Make a attribute external-destination/internal-destination
      param:        prmHref, prmScope
      return:    attribute()*
      note:

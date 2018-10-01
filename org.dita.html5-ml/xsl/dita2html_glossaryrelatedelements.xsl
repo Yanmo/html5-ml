@@ -19,7 +19,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    abbreviated-form template
      param:        prmTopicRef
-     return:    fo:basic-link
+     return:    a
      note:        none
      -->
 
@@ -50,7 +50,7 @@ E-mail : info@antennahouse.com
                 </xsl:call-template>
             </xsl:when>
             <xsl:when test="not(contains($topicElement/@class,' glossentry/glossentry '))">
-                <fo:basic-link>
+                <a>
                     <xsl:copy-of select="$destAttr"/>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsXref'"/>
@@ -60,7 +60,7 @@ E-mail : info@antennahouse.com
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                     <xsl:apply-templates select="$topicElement/*[contains(@class, ' topic/title ')]" mode="GET_CONTENTS"/>
-                </fo:basic-link>
+                </a>
             </xsl:when>
             <xsl:when test="$abbreviatedFormCount le 1">
                 <xsl:variable name="glossSurfaceFormElem"
@@ -70,7 +70,7 @@ E-mail : info@antennahouse.com
                               as="element()?"/>
                 <xsl:choose>
                     <xsl:when test="exists($glossSurfaceFormElem)">
-                        <fo:basic-link>
+                        <a>
                             <xsl:copy-of select="$destAttr"/>
                             <xsl:call-template name="getAttributeSetWithLang">
                                 <xsl:with-param name="prmAttrSetName" select="'atsXref'"/>
@@ -80,11 +80,11 @@ E-mail : info@antennahouse.com
                             <xsl:call-template name="ahf:getUnivAtts"/>
                             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                             <xsl:apply-templates select="$glossSurfaceFormElem" mode="GET_CONTENTS"/>
-                        </fo:basic-link>
+                        </a>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:variable name="glossTerm" as="element()" select="$topicElement/*[contains(@class, ' glossentry/glossterm ')][1]"/>
-                        <fo:basic-link>
+                        <a>
                             <xsl:copy-of select="$destAttr"/>
                             <xsl:call-template name="getAttributeSetWithLang">
                                 <xsl:with-param name="prmAttrSetName" select="'atsXref'"/>
@@ -94,7 +94,7 @@ E-mail : info@antennahouse.com
                             <xsl:call-template name="ahf:getUnivAtts"/>
                             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                             <xsl:apply-templates select="$glossTerm" mode="GET_CONTENTS"/>
-                        </fo:basic-link>
+                        </a>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:when>
@@ -126,7 +126,7 @@ E-mail : info@antennahouse.com
                         </xsl:otherwise>
                                 </xsl:choose>
                 </xsl:variable>
-                <fo:basic-link>
+                <a>
                     <xsl:copy-of select="$destAttr"/>
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsXref'"/>
@@ -136,7 +136,7 @@ E-mail : info@antennahouse.com
                     <xsl:call-template name="ahf:getUnivAtts"/>
                     <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
                     <xsl:apply-templates select="$glossAltElem" mode="GET_CONTENTS"/>
-                </fo:basic-link>
+                </a>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>

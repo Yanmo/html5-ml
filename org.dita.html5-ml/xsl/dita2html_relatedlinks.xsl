@@ -244,7 +244,7 @@ E-mail : info@antennahouse.com
         <xsl:choose>
             <xsl:when test="($titleMode eq $cSquareBulletTitleMode) or ($titleMode eq $cRoundBulletTitleMode)">
                 <!-- Link line for square/round bullet item -->
-                <fo:basic-link internal-destination="{$topicId}">
+                <a internal-destination="{$topicId}">
                     <span>
                         <xsl:attribute name="font-family">
                             <xsl:call-template name="getVarValueWithLang">
@@ -265,11 +265,11 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmVarName" select="'Relatedlink_Suffix'"/>
                         <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
                     </xsl:call-template>
-                </fo:basic-link>
+                </a>
             </xsl:when>
             <xsl:otherwise>
                 <!-- Link line for normal numbered item -->
-                <fo:basic-link internal-destination="{$topicId}">
+                <a internal-destination="{$topicId}">
                     <xsl:value-of select="$titlePrefix"/>
                     <xsl:if test="string($titlePrefix)">
                         <xsl:text>&#x2002;</xsl:text>
@@ -284,7 +284,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmVarName" select="'Relatedlink_Suffix'"/>
                         <xsl:with-param name="prmElem" select="$prmRelatedLinks"/>
                     </xsl:call-template>
-                </fo:basic-link>
+                </a>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -313,14 +313,14 @@ E-mail : info@antennahouse.com
             <xsl:when test="contains(lower-case($href),'.pdf#')">
                 <!-- Link to PDF named destination -->
                 <xsl:variable name="tempHref" as="xs:string" select="replace($prmHref,'#','#nameddest=')"/>
-                <fo:basic-link external-destination="{$tempHref}" axf:action-type="gotor">
+                <a external-destination="{$tempHref}" axf:action-type="gotor">
                     <xsl:value-of select="$prmLinktext"/>
-                </fo:basic-link>
+                </a>
             </xsl:when>
             <xsl:otherwise>
-                <fo:basic-link external-destination="{$prmHref}">
+                <a external-destination="{$prmHref}">
                     <xsl:copy-of select="$prmLinktext"/>
-                </fo:basic-link>
+                </a>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>

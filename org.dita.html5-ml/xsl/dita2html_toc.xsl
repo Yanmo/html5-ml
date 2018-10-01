@@ -104,9 +104,9 @@ E-mail : info@antennahouse.com
             <div>
                 <xsl:copy-of select="ahf:getAttributeSet('atsFmHeader1')"/>
                 <xsl:attribute name="id" select="$id"/>
-                <fo:marker marker-class-name="{$cTitleBody}">
+                <a marker-class-name="{$cTitleBody}">
                     <span><xsl:value-of select="$title"/></span>
-                </fo:marker>
+                </a>
                 <xsl:value-of select="$title"/>
             </div>
             <!-- Make contents -->
@@ -127,9 +127,9 @@ E-mail : info@antennahouse.com
             <div>
                 <xsl:copy-of select="ahf:getAttributeSet('atsFmHeader1')"/>
                 <xsl:attribute name="id" select="$cTocId"/>
-                <fo:marker marker-class-name="{$cTitleBody}">
+                <a marker-class-name="{$cTitleBody}">
                     <span><xsl:value-of select="$cTocTitle"/></span>
-                </fo:marker>
+                </a>
                 <xsl:value-of select="$cTocTitle"/>
             </div>
             <!-- Make contents -->
@@ -494,9 +494,9 @@ E-mail : info@antennahouse.com
                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLevel1')"/>
                     <xsl:choose>
                         <xsl:when test="string($prmId)">
-                            <fo:basic-link internal-destination="{$prmId}">
+                            <a internal-destination="{$prmId}">
                                 <xsl:copy-of select="$prmTitle"/>
-                            </fo:basic-link>
+                            </a>
                             <fo:leader leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                             </fo:leader>
@@ -505,9 +505,9 @@ E-mail : info@antennahouse.com
                                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                                 </fo:leader>
                             </span>
-                            <fo:basic-link internal-destination="{$prmId}">
+                            <a internal-destination="{$prmId}">
                                 <fo:page-number-citation ref-id="{$prmId}" />
-                            </fo:basic-link>
+                            </a>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:copy-of select="ahf:getAttributeSet('atsTocTitleOnly')"/>
@@ -523,9 +523,9 @@ E-mail : info@antennahouse.com
                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLevel2')"/>
                     <xsl:choose>
                         <xsl:when test="string($prmId)">
-                            <fo:basic-link internal-destination="{$prmId}">
+                            <a internal-destination="{$prmId}">
                                 <xsl:copy-of select="$prmTitle"/>
-                            </fo:basic-link>
+                            </a>
                             <fo:leader leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                             </fo:leader>
@@ -534,9 +534,9 @@ E-mail : info@antennahouse.com
                                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                                 </fo:leader>
                             </span>
-                            <fo:basic-link internal-destination="{$prmId}">
+                            <a internal-destination="{$prmId}">
                                 <fo:page-number-citation ref-id="{$prmId}" />
-                            </fo:basic-link>
+                            </a>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:copy-of select="ahf:getAttributeSet('atsTocTitleOnly')"/>
@@ -552,9 +552,9 @@ E-mail : info@antennahouse.com
                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLevel3')"/>
                     <xsl:choose>
                         <xsl:when test="string($prmId)">
-                            <fo:basic-link internal-destination="{$prmId}">
+                            <a internal-destination="{$prmId}">
                                 <xsl:copy-of select="$prmTitle"/>
-                            </fo:basic-link>
+                            </a>
                             <fo:leader leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                             </fo:leader>
@@ -563,9 +563,9 @@ E-mail : info@antennahouse.com
                                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                                 </fo:leader>
                             </span>
-                            <fo:basic-link internal-destination="{$prmId}">
+                            <a internal-destination="{$prmId}">
                                 <fo:page-number-citation ref-id="{$prmId}" />
-                            </fo:basic-link>
+                            </a>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:copy-of select="ahf:getAttributeSet('atsTocTitleOnly')"/>
@@ -581,9 +581,9 @@ E-mail : info@antennahouse.com
                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLevel4')"/>
                     <xsl:choose>
                         <xsl:when test="string($prmId)">
-                            <fo:basic-link internal-destination="{$prmId}">
+                            <a internal-destination="{$prmId}">
                                 <xsl:copy-of select="$prmTitle"/>
-                            </fo:basic-link>
+                            </a>
                             <fo:leader leader-length.optimum="0pt">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                             </fo:leader>
@@ -592,9 +592,9 @@ E-mail : info@antennahouse.com
                                     <xsl:copy-of select="ahf:getAttributeSet('atsTocLeader')"/>
                                 </fo:leader>
                             </span>
-                            <fo:basic-link internal-destination="{$prmId}">
+                            <a internal-destination="{$prmId}">
                                 <fo:page-number-citation ref-id="{$prmId}" />
-                            </fo:basic-link>
+                            </a>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:copy-of select="ahf:getAttributeSet('atsTocTitleOnly')"/>

@@ -560,7 +560,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    synnote template
      param:        prmTopicRef
-     return:    fo:basic-link
+     return:    a
      note:        none
      -->
     <xsl:template match="*[contains(@class,' pr-d/synnote ')]" priority="2">
@@ -574,7 +574,7 @@ E-mail : info@antennahouse.com
             <xsl:otherwise>
                 <!-- stand alone synnote -->
                 <xsl:variable name="id" select="ahf:generateId(.,$prmTopicRef)"/>
-                <fo:basic-link internal-destination="{$id}">
+                <a internal-destination="{$id}">
                     <xsl:call-template name="getAttributeSetWithLang">
                         <xsl:with-param name="prmAttrSetName" select="'atsSynNote'"/>
                     </xsl:call-template>
@@ -593,7 +593,7 @@ E-mail : info@antennahouse.com
                                         from="*[contains(@class,' pr-d/syntaxdiagram')]"/>
                         </xsl:otherwise>
                     </xsl:choose>
-                </fo:basic-link>
+                </a>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -601,7 +601,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    synnoteref template
      param:        prmTopicRef
-     return:    fo:basic-link
+     return:    a
      note:        referenced synnote must exist in the same sytaxdiagram.
      -->
     <xsl:template match="*[contains(@class,' pr-d/synnoteref ')]" priority="2">
@@ -623,7 +623,7 @@ E-mail : info@antennahouse.com
                 </xsl:call-template>
             </xsl:when>
             <xsl:otherwise>
-                <fo:basic-link>
+                <a>
                     <xsl:attribute name="internal-destination">
                         <xsl:variable name="synNoteElemIdAtr" select="ahf:getIdAtts($synNoteElement,$prmTopicRef,true())" as="attribute()*"/>
                         <xsl:value-of select="$synNoteElemIdAtr[1]"/>
@@ -647,7 +647,7 @@ E-mail : info@antennahouse.com
                                         from="*[contains(@class,' pr-d/syntaxdiagram')]"/>
                         </xsl:otherwise>
                     </xsl:choose>
-                </fo:basic-link>
+                </a>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>

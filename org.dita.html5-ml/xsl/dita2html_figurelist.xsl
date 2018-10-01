@@ -74,9 +74,9 @@ E-mail : info@antennahouse.com
             <div>
                 <xsl:copy-of select="ahf:getAttributeSet('atsFmHeader1')"/>
                 <xsl:attribute name="id" select="$id"/>
-                <fo:marker marker-class-name="{$cTitleBody}">
+                <a marker-class-name="{$cTitleBody}">
                     <span><xsl:value-of select="$cFigureListTitle"/></span>
-                </fo:marker>
+                </a>
                 <xsl:value-of select="$cFigureListTitle"/>
             </div>
             <!-- Make contents -->
@@ -255,17 +255,17 @@ E-mail : info@antennahouse.com
                 <fo:list-item-label>
                     <xsl:copy-of select="ahf:getAttributeSet('atsFigListLabel')"/>
                     <div>
-                        <fo:basic-link internal-destination="{$prmId}">
+                        <a internal-destination="{$prmId}">
                             <xsl:copy-of select="$prmTitle[1]"/>
-                        </fo:basic-link>
+                        </a>
                     </div>
                 </fo:list-item-label>
                 <fo:list-item-body>
                     <xsl:copy-of select="ahf:getAttributeSet('atsFigListBody')"/>
                     <div>
-                        <fo:basic-link internal-destination="{$prmId}">
+                        <a internal-destination="{$prmId}">
                             <xsl:copy-of select="$prmTitle[2]"/>
-                        </fo:basic-link>
+                        </a>
                         <fo:leader leader-length.optimum="0pt">
                             <xsl:copy-of select="ahf:getAttributeSet('atsFigListLeader')"/>
                         </fo:leader>
@@ -274,9 +274,9 @@ E-mail : info@antennahouse.com
                                 <xsl:copy-of select="ahf:getAttributeSet('atsFigListLeader')"/>
                             </fo:leader>
                         </span>
-                        <fo:basic-link internal-destination="{$prmId}">
+                        <a internal-destination="{$prmId}">
                             <fo:page-number-citation ref-id="{$prmId}" />
-                        </fo:basic-link>
+                        </a>
                     </div>
                 </fo:list-item-body>
             </fo:list-item>

@@ -99,9 +99,9 @@ E-mail : info@antennahouse.com
                                 </xsl:otherwise>
                             </xsl:choose>
                         </xsl:variable>
-                        <fo:marker marker-class-name="{$cTitleBody}">
+                        <a marker-class-name="{$cTitleBody}">
                             <span><xsl:copy-of select="$glossaryListTitleText"/></span>
-                        </fo:marker>
+                        </a>
                         <xsl:choose>
                             <xsl:when test="$topicRef/*[contains(@class,' map/topicmeta ')]/*[contains(@class,' topic/navtitle ')]">
                                 <xsl:apply-templates select="$topicRef/*[contains(@class,' map/topicmeta ')]/*[contains(@class,' topic/navtitle ')]">

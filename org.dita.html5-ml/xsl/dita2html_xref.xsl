@@ -19,7 +19,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    xref template
      param:        prmTopicRef, prmNeedId
-     return:    fo:basic-link or fo:inline
+     return:    a or fo:inline
      note:        none
      -->
     <xsl:template match="*[contains(@class, ' topic/xref ')]">
@@ -37,7 +37,7 @@ E-mail : info@antennahouse.com
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="exists($destAttr)">
-                <fo:basic-link>
+                <a>
                     <xsl:copy-of select="$destAttr"/>
                     <xsl:call-template name="genXrefContentNodes">
                         <xsl:with-param name="prmTopicRef" select="$prmTopicRef"/>
@@ -45,7 +45,7 @@ E-mail : info@antennahouse.com
                         <xsl:with-param name="prmXref"     select="$xref"/>
                         <xsl:with-param name="prmDstAttr"  select="$destAttr"/>
                     </xsl:call-template>
-                </fo:basic-link>
+                </a>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates select="$xref/child::node()"/>
@@ -420,11 +420,11 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <!--
-     function:    Generate attribute and contents for fo:basic-link
+     function:    Generate attribute and contents for a
      param:        prmTopicRef, prmNeedId, prmXref, prmDestElement, prmDestId, prmXrefTitle
      return:    FO objects
      note:        This template generates attribute() then content node (text() or other inline element).
-                Do not generate ant content node for fo:basic-link before calling this template.
+                Do not generate ant content node for a before calling this template.
      -->
     <xsl:template name="genXrefAttrAndTitle" as="node()*">
         <xsl:param name="prmTopicRef"      as="element()?" required="yes"/>
