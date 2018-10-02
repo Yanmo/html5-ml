@@ -1418,7 +1418,7 @@
         <xsl:sequence select="$replacedFormattingObject"/>
     </xsl:template>
 
-    <xsl:template match="fo:*" mode="GET_FORMATTING_OBJECTS_REPLACING">
+    <xsl:template match="*" mode="GET_FORMATTING_OBJECTS_REPLACING">
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstStr" as="xs:string+" required="yes"/>
         <xsl:copy>
@@ -1530,7 +1530,7 @@
         <xsl:sequence select="$replacedFormattingObject"/>
     </xsl:template>
 
-    <xsl:template match="fo:*" mode="GET_FORMATTING_OBJECTS_REPLACING_NODE">
+    <xsl:template match="*" mode="GET_FORMATTING_OBJECTS_REPLACING_NODE">
         <xsl:param name="prmSrcStr" as="xs:string+" required="yes"/>
         <xsl:param name="prmDstNode" as="element()+" required="yes"/>
         <xsl:copy>

@@ -11,8 +11,8 @@
          function:    Expand FO style & property into attribute()*
          param:        prmElem
          return:    Attribute node
-         note:        Style is authored in $prmElem/@fo:style
-                    XSL-FO attribute is authored in $prmElem/@fo:prop in CSS notation.
+         note:        Style is authored in $prmElem/@style
+                    XSL-FO attribute is authored in $prmElem/@prop in CSS notation.
                     2014-09-13 t.makita
                     Changed attributename:
                     fo⇒fo:prop
@@ -34,14 +34,14 @@
          function:    Expand FO style into attribute()*
          param:        prmElem
          return:    Attribute node
-         note:        Style is authored in $prmElem/@fo:style
+         note:        Style is authored in $prmElem/@style
                     2014-09-13 t.makita
     -->
     <xsl:function name="ahf:getFoStyle">
         <xsl:param name="prmElem" as="element()"/>
         <xsl:choose>
-            <xsl:when test="exists($prmElem/@fo:style)">
-                <xsl:sequence select="ahf:getAttributeSet(string($prmElem/@fo:style))"/>
+            <xsl:when test="exists($prmElem/@style)">
+                <xsl:sequence select="ahf:getAttributeSet(string($prmElem/@style))"/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:sequence select="()"/>
@@ -53,7 +53,7 @@
          function:    Expand FO property into attribute()*
          param:        prmElem
          return:    Attribute node
-         note:        XSL-FO attribute is authored in $prmElem/@fo:prop in CSS notation.
+         note:        XSL-FO attribute is authored in $prmElem/@prop in CSS notation.
                     2014-04-22 t.makita
                     Remove stylesheet specific style (starts with "ahs-").
                     2016-02-20 t,makita
@@ -62,8 +62,8 @@
         <xsl:param name="prmElem" as="element()"/>
 
         <xsl:choose>
-            <xsl:when test="exists($prmElem/@fo:prop)">
-                <xsl:variable name="foAttr" as="xs:string" select="normalize-space(string($prmElem/@fo:prop))"/>
+            <xsl:when test="exists($prmElem/@prop)">
+                <xsl:variable name="foAttr" as="xs:string" select="normalize-space(string($prmElem/@prop))"/>
                 <xsl:for-each select="tokenize($foAttr, ';')">
                     <xsl:variable name="propDesc" select="normalize-space(string(.))"/>
                     <xsl:choose>
@@ -122,7 +122,7 @@
                     Replacing text() with given parameters ($prmSrc, $prmDst).
          param:        prmElem,$prmSrc,$prmDst
          return:    Attribute node
-         note:        XSL-FO attribute is authored in $prmElem/@fo:prop in CSS notation.
+         note:        XSL-FO attribute is authored in $prmElem/@prop in CSS notation.
                     2014-04-22 t.makita
     -->
     <xsl:function name="ahf:getFoPropertyReplacing" as="attribute()*">
@@ -131,8 +131,8 @@
         <xsl:param name="prmDst" as="xs:string+"/>
 
         <xsl:choose>
-            <xsl:when test="exists($prmElem/@fo:prop)">
-                <xsl:variable name="foAttr" as="xs:string" select="normalize-space(string($prmElem/@fo:prop))"/>
+            <xsl:when test="exists($prmElem/@prop)">
+                <xsl:variable name="foAttr" as="xs:string" select="normalize-space(string($prmElem/@prop))"/>
                 <xsl:for-each select="tokenize($foAttr, ';')">
                     <xsl:variable name="propDesc" select="normalize-space(string(.))"/>
                     <xsl:choose>
@@ -218,8 +218,8 @@
         <xsl:param name="prmElem" as="element()"/>
 
         <xsl:choose>
-            <xsl:when test="exists($prmElem/@fo:prop)">
-                <xsl:variable name="foAttr" as="xs:string" select="normalize-space(string($prmElem/@fo:prop))"/>
+            <xsl:when test="exists($prmElem/@prop)">
+                <xsl:variable name="foAttr" as="xs:string" select="normalize-space(string($prmElem/@prop))"/>
                 <xsl:message select="'$foAttr=',$foAttr"></xsl:message>
                 <xsl:for-each select="tokenize($foAttr, ';')">
                     <xsl:variable name="propDesc" select="normalize-space(string(.))"/>

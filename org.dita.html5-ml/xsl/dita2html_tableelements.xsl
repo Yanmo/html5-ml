@@ -98,7 +98,7 @@ E-mail : info@antennahouse.com
             <xsl:attribute name="rowheader" select="if (exists($prmTable/@rowheader)) then string($prmTable/@rowheader) else 'norowheader'"/>
             <xsl:attribute name="scale"  select="if (exists($prmTable/@scale))  then string($prmTable/@scale) else '100'"/>
             <xsl:copy-of select="$prmTable/@class"/>
-            <xsl:copy-of select="$prmTable/@fo:prop"/>
+            <xsl:copy-of select="$prmTable/@prop"/>
         </dummy>
     </xsl:function>
 
@@ -222,7 +222,7 @@ E-mail : info@antennahouse.com
             <xsl:copy-of select="$prmTgroup/@colsep"/>
             <xsl:copy-of select="$prmTgroup/@rowsep"/>
             <xsl:copy-of select="$prmTgroup/@align"/>
-            <xsl:copy-of select="$prmTgroup/@fo:prop"/>"
+            <xsl:copy-of select="$prmTgroup/@prop"/>"
         </dummy>
     </xsl:function>
 
@@ -390,7 +390,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmThead"    as="element()"/>
         <xsl:param name="prmTgroupAttr" as="element()"/>
         <dummy>
-            <xsl:copy-of select="$prmTgroupAttr/@* except $prmTgroupAttr/@fo:prop"/>
+            <xsl:copy-of select="$prmTgroupAttr/@* except $prmTgroupAttr/@prop"/>
             <xsl:copy-of select="$prmThead/@valign"/>
             <xsl:copy-of select="ahf:getStylesheetProperty($prmThead)"/>"
         </dummy>
@@ -432,7 +432,7 @@ E-mail : info@antennahouse.com
         <xsl:param name="prmTbody"    as="element()"/>
         <xsl:param name="prmTgroupAttr" as="element()"/>
         <dummy>
-            <xsl:copy-of select="$prmTgroupAttr/@* except $prmTgroupAttr/@fo:prop"/>
+            <xsl:copy-of select="$prmTgroupAttr/@* except $prmTgroupAttr/@prop"/>
             <xsl:copy-of select="$prmTbody/@valign"/>
             <xsl:copy-of select="ahf:getStylesheetProperty($prmTbody)"/>"
         </dummy>

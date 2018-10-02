@@ -54,7 +54,7 @@ E-mail : info@antennahouse.com
             <xsl:attribute name="xml:lang" select="$documentLang"/>
 
             <!-- Generate XSL-FO layoutmaster set -->
-            <xsl:call-template name="genLayoutMasterSet"/>
+            <!-- <xsl:call-template name="genLayoutMasterSet"/> -->
 
             <!-- Bookmark tree -->
             <xsl:call-template name="genBookmarkTree"/>
