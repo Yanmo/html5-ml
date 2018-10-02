@@ -75,7 +75,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' floatfig-d/floatfig ')][string(@float) = ('left','right')]" priority="2" name="processFloatFigLR">
-        <fo:float>
+        <div class="float">
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -85,7 +85,7 @@ E-mail : info@antennahouse.com
                 </xsl:call-template>
                 <xsl:apply-templates/>
             </div>
-        </fo:float>
+        </div>
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' floatfig-d/floatfig ')][string(@float) eq 'none']" priority="2" name="processFloatFigNone">
@@ -130,7 +130,7 @@ E-mail : info@antennahouse.com
     </xsl:template>
 
     <xsl:template match="*[contains(@class, ' floatfig-d/floatfig-group ')]" priority="2">
-        <fo:float>
+        <div class="float">
             <xsl:call-template name="getAttributeSetWithLang"/>
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
@@ -143,7 +143,7 @@ E-mail : info@antennahouse.com
                     <xsl:apply-templates select="*[contains(@class, ' topic/title ')]"/>
                 </div>
             </div>
-        </fo:float>
+        </div>
     </xsl:template>
 
 </xsl:stylesheet>

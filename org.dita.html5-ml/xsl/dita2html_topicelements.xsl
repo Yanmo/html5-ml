@@ -140,7 +140,7 @@ E-mail : info@antennahouse.com
             <xsl:call-template name="ahf:getUnivAtts"/>
             <xsl:copy-of select="ahf:getFoStyleAndProperty(.)"/>
             <xsl:apply-templates/>
-            <!-- Make fo:index-range-end FO object that has @start
+            <!-- Make a class="index-range-end" FO object that has @start
                  but has no corresponding @end indexterm in body.
              -->
             <xsl:apply-templates select="$body//*[contains(@class, ' topic/indexterm ')]">

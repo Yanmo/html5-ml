@@ -1212,7 +1212,7 @@ URL : http://www.antennahouse.com/
                 <!--attribute name="font-weight">bold</attribute-->
             </attribute-set>
 
-            <!-- Dummy block for fo:index-range-end -->
+            <!-- Dummy block for a class="index-range-end" -->
             <attribute-set name="atsIndexDummyBlock">
                 <attribute name="line-height">0.00001mm</attribute>
             </attribute-set>

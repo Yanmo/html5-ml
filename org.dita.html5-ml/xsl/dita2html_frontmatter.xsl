@@ -79,7 +79,7 @@ E-mail : info@antennahouse.com
         <!-- Invoke next priority template -->
         <xsl:next-match/>
 
-        <!-- generate fo:index-range-end for metadata -->
+        <!-- generate a class="index-range-end" for metadata -->
         <xsl:call-template name="processIndextermInMetadataEnd">
             <xsl:with-param name="prmTopicRef"     select="$topicRef"/>
             <xsl:with-param name="prmTopicContent" select="$topicContent"/>

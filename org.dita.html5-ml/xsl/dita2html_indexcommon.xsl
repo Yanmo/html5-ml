@@ -108,7 +108,7 @@ E-mail : info@antennahouse.com
     <!--
      function:    Process indexterm in metadata
      param:        prmTopicRef, prmTopicContent
-     return:    call indexterm template and make fo:index-range-end FO object
+     return:    call indexterm template and make a class="index-range-end" FO object
      note:        This template should be called from the end of topicref.
      -->
     <xsl:template name="processIndextermInMetadataEnd">
@@ -133,7 +133,7 @@ E-mail : info@antennahouse.com
             </xsl:if>
 
             <xsl:if test="exists($prmTopicContent)">
-                <!-- Make fo:index-range-end FO object for topic/prolog/metadata/keywords/indexterm
+                <!-- Make a class="index-range-end" FO object for topic/prolog/metadata/keywords/indexterm
                      that has @start but has no corresponding @end indexterm
                  -->
                 <xsl:apply-templates select="$prmTopicContent/descendant-or-self::*[contains(@class,' topic/topic ')]/child::*[contains(@class, ' topic/prolog ')]/child::*[contains(@class, ' topic/metadata ')]/*[contains(@class, ' topic/keywords ')]/*[contains(@class, ' topic/indexterm ')]">
@@ -144,7 +144,7 @@ E-mail : info@antennahouse.com
                 </xsl:apply-templates>
             </xsl:if>
 
-            <!-- Make fo:index-range-end FO object for topicref/topicmeta/keywords/indexterm
+            <!-- Make a class="index-range-end" FO object for topicref/topicmeta/keywords/indexterm
                  that has @start but has no corresponding @end indexterm
              -->
             <xsl:if test="$prmTopicRef is $lastTopicRef">
@@ -171,7 +171,7 @@ E-mail : info@antennahouse.com
     <!--
         function:    Complement indexterm[@end] in topic body portion
         param:        prmTopicRef, prmTopicContent
-        return:        call indexterm template and make fo:index-range-end FO object
+        return:        call indexterm template and make a class="index-range-end" FO object
         note:        This template should be called from the end of topic.
     -->
     <xsl:template name="processIndextermInTopicEnd">
@@ -375,7 +375,7 @@ E-mail : info@antennahouse.com
                         <!-- IGNORE -->
                     </xsl:when>
                     <xsl:otherwise>
-                        <!-- Normal pattern: generate @index-key, fo:index-range-begin, fo:index-range-end -->
+                        <!-- Normal pattern: generate @index-key, a class="index-range-begin", a class="index-range-end" -->
                         <!-- "MODE_PROCESS_INDEXTERM_MAIN" template is coded in dita2fo_indexterm.xsl -->
                         <xsl:apply-templates select="self::node()" mode="MODE_PROCESS_INDEXTERM_MAIN">
                             <xsl:with-param name="prmIndextermKey" select="''"/>
@@ -1040,29 +1040,29 @@ E-mail : info@antennahouse.com
                             <xsl:copy-of select="ahf:getAttributeSet('atsIndexLeader2')"/>
                         </span>
                     </span>
-                    <fo:index-page-citation-list>
-                        <fo:index-page-citation-list-separator>
+                    <a class="index-page-citation-list">
+                        <a class="index-page-citation-list-separator">
                             <xsl:value-of select="$cIndexPageCitationListSeparator"/>
-                        </fo:index-page-citation-list-separator>
-                        <fo:index-page-citation-range-separator>
+                        </a>
+                        <a class="index-page-citation-range-separator">
                             <xsl:value-of select="$cIndexPageCitationRangeSeparator"/>
-                        </fo:index-page-citation-range-separator>
+                        </a>
                         <xsl:if test="$prmSignificancePreferred &gt; 0">
                             <xsl:variable name="preferredIndexKey">
                                 <xsl:value-of select="$prmCurrentIndexKey"/>
                                 <xsl:value-of select="$indexKeySep"/>
                                 <xsl:value-of select="$KEY_PREFERRED"/>
                             </xsl:variable>
-                            <fo:index-key-reference ref-index-key="{$preferredIndexKey}">
+                            <a class="index-keu-reference" ref-index-key="{$preferredIndexKey}">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsIndexKeyReference atsIndexPreferred')"/>
-                            </fo:index-key-reference>
+                            </a>
                         </xsl:if>
                         <xsl:if test="$prmSignificanceNormal &gt; 0">
-                            <fo:index-key-reference ref-index-key="{$prmCurrentIndexKey}">
+                            <a class="index-keu-reference" ref-index-key="{$prmCurrentIndexKey}">
                                 <xsl:copy-of select="ahf:getAttributeSet('atsIndexKeyReference')"/>
-                            </fo:index-key-reference>
+                            </a>
                         </xsl:if>
-                    </fo:index-page-citation-list>
+                    </a>
                 </div>
             </xsl:when>
             <xsl:otherwise/>

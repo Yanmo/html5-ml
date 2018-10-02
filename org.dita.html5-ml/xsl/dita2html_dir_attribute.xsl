@@ -18,9 +18,9 @@ E-mail : info@antennahouse.com
     <!--
      function:    @dir attribute processing
      param:        prmTopicRef, prmNeedId
-     return:    fo:bidi-override
-     note:        fo:bidi-override is defined as %inline. If FO processor needs %block context, this template should not work!
-                Ex: Child of body, table elements (colspec,thead,tbody,row,entry,sthead,strow,stentry) are not allowed to generate fo:bidi-override.
+     return:    bdo
+     note:        bdo is defined as %inline. If FO processor needs %block context, this template should not work!
+                Ex: Child of body, table elements (colspec,thead,tbody,row,entry,sthead,strow,stentry) are not allowed to generate bdo.
                 This is checked using ahf:isBidiOverrideAllowedElem() function.
      -->
     <xsl:template match="*[exists(@dir)][ahf:isBidiOverrideAllowedElem(.)]" priority="30">
@@ -56,13 +56,13 @@ E-mail : info@antennahouse.com
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        <fo:bidi-override unicode-bidi="{$unicodeBidi}" direction="{$direction}">
+        <bdo unicode-bidi="{$unicodeBidi}" direction="{$direction}">
             <xsl:next-match/>
-        </fo:bidi-override>
+        </bdo>
     </xsl:template>
 
     <!--
-     function:    Return that generating fo:bidi-override is valid or not.
+     function:    Return that generating bdo is valid or not.
      param:        prmElem
      return:    xs:boolaen
      note:        Element topic sometimes comes as the child of body. So it is not valid to use @dir for it.

@@ -80,7 +80,7 @@ E-mail : info@antennahouse.com
         <!-- Invoke next priority template -->
         <xsl:next-match/>
 
-        <!-- generate fo:index-range-end for metadata (Except indexlist, booklist, glossarylist, booklist)-->
+        <!-- generate a class="index-range-end" for metadata (Except indexlist, booklist, glossarylist, booklist)-->
         <xsl:if test="($topicRef is $lastTopicRef) or ($topicRef &lt;&lt; $lastTopicRef)">
             <xsl:call-template name="processIndextermInMetadataEnd">
                 <xsl:with-param name="prmTopicRef"     select="."/>
